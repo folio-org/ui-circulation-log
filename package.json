@@ -1,0 +1,88 @@
+{
+  "name": "@folio/circulation-log",
+  "version": "1.0.0",
+  "description": "Description for circulation logs",
+  "main": "index.js",
+  "repository": "",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=10"
+  },
+  "stripes": {
+    "actsAs": [
+      "app"
+    ],
+    "displayName": "ui-circulation-log.meta.title",
+    "route": "/circulation-log",
+    "home": "/circulation-log",
+    "okapiInterfaces": {
+    },
+    "icons": [
+      {
+        "name": "app",
+        "alt": "View and manage circulation logs",
+        "title": "Circulation logs"
+      }
+    ],
+    "stripesDeps": [
+      "@folio/stripes-acq-components"
+    ],
+    "permissionSets": [
+      {
+        "permissionName": "module.circulation-log.enabled",
+        "displayName": "UI: Circulation logs module is enabled"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "stripes build --output ./output",
+    "lint": "eslint .",
+    "start": "stripes serve",
+    "test": "echo TODO"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.7.4",
+    "@bigtest/interactor": "^0.9.3",
+    "@bigtest/mocha": "^0.5.1",
+    "@bigtest/react": "^0.1.2",
+    "@folio/eslint-config-stripes": "^5.0.0",
+    "@folio/stripes": "^5.0.0",
+    "@folio/stripes-cli": "^1.13.0",
+    "babel-eslint": "^10.0.0",
+    "babel-jest": "^25.1.0",
+    "chai": "^4.2.0",
+    "core-js": "^3.6.1",
+    "eslint": "^6.2.1",
+    "eslint-plugin-filenames": "^1.3.2",
+    "eslint-plugin-jest": "^23.0.4",
+    "faker": "^4.1.0",
+    "identity-obj-proxy": "^3.0.0",
+    "miragejs": "^0.1.32",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "react-intl": "^4.5.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "regenerator-runtime": "^0.13.3"
+  },
+  "dependencies": {
+    "@folio/stripes-acq-components": "^2.1.0",
+    "lodash": "^4.17.5",
+    "prop-types": "^15.5.10",
+    "query-string": "^6.1.0",
+    "react-hot-loader": "^4.3.12",
+    "react-router-prop-types": "^1.0.4"
+  },
+  "peerDependencies": {
+    "@folio/stripes": "^5.0.0",
+    "react": "*",
+    "react-intl": "^4.5.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0"
+  }
+}
