@@ -1,3 +1,11 @@
 {
-    "meta.title": "Journal de circulation"
+    "meta.title": "Journal de circulation",
+    "logEvent.user": "User Barcode",
+    "logEvent.item": "Item Barcode",
+    "logEvent.object": "Object",
+    "logEvent.action": "Action",
+    "logEvent.date": "Date",
+    "logEvent.servicePoint": "Service Point",
+    "logEvent.source": "Source",
+    "logEvent.description": "Description"
 }
