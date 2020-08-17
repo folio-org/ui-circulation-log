@@ -4,13 +4,13 @@ import {
   Route,
 } from 'react-router-dom';
 
-import { CirculationLogList } from './CirculationLogList';
+import { CirculationLogListContainer } from './CirculationLogList';
 
 const CirculationLog = () => {
   return (
     <Switch>
       <Route
-        component={CirculationLogList}
+        component={CirculationLogListContainer}
         path="/circulation-log"
       />
     </Switch>
