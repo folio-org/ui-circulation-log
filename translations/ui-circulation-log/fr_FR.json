@@ -1,11 +1,12 @@
 {
     "meta.title": "Journal de circulation",
-    "logEvent.user": "User Barcode",
-    "logEvent.item": "Item Barcode",
-    "logEvent.object": "Object",
+    "logEvent.user": "Code-barres utilisateur",
+    "logEvent.item": "Code-barres de l'article",
+    "logEvent.object": "Objet",
     "logEvent.action": "Action",
     "logEvent.date": "Date",
-    "logEvent.servicePoint": "Service Point",
+    "logEvent.servicePoint": "Point(s) de service",
     "logEvent.source": "Source",
-    "logEvent.description": "Description"
+    "logEvent.description": "Description",
+    "permission.log-event.all": "Circulation log: All"
 }
