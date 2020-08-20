@@ -8,5 +8,7 @@
   "logEvent.date": "Date",
   "logEvent.servicePoint": "Service Point",
   "logEvent.source": "Source",
-  "logEvent.description": "Description"
+  "logEvent.description": "Description",
+
+  "permission.log-event.all": "Circulation log: All"
 }

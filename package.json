@@ -30,7 +30,17 @@
     "permissionSets": [
       {
         "permissionName": "module.circulation-log.enabled",
-        "displayName": "UI: Circulation logs module is enabled"
+        "displayName": "UI: Circulation logs module is enabled",
+        "visible": false
+      },
+      {
+        "permissionName": "ui-circulation-log.log-event.all",
+        "displayName": "Circulation log: All",
+        "description": "",
+        "visible": true,
+        "subPermissions": [
+          "module.circulation-log.enabled"
+        ]
       }
     ]
   },
