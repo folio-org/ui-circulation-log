@@ -1,11 +1,12 @@
 {
     "meta.title": "سجل الإعارة",
-    "logEvent.user": "User Barcode",
-    "logEvent.item": "Item Barcode",
-    "logEvent.object": "Object",
-    "logEvent.action": "Action",
-    "logEvent.date": "Date",
-    "logEvent.servicePoint": "Service Point",
-    "logEvent.source": "Source",
-    "logEvent.description": "Description"
+    "logEvent.user": "باركود المستخدم",
+    "logEvent.item": "باركود المادة",
+    "logEvent.object": "الكائن",
+    "logEvent.action": "الإجراء",
+    "logEvent.date": "التاريخ",
+    "logEvent.servicePoint": "نقطة الخدمة",
+    "logEvent.source": "المصدر",
+    "logEvent.description": "الوصف",
+    "permission.log-event.all": "Circulation log: All"
 }
