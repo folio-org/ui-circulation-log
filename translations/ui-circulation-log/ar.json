@@ -8,5 +8,5 @@
     "logEvent.servicePoint": "نقطة الخدمة",
     "logEvent.source": "المصدر",
     "logEvent.description": "الوصف",
-    "permission.log-event.all": "Circulation log: All"
+    "permission.log-event.all": "سجل الإعارة: الكل"
 }

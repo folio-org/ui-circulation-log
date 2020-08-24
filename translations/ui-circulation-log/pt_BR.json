@@ -8,5 +8,5 @@
     "logEvent.servicePoint": "Ponto de serviço",
     "logEvent.source": "Fonte",
     "logEvent.description": "Descrição",
-    "permission.log-event.all": "Circulation log: All"
+    "permission.log-event.all": "Registro de circulação: Tudo"
 }

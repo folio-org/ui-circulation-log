@@ -1,12 +1,12 @@
 {
-    "meta.title": "Circulation Log",
-    "logEvent.user": "User Barcode",
-    "logEvent.item": "Item Barcode",
-    "logEvent.object": "Object",
-    "logEvent.action": "Action",
-    "logEvent.date": "Date",
-    "logEvent.servicePoint": "Service Point",
-    "logEvent.source": "Source",
-    "logEvent.description": "Description",
-    "permission.log-event.all": "Circulation log: All"
+    "meta.title": "流通日志",
+    "logEvent.user": "用户条码",
+    "logEvent.item": "单件条码",
+    "logEvent.object": "对象",
+    "logEvent.action": "操作",
+    "logEvent.date": "日期",
+    "logEvent.servicePoint": "服务点",
+    "logEvent.source": "来源",
+    "logEvent.description": "描述",
+    "permission.log-event.all": "流通日志：全部"
 }
