@@ -1,5 +1,5 @@
 {
-    "meta.title": "Circulation Log",
+    "meta.title": "Registro di circolazione",
     "logEvent.user": "User Barcode",
     "logEvent.item": "Item Barcode",
     "logEvent.object": "Object",
@@ -8,5 +8,5 @@
     "logEvent.servicePoint": "Service Point",
     "logEvent.source": "Source",
     "logEvent.description": "Description",
-    "permission.log-event.all": "Circulation log: All"
+    "permission.log-event.all": "Registro di circolazione: Tutti"
 }
