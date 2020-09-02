@@ -16,6 +16,8 @@
     "route": "/circulation-log",
     "home": "/circulation-log",
     "okapiInterfaces": {
+      "service-points": "3.0",
+      "circulation-logs": "1.0"
     },
     "icons": [
       {
@@ -39,7 +41,9 @@
         "description": "",
         "visible": true,
         "subPermissions": [
-          "module.circulation-log.enabled"
+          "module.circulation-log.enabled",
+          "inventory-storage.service-points.collection.get",
+          "circulation-logs.collection.get"
         ]
       }
     ]
@@ -75,7 +79,7 @@
     "miragejs": "^0.1.32",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
-    "react-intl": "^4.5.1",
+    "react-intl": "^5.7.0 ",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "regenerator-runtime": "^0.13.3"
@@ -91,7 +95,7 @@
   "peerDependencies": {
     "@folio/stripes": "^5.0.0",
     "react": "*",
-    "react-intl": "^4.5.1",
+    "react-intl": "^5.7.0 ",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0"
   }
