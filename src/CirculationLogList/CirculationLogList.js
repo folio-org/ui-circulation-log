@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useMemo,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   useHistory,
@@ -25,23 +27,26 @@ import { CirculationLogListFilter } from './CirculationLogListFilter';
 import { CirculationLogEventActions } from './CirculationLogEventActions';
 
 const resultsPaneTitle = <FormattedMessage id="ui-circulation-log.meta.title" />;
-const visibleColumns = ['userId', 'itemId', 'object', 'action', 'date', 'servicePointId', 'source', 'description', 'actions'];
-const sortableFields = ['userId', 'itemId', 'object', 'action', 'date', 'source', 'description'];
+const visibleColumns = ['userBarcode', 'itemBarcode', 'object', 'action', 'date', 'servicePoint', 'source', 'description', 'actions'];
+const sortableFields = ['userBarcode', 'itemBarcode', 'object', 'action', 'date', 'source', 'description'];
 const columnMapping = {
-  userId: <FormattedMessage id="ui-circulation-log.logEvent.user" />,
-  itemId: <FormattedMessage id="ui-circulation-log.logEvent.item" />,
+  userBarcode: <FormattedMessage id="ui-circulation-log.logEvent.user" />,
+  itemBarcode: <FormattedMessage id="ui-circulation-log.logEvent.item" />,
   object: <FormattedMessage id="ui-circulation-log.logEvent.object" />,
   action: <FormattedMessage id="ui-circulation-log.logEvent.action" />,
   date: <FormattedMessage id="ui-circulation-log.logEvent.date" />,
-  servicePointId: <FormattedMessage id="ui-circulation-log.logEvent.servicePoint" />,
+  servicePoint: <FormattedMessage id="ui-circulation-log.logEvent.servicePoint" />,
   source: <FormattedMessage id="ui-circulation-log.logEvent.source" />,
   description: <FormattedMessage id="ui-circulation-log.logEvent.description" />,
   actions: '',
 };
-const resultsFormatter = {
+const getResultsFormatter = (servicePointsMap) => ({
+  object: logEvent => <FormattedMessage id={`ui-circulation-log.logEvent.object.${logEvent.object}`} />,
+  action: logEvent => <FormattedMessage id={`ui-circulation-log.logEvent.action.${logEvent.action}`} />,
   date: logEvent => <FolioFormattedTime dateString={logEvent.date} />,
+  servicePoint: logEvent => servicePointsMap[logEvent.servicePointId],
   actions: () => <CirculationLogEventActions />,
-};
+});
 
 export const CirculationLogList = ({
   isLoading,
@@ -49,6 +54,7 @@ export const CirculationLogList = ({
   resetData,
   logEvents,
   logEventsCount,
+  servicePoints,
 }) => {
   const history = useHistory();
   const location = useLocation();
@@ -70,6 +76,15 @@ export const CirculationLogList = ({
     changeSorting,
   ] = useLocationSorting(location, history, resetData, sortableFields);
   const [isFiltersOpened, toggleFilters] = useToggle(true);
+
+  const servicePointsMap = useMemo(() => {
+    return servicePoints.reduce((acc, servicePoint) => {
+      acc[servicePoint.id] = servicePoint.name;
+
+      return acc;
+    }, {});
+  }, [servicePoints]);
+  const resultsFormatter = useMemo(() => getResultsFormatter(servicePointsMap), [servicePointsMap]);
 
   const resultsStatusMessage = (
     <NoResultsMessage
@@ -94,6 +109,7 @@ export const CirculationLogList = ({
             activeFilters={filters}
             applyFilters={applyFilters}
             disabled={isLoading}
+            servicePoints={servicePoints}
           />
         </FiltersPane>
       )}
@@ -135,10 +151,12 @@ CirculationLogList.propTypes = {
   logEventsCount: PropTypes.number,
   isLoading: PropTypes.bool,
   logEvents: PropTypes.arrayOf(PropTypes.object),
+  servicePoints: PropTypes.arrayOf(PropTypes.object),
 };
 
 CirculationLogList.defaultProps = {
   logEventsCount: 0,
   isLoading: false,
   logEvents: [],
+  servicePoints: [],
 };

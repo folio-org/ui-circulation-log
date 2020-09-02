@@ -16,6 +16,8 @@
     "route": "/circulation-log",
     "home": "/circulation-log",
     "okapiInterfaces": {
+      "service-points": "3.0",
+      "circulation-logs": "1.0"
     },
     "icons": [
       {
@@ -39,7 +41,9 @@
         "description": "",
         "visible": true,
         "subPermissions": [
-          "module.circulation-log.enabled"
+          "module.circulation-log.enabled",
+          "inventory-storage.service-points.collection.get",
+          "circulation-logs.collection.get"
         ]
       }
     ]

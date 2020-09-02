@@ -1,35 +1,51 @@
 import React, {
   useCallback,
+  useState,
+  useEffect,
 } from 'react';
+import PropTypes from 'prop-types';
+import {
+  useLocation,
+} from 'react-router-dom';
+import queryString from 'query-string';
 
 import { stripesConnect } from '@folio/stripes/core';
-import { useList } from '@folio/stripes-acq-components';
+import {
+  useList,
+  baseManifest,
+} from '@folio/stripes-acq-components';
 
+import { buildLogEventsQuery } from './utils';
 import { CirculationLogList } from './CirculationLogList';
 
 const RESULT_COUNT_INCREMENT = 30;
 
 const resetData = () => {};
 
-const CirculationLogListContainerComponent = () => {
-  const loadLogEvents = useCallback(() => {
-    return Promise.resolve({
-      totalRecords: 1,
-      logEvents: [{
-        userId: '56783471',
-        itemId: '1243343',
-        object: 'Loan',
-        action: 'Renewed',
-        date: '2020-08-17T01:27:04.133+0000',
-        servicePointId: 'SP1',
-        source: 'System',
-        description: 'New due date...',
-      }],
-    });
+const CirculationLogListContainerComponent = ({ mutator }) => {
+  const location = useLocation();
+
+  const [servicePoints, setServicePoints] = useState();
+
+  useEffect(() => {
+    mutator.logEventsServicePoints.GET()
+      .then(setServicePoints);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const loadLogEvents = useCallback((offset) => {
+    return mutator.logEventsListEvents.GET({
+      params: {
+        limit: RESULT_COUNT_INCREMENT,
+        offset,
+        query: buildLogEventsQuery(queryString.parse(location.search)),
+      },
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.search]);
+
   const postLoadLogEvents = useCallback((setLogEvents, logEventsResponse) => {
-    setLogEvents(logEventsResponse.logEvents);
+    setLogEvents(logEventsResponse.logRecords);
   }, []);
 
   const {
@@ -46,8 +62,27 @@ const CirculationLogListContainerComponent = () => {
       logEventsCount={logEventsCount}
       isLoading={isLoading}
       logEvents={logEvents}
+      servicePoints={servicePoints}
     />
   );
+};
+
+CirculationLogListContainerComponent.manifest = Object.freeze({
+  logEventsListEvents: {
+    ...baseManifest,
+    path: 'audit-data/circulation/logs',
+    accumulate: true,
+  },
+  logEventsServicePoints: {
+    ...baseManifest,
+    path: 'service-points',
+    accumulate: true,
+    records: 'servicepoints',
+  },
+});
+
+CirculationLogListContainerComponent.propTypes = {
+  mutator: PropTypes.object.isRequired,
 };
 
 export const CirculationLogListContainer = stripesConnect(CirculationLogListContainerComponent);
