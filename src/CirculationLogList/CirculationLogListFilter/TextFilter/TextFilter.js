@@ -42,7 +42,7 @@ export const TextFilter = ({
       activeFilters={activeFilters}
       closedByDefault={closedByDefault}
       id={id}
-      label={label}
+      labelId={labelId}
       name={name}
       onChange={onChange}
     >
