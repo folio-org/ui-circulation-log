@@ -41,7 +41,6 @@ export const TextFilter = ({
     <FilterAccordion
       activeFilters={activeFilters}
       closedByDefault={closedByDefault}
-      disabled={disabled}
       id={id}
       label={label}
       name={name}
@@ -50,6 +49,7 @@ export const TextFilter = ({
       <TextField
         ariaLabel={label}
         type={type}
+        disabled={disabled}
         value={activeFilters?.[0] || ''}
         onChange={changeFilter}
       />
