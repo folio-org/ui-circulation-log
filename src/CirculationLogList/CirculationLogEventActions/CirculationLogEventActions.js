@@ -1,4 +1,6 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import {
   Button,
@@ -7,7 +9,23 @@ import {
   Icon,
 } from '@folio/stripes/components';
 
-export const CirculationLogEventActions = () => {
+import {
+  getHasLoanDetails,
+  getHasUserDetails,
+  getHasItemDetails,
+  getHasFeeDetails,
+  getHasRequestDetails,
+} from './utils';
+
+export const CirculationLogEventActions = ({ object, referenceIds }) => {
+  const { holdingId, instanceId, feeFineId, loanId, userId, requestId, itemId } = referenceIds;
+
+  const hasLoanDetails = getHasLoanDetails(object, loanId);
+  const hasUserDetails = getHasUserDetails(object, userId);
+  const hasItemDetails = getHasItemDetails(object, itemId);
+  const hasFeeDetails = getHasFeeDetails(object, feeFineId);
+  const hasRequestDetails = getHasRequestDetails(object, requestId);
+
   const renderTrigger = useCallback(({ triggerRef, onToggle, ariaProps, keyHandler }) => (
     <Button
       ref={triggerRef}
@@ -26,9 +44,74 @@ export const CirculationLogEventActions = () => {
       open={open}
       onToggle={onToggle}
     >
-      <span>Log event actions</span>
+      {
+        hasFeeDetails && (
+          <Button
+            buttonStyle="dropdownItem"
+            role="menuitem"
+            to={`/users/${userId}/accounts/view/${feeFineId}`}
+          >
+            <FormattedMessage id="ui-circulation-log.logEvent.actions.feeDetails" />
+          </Button>
+        )
+      }
+
+      {
+        hasLoanDetails && (
+          <Button
+            buttonStyle="dropdownItem"
+            role="menuitem"
+            to={`/users/${userId}/loans/view/${loanId}`}
+          >
+            <FormattedMessage id="ui-circulation-log.logEvent.actions.loanDetails" />
+          </Button>
+        )
+      }
+
+      {
+        hasUserDetails && (
+          <Button
+            buttonStyle="dropdownItem"
+            role="menuitem"
+            to={`/users/view/${userId}`}
+          >
+            <FormattedMessage id="ui-circulation-log.logEvent.actions.userDetails" />
+          </Button>
+        )
+      }
+
+      {
+        hasItemDetails && (
+          <Button
+            buttonStyle="dropdownItem"
+            role="menuitem"
+            to={`/inventory/view/${instanceId}/${holdingId}/${itemId}`}
+          >
+            <FormattedMessage id="ui-circulation-log.logEvent.actions.itemDetails" />
+          </Button>
+        )
+      }
+
+      {
+        hasRequestDetails && (
+          <Button
+            buttonStyle="dropdownItem"
+            role="menuitem"
+            to={`/requests/view/${requestId}`}
+          >
+            <FormattedMessage id="ui-circulation-log.logEvent.actions.requestDetails" />
+          </Button>
+        )
+      }
     </DropdownMenu>
-  ), []);
+  ), [
+    hasRequestDetails, hasLoanDetails, hasItemDetails, hasFeeDetails, hasUserDetails,
+    feeFineId, requestId, userId, loanId, itemId, instanceId, holdingId,
+  ]);
+
+  if (!(hasLoanDetails || hasUserDetails || hasItemDetails || hasFeeDetails || hasRequestDetails)) {
+    return null;
+  }
 
   return (
     <Dropdown
@@ -36,4 +119,13 @@ export const CirculationLogEventActions = () => {
       renderMenu={renderMenu}
     />
   );
+};
+
+CirculationLogEventActions.propTypes = {
+  object: PropTypes.string,
+  referenceIds: PropTypes.object,
+};
+
+CirculationLogEventActions.defaultProps = {
+  referenceIds: {},
 };
