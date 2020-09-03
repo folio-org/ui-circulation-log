@@ -1,5 +1,5 @@
 {
-  "meta.title": "Circulation Log",
+  "meta.title": "Circulation log",
 
   "logEvent.user": "User Barcode",
   "logEvent.item": "Item Barcode",
