@@ -7,6 +7,8 @@ export const getHasLoanDetails = (object, loanId) => (
   && (
     object === LOG_EVENT_OBJECTS.LOAN
     || object === LOG_EVENT_OBJECTS.FEE
+    || object === LOG_EVENT_OBJECTS.REQUEST
+    || object === LOG_EVENT_OBJECTS.NOTICE
   )
 );
 
@@ -15,15 +17,23 @@ export const getHasUserDetails = (object, userId) => (
   && (
     object === LOG_EVENT_OBJECTS.LOAN
     || object === LOG_EVENT_OBJECTS.FEE
+    || object === LOG_EVENT_OBJECTS.REQUEST
+    || object === LOG_EVENT_OBJECTS.NOTICE
   )
 );
 
 export const getHasItemDetails = (object, itemId) => (
-  itemId && object === LOG_EVENT_OBJECTS.LOAN
+  itemId && (
+    object === LOG_EVENT_OBJECTS.LOAN
+    || object === LOG_EVENT_OBJECTS.NOTICE
+  )
 );
 
 export const getHasFeeDetails = (object, feeId) => (
-  feeId && object === LOG_EVENT_OBJECTS.FEE
+  feeId && (
+    object === LOG_EVENT_OBJECTS.FEE
+    || object === LOG_EVENT_OBJECTS.NOTICE
+  )
 );
 
 export const getHasRequestDetails = (object, requestId) => (
@@ -31,5 +41,15 @@ export const getHasRequestDetails = (object, requestId) => (
   && (
     object === LOG_EVENT_OBJECTS.LOAN
     || object === LOG_EVENT_OBJECTS.FEE
+    || object === LOG_EVENT_OBJECTS.REQUEST
+    || object === LOG_EVENT_OBJECTS.NOTICE
   )
+);
+
+export const getHasNoticePolicyDetails = (object, noticePolicyId) => (
+  noticePolicyId && object === LOG_EVENT_OBJECTS.NOTICE
+);
+
+export const getHasTemplateDetails = (object, templateId) => (
+  templateId && object === LOG_EVENT_OBJECTS.NOTICE
 );

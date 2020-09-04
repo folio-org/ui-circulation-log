@@ -9,6 +9,7 @@
   "logEvent.servicePoint": "Service Point",
   "logEvent.source": "Source",
   "logEvent.description": "Description",
+  "logEvent.actions": "Actions",
 
   "logEvent.object.Fee/Fine": "Fee/Fine",
   "logEvent.object.Item Block": "Item Block",
@@ -63,6 +64,8 @@
   "logEvent.actions.feeDetails": "Fee/Fine details",
   "logEvent.actions.loanDetails": "Loan details",
   "logEvent.actions.requestDetails": "Request details",
+  "logEvent.actions.noticePolicyDetails": "Notice policy",
+  "logEvent.actions.templateDetails": "Live version of template",
 
   "permission.log-event.all": "Circulation log: All"
 }
