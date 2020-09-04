@@ -1,5 +1,5 @@
 {
-  "meta.title": "Circulation Log",
+  "meta.title": "Circulation log",
 
   "logEvent.user": "User Barcode",
   "logEvent.item": "Item Barcode",
@@ -9,6 +9,7 @@
   "logEvent.servicePoint": "Service Point",
   "logEvent.source": "Source",
   "logEvent.description": "Description",
+  "logEvent.actions": "Actions",
 
   "logEvent.object.Fee/Fine": "Fee/Fine",
   "logEvent.object.Item Block": "Item Block",
@@ -57,6 +58,14 @@
   "logEvent.action.Transferred partially": "Transferred partially",
   "logEvent.action.Waived fully": "Waived fully",
   "logEvent.action.Waived partially": "Waived partially",
+
+  "logEvent.actions.itemDetails": "Item details",
+  "logEvent.actions.userDetails": "User details",
+  "logEvent.actions.feeDetails": "Fee/Fine details",
+  "logEvent.actions.loanDetails": "Loan details",
+  "logEvent.actions.requestDetails": "Request details",
+  "logEvent.actions.noticePolicyDetails": "Notice policy",
+  "logEvent.actions.templateDetails": "Live version of template",
 
   "permission.log-event.all": "Circulation log: All"
 }

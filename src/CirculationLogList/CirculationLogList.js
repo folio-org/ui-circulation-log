@@ -45,7 +45,12 @@ const getResultsFormatter = (servicePointsMap) => ({
   action: logEvent => <FormattedMessage id={`ui-circulation-log.logEvent.action.${logEvent.action}`} />,
   date: logEvent => <FolioFormattedTime dateString={logEvent.date} />,
   servicePoint: logEvent => servicePointsMap[logEvent.servicePointId],
-  actions: () => <CirculationLogEventActions />,
+  actions: logEvent => (
+    <CirculationLogEventActions
+      object={logEvent.object}
+      referenceIds={logEvent.linkToIds}
+    />
+  ),
 });
 
 export const CirculationLogList = ({
