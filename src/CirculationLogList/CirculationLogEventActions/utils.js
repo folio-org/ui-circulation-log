@@ -19,6 +19,7 @@ export const getHasUserDetails = (object, userId) => (
     || object === LOG_EVENT_OBJECTS.FEE
     || object === LOG_EVENT_OBJECTS.REQUEST
     || object === LOG_EVENT_OBJECTS.NOTICE
+    || object === LOG_EVENT_OBJECTS.MANUAL_BLOCK
   )
 );
 
