@@ -55,12 +55,12 @@
     "logEvent.action.Transferred partially": "Transferido parcialmente",
     "logEvent.action.Waived fully": "Renunciado totalmente",
     "logEvent.action.Waived partially": "Renunciado parcialmente",
-    "logEvent.actions": "Actions",
-    "logEvent.actions.itemDetails": "Item details",
-    "logEvent.actions.userDetails": "User details",
-    "logEvent.actions.feeDetails": "Fee/Fine details",
-    "logEvent.actions.loanDetails": "Loan details",
-    "logEvent.actions.requestDetails": "Request details",
-    "logEvent.actions.noticePolicyDetails": "Notice policy",
-    "logEvent.actions.templateDetails": "Live version of template"
+    "logEvent.actions": "Ações",
+    "logEvent.actions.itemDetails": "Detalhes do item",
+    "logEvent.actions.userDetails": "Detalhes do usuario",
+    "logEvent.actions.feeDetails": "Detalhes da taxa/multa",
+    "logEvent.actions.loanDetails": "Detalhes do empréstimo",
+    "logEvent.actions.requestDetails": "Detalhes da requisição",
+    "logEvent.actions.noticePolicyDetails": "Política de aviso",
+    "logEvent.actions.templateDetails": "Versão ao vivo do modelo"
 }
