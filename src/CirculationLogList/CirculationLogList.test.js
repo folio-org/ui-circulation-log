@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
 
@@ -57,8 +57,6 @@ const renderCirculationLogList = ({ logEvents = [] }) => (render(
 ));
 
 describe('Given Circulation Log List', () => {
-  afterEach(cleanup);
-
   it('Than it should display log events filter pane', async () => {
     const { getByText } = renderCirculationLogList({});
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
 
@@ -67,8 +67,6 @@ describe('Given Circulation Log Event Actions', () => {
     getHasTemplateDetails.mockReturnValueOnce(false);
     getHasNoticePolicyDetails.mockReturnValueOnce(false);
   });
-
-  afterEach(cleanup);
 
   it('Than it should not render Dropdown actions when no actions available', () => {
     renderCirculationLogEventActions();

@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   render,
-  cleanup,
 } from '@testing-library/react';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
@@ -56,8 +55,6 @@ const renderCircLogListFilter = ({
 describe('CirculationLogListFilter', () => {
   afterEach(() => {
     TextFilter.mockClear();
-
-    cleanup();
   });
 
   it('should display filter by user barcode', () => {
