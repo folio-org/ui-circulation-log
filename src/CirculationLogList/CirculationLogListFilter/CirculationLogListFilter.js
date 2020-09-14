@@ -11,6 +11,7 @@ import {
 import {
   AcqCheckboxFilter,
   AcqDateRangeFilter,
+  TextFilter,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -21,7 +22,6 @@ import {
   REQUEST_ACTIONS,
 } from '../constants';
 
-import { TextFilter } from './TextFilter';
 import { buildCheckboxFilterOptions } from './utils';
 
 const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters(name, values);
@@ -138,10 +138,11 @@ export const CirculationLogListFilter = ({
 CirculationLogListFilter.propTypes = {
   activeFilters: PropTypes.object.isRequired,
   applyFilters: PropTypes.func.isRequired,
-  disabled: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool,
   servicePoints: PropTypes.arrayOf(PropTypes.object),
 };
 
 CirculationLogListFilter.defaultProps = {
   servicePoints: [],
+  disabled: false,
 };
