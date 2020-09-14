@@ -144,7 +144,17 @@ export const CirculationLogEventActions = ({ object, referenceIds }) => {
     instanceId, holdingId, noticePolicyId, templateId,
   ]);
 
-  if (!(hasLoanDetails || hasUserDetails || hasItemDetails || hasFeeDetails || hasRequestDetails)) {
+  if (
+    !(
+      hasLoanDetails
+      || hasUserDetails
+      || hasItemDetails
+      || hasFeeDetails
+      || hasRequestDetails
+      || hasNoticePolicyDetails
+      || hasTemplateDetails
+    )
+  ) {
     return null;
   }
 
