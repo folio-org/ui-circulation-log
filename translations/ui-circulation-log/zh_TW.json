@@ -56,7 +56,7 @@
     "logEvent.action.Waived fully": "Waived fully",
     "logEvent.action.Waived partially": "Waived partially",
     "logEvent.actions": "Actions",
-    "logEvent.actions.itemDetails": "Item details",
+    "logEvent.actions.itemDetails": "單件詳細資訊",
     "logEvent.actions.userDetails": "User details",
     "logEvent.actions.feeDetails": "Fee/Fine details",
     "logEvent.actions.loanDetails": "Loan details",

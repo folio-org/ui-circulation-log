@@ -23,7 +23,7 @@
     "logEvent.action.Cancelled as error": "Cancelled as error",
     "logEvent.action.Changed due date": "Changed due date",
     "logEvent.action.Check in": "Check in",
-    "logEvent.action.Check out": "Check out",
+    "logEvent.action.Check out": "Préstamo",
     "logEvent.action.Checked in": "Checked in",
     "logEvent.action.Checked out": "Checked out",
     "logEvent.action.Checked out through override": "Checked out through override",
