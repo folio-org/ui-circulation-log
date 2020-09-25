@@ -4,6 +4,9 @@ import { render } from '@testing-library/react';
 import '@folio/stripes-acq-components/test/jest/__mock__';
 
 import {
+  useStripes,
+} from '@folio/stripes/core';
+import {
   Dropdown,
 } from '@folio/stripes/components';
 
@@ -56,6 +59,8 @@ const renderCirculationLogEventActions = ({ referenceIds } = {}) => (render(
 ));
 
 describe('Given Circulation Log Event Actions', () => {
+  let stripes;
+
   beforeEach(() => {
     Dropdown.mockClear();
 
@@ -66,6 +71,10 @@ describe('Given Circulation Log Event Actions', () => {
     getHasRequestDetails.mockReturnValueOnce(false);
     getHasTemplateDetails.mockReturnValueOnce(false);
     getHasNoticePolicyDetails.mockReturnValueOnce(false);
+
+    stripes = useStripes();
+
+    stripes.hasPerm.mockReset();
   });
 
   it('Than it should not render Dropdown actions when no actions available', () => {
@@ -74,89 +83,187 @@ describe('Given Circulation Log Event Actions', () => {
     expect(Dropdown).not.toHaveBeenCalled();
   });
 
-  it('That it should display Loan details action when it is available', () => {
-    getHasLoanDetails.mockReset();
-    getHasLoanDetails.mockReturnValueOnce(true);
-
+  describe('And Loan details action', () => {
     const referenceIds = { userId: 1, loanId: 1 };
 
-    const { getByText } = renderCirculationLogEventActions({ referenceIds });
+    beforeEach(() => {
+      getHasLoanDetails.mockReset();
+      getHasLoanDetails.mockReturnValueOnce(true);
+    });
 
-    expect(getByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeDefined();
-    expect(getByText(`/users/${referenceIds.userId}/loans/view/${referenceIds.loanId}`)).toBeDefined();
+    it('Than it should display action when it is available', () => {
+      stripes.hasPerm.mockReturnValue(true);
+
+      const { getByText, queryByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(queryByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeDefined();
+      expect(getByText(`/users/${referenceIds.userId}/loans/view/${referenceIds.loanId}`)).toBeDefined();
+    });
+
+    it('Than it should not display action when no permission', () => {
+      stripes.hasPerm.mockReturnValue(false);
+
+      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(queryByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeNull();
+    });
   });
 
-  it('That it should display Fee details action when it is available', () => {
-    getHasFeeDetails.mockReset();
-    getHasFeeDetails.mockReturnValueOnce(true);
+  describe('And Fee details action', () => {
+    const referenceIds = { userId: 1, loanId: 1 };
 
-    const referenceIds = { userId: 1, feeFineId: 1 };
+    beforeEach(() => {
+      getHasFeeDetails.mockReset();
+      getHasFeeDetails.mockReturnValueOnce(true);
+    });
 
-    const { getByText } = renderCirculationLogEventActions({ referenceIds });
+    it('Than it should display when it is available', () => {
+      stripes.hasPerm.mockReturnValue(true);
 
-    expect(getByText('ui-circulation-log.logEvent.actions.feeDetails')).toBeDefined();
-    expect(getByText(`/users/${referenceIds.userId}/accounts/view/${referenceIds.feeFineId}`)).toBeDefined();
+      const { getByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(getByText('ui-circulation-log.logEvent.actions.feeDetails')).toBeDefined();
+      expect(getByText(`/users/${referenceIds.userId}/accounts/view/${referenceIds.feeFineId}`)).toBeDefined();
+    });
+
+    it('Than it should not display action when no parmission', () => {
+      stripes.hasPerm.mockReturnValue(false);
+
+      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(queryByText('ui-circulation-log.logEvent.actions.feeDetails')).toBeNull();
+    });
   });
 
-  it('That it should display User details action when it is available', () => {
-    getHasUserDetails.mockReset();
-    getHasUserDetails.mockReturnValueOnce(true);
-
+  describe('And User details action', () => {
     const referenceIds = { userId: 1 };
 
-    const { getByText } = renderCirculationLogEventActions({ referenceIds });
+    beforeEach(() => {
+      getHasUserDetails.mockReset();
+      getHasUserDetails.mockReturnValueOnce(true);
+    });
 
-    expect(getByText('ui-circulation-log.logEvent.actions.userDetails')).toBeDefined();
-    expect(getByText(`/users/view/${referenceIds.userId}`)).toBeDefined();
+    it('Than it should display when it is available', () => {
+      stripes.hasPerm.mockReturnValue(true);
+
+      const { getByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(getByText('ui-circulation-log.logEvent.actions.userDetails')).toBeDefined();
+      expect(getByText(`/users/view/${referenceIds.userId}`)).toBeDefined();
+    });
+
+    it('Than it should not display action when no parmission', () => {
+      stripes.hasPerm.mockReturnValue(false);
+
+      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(queryByText('ui-circulation-log.logEvent.actions.userDetails')).toBeNull();
+    });
   });
 
-  it('That it should display Item details action when it is available', () => {
-    getHasItemDetails.mockReset();
-    getHasItemDetails.mockReturnValueOnce(true);
-
+  describe('And Item details action', () => {
     const referenceIds = { instanceId: 1, holdingId: 1, itemId: 1 };
 
-    const { getByText } = renderCirculationLogEventActions({ referenceIds });
+    beforeEach(() => {
+      getHasItemDetails.mockReset();
+      getHasItemDetails.mockReturnValueOnce(true);
+    });
 
-    expect(getByText('ui-circulation-log.logEvent.actions.itemDetails')).toBeDefined();
-    expect(getByText(
-      `/inventory/view/${referenceIds.instanceId}/${referenceIds.holdingId}/${referenceIds.itemId}`,
-    )).toBeDefined();
+    it('Than it should display when it is available', () => {
+      stripes.hasPerm.mockReturnValue(true);
+
+      const { getByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(getByText('ui-circulation-log.logEvent.actions.itemDetails')).toBeDefined();
+      expect(getByText(
+        `/inventory/view/${referenceIds.instanceId}/${referenceIds.holdingId}/${referenceIds.itemId}`,
+      )).toBeDefined();
+    });
+
+    it('Than it should not display action when no parmission', () => {
+      stripes.hasPerm.mockReturnValue(false);
+
+      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(queryByText('ui-circulation-log.logEvent.actions.itemDetails')).toBeNull();
+    });
   });
 
-  it('That it should display Request details action when it is available', () => {
-    getHasRequestDetails.mockReset();
-    getHasRequestDetails.mockReturnValueOnce(true);
-
+  describe('And Request details action', () => {
     const referenceIds = { requestId: 1 };
 
-    const { getByText } = renderCirculationLogEventActions({ referenceIds });
+    beforeEach(() => {
+      getHasRequestDetails.mockReset();
+      getHasRequestDetails.mockReturnValueOnce(true);
+    });
 
-    expect(getByText('ui-circulation-log.logEvent.actions.requestDetails')).toBeDefined();
-    expect(getByText(`/requests/view/${referenceIds.requestId}`)).toBeDefined();
+    it('Than it should display when it is available', () => {
+      stripes.hasPerm.mockReturnValue(true);
+
+      const { getByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(getByText('ui-circulation-log.logEvent.actions.requestDetails')).toBeDefined();
+      expect(getByText(`/requests/view/${referenceIds.requestId}`)).toBeDefined();
+    });
+
+    it('Than it should not display action when no parmission', () => {
+      stripes.hasPerm.mockReturnValue(false);
+
+      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(queryByText('ui-circulation-log.logEvent.actions.requestDetails')).toBeNull();
+    });
   });
 
-  it('That it should display Notice policy details action when it is available', () => {
-    getHasNoticePolicyDetails.mockReset();
-    getHasNoticePolicyDetails.mockReturnValueOnce(true);
-
+  describe('And Notice policy details action', () => {
     const referenceIds = { noticePolicyId: 1 };
 
-    const { getByText } = renderCirculationLogEventActions({ referenceIds });
+    beforeEach(() => {
+      getHasNoticePolicyDetails.mockReset();
+      getHasNoticePolicyDetails.mockReturnValueOnce(true);
+    });
 
-    expect(getByText('ui-circulation-log.logEvent.actions.noticePolicyDetails')).toBeDefined();
-    expect(getByText(`/settings/circulation/notice-policies/${referenceIds.noticePolicyId}`)).toBeDefined();
+    it('Than it should display when it is available', () => {
+      stripes.hasPerm.mockReturnValue(true);
+
+      const { getByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(getByText('ui-circulation-log.logEvent.actions.noticePolicyDetails')).toBeDefined();
+      expect(getByText(`/settings/circulation/notice-policies/${referenceIds.noticePolicyId}`)).toBeDefined();
+    });
+
+    it('Than it should not display action when no parmission', () => {
+      stripes.hasPerm.mockReturnValue(false);
+
+      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(queryByText('ui-circulation-log.logEvent.actions.noticePolicyDetails')).toBeNull();
+    });
   });
 
-  it('That it should display Template details action when it is available', () => {
-    getHasTemplateDetails.mockReset();
-    getHasTemplateDetails.mockReturnValueOnce(true);
-
+  describe('And Template details action', () => {
     const referenceIds = { templateId: 1 };
 
-    const { getByText } = renderCirculationLogEventActions({ referenceIds });
+    beforeEach(() => {
+      getHasTemplateDetails.mockReset();
+      getHasTemplateDetails.mockReturnValueOnce(true);
+    });
 
-    expect(getByText('ui-circulation-log.logEvent.actions.templateDetails')).toBeDefined();
-    expect(getByText(`/settings/circulation/patron-notices/${referenceIds.templateId}`)).toBeDefined();
+    it('Than it should display when it is available', () => {
+      stripes.hasPerm.mockReturnValue(true);
+
+      const { getByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(getByText('ui-circulation-log.logEvent.actions.templateDetails')).toBeDefined();
+      expect(getByText(`/settings/circulation/patron-notices/${referenceIds.templateId}`)).toBeDefined();
+    });
+
+    it('Than it should not display action when no parmission', () => {
+      stripes.hasPerm.mockReturnValue(false);
+
+      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
+
+      expect(queryByText('ui-circulation-log.logEvent.actions.templateDetails')).toBeNull();
+    });
   });
 });
