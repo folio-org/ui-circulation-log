@@ -38,7 +38,7 @@ const columnMapping = {
   servicePoint: <FormattedMessage id="ui-circulation-log.logEvent.servicePoint" />,
   source: <FormattedMessage id="ui-circulation-log.logEvent.source" />,
   description: <FormattedMessage id="ui-circulation-log.logEvent.description" />,
-  actions: '',
+  actions: <FormattedMessage id="ui-circulation-log.logEvent.actions" />,
 };
 const getResultsFormatter = (servicePointsMap) => ({
   object: logEvent => <FormattedMessage id={`ui-circulation-log.logEvent.object.${logEvent.object}`} />,
