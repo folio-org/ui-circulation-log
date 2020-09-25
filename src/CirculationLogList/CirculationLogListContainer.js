@@ -78,6 +78,9 @@ CirculationLogListContainerComponent.manifest = Object.freeze({
     path: 'service-points',
     accumulate: true,
     records: 'servicepoints',
+    params: {
+      query: 'cql.allRecords=1 sortby name',
+    },
   },
 });
 
