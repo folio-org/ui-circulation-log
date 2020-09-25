@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import {
+  useStripes,
+} from '@folio/stripes/core';
+import {
   Button,
   Dropdown,
   DropdownMenu,
@@ -21,18 +24,28 @@ import {
 
 export const CirculationLogEventActions = ({ object, referenceIds }) => {
   const intl = useIntl();
+  const stripes = useStripes();
 
   const {
     holdingId, instanceId, feeFineId, loanId, userId, requestId, itemId, noticePolicyId, templateId,
   } = referenceIds;
 
-  const hasLoanDetails = getHasLoanDetails(object, loanId);
-  const hasUserDetails = getHasUserDetails(object, userId);
-  const hasItemDetails = getHasItemDetails(object, itemId);
-  const hasFeeDetails = getHasFeeDetails(object, feeFineId);
-  const hasRequestDetails = getHasRequestDetails(object, requestId);
-  const hasNoticePolicyDetails = getHasNoticePolicyDetails(object, noticePolicyId);
-  const hasTemplateDetails = getHasTemplateDetails(object, templateId);
+  const hasLoanDetails =
+    getHasLoanDetails(object, loanId) && stripes.hasPerm('ui-users.loans.view');
+  const hasUserDetails =
+    getHasUserDetails(object, userId) && stripes.hasPerm('ui-users.view');
+  const hasItemDetails =
+    getHasItemDetails(object, itemId) && stripes.hasPerm('ui-inventory.item.edit');
+  const hasFeeDetails =
+    getHasFeeDetails(object, feeFineId) && stripes.hasPerm('ui-users.feesfines.actions.all');
+  const hasRequestDetails =
+    getHasRequestDetails(object, requestId) && stripes.hasPerm('ui-users.requests.all');
+  const hasNoticePolicyDetails =
+    getHasNoticePolicyDetails(object, noticePolicyId)
+    && stripes.hasPerm('ui-circulation.settings.notice-policies');
+  const hasTemplateDetails =
+    getHasTemplateDetails(object, templateId)
+    && stripes.hasPerm('ui-circulation.settings.notice-templates');
 
   const renderTrigger = useCallback(({ triggerRef, onToggle, ariaProps, keyHandler }) => (
     <Button
