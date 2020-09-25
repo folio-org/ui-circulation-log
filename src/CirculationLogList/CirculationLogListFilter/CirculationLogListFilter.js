@@ -7,11 +7,15 @@ import PropTypes from 'prop-types';
 import {
   AccordionSet,
 } from '@folio/stripes/components';
+import {
+  MultiSelectionFilter,
+} from '@folio/stripes/smart-components';
 
 import {
   AcqCheckboxFilter,
   AcqDateRangeFilter,
   TextFilter,
+  FilterAccordion,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -86,15 +90,23 @@ export const CirculationLogListFilter = ({
         closedByDefault={false}
       />
 
-      <AcqCheckboxFilter
+      <FilterAccordion
         activeFilters={activeFilters?.servicePointId}
+        closedByDefault={false}
         disabled={disabled}
         labelId="ui-circulation-log.logEvent.servicePoint"
         name="servicePointId"
         onChange={adaptedApplyFilters}
-        options={servicePointFilterOptions}
-        closedByDefault={false}
-      />
+      >
+        <MultiSelectionFilter
+          ariaLabelledBy="accordion-toggle-button-servicePointId"
+          dataOptions={servicePointFilterOptions}
+          disabled={disabled}
+          name="servicePointId"
+          onChange={adaptedApplyFilters}
+          selectedValues={activeFilters?.servicePointId}
+        />
+      </FilterAccordion>
 
       <AcqCheckboxFilter
         activeFilters={activeFilters?.loan}
