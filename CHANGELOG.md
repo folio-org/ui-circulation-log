@@ -11,3 +11,4 @@
 * [UICIRCLOG-16](https://issues.folio.org/browse/UICIRCLOG-16) Ellipses pop up for Manual Blocks
 * [UICIRCLOG-17](https://issues.folio.org/browse/UICIRCLOG-17) Cover ui-circulation-log by unit test with Jest
 * [UICIRCLOG-18](https://issues.folio.org/browse/UICIRCLOG-18) Ellipses menu option permissions
+* [UICIRCLOG-19](https://issues.folio.org/browse/UICIRCLOG-19) Update circulation log table headings

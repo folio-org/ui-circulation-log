@@ -1,15 +1,15 @@
 {
   "meta.title": "Circulation log",
 
-  "logEvent.user": "User Barcode",
-  "logEvent.item": "Item Barcode",
+  "logEvent.user": "User barcode",
+  "logEvent.item": "Item barcode",
   "logEvent.object": "Object",
-  "logEvent.action": "Action",
+  "logEvent.action": "Circ action",
   "logEvent.date": "Date",
-  "logEvent.servicePoint": "Service Point",
+  "logEvent.servicePoint": "Service point",
   "logEvent.source": "Source",
   "logEvent.description": "Description",
-  "logEvent.actions": "Actions",
+  "logEvent.actions": "Action",
 
   "logEvent.object.Fee/Fine": "Fee/Fine",
   "logEvent.object.Item Block": "Item Block",
