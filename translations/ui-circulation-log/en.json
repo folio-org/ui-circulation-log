@@ -11,12 +11,12 @@
   "logEvent.description": "Description",
   "logEvent.actions": "Action",
 
-  "logEvent.object.Fee/Fine": "Fee/Fine",
-  "logEvent.object.Item Block": "Item Block",
+  "logEvent.object.Fee/Fine": "Fee/fine",
+  "logEvent.object.Item Block": "Item block",
   "logEvent.object.Loan": "Loan",
-  "logEvent.object.Manual Block": "Manual Block",
+  "logEvent.object.Manual Block": "Manual block",
   "logEvent.object.Notice": "Notice",
-  "logEvent.object.Patron Block": "Patron Block",
+  "logEvent.object.Patron Block": "Patron block",
   "logEvent.object.Request": "Request",
 
   "logEvent.action.Age to lost": "Age to lost",
@@ -61,7 +61,7 @@
 
   "logEvent.actions.itemDetails": "Item details",
   "logEvent.actions.userDetails": "User details",
-  "logEvent.actions.feeDetails": "Fee/Fine details",
+  "logEvent.actions.feeDetails": "Fee/fine details",
   "logEvent.actions.loanDetails": "Loan details",
   "logEvent.actions.requestDetails": "Request details",
   "logEvent.actions.noticePolicyDetails": "Notice policy",
