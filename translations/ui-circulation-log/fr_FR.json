@@ -10,7 +10,7 @@
     "logEvent.description": "Description",
     "permission.log-event.all": "Circulation log: All",
     "logEvent.object.Fee/Fine": "Frais / Amende",
-    "logEvent.object.Item Block": "Item Block",
+    "logEvent.object.Item Block": "Item block",
     "logEvent.object.Loan": "Prêt",
     "logEvent.object.Manual Block": "Blocage manuel",
     "logEvent.object.Notice": "Notice",
