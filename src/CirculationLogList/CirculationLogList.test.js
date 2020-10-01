@@ -36,7 +36,9 @@ jest.mock('./CirculationLogEventActions', () => ({
 const servicePoint = { id: 1, name: 'servicePoint' };
 const getLogEvent = () => ({
   userBarcode: Math.random(),
-  itemBarcode: Math.random(),
+  items: [{
+    itemBarcode: Math.random(),
+  }],
   object: 'Loan',
   action: 'Check in',
   date: '1994-07-29',
@@ -82,7 +84,7 @@ describe('Given Circulation Log List', () => {
     const { getByText } = renderCirculationLogList({ logEvents: [logEvent] });
 
     expect(getByText(`${logEvent.userBarcode}`)).toBeDefined();
-    expect(getByText(`${logEvent.itemBarcode}`)).toBeDefined();
+    expect(getByText(`${logEvent.items[0].itemBarcode}`)).toBeDefined();
     expect(getByText(`ui-circulation-log.logEvent.object.${logEvent.object}`)).toBeDefined();
     expect(getByText(`ui-circulation-log.logEvent.action.${logEvent.action}`)).toBeDefined();
     expect(getByText(logEvent.date)).toBeDefined();
