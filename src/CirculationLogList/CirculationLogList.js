@@ -41,6 +41,7 @@ const columnMapping = {
   actions: <FormattedMessage id="ui-circulation-log.logEvent.actions" />,
 };
 const getResultsFormatter = (servicePointsMap) => ({
+  itemBarcode: logEvent => logEvent.items?.[0]?.itemBarcode,
   object: logEvent => <FormattedMessage id={`ui-circulation-log.logEvent.object.${logEvent.object}`} />,
   action: logEvent => <FormattedMessage id={`ui-circulation-log.logEvent.action.${logEvent.action}`} />,
   date: logEvent => <FolioFormattedTime dateString={logEvent.date} />,
@@ -48,6 +49,7 @@ const getResultsFormatter = (servicePointsMap) => ({
   actions: logEvent => (
     <CirculationLogEventActions
       object={logEvent.object}
+      item={logEvent.items?.[0]}
       referenceIds={logEvent.linkToIds}
     />
   ),

@@ -54,8 +54,11 @@ jest.mock('./utils', () => ({
   getHasNoticePolicyDetails: jest.fn(),
 }));
 
-const renderCirculationLogEventActions = ({ referenceIds } = {}) => (render(
-  <CirculationLogEventActions referenceIds={referenceIds} />,
+const renderCirculationLogEventActions = ({ item, referenceIds } = {}) => (render(
+  <CirculationLogEventActions
+    item={item}
+    referenceIds={referenceIds}
+  />,
 ));
 
 describe('Given Circulation Log Event Actions', () => {
@@ -84,7 +87,8 @@ describe('Given Circulation Log Event Actions', () => {
   });
 
   describe('And Loan details action', () => {
-    const referenceIds = { userId: 1, loanId: 1 };
+    const referenceIds = { userId: 1 };
+    const item = { loanId: 1 };
 
     beforeEach(() => {
       getHasLoanDetails.mockReset();
@@ -94,23 +98,23 @@ describe('Given Circulation Log Event Actions', () => {
     it('Than it should display action when it is available', () => {
       stripes.hasPerm.mockReturnValue(true);
 
-      const { getByText, queryByText } = renderCirculationLogEventActions({ referenceIds });
+      const { getByText, queryByText } = renderCirculationLogEventActions({ item, referenceIds });
 
       expect(queryByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeDefined();
-      expect(getByText(`/users/${referenceIds.userId}/loans/view/${referenceIds.loanId}`)).toBeDefined();
+      expect(getByText(`/users/${referenceIds.userId}/loans/view/${item.loanId}`)).toBeDefined();
     });
 
     it('Than it should not display action when no permission', () => {
       stripes.hasPerm.mockReturnValue(false);
 
-      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
+      const { queryByText } = renderCirculationLogEventActions({ item, referenceIds });
 
       expect(queryByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeNull();
     });
   });
 
   describe('And Fee details action', () => {
-    const referenceIds = { userId: 1, loanId: 1 };
+    const referenceIds = { userId: 1, feeFineId: 1 };
 
     beforeEach(() => {
       getHasFeeDetails.mockReset();
@@ -162,7 +166,7 @@ describe('Given Circulation Log Event Actions', () => {
   });
 
   describe('And Item details action', () => {
-    const referenceIds = { instanceId: 1, holdingId: 1, itemId: 1 };
+    const item = { instanceId: 1, holdingId: 1, itemId: 1 };
 
     beforeEach(() => {
       getHasItemDetails.mockReset();
@@ -172,18 +176,18 @@ describe('Given Circulation Log Event Actions', () => {
     it('Than it should display when it is available', () => {
       stripes.hasPerm.mockReturnValue(true);
 
-      const { getByText } = renderCirculationLogEventActions({ referenceIds });
+      const { getByText } = renderCirculationLogEventActions({ item });
 
       expect(getByText('ui-circulation-log.logEvent.actions.itemDetails')).toBeDefined();
       expect(getByText(
-        `/inventory/view/${referenceIds.instanceId}/${referenceIds.holdingId}/${referenceIds.itemId}`,
+        `/inventory/view/${item.instanceId}/${item.holdingId}/${item.itemId}`,
       )).toBeDefined();
     });
 
     it('Than it should not display action when no parmission', () => {
       stripes.hasPerm.mockReturnValue(false);
 
-      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
+      const { queryByText } = renderCirculationLogEventActions({ item });
 
       expect(queryByText('ui-circulation-log.logEvent.actions.itemDetails')).toBeNull();
     });

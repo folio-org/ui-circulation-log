@@ -22,13 +22,12 @@ import {
   getHasTemplateDetails,
 } from './utils';
 
-export const CirculationLogEventActions = ({ object, referenceIds }) => {
+export const CirculationLogEventActions = ({ object, item, referenceIds }) => {
   const intl = useIntl();
   const stripes = useStripes();
 
-  const {
-    holdingId, instanceId, feeFineId, loanId, userId, requestId, itemId, noticePolicyId, templateId,
-  } = referenceIds;
+  const { feeFineId, userId, requestId, noticePolicyId, templateId } = referenceIds;
+  const { holdingId, instanceId, loanId, itemId } = item;
 
   const hasLoanDetails =
     getHasLoanDetails(object, loanId) && stripes.hasPerm('ui-users.loans.view');
@@ -181,9 +180,11 @@ export const CirculationLogEventActions = ({ object, referenceIds }) => {
 
 CirculationLogEventActions.propTypes = {
   object: PropTypes.string,
+  item: PropTypes.object,
   referenceIds: PropTypes.object,
 };
 
 CirculationLogEventActions.defaultProps = {
+  item: {},
   referenceIds: {},
 };
