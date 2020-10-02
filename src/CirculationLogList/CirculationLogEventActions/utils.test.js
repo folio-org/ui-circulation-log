@@ -53,11 +53,11 @@ describe('CirculationLogEventActions utils', () => {
     it('should return true when object supports loans passed with loan id', () => {
       expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.LOAN, 'itemId')).toBeTruthy();
       expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.NOTICE, 'itemId')).toBeTruthy();
+      expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.REQUEST, 'itemId')).toBeTruthy();
     });
 
     it('should return false when object does not support loans passed with loan id', () => {
       expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.FEE, 'itemId')).toBeFalsy();
-      expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.REQUEST, 'itemId')).toBeFalsy();
       expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.ITEM_BLOCK, 'itemId')).toBeFalsy();
       expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.MANUAL_BLOCK, 'itemId')).toBeFalsy();
       expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.PATRON_BLOCK, 'itemId')).toBeFalsy();
