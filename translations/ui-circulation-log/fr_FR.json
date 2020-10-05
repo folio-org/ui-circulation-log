@@ -10,7 +10,7 @@
     "logEvent.description": "Description",
     "permission.log-event.all": "Circulation log: All",
     "logEvent.object.Fee/Fine": "Frais / Amende",
-    "logEvent.object.Item Block": "Item block",
+    "logEvent.object.Item Block": "Blocage de l'article",
     "logEvent.object.Loan": "Prêt",
     "logEvent.object.Manual Block": "Blocage manuel",
     "logEvent.object.Notice": "Notice",
@@ -62,5 +62,5 @@
     "logEvent.actions.loanDetails": "Détails du prêt",
     "logEvent.actions.requestDetails": "Détails de la demande",
     "logEvent.actions.noticePolicyDetails": "Notice policy",
-    "logEvent.actions.templateDetails": "Live version of template"
+    "logEvent.actions.templateDetails": "Version live du modèle"
 }
