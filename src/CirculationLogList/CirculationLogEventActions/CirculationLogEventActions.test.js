@@ -15,7 +15,6 @@ import {
   getHasLoanDetails,
   getHasUserDetails,
   getHasFeeDetails,
-  getHasItemDetails,
   getHasRequestDetails,
   getHasNoticePolicyDetails,
   getHasTemplateDetails,
@@ -47,7 +46,6 @@ jest.mock('./utils', () => ({
   ...jest.requireActual('./utils'),
   getHasLoanDetails: jest.fn(),
   getHasFeeDetails: jest.fn(),
-  getHasItemDetails: jest.fn(),
   getHasUserDetails: jest.fn(),
   getHasRequestDetails: jest.fn(),
   getHasTemplateDetails: jest.fn(),
@@ -69,7 +67,6 @@ describe('Given Circulation Log Event Actions', () => {
 
     getHasLoanDetails.mockReturnValueOnce(false);
     getHasFeeDetails.mockReturnValueOnce(false);
-    getHasItemDetails.mockReturnValueOnce(false);
     getHasUserDetails.mockReturnValueOnce(false);
     getHasRequestDetails.mockReturnValueOnce(false);
     getHasTemplateDetails.mockReturnValueOnce(false);
@@ -162,34 +159,6 @@ describe('Given Circulation Log Event Actions', () => {
       const { queryByText } = renderCirculationLogEventActions({ referenceIds });
 
       expect(queryByText('ui-circulation-log.logEvent.actions.userDetails')).toBeNull();
-    });
-  });
-
-  describe('And Item details action', () => {
-    const item = { instanceId: 1, holdingId: 1, itemId: 1 };
-
-    beforeEach(() => {
-      getHasItemDetails.mockReset();
-      getHasItemDetails.mockReturnValueOnce(true);
-    });
-
-    it('Than it should display when it is available', () => {
-      stripes.hasPerm.mockReturnValue(true);
-
-      const { getByText } = renderCirculationLogEventActions({ item });
-
-      expect(getByText('ui-circulation-log.logEvent.actions.itemDetails')).toBeDefined();
-      expect(getByText(
-        `/inventory/view/${item.instanceId}/${item.holdingId}/${item.itemId}`,
-      )).toBeDefined();
-    });
-
-    it('Than it should not display action when no parmission', () => {
-      stripes.hasPerm.mockReturnValue(false);
-
-      const { queryByText } = renderCirculationLogEventActions({ item });
-
-      expect(queryByText('ui-circulation-log.logEvent.actions.itemDetails')).toBeNull();
     });
   });
 

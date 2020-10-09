@@ -2,7 +2,7 @@ import { buildDateRangeQuery } from '@folio/stripes-acq-components';
 
 export const CUSTOM_FILTERS = {
   userBarcode: (value) => `userBarcode=="*${value}*"`,
-  itemBarcode: (value) => `itemBarcode=="*${value}*"`,
+  itemBarcode: (value) => `items=="*${value}*"`,
   description: (value) => `description=="*${value}*"`,
   date: buildDateRangeQuery.bind(null, ['date']),
 };

@@ -15,7 +15,6 @@ import {
 import {
   getHasLoanDetails,
   getHasUserDetails,
-  getHasItemDetails,
   getHasFeeDetails,
   getHasRequestDetails,
   getHasNoticePolicyDetails,
@@ -27,14 +26,12 @@ export const CirculationLogEventActions = ({ object, item, referenceIds }) => {
   const stripes = useStripes();
 
   const { feeFineId, userId, requestId, noticePolicyId, templateId } = referenceIds;
-  const { holdingId, instanceId, loanId, itemId } = item;
+  const { loanId } = item;
 
   const hasLoanDetails =
     getHasLoanDetails(object, loanId) && stripes.hasPerm('ui-users.loans.view');
   const hasUserDetails =
     getHasUserDetails(object, userId) && stripes.hasPerm('ui-users.view');
-  const hasItemDetails =
-    getHasItemDetails(object, itemId) && stripes.hasPerm('ui-inventory.item.edit');
   const hasFeeDetails =
     getHasFeeDetails(object, feeFineId) && stripes.hasPerm('ui-users.feesfines.actions.all');
   const hasRequestDetails =
@@ -103,18 +100,6 @@ export const CirculationLogEventActions = ({ object, item, referenceIds }) => {
       }
 
       {
-        hasItemDetails && (
-          <Button
-            buttonStyle="dropdownItem"
-            role="menuitem"
-            to={`/inventory/view/${instanceId}/${holdingId}/${itemId}`}
-          >
-            <FormattedMessage id="ui-circulation-log.logEvent.actions.itemDetails" />
-          </Button>
-        )
-      }
-
-      {
         hasRequestDetails && (
           <Button
             buttonStyle="dropdownItem"
@@ -151,16 +136,15 @@ export const CirculationLogEventActions = ({ object, item, referenceIds }) => {
       }
     </DropdownMenu>
   ), [
-    hasRequestDetails, hasLoanDetails, hasItemDetails, hasFeeDetails, hasUserDetails,
-    hasNoticePolicyDetails, hasTemplateDetails, feeFineId, requestId, userId, loanId, itemId,
-    instanceId, holdingId, noticePolicyId, templateId,
+    hasRequestDetails, hasLoanDetails, hasFeeDetails, hasUserDetails,
+    hasNoticePolicyDetails, hasTemplateDetails, feeFineId, requestId,
+    userId, loanId, noticePolicyId, templateId,
   ]);
 
   if (
     !(
       hasLoanDetails
       || hasUserDetails
-      || hasItemDetails
       || hasFeeDetails
       || hasRequestDetails
       || hasNoticePolicyDetails

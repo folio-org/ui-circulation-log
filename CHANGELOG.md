@@ -13,3 +13,4 @@
 * [UICIRCLOG-18](https://issues.folio.org/browse/UICIRCLOG-18) Ellipses menu option permissions
 * [UICIRCLOG-19](https://issues.folio.org/browse/UICIRCLOG-19) Update circulation log table headings
 * [UICIRCLOG-20](https://issues.folio.org/browse/UICIRCLOG-20) Switch service point filter from checkboxes to multi-select picker
+* [UICIRCLOG-21](https://issues.folio.org/browse/UICIRCLOG-21) Show items for multiple-item notice in circulation log
