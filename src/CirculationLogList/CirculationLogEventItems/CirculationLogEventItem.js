@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import {
   useStripes,
 } from '@folio/stripes/core';
+import {
+  TextLink,
+} from '@folio/stripes/components';
 
 export const CirculationLogEventItem = ({ item }) => {
   const stripes = useStripes();
@@ -15,9 +17,9 @@ export const CirculationLogEventItem = ({ item }) => {
   if (hasDetails) {
     return (
       <div>
-        <Link to={`/inventory/view/${instanceId}/${holdingId}/${itemId}`}>
+        <TextLink to={`/inventory/view/${instanceId}/${holdingId}/${itemId}`}>
           {itemBarcode}
-        </Link>
+        </TextLink>
       </div>
     );
   }
