@@ -23,6 +23,7 @@ import {
   useToggle,
 } from '@folio/stripes-acq-components';
 
+import { CirculationLogEventItems } from './CirculationLogEventItems';
 import { CirculationLogListFilter } from './CirculationLogListFilter';
 import { CirculationLogEventActions } from './CirculationLogEventActions';
 
@@ -41,7 +42,7 @@ const columnMapping = {
   actions: <FormattedMessage id="ui-circulation-log.logEvent.actions" />,
 };
 const getResultsFormatter = (servicePointsMap) => ({
-  itemBarcode: logEvent => logEvent.items?.[0]?.itemBarcode,
+  itemBarcode: logEvent => <CirculationLogEventItems items={logEvent.items} />,
   object: logEvent => <FormattedMessage id={`ui-circulation-log.logEvent.object.${logEvent.object}`} />,
   action: logEvent => <FormattedMessage id={`ui-circulation-log.logEvent.action.${logEvent.action}`} />,
   date: logEvent => <FolioFormattedTime dateString={logEvent.date} />,
@@ -137,7 +138,6 @@ export const CirculationLogList = ({
           formatter={resultsFormatter}
           loading={isLoading}
           autosize
-          virtualize
           onNeedMoreData={onNeedMoreData}
           sortOrder={sortingField}
           sortDirection={sortingDirection}

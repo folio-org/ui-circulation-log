@@ -11,6 +11,9 @@
   "logEvent.description": "Description",
   "logEvent.actions": "Action",
 
+  "logEvent.item.showMore": "Show more",
+  "logEvent.item.showLess": "Show less",
+
   "logEvent.object.Fee/Fine": "Fee/fine",
   "logEvent.object.Item Block": "Item block",
   "logEvent.object.Loan": "Loan",

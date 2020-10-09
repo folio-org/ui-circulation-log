@@ -23,14 +23,6 @@ export const getHasUserDetails = (object, userId) => (
   )
 );
 
-export const getHasItemDetails = (object, itemId) => (
-  itemId && (
-    object === LOG_EVENT_OBJECTS.LOAN
-    || object === LOG_EVENT_OBJECTS.NOTICE
-    || object === LOG_EVENT_OBJECTS.REQUEST
-  )
-);
-
 export const getHasFeeDetails = (object, feeId) => (
   feeId && (
     object === LOG_EVENT_OBJECTS.FEE

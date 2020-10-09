@@ -45,25 +45,6 @@ describe('CirculationLogEventActions utils', () => {
     });
   });
 
-  describe('getHasItemDetails', () => {
-    it('should return false when load id is not defined', () => {
-      expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.LOAN, undefined)).toBeFalsy();
-    });
-
-    it('should return true when object supports loans passed with loan id', () => {
-      expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.LOAN, 'itemId')).toBeTruthy();
-      expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.NOTICE, 'itemId')).toBeTruthy();
-      expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.REQUEST, 'itemId')).toBeTruthy();
-    });
-
-    it('should return false when object does not support loans passed with loan id', () => {
-      expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.FEE, 'itemId')).toBeFalsy();
-      expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.ITEM_BLOCK, 'itemId')).toBeFalsy();
-      expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.MANUAL_BLOCK, 'itemId')).toBeFalsy();
-      expect(logEventActions.getHasItemDetails(LOG_EVENT_OBJECTS.PATRON_BLOCK, 'itemId')).toBeFalsy();
-    });
-  });
-
   describe('getHasFeeDetails', () => {
     it('should return false when load id is not defined', () => {
       expect(logEventActions.getHasFeeDetails(LOG_EVENT_OBJECTS.LOAN, undefined)).toBeFalsy();

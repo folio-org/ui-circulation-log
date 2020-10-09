@@ -1,0 +1,6 @@
+@import '@folio/stripes-components/lib/variables';
+
+.circulationLogEventItemsFoldToggle {
+  color: var(--color-link);
+  padding-top: 10px;
+}
