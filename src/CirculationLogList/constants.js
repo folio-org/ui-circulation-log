@@ -15,6 +15,7 @@ export const LOG_EVENT_OBJECTS = {
   NOTICE: 'Notice',
   PATRON_BLOCK: 'Patron Block',
   REQUEST: 'Request',
+  NA: 'N/A',
 };
 
 export const LOAN_ACTIONS = {

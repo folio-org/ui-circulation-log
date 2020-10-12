@@ -21,6 +21,7 @@
   "logEvent.object.Notice": "Notice",
   "logEvent.object.Patron Block": "Patron block",
   "logEvent.object.Request": "Request",
+  "logEvent.object.N/A": "-",
 
   "logEvent.action.Age to lost": "Age to lost",
   "logEvent.action.Anonymize": "Anonymize",
