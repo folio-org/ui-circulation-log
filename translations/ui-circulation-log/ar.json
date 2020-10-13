@@ -62,5 +62,8 @@
     "logEvent.actions.loanDetails": "تفاصيل الإعارة",
     "logEvent.actions.requestDetails": "تفاصيل الطلب",
     "logEvent.actions.noticePolicyDetails": "سياسة الإخطارات",
-    "logEvent.actions.templateDetails": "نسخة حية من القالب"
+    "logEvent.actions.templateDetails": "نسخة حية من القالب",
+    "logEvent.item.showMore": "عرض المزيد",
+    "logEvent.item.showLess": "عرض أقل",
+    "logEvent.object.N/A": "-"
 }

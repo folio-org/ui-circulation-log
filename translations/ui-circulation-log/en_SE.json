@@ -62,5 +62,8 @@
     "logEvent.actions.loanDetails": "Loan details",
     "logEvent.actions.requestDetails": "Request details",
     "logEvent.actions.noticePolicyDetails": "Notice policy",
-    "logEvent.actions.templateDetails": "Live version of template"
+    "logEvent.actions.templateDetails": "Live version of template",
+    "logEvent.item.showMore": "Show more",
+    "logEvent.item.showLess": "Show less",
+    "logEvent.object.N/A": "-"
 }

@@ -62,5 +62,8 @@
     "logEvent.actions.loanDetails": "Detalhes do empréstimo",
     "logEvent.actions.requestDetails": "Detalhes da requisição",
     "logEvent.actions.noticePolicyDetails": "Política de aviso",
-    "logEvent.actions.templateDetails": "Versão ao vivo do modelo"
+    "logEvent.actions.templateDetails": "Versão ao vivo do modelo",
+    "logEvent.item.showMore": "Mostrar mais",
+    "logEvent.item.showLess": "Mostrar menos",
+    "logEvent.object.N/A": "-"
 }
