@@ -45,7 +45,10 @@ const CirculationLogListContainerComponent = ({ mutator }) => {
   }, [location.search]);
 
   const postLoadLogEvents = useCallback((setLogEvents, logEventsResponse) => {
-    setLogEvents(logEventsResponse.logRecords);
+    setLogEvents((prevLogEvens) => ([
+      ...prevLogEvens,
+      ...logEventsResponse.logRecords,
+    ]));
   }, []);
 
   const {
