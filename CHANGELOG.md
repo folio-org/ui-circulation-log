@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+## [1.0.0](https://github.com/folio-org/ui-circulation-log/tree/v1.0.0) (2020-10-16)
+
 ### Stories
 * [UICIRCLOG-11](https://issues.folio.org/browse/UICIRCLOG-11) Project Setup: ui-circulation-log
 * [UICIRCLOG-3](https://issues.folio.org/browse/UICIRCLOG-3) View circulation log table
