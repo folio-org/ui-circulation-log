@@ -63,7 +63,7 @@
     "logEvent.actions.requestDetails": "Request details",
     "logEvent.actions.noticePolicyDetails": "Notice policy",
     "logEvent.actions.templateDetails": "Live version of template",
-    "logEvent.item.showMore": "Show more",
-    "logEvent.item.showLess": "Show less",
+    "logEvent.item.showMore": "Mostrar más",
+    "logEvent.item.showLess": "Mostrar menos",
     "logEvent.object.N/A": "-"
 }
