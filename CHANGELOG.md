@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [1.0.1](https://github.com/folio-org/ui-circulation-log/tree/v1.0.1) (2020-10-30)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.0.0...v1.0.1)
+
 * [UICIRCLOG-24](https://issues.folio.org/browse/UICIRCLOG-24) Fix non-sorting by date by default
 
 ## [1.0.0](https://github.com/folio-org/ui-circulation-log/tree/v1.0.0) (2020-10-16)
