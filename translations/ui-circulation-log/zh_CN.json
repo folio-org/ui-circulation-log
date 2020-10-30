@@ -63,7 +63,7 @@
     "logEvent.actions.requestDetails": "请求详情",
     "logEvent.actions.noticePolicyDetails": "通知政策",
     "logEvent.actions.templateDetails": "实时版模板",
-    "logEvent.item.showMore": "Show more",
-    "logEvent.item.showLess": "Show less",
+    "logEvent.item.showMore": "显示更多",
+    "logEvent.item.showLess": "显示更少",
     "logEvent.object.N/A": "-"
 }
