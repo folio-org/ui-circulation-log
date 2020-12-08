@@ -162,4 +162,14 @@ describe('CirculationLogListFilter', () => {
     Object.values(REQUEST_ACTIONS)
       .forEach((requestAction) => expect(getByText(requestAction)).toBeDefined());
   });
+
+  it('auto-focuses first text field', () => {
+    renderCircLogListFilter();
+
+    // take the props for the first TextFilter, and the rest of them
+    const [first, ...rest] = TextFilter.mock.calls.map(args => args[0]);
+
+    expect(first.autoFocus).toBeTruthy();
+    expect(rest.some(props => props.autoFocus)).toBeFalsy();
+  });
 });
