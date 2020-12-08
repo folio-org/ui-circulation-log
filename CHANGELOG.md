@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* [UICIRCLOG-28](https://issues.folio.org/browse/UICIRCLOG-28) Auto-focus first search field.
+
 ## [1.0.1](https://github.com/folio-org/ui-circulation-log/tree/v1.0.1) (2020-10-30)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.0.0...v1.0.1)
 

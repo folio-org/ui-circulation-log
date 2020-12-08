@@ -61,6 +61,7 @@ export const CirculationLogListFilter = ({
         onChange={adaptedApplyFilters}
         disabled={disabled}
         closedByDefault={false}
+        autoFocus
       />
 
       <TextFilter
