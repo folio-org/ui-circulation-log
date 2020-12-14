@@ -1,6 +1,8 @@
 {
   "meta.title": "Circulation log",
 
+  "filter.apply": "Apply",
+
   "logEvent.user": "User barcode",
   "logEvent.item": "Item barcode",
   "logEvent.object": "Object",

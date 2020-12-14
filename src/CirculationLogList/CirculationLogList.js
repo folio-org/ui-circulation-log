@@ -18,11 +18,11 @@ import {
   ResetButton,
   ResultsPane,
   NoResultsMessage,
-  useLocationFilters,
   useLocationSorting,
   useToggle,
 } from '@folio/stripes-acq-components';
 
+import { useLocationFilters } from '../hooks';
 import { CirculationLogEventItems } from './CirculationLogEventItems';
 import { CirculationLogListFilter } from './CirculationLogListFilter';
 import { CirculationLogEventActions } from './CirculationLogEventActions';
@@ -67,17 +67,8 @@ export const CirculationLogList = ({
   const history = useHistory();
   const location = useLocation();
 
-  const [
-    filters,
-    // eslint-disable-next-line
-    searchQuery,
-    applyFilters,
-    // eslint-disable-next-line
-    applySearch,
-    // eslint-disable-next-line
-    changeSearch,
-    resetFilters,
-  ] = useLocationFilters(location, history, resetData);
+  const { filters, applyFilters, resetFilters } = useLocationFilters({ history, location });
+
   const [
     sortingField,
     sortingDirection,
