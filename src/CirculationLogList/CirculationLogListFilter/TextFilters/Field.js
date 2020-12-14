@@ -8,7 +8,7 @@ export const Field = ({ name, ...rest }) => {
   // see https://final-form.org/docs/react-final-form/types/FieldProps#parse
   const { input } = useField(name, { parse: v => v });
 
-  return <TextField {...input} {...rest} type="search" />;
+  return <TextField {...input} {...rest} />;
 };
 
 Field.propTypes = TextField.propTypes;
