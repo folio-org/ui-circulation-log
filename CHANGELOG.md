@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* [UICIRCLOG-34](https://issues.folio.org/browse/UICIRCLOG-34) Make text filters submit on a button or Enter.
 * [UICIRCLOG-28](https://issues.folio.org/browse/UICIRCLOG-28) Auto-focus first search field.
 
 ## [1.0.1](https://github.com/folio-org/ui-circulation-log/tree/v1.0.1) (2020-10-30)

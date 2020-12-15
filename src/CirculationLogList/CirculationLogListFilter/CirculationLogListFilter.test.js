@@ -1,14 +1,9 @@
 import React from 'react';
-import {
-  render,
-} from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
 
-import {
-  TextFilter,
-  AcqDateRangeFilter,
-} from '@folio/stripes-acq-components';
+import { AcqDateRangeFilter } from '@folio/stripes-acq-components';
 
 import {
   LOG_EVENT_OBJECTS,
@@ -30,7 +25,6 @@ jest.mock('@folio/stripes-acq-components', () => {
         {options.map(({ value }) => <span key={value}>{value}</span>)}
       </>
     )),
-    TextFilter: jest.fn(({ labelId }) => <span>{labelId}</span>),
   };
 });
 
@@ -53,62 +47,48 @@ const renderCircLogListFilter = ({
 ));
 
 describe('CirculationLogListFilter', () => {
-  afterEach(() => {
-    TextFilter.mockClear();
+  describe('Text filters section', () => {
+    it('has User barcode', () => {
+      const activeFilterValue = '10056';
+
+      const { getByLabelText } = renderCircLogListFilter({
+        ...defaultProps,
+        activeFilters: { userBarcode: [activeFilterValue] },
+      });
+
+      const field = getByLabelText('ui-circulation-log.logEvent.user');
+
+      expect(field.value).toEqual(activeFilterValue);
+    });
+
+    it('has Item barcode', () => {
+      const activeFilterValue = '10057';
+
+      const { getByLabelText } = renderCircLogListFilter({
+        ...defaultProps,
+        activeFilters: { itemBarcode: [activeFilterValue] },
+      });
+
+      const field = getByLabelText('ui-circulation-log.logEvent.item');
+
+      expect(field.value).toEqual(activeFilterValue);
+    });
+
+    it('has Description', () => {
+      const activeFilterValue = 'Checkout info';
+
+      const { getByLabelText } = renderCircLogListFilter({
+        ...defaultProps,
+        activeFilters: { description: [activeFilterValue] },
+      });
+
+      const field = getByLabelText('ui-circulation-log.logEvent.description');
+
+      expect(field.value).toEqual(activeFilterValue);
+    });
   });
 
-  it('should display filter by user barcode', () => {
-    const activeFilterValue = ['10056'];
-    const props = {
-      ...defaultProps,
-      activeFilters: { userBarcode: activeFilterValue },
-    };
-    const userBarcodeFilterText = 'ui-circulation-log.logEvent.user';
-
-    const { getByText } = renderCircLogListFilter(props);
-    const userBarcodeFilterProps =
-      TextFilter.mock.calls.find(call => call[0].labelId === userBarcodeFilterText)[0];
-
-    expect(getByText(userBarcodeFilterText)).toBeDefined();
-    expect(userBarcodeFilterProps.onChange).toBeDefined();
-    expect(userBarcodeFilterProps.activeFilters).toEqual(activeFilterValue);
-  });
-
-  it('should display filter by item barcode', () => {
-    const activeFilterValue = ['10057'];
-    const props = {
-      ...defaultProps,
-      activeFilters: { itemBarcode: activeFilterValue },
-    };
-    const itemBarcodeFilterText = 'ui-circulation-log.logEvent.item';
-
-    const { getByText } = renderCircLogListFilter(props);
-    const itemBarcodeFilterProps =
-      TextFilter.mock.calls.find(call => call[0].labelId === itemBarcodeFilterText)[0];
-
-    expect(getByText(itemBarcodeFilterText)).toBeDefined();
-    expect(itemBarcodeFilterProps.onChange).toBeDefined();
-    expect(itemBarcodeFilterProps.activeFilters).toEqual(activeFilterValue);
-  });
-
-  it('should display filter by description', () => {
-    const activeFilterValue = ['Checkout info'];
-    const props = {
-      ...defaultProps,
-      activeFilters: { description: activeFilterValue },
-    };
-    const descriptionFilterText = 'ui-circulation-log.logEvent.description';
-
-    const { getByText } = renderCircLogListFilter(props);
-    const descriptionFilterProps =
-      TextFilter.mock.calls.find(call => call[0].labelId === descriptionFilterText)[0];
-
-    expect(getByText(descriptionFilterText)).toBeDefined();
-    expect(descriptionFilterProps.onChange).toBeDefined();
-    expect(descriptionFilterProps.activeFilters).toEqual(activeFilterValue);
-  });
-
-  it('should display filter by date', () => {
+  it('has filter by date', () => {
     const dateFilterText = 'ui-circulation-log.logEvent.date';
 
     const { getByText } = renderCircLogListFilter();
@@ -119,7 +99,7 @@ describe('CirculationLogListFilter', () => {
     expect(dateFilterProps.onChange).toBeDefined();
   });
 
-  it('should display filter by loan actions', () => {
+  it('has filter by loan actions', () => {
     const loanFilterText = `ui-circulation-log.logEvent.object.${LOG_EVENT_OBJECTS.LOAN}`;
 
     const { getByText } = renderCircLogListFilter();
@@ -130,7 +110,7 @@ describe('CirculationLogListFilter', () => {
       .forEach((loanAction) => expect(getByText(loanAction)).toBeDefined());
   });
 
-  it('should display filter by notice actions', () => {
+  it('has filter by notice actions', () => {
     const noticeFilterText = `ui-circulation-log.logEvent.object.${LOG_EVENT_OBJECTS.NOTICE}`;
 
     const { getByText } = renderCircLogListFilter();
@@ -141,7 +121,7 @@ describe('CirculationLogListFilter', () => {
       .forEach((noticeAction) => expect(getByText(noticeAction)).toBeDefined());
   });
 
-  it('should display filter by fee actions', () => {
+  it('has filter by fee actions', () => {
     const feeFilterText = `ui-circulation-log.logEvent.object.${LOG_EVENT_OBJECTS.FEE}`;
 
     const { getByText } = renderCircLogListFilter();
@@ -152,7 +132,7 @@ describe('CirculationLogListFilter', () => {
       .forEach((feeAction) => expect(getByText(feeAction)).toBeDefined());
   });
 
-  it('should display filter by request actions', () => {
+  it('has filter by request actions', () => {
     const requestFilterText = `ui-circulation-log.logEvent.object.${LOG_EVENT_OBJECTS.REQUEST}`;
 
     const { getByText } = renderCircLogListFilter();
@@ -164,12 +144,11 @@ describe('CirculationLogListFilter', () => {
   });
 
   it('auto-focuses first text field', () => {
-    renderCircLogListFilter();
+    const { getAllByRole } = renderCircLogListFilter();
 
-    // take the props for the first TextFilter, and the rest of them
-    const [first, ...rest] = TextFilter.mock.calls.map(args => args[0]);
+    const [first, ...rest] = getAllByRole('textbox');
 
-    expect(first.autoFocus).toBeTruthy();
-    expect(rest.some(props => props.autoFocus)).toBeFalsy();
+    expect(first).toHaveFocus();
+    rest.forEach(field => expect(field).not.toHaveFocus());
   });
 });

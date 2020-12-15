@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 
 import {
   AccordionSet,
+  Accordion,
+  EmptyMessage,
 } from '@folio/stripes/components';
 import {
   MultiSelectionFilter,
@@ -14,7 +16,6 @@ import {
 import {
   AcqCheckboxFilter,
   AcqDateRangeFilter,
-  TextFilter,
   FilterAccordion,
 } from '@folio/stripes-acq-components';
 
@@ -25,10 +26,10 @@ import {
   FEE_ACTIONS,
   REQUEST_ACTIONS,
 } from '../constants';
+import { TextFilters } from './TextFilters';
 
 import { buildCheckboxFilterOptions } from './utils';
 
-const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters(name, values);
 const loanFilterOptions = buildCheckboxFilterOptions(LOAN_ACTIONS);
 const noticeFilterOptions = buildCheckboxFilterOptions(NOTICE_ACTIONS);
 const feeFilterOptions = buildCheckboxFilterOptions(FEE_ACTIONS);
@@ -41,7 +42,7 @@ export const CirculationLogListFilter = ({
   servicePoints,
 }) => {
   const adaptedApplyFilters = useCallback(
-    applyFiltersAdapter(applyFilters),
+    ({ name, values }) => applyFilters({ [name]: values }),
     [applyFilters],
   );
 
@@ -54,33 +55,13 @@ export const CirculationLogListFilter = ({
 
   return (
     <AccordionSet>
-      <TextFilter
-        activeFilters={activeFilters?.userBarcode}
-        labelId="ui-circulation-log.logEvent.user"
-        name="userBarcode"
-        onChange={adaptedApplyFilters}
-        disabled={disabled}
-        closedByDefault={false}
-        autoFocus
-      />
-
-      <TextFilter
-        activeFilters={activeFilters?.itemBarcode}
-        labelId="ui-circulation-log.logEvent.item"
-        name="itemBarcode"
-        onChange={adaptedApplyFilters}
-        disabled={disabled}
-        closedByDefault={false}
-      />
-
-      <TextFilter
-        activeFilters={activeFilters?.description}
-        labelId="ui-circulation-log.logEvent.description"
-        name="description"
-        onChange={adaptedApplyFilters}
-        disabled={disabled}
-        closedByDefault={false}
-      />
+      <Accordion header={() => <EmptyMessage />} label="">
+        <TextFilters
+          activeFilters={activeFilters}
+          applyFilters={applyFilters}
+          disabled={disabled}
+        />
+      </Accordion>
 
       <AcqDateRangeFilter
         activeFilters={activeFilters?.date}
