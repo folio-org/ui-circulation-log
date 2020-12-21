@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* [UICIRCLOG-30](https://issues.folio.org/browse/UICIRCLOG-30) Add 'Checked in' loan filter.
 * [UICIRCLOG-34](https://issues.folio.org/browse/UICIRCLOG-34) Make text filters submit on a button or Enter.
 * [UICIRCLOG-28](https://issues.folio.org/browse/UICIRCLOG-28) Auto-focus first search field.
 
