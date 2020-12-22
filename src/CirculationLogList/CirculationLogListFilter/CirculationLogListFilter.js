@@ -3,7 +3,9 @@ import React, {
   useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
+import { useStripes } from '@folio/stripes/core';
 import {
   AccordionSet,
   Accordion,
@@ -41,10 +43,15 @@ export const CirculationLogListFilter = ({
   disabled,
   servicePoints,
 }) => {
+  const stripes = useStripes();
   const adaptedApplyFilters = useCallback(
     ({ name, values }) => applyFilters({ [name]: values }),
     [applyFilters],
   );
+
+  const localeDateFormat = useMemo(() => (
+    moment.localeData(stripes.locale).longDateFormat('L')
+  ), [stripes.locale]);
 
   const servicePointFilterOptions = useMemo(() => {
     return servicePoints.map(servicePoint => ({
@@ -70,7 +77,7 @@ export const CirculationLogListFilter = ({
         onChange={adaptedApplyFilters}
         disabled={disabled}
         closedByDefault={false}
-        customDateFormat="MM/DD/YYYY"
+        customDateFormat={localeDateFormat}
       />
 
       <FilterAccordion
