@@ -77,7 +77,7 @@ export const CirculationLogListFilter = ({
         onChange={adaptedApplyFilters}
         disabled={disabled}
         closedByDefault={false}
-        customDateFormat={localeDateFormat}
+        dateFormat={localeDateFormat}
       />
 
       <FilterAccordion
