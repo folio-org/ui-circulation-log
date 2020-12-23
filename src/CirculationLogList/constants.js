@@ -24,6 +24,7 @@ export const LOAN_ACTIONS = {
   CHANGED_DUE_DATE: 'Changed due date',
   CHECKED_OUT: 'Checked out',
   CHECKED_OUT_OVERRIDE: 'Checked out through override',
+  CHECKED_IN: 'Checked in',
   ANONYMIZE: 'Anonymize',
   CLAIMED_RETURNED: 'Claimed returned',
   CLOSED_LOAN: 'Closed loan',
