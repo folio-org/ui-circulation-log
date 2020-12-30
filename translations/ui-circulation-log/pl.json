@@ -53,9 +53,9 @@
     "logEvent.action.Staff information only added": "Staff information only added",
     "logEvent.action.Transferred fully": "Transferred fully",
     "logEvent.action.Transferred partially": "Transferred partially",
-    "logEvent.action.Waived fully": "Waived fully",
-    "logEvent.action.Waived partially": "Waived partially",
-    "logEvent.actions": "Action",
+    "logEvent.action.Waived fully": "Całkowicie umorzone",
+    "logEvent.action.Waived partially": "Częściowo umorzone",
+    "logEvent.actions": "Akcja",
     "logEvent.actions.itemDetails": "Item details",
     "logEvent.actions.userDetails": "User details",
     "logEvent.actions.feeDetails": "Fee/fine details",
@@ -65,5 +65,6 @@
     "logEvent.actions.templateDetails": "Live version of template",
     "logEvent.item.showMore": "Show more",
     "logEvent.item.showLess": "Show less",
-    "logEvent.object.N/A": "-"
+    "logEvent.object.N/A": "-",
+    "filter.apply": "Apply"
 }

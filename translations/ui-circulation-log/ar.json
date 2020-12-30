@@ -43,7 +43,7 @@
     "logEvent.action.Patron blocked from requesting": "تم حظرالمستفيد من الطلب",
     "logEvent.action.Pickup expired": "انتهت صلاحية الالتقاط",
     "logEvent.action.Queue position reordered": "تمت إعادة ترتيب الموضع في الصف",
-    "logEvent.action.Recall requested": "تم طلب الاسترجاع",
+    "logEvent.action.Recall requested": "تم طلب استرجاع مادة",
     "logEvent.action.Refunded fully": "تم رد المبلغ بالكامل",
     "logEvent.action.Refunded partially": "تم رد النبلغ جزئياً",
     "logEvent.action.Renewed": "تم تجديده",
@@ -65,5 +65,6 @@
     "logEvent.actions.templateDetails": "نسخة حية من القالب",
     "logEvent.item.showMore": "عرض المزيد",
     "logEvent.item.showLess": "عرض أقل",
-    "logEvent.object.N/A": "-"
+    "logEvent.object.N/A": "-",
+    "filter.apply": "تطبيق"
 }

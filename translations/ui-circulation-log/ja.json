@@ -1,13 +1,13 @@
 {
     "meta.title": "貸出/返却ログ",
-    "logEvent.user": "User barcode",
-    "logEvent.item": "Item barcode",
+    "logEvent.user": "利用者バーコード",
+    "logEvent.item": "資料バーコード",
     "logEvent.object": "Object",
     "logEvent.action": "Circ action",
     "logEvent.date": "Date",
     "logEvent.servicePoint": "サービスポイント",
     "logEvent.source": "Source",
-    "logEvent.description": "Description",
+    "logEvent.description": "説明",
     "permission.log-event.all": "貸出/返却ログ：すべて",
     "logEvent.object.Fee/Fine": "Fee/fine",
     "logEvent.object.Item Block": "Item block",
@@ -65,5 +65,6 @@
     "logEvent.actions.templateDetails": "Live version of template",
     "logEvent.item.showMore": "Show more",
     "logEvent.item.showLess": "Show less",
-    "logEvent.object.N/A": "-"
+    "logEvent.object.N/A": "-",
+    "filter.apply": "Apply"
 }

@@ -65,5 +65,6 @@
     "logEvent.actions.templateDetails": "Versione live del modello",
     "logEvent.item.showMore": "Mostra di più",
     "logEvent.item.showLess": "Mostra meno",
-    "logEvent.object.N/A": "-"
+    "logEvent.object.N/A": "-",
+    "filter.apply": "Apply"
 }
