@@ -65,5 +65,6 @@
     "logEvent.actions.templateDetails": "Live version of template",
     "logEvent.item.showMore": "Show more",
     "logEvent.item.showLess": "Show less",
-    "logEvent.object.N/A": "-"
+    "logEvent.object.N/A": "-",
+    "filter.apply": "Apply"
 }

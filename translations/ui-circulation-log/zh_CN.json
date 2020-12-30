@@ -65,5 +65,6 @@
     "logEvent.actions.templateDetails": "实时版模板",
     "logEvent.item.showMore": "显示更多",
     "logEvent.item.showLess": "显示更少",
-    "logEvent.object.N/A": "-"
+    "logEvent.object.N/A": "-",
+    "filter.apply": "应用"
 }
