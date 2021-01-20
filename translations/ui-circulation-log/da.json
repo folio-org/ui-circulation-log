@@ -9,7 +9,7 @@
     "logEvent.source": "Source",
     "logEvent.description": "Description",
     "permission.log-event.all": "Circulation log: All",
-    "logEvent.object.Fee/Fine": "Fee/fine",
+    "logEvent.object.Fee/Fine": "Gebyr",
     "logEvent.object.Item Block": "Item block",
     "logEvent.object.Loan": "Loan",
     "logEvent.object.Manual Block": "Manual block",
