@@ -17,7 +17,7 @@
     "logEvent.object.Patron Block": "حظر المستفيدين",
     "logEvent.object.Request": "طلب",
     "logEvent.action.Age to lost": "تأخر وتم اعتباره ضائعاً",
-    "logEvent.action.Anonymize": "إخفاء هوية",
+    "logEvent.action.Anonymize": "تجاهل",
     "logEvent.action.Billed": "تم إصدار الفاتورة",
     "logEvent.action.Cancelled": "ملغي",
     "logEvent.action.Cancelled as error": "ملغى كخطأ",
