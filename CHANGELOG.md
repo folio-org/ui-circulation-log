@@ -7,6 +7,7 @@
 * [UICIRCLOG-28](https://issues.folio.org/browse/UICIRCLOG-28) Auto-focus first search field.
 * [UICIRCLOG-35](https://issues.folio.org/browse/UICIRCLOG-35) Reformat dates to match date format across FOLIO.
 * [UICIRCLOG-46](https://issues.folio.org/browse/UICIRCLOG-46) Update `@folio/stripes-cli` to `v2`.
+* [UICIRCLOG-41](https://issues.folio.org/browse/UICIRCLOG-41) Update `@folio/stripes` to `v6.0.0`.
 * [UICIRCLOG-36](https://issues.folio.org/browse/UICIRCLOG-36) Add personal data disclosure form.
 
 ## [1.0.1](https://github.com/folio-org/ui-circulation-log/tree/v1.0.1) (2020-10-30)
