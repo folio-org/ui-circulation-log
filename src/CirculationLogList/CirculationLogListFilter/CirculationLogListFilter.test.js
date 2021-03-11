@@ -14,6 +14,7 @@ import {
 } from '../constants';
 
 import { CirculationLogListFilter } from './CirculationLogListFilter';
+import {waitFor} from "@babel/core/lib/gensync-utils/async";
 
 jest.mock('@folio/stripes-acq-components', () => {
   return {
@@ -143,12 +144,12 @@ describe('CirculationLogListFilter', () => {
       .forEach((requestAction) => expect(getByText(requestAction)).toBeDefined());
   });
 
-  it('auto-focuses first text field', () => {
+  it('auto-focuses first text field', async () => {
     const { getAllByRole } = renderCircLogListFilter();
 
     const [first, ...rest] = getAllByRole('textbox');
 
-    expect(first).toHaveFocus();
+    await waitFor(expect(first).toHaveFocus);
     rest.forEach(field => expect(field).not.toHaveFocus());
   });
 });

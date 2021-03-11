@@ -70,7 +70,7 @@ export const CirculationLogListFilter = ({
   });
 
   useEffect(() => {
-    focusRef.current = refs.textFilters.current;
+    if (typeof focusRef === 'object') focusRef.current = refs.textFilters.current;
   }, [focusRef, refs.textFilters]);
 
   const handleFocus = name => event => {

@@ -105,7 +105,7 @@ export const CirculationLogList = ({
 
   const whoGetsTheFocus = isFiltersReadyToLooseFocus && logEventsCount ? 'results' : 'filters';
 
-  focusRef.current = refs[whoGetsTheFocus].current;
+  if (typeof focusRef === 'object') focusRef.current = refs[whoGetsTheFocus].current;
 
   return (
     <Paneset data-test-log-events-list>
