@@ -1,9 +1,13 @@
 import React, {
-  useCallback, useEffect,
-  useMemo, useRef, useState,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { noop } from 'lodash';
 
 import { useStripes } from '@folio/stripes/core';
 import {
@@ -46,7 +50,7 @@ export const CirculationLogListFilter = ({
   servicePoints,
   onFocus,
   focusRef,
-  letLoseFocus,
+  letLoseFocus = noop,
 }) => {
   const stripes = useStripes();
   const adaptedApplyFilters = useCallback(

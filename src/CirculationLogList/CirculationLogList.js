@@ -1,6 +1,7 @@
 import React, {
   useMemo,
-  useRef, useState,
+  useRef,
+  useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import {

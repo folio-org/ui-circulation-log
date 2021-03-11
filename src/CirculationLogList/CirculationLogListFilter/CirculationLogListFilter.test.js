@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
 
@@ -14,7 +14,6 @@ import {
 } from '../constants';
 
 import { CirculationLogListFilter } from './CirculationLogListFilter';
-import {waitFor} from "@babel/core/lib/gensync-utils/async";
 
 jest.mock('@folio/stripes-acq-components', () => {
   return {
@@ -29,21 +28,23 @@ jest.mock('@folio/stripes-acq-components', () => {
   };
 });
 
-const defaultProps = {
-  activeFilters: {},
-  applyFilters: jest.fn(),
-  disabled: false,
-};
+// const defaultProps = {
+//   activeFilters: {},
+//   applyFilters: jest.fn(),
+//   disabled: false,
+// };
 
 const renderCircLogListFilter = ({
-  activeFilters,
-  applyFilters,
-  disabled,
-} = defaultProps) => (render(
+  activeFilters = {},
+  applyFilters = jest.fn(),
+  disabled = false,
+  ...rest
+} = {}) => (render(
   <CirculationLogListFilter
     activeFilters={activeFilters}
     applyFilters={applyFilters}
     disabled={disabled}
+    {...rest}
   />,
 ));
 
@@ -53,7 +54,7 @@ describe('CirculationLogListFilter', () => {
       const activeFilterValue = '10056';
 
       const { getByLabelText } = renderCircLogListFilter({
-        ...defaultProps,
+        // ...defaultProps,
         activeFilters: { userBarcode: [activeFilterValue] },
       });
 
@@ -66,7 +67,7 @@ describe('CirculationLogListFilter', () => {
       const activeFilterValue = '10057';
 
       const { getByLabelText } = renderCircLogListFilter({
-        ...defaultProps,
+        // ...defaultProps,
         activeFilters: { itemBarcode: [activeFilterValue] },
       });
 
@@ -79,7 +80,7 @@ describe('CirculationLogListFilter', () => {
       const activeFilterValue = 'Checkout info';
 
       const { getByLabelText } = renderCircLogListFilter({
-        ...defaultProps,
+        // ...defaultProps,
         activeFilters: { description: [activeFilterValue] },
       });
 
@@ -144,12 +145,15 @@ describe('CirculationLogListFilter', () => {
       .forEach((requestAction) => expect(getByText(requestAction)).toBeDefined());
   });
 
-  it('auto-focuses first text field', async () => {
-    const { getAllByRole } = renderCircLogListFilter();
+  it('focuses first text field on focusRef.current.focus() by default', () => {
+    const focusRef = {};
+    const { getAllByRole } = renderCircLogListFilter({ focusRef });
 
     const [first, ...rest] = getAllByRole('textbox');
 
-    await waitFor(expect(first).toHaveFocus);
+    focusRef.current.focus();
+
+    expect(first).toHaveFocus();
     rest.forEach(field => expect(field).not.toHaveFocus());
   });
 });
