@@ -12,8 +12,26 @@ import { useShowCallout } from '@folio/stripes-acq-components';
 
 import { buildLogEventsQuery } from '../utils';
 
-const downloadJobExports = (job) => {
-  console.log('DOWNLOAD JOB EXPOTS', job);
+const downloadJobExports = ({ files, type, name, endTime }) => {
+  files.forEach((file) => {
+    const link = document.createElement('a');
+
+    link.href = file;
+    link.download = `${type}_${name}_${endTime}`;
+    link.target = '_blank';
+
+    document.body.appendChild(link);
+
+    link.dispatchEvent(
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+      }),
+    );
+
+    document.body.removeChild(link);
+  });
 };
 
 export const useCirculationLogExportPolling = () => {

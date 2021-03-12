@@ -46,7 +46,9 @@
         "subPermissions": [
           "module.circulation-log.enabled",
           "inventory-storage.service-points.collection.get",
-          "circulation-logs.collection.get"
+          "circulation-logs.collection.get",
+          "data-export.job.item.get",
+          "data-export.job.item.post"
         ]
       }
     ]
