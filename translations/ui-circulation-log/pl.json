@@ -66,5 +66,10 @@
     "logEvent.item.showMore": "Pokaż więcej",
     "logEvent.item.showLess": "Pokaż mniej",
     "logEvent.object.N/A": "-",
-    "filter.apply": "Zastosuj"
+    "filter.apply": "Zastosuj",
+    "logEvents.actions.export": "Export results (CSV)",
+    "logEvents.actions.export.success": "Circulation log export has been requested, please wait when file is downloaded.",
+    "logEvents.actions.export.error": "Something went wrong with export file request, please try again.",
+    "logEvents.actions.export.failed": "Export job has been failed.",
+    "logEvents.actions.export.successful": "Export job has been completed."
 }
