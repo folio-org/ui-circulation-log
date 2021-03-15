@@ -35,7 +35,7 @@
     "logEvent.action.Deleted": "Supprimé",
     "logEvent.action.Edited": "Édité",
     "logEvent.action.Expired": "Expiré",
-    "logEvent.action.Marked as missing": "Marked as missing",
+    "logEvent.action.Marked as missing": "Marqué comme manquant",
     "logEvent.action.Modified": "Modifié",
     "logEvent.action.Moved": "Déplacé",
     "logEvent.action.Paid fully": "Payé intégralement",
