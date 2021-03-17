@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
 
@@ -27,12 +27,6 @@ jest.mock('@folio/stripes-acq-components', () => {
     )),
   };
 });
-
-// const defaultProps = {
-//   activeFilters: {},
-//   applyFilters: jest.fn(),
-//   disabled: false,
-// };
 
 const renderCircLogListFilter = ({
   activeFilters = {},

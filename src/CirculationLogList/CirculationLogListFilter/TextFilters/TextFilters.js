@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 
@@ -21,7 +21,6 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled, onFocus, fo
     itemBarcode: useRef(),
     description: useRef(),
   });
-
 
   const handleFocus = name => event => {
     focusRef.current = refs[name].current;
