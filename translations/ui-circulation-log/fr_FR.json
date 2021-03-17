@@ -42,7 +42,7 @@
     "logEvent.action.Paid partially": "Payé partiellement",
     "logEvent.action.Patron blocked from requesting": "Utilisateur bloqué pour les réservations",
     "logEvent.action.Pickup expired": "Collecte expirée",
-    "logEvent.action.Queue position reordered": "Queue position reordered",
+    "logEvent.action.Queue position reordered": "Position en file d'attente réorganisée",
     "logEvent.action.Recall requested": "Recall requested",
     "logEvent.action.Refunded fully": "Remboursé intégralement",
     "logEvent.action.Refunded partially": "Remboursé partiellement",
