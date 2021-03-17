@@ -136,12 +136,12 @@ describe('CirculationLogListFilter', () => {
       .forEach((requestAction) => expect(getByText(requestAction)).toBeDefined());
   });
 
-  it('auto-focuses first text field', async () => {
+  it('auto-focuses first text field', () => {
     const { getAllByRole } = renderCircLogListFilter();
 
     const [first, ...rest] = getAllByRole('textbox');
 
-    await waitFor(expect(first).toHaveFocus);
+    expect(first).toHaveFocus();
     rest.forEach(field => expect(field).not.toHaveFocus());
   });
 });
