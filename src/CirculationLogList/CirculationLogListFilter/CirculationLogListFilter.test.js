@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
 
@@ -136,15 +136,12 @@ describe('CirculationLogListFilter', () => {
       .forEach((requestAction) => expect(getByText(requestAction)).toBeDefined());
   });
 
-  it('focuses first text field on focusRef.current.focus() by default', () => {
-    const focusRef = {};
-    const { getAllByRole } = renderCircLogListFilter({ focusRef });
+  it('auto-focuses first text field', async () => {
+    const { getAllByRole } = renderCircLogListFilter();
 
     const [first, ...rest] = getAllByRole('textbox');
 
-    focusRef.current.focus();
-
-    expect(first).toHaveFocus();
+    await waitFor(expect(first).toHaveFocus);
     rest.forEach(field => expect(field).not.toHaveFocus());
   });
 });
