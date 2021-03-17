@@ -10,6 +10,7 @@
 * [UICIRCLOG-41](https://issues.folio.org/browse/UICIRCLOG-41) Update `@folio/stripes` to `v6.0.0`.
 * [UICIRCLOG-36](https://issues.folio.org/browse/UICIRCLOG-36) Add personal data disclosure form.
 * [UICIRCLOG-22](https://issues.folio.org/browse/UICIRCLOG-22) Circulation log Action dropdown - Exporting Data.
+* [UICIRCLOG-29](https://issues.folio.org/browse/UICIRCLOG-29) Entering values in Search fields OR Clicking Apply moves focus to Results list pane.
 
 ## [1.0.1](https://github.com/folio-org/ui-circulation-log/tree/v1.0.1) (2020-10-30)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.0.0...v1.0.1)

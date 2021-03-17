@@ -28,21 +28,17 @@ jest.mock('@folio/stripes-acq-components', () => {
   };
 });
 
-const defaultProps = {
-  activeFilters: {},
-  applyFilters: jest.fn(),
-  disabled: false,
-};
-
 const renderCircLogListFilter = ({
-  activeFilters,
-  applyFilters,
-  disabled,
-} = defaultProps) => (render(
+  activeFilters = {},
+  applyFilters = jest.fn(),
+  disabled = false,
+  ...rest
+} = {}) => (render(
   <CirculationLogListFilter
     activeFilters={activeFilters}
     applyFilters={applyFilters}
     disabled={disabled}
+    {...rest}
   />,
 ));
 
@@ -52,7 +48,6 @@ describe('CirculationLogListFilter', () => {
       const activeFilterValue = '10056';
 
       const { getByLabelText } = renderCircLogListFilter({
-        ...defaultProps,
         activeFilters: { userBarcode: [activeFilterValue] },
       });
 
@@ -65,7 +60,6 @@ describe('CirculationLogListFilter', () => {
       const activeFilterValue = '10057';
 
       const { getByLabelText } = renderCircLogListFilter({
-        ...defaultProps,
         activeFilters: { itemBarcode: [activeFilterValue] },
       });
 
@@ -78,7 +72,6 @@ describe('CirculationLogListFilter', () => {
       const activeFilterValue = 'Checkout info';
 
       const { getByLabelText } = renderCircLogListFilter({
-        ...defaultProps,
         activeFilters: { description: [activeFilterValue] },
       });
 

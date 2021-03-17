@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 
@@ -7,8 +7,26 @@ import { Button } from '@folio/stripes/components';
 import { useT } from '../../../hooks';
 import { Field } from './Field';
 
-export const TextFilters = ({ activeFilters, applyFilters, disabled }) => {
+export const TextFilters = ({ activeFilters, applyFilters, disabled, onFocus, focusRef }) => {
   const t = useT();
+
+  // On `disable` we're disabling only the Submit button, and the possibility to submit the form.
+  // <input> fields remain enabled.
+  // Disabling <input> fields inside TextFields leads to them not getting onBlur event (or any other events) in Chrome.
+  // This is not handled by TextField properly - its internal state remains "focused" after the focus is gone
+  const handleFormSubmit = (...args) => (disabled ? undefined : applyFilters(...args));
+
+  const [refs] = useState({
+    userBarcode: useRef(),
+    itemBarcode: useRef(),
+    description: useRef(),
+  });
+
+  const handleFocus = name => event => {
+    focusRef.current = refs[name].current;
+
+    return onFocus?.(event);
+  };
 
   const initialValues = {
     userBarcode: activeFilters?.userBarcode?.[0] ?? '',
@@ -18,7 +36,7 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled }) => {
 
   return (
     <Form
-      onSubmit={applyFilters}
+      onSubmit={handleFormSubmit}
       initialValues={initialValues}
     >
       {({ handleSubmit }) => (
@@ -26,20 +44,23 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled }) => {
           <Field
             name="userBarcode"
             label={t`logEvent.user`}
-            disabled={disabled}
+            inputRef={refs.userBarcode}
+            onFocus={handleFocus('userBarcode')}
             autoFocus
           />
 
           <Field
             name="itemBarcode"
             label={t`logEvent.item`}
-            disabled={disabled}
+            inputRef={refs.itemBarcode}
+            onFocus={handleFocus('itemBarcode')}
           />
 
           <Field
             name="description"
             label={t`logEvent.description`}
-            disabled={disabled}
+            inputRef={refs.description}
+            onFocus={handleFocus('description')}
           />
 
           <Button
@@ -59,6 +80,8 @@ TextFilters.propTypes = {
   activeFilters: PropTypes.object.isRequired,
   applyFilters: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
+  focusRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  onFocus: PropTypes.func,
 };
 
 TextFilters.defaultProps = {

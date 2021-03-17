@@ -1,6 +1,8 @@
 import React, {
   useCallback,
   useMemo,
+  useRef,
+  useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -68,6 +70,7 @@ export const CirculationLogList = ({
   logEvents,
   logEventsCount,
   servicePoints,
+  focusRef,
 }) => {
   const stripes = useStripes();
   const history = useHistory();
@@ -110,6 +113,17 @@ export const CirculationLogList = ({
     />
   );
 
+  const [refs] = useState({
+    filters: useRef(),
+    results: useRef(),
+  });
+
+  const [isFiltersReadyToLooseFocus, setIsFiltersReadyToLooseFocus] = React.useState(false);
+
+  const whoGetsTheFocus = isFiltersReadyToLooseFocus && logEventsCount ? 'results' : 'filters';
+
+  if (typeof focusRef === 'object') focusRef.current = refs[whoGetsTheFocus].current;
+
   return (
     <Paneset data-test-log-events-list>
       {isFiltersOpened && (
@@ -123,6 +137,8 @@ export const CirculationLogList = ({
           <CirculationLogListFilter
             activeFilters={filters}
             applyFilters={applyFilters}
+            letLoseFocus={setIsFiltersReadyToLooseFocus}
+            focusRef={refs.filters}
             disabled={isLoading}
             servicePoints={servicePoints}
           />
@@ -131,6 +147,7 @@ export const CirculationLogList = ({
 
       <ResultsPane
         title={resultsPaneTitle}
+        resultsPaneTitleRef={refs.results}
         count={logEventsCount}
         toggleFiltersPane={toggleFilters}
         filters={filters}
@@ -167,6 +184,7 @@ CirculationLogList.propTypes = {
   isLoading: PropTypes.bool,
   logEvents: PropTypes.arrayOf(PropTypes.object),
   servicePoints: PropTypes.arrayOf(PropTypes.object),
+  focusRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 CirculationLogList.defaultProps = {
