@@ -22,9 +22,6 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled, onFocus, fo
     description: useRef(),
   });
 
-  useEffect(() => {
-    if (typeof focusRef === 'object') focusRef.current = refs.userBarcode.current;
-  }, [focusRef, refs.userBarcode]);
 
   const handleFocus = name => event => {
     focusRef.current = refs[name].current;
