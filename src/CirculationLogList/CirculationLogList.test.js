@@ -33,6 +33,10 @@ jest.mock('./CirculationLogEventActions', () => ({
   CirculationLogEventActions: () => <span>CirculationLogEventActions</span>,
 }));
 
+jest.mock('./CirculationLogListActions', () => ({
+  CirculationLogListActions: () => <span>CirculationLogListActions</span>,
+}));
+
 const servicePoint = { id: 1, name: 'servicePoint' };
 const getLogEvent = () => ({
   userBarcode: Math.random(),

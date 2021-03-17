@@ -1,4 +1,5 @@
 import React, {
+  useCallback,
   useMemo,
   useRef,
   useState,
@@ -10,6 +11,9 @@ import {
 } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
+import {
+  useStripes,
+} from '@folio/stripes/core';
 import {
   Paneset,
   MultiColumnList,
@@ -27,6 +31,7 @@ import {
 import { useLocationFilters } from '../hooks';
 import { CirculationLogEventItems } from './CirculationLogEventItems';
 import { CirculationLogListFilter } from './CirculationLogListFilter';
+import { CirculationLogListActions } from './CirculationLogListActions';
 import { CirculationLogEventActions } from './CirculationLogEventActions';
 
 const resultsPaneTitle = <FormattedMessage id="ui-circulation-log.meta.title" />;
@@ -67,6 +72,7 @@ export const CirculationLogList = ({
   servicePoints,
   focusRef,
 }) => {
+  const stripes = useStripes();
   const history = useHistory();
   const location = useLocation();
 
@@ -87,6 +93,16 @@ export const CirculationLogList = ({
     }, {});
   }, [servicePoints]);
   const resultsFormatter = useMemo(() => getResultsFormatter(servicePointsMap), [servicePointsMap]);
+
+  const renderActionMenu = useCallback(
+    ({ onToggle }) => (
+      <CirculationLogListActions
+        logEventsCount={logEventsCount}
+        onToggle={onToggle}
+      />
+    ),
+    [logEventsCount],
+  );
 
   const resultsStatusMessage = (
     <NoResultsMessage
@@ -136,6 +152,7 @@ export const CirculationLogList = ({
         toggleFiltersPane={toggleFilters}
         filters={filters}
         isFiltersOpened={isFiltersOpened}
+        renderActionMenu={stripes.hasInterface('data-export-spring') && renderActionMenu}
       >
         <MultiColumnList
           id="circulation-log-list"

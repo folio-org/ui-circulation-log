@@ -19,6 +19,9 @@
       "service-points": "3.0",
       "circulation-logs": "1.0"
     },
+    "optionalOkapiInterfaces": {
+      "data-export-spring": "1.0"
+    },
     "icons": [
       {
         "name": "app",
@@ -43,7 +46,9 @@
         "subPermissions": [
           "module.circulation-log.enabled",
           "inventory-storage.service-points.collection.get",
-          "circulation-logs.collection.get"
+          "circulation-logs.collection.get",
+          "data-export.job.item.get",
+          "data-export.job.item.post"
         ]
       }
     ]
@@ -52,7 +57,10 @@
     "build": "yarn stripes build --output ./output",
     "lint": "eslint .",
     "start": "yarn stripes serve",
-    "test": "jest --ci --coverage"
+    "test:unit": "jest --ci --coverage && yarn run test:unit:report",
+    "test:unit:report": "cp -r ./artifacts/coverage-jest ./artifacts/coverage",
+    "test:e2e": "echo Not implemented",
+    "test": "yarn run test:unit && yarn run test:e2e"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
@@ -66,6 +74,8 @@
     "@folio/stripes-cli": "^2.0.0",
     "@testing-library/jest-dom": "^5.11.1",
     "@testing-library/react": "^11.0.2",
+    "@testing-library/react-hooks": "^5.1.0",
+    "@testing-library/user-event": "^12.8.3",
     "babel-eslint": "^10.0.0",
     "babel-jest": "^26.3.0",
     "core-js": "^3.6.1",
@@ -80,6 +90,7 @@
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-intl": "^5.7.0",
+    "react-query": "^3.6.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "regenerator-runtime": "^0.13.3"
@@ -98,6 +109,7 @@
     "@folio/stripes": "^6.0.0",
     "react": "*",
     "react-intl": "^5.7.0 ",
+    "react-query": "^3.6.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0"
   }

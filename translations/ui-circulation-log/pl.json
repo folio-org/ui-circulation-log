@@ -13,7 +13,7 @@
     "logEvent.object.Item Block": "Blokada egzemplarza",
     "logEvent.object.Loan": "Wypożyczenie",
     "logEvent.object.Manual Block": "Ręczna blokada",
-    "logEvent.object.Notice": "Notice",
+    "logEvent.object.Notice": "Uwaga",
     "logEvent.object.Patron Block": "Blokada czytelnika",
     "logEvent.object.Request": "Żądanie",
     "logEvent.action.Age to lost": "Uznany za zagubiony",
@@ -66,5 +66,10 @@
     "logEvent.item.showMore": "Pokaż więcej",
     "logEvent.item.showLess": "Pokaż mniej",
     "logEvent.object.N/A": "-",
-    "filter.apply": "Zastosuj"
+    "filter.apply": "Zastosuj",
+    "logEvents.actions.export": "Eksportuj wyniki (CSV)",
+    "logEvents.actions.export.success": "Zażądano wyeksportowania dziennika obiegu, proszę czekać, aż plik zostanie pobrany.",
+    "logEvents.actions.export.error": "Coś poszło nie tak z żądaniem eksportu pliku, spróbuj ponownie.",
+    "logEvents.actions.export.failed": "Eksport zadań nie powiódł się.",
+    "logEvents.actions.export.successful": "Eksport zadań został zakończony."
 }
