@@ -52,13 +52,7 @@ const CirculationLogListContainerComponent = ({ mutator }) => {
       ...logEventsResponse.logRecords,
     ]));
 
-    setTimeout(() => focusRef.current?.focus?.(), 0);
-  }, []);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => focusRef.current?.focus?.(), 0);
-
-    return () => clearTimeout(timeout);
+    return focusRef.current?.focus?.();
   }, []);
 
   const {

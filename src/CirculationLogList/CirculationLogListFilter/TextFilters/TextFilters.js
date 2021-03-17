@@ -10,6 +10,12 @@ import { Field } from './Field';
 export const TextFilters = ({ activeFilters, applyFilters, disabled, onFocus, focusRef }) => {
   const t = useT();
 
+  // On `disable` we're disabling only the Submit button, and the possibility to submit the form.
+  // <input> fields remain enabled.
+  // Disabling <input> fields inside TextFields leads to them not getting onBlur event (or any other events) in Chrome.
+  // This is not handled by TextField properly - its internal state remains "focused" after the focus is gone
+  const handleFormSubmit = (...args) => (disabled ? undefined : applyFilters(...args));
+
   const [refs] = useState({
     userBarcode: useRef(),
     itemBarcode: useRef(),
@@ -34,7 +40,7 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled, onFocus, fo
 
   return (
     <Form
-      onSubmit={applyFilters}
+      onSubmit={handleFormSubmit}
       initialValues={initialValues}
     >
       {({ handleSubmit }) => (
@@ -42,15 +48,14 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled, onFocus, fo
           <Field
             name="userBarcode"
             label={t`logEvent.user`}
-            disabled={disabled}
             inputRef={refs.userBarcode}
             onFocus={handleFocus('userBarcode')}
+            autoFocus
           />
 
           <Field
             name="itemBarcode"
             label={t`logEvent.item`}
-            disabled={disabled}
             inputRef={refs.itemBarcode}
             onFocus={handleFocus('itemBarcode')}
           />
@@ -58,7 +63,6 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled, onFocus, fo
           <Field
             name="description"
             label={t`logEvent.description`}
-            disabled={disabled}
             inputRef={refs.description}
             onFocus={handleFocus('description')}
           />
