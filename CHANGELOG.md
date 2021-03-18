@@ -2,8 +2,8 @@
 
 ## (IN PROGRESS)
 
-## [1.0.2](https://github.com/folio-org/ui-circulation-log/tree/v1.0.1) (2021-03-18)
-[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.0.1...v1.0.2)
+## [1.1.0](https://github.com/folio-org/ui-circulation-log/tree/v1.1.0) (2021-03-18)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.0.1...v1.1.0)
 
 * [UICIRCLOG-30](https://issues.folio.org/browse/UICIRCLOG-30) Add 'Checked in' loan filter.
 * [UICIRCLOG-34](https://issues.folio.org/browse/UICIRCLOG-34) Make text filters submit on a button or Enter.
