@@ -56,7 +56,7 @@ export const useCirculationLogExportPolling = () => {
       } else {
         poll(job.id);
       }
-    }, 15 * 1000);
+    }, 10 * 1000);
   };
 
   return poll;
