@@ -67,9 +67,9 @@
     "logEvent.item.showLess": "Weniger anzeigen",
     "logEvent.object.N/A": "-",
     "filter.apply": "Anwenden",
-    "logEvents.actions.export": "Export results (CSV)",
-    "logEvents.actions.export.success": "Circulation log export has been requested, please wait when file is downloaded.",
-    "logEvents.actions.export.error": "Something went wrong with export file request, please try again.",
-    "logEvents.actions.export.failed": "Export job has been failed.",
-    "logEvents.actions.export.successful": "Export job has been completed."
+    "logEvents.actions.export": "Ergebnisse exportieren (CSV)",
+    "logEvents.actions.export.success": "Ausleih-Protokoll-Export wurde angefordert. Bitte warten, bis die Datei heruntergeladen wurde.",
+    "logEvents.actions.export.error": "Fehler bei Anforderung der Exportdatei, bitte erneut versuchen.",
+    "logEvents.actions.export.failed": "Exportauftrag ist fehlgeschlagen.",
+    "logEvents.actions.export.successful": "Exportauftrag ist abgeschlossen."
 }
