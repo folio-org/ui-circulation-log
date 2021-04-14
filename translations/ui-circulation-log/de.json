@@ -14,7 +14,7 @@
     "logEvent.object.Loan": "Ausleihe",
     "logEvent.object.Manual Block": "Manuelle Sperre",
     "logEvent.object.Notice": "Benachrichtigung",
-    "logEvent.object.Patron Block": "Personensperre",
+    "logEvent.object.Patron Block": "Kontosperre",
     "logEvent.object.Request": "Bestandsanfrage",
     "logEvent.action.Age to lost": "Automatisch für verloren erklärt",
     "logEvent.action.Anonymize": "Anonymisiert",
