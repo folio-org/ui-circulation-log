@@ -10,9 +10,11 @@ import {
   Dropdown,
 } from '@folio/stripes/components';
 
+import {
+  LOG_EVENT_OBJECTS,
+} from '../constants';
 import { CirculationLogEventActions } from './CirculationLogEventActions';
 import {
-  // getHasLoanDetails,
   getHasUserDetails,
   getHasFeeDetails,
   getHasRequestDetails,
@@ -44,7 +46,6 @@ jest.mock('@folio/stripes/components', () => {
 
 jest.mock('./utils', () => ({
   ...jest.requireActual('./utils'),
-  // getHasLoanDetails: jest.fn(),
   getHasFeeDetails: jest.fn(),
   getHasUserDetails: jest.fn(),
   getHasRequestDetails: jest.fn(),
@@ -52,10 +53,11 @@ jest.mock('./utils', () => ({
   getHasNoticePolicyDetails: jest.fn(),
 }));
 
-const renderCirculationLogEventActions = ({ items, referenceIds } = {}) => (render(
+const renderCirculationLogEventActions = ({ object, items, referenceIds } = {}) => (render(
   <CirculationLogEventActions
     items={items}
     referenceIds={referenceIds}
+    object={object}
   />,
 ));
 
@@ -65,7 +67,6 @@ describe('Given Circulation Log Event Actions', () => {
   beforeEach(() => {
     Dropdown.mockClear();
 
-    // getHasLoanDetails.mockReturnValueOnce(false);
     getHasFeeDetails.mockReturnValueOnce(false);
     getHasUserDetails.mockReturnValueOnce(false);
     getHasRequestDetails.mockReturnValueOnce(false);
@@ -87,16 +88,15 @@ describe('Given Circulation Log Event Actions', () => {
     const referenceIds = { userId: 1 };
     let items;
 
-    // beforeEach(() => {
-    //   getHasLoanDetails.mockReset();
-    //   // getHasLoanDetails.mockReturnValueOnce(true);
-    // });
-
     it('Then it should display action when it is available', () => {
       stripes.hasPerm.mockReturnValue(true);
       items = [{ loanId: 1 }];
 
-      const { getByText, queryByText } = renderCirculationLogEventActions({ items, referenceIds });
+      const { getByText, queryByText } = renderCirculationLogEventActions({
+        object: LOG_EVENT_OBJECTS.LOAN,
+        items,
+        referenceIds,
+      });
 
       expect(queryByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeDefined();
       expect(getByText(`/users/${referenceIds.userId}/loans/view/${items[0].loanId}`)).toBeDefined();
