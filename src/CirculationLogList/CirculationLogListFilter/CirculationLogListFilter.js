@@ -73,7 +73,7 @@ export const CirculationLogListFilter = ({
   });
 
   const handleFocus = name => event => {
-    focusRef.current = refs[name]?.current;
+    if (typeof focusRef === 'object') focusRef.current = refs[name]?.current;
     letLoseFocus(FIELDS_READY_TO_LOOSE_FOCUS.has(name));
 
     return onFocus?.(event);
