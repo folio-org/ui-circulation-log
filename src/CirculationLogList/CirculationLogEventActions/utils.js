@@ -2,15 +2,18 @@ import {
   LOG_EVENT_OBJECTS,
 } from '../constants';
 
-export const getHasLoanDetails = (object, loanId) => (
-  loanId
+export const getHasLoanDetails = (object, loanId, items) => {
+
+  return (
+    loanId && items.length === 1
   && (
     object === LOG_EVENT_OBJECTS.LOAN
     || object === LOG_EVENT_OBJECTS.FEE
     || object === LOG_EVENT_OBJECTS.REQUEST
     || object === LOG_EVENT_OBJECTS.NOTICE
   )
-);
+)
+};
 
 export const getHasUserDetails = (object, userId) => (
   userId

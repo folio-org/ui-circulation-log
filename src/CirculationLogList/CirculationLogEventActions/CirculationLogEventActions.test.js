@@ -12,7 +12,7 @@ import {
 
 import { CirculationLogEventActions } from './CirculationLogEventActions';
 import {
-  getHasLoanDetails,
+  // getHasLoanDetails,
   getHasUserDetails,
   getHasFeeDetails,
   getHasRequestDetails,
@@ -44,7 +44,7 @@ jest.mock('@folio/stripes/components', () => {
 
 jest.mock('./utils', () => ({
   ...jest.requireActual('./utils'),
-  getHasLoanDetails: jest.fn(),
+  // getHasLoanDetails: jest.fn(),
   getHasFeeDetails: jest.fn(),
   getHasUserDetails: jest.fn(),
   getHasRequestDetails: jest.fn(),
@@ -52,9 +52,9 @@ jest.mock('./utils', () => ({
   getHasNoticePolicyDetails: jest.fn(),
 }));
 
-const renderCirculationLogEventActions = ({ item, referenceIds } = {}) => (render(
+const renderCirculationLogEventActions = ({ items, referenceIds } = {}) => (render(
   <CirculationLogEventActions
-    item={item}
+    items={items}
     referenceIds={referenceIds}
   />,
 ));
@@ -65,7 +65,7 @@ describe('Given Circulation Log Event Actions', () => {
   beforeEach(() => {
     Dropdown.mockClear();
 
-    getHasLoanDetails.mockReturnValueOnce(false);
+    // getHasLoanDetails.mockReturnValueOnce(false);
     getHasFeeDetails.mockReturnValueOnce(false);
     getHasUserDetails.mockReturnValueOnce(false);
     getHasRequestDetails.mockReturnValueOnce(false);
@@ -85,26 +85,36 @@ describe('Given Circulation Log Event Actions', () => {
 
   describe('And Loan details action', () => {
     const referenceIds = { userId: 1 };
-    const item = { loanId: 1 };
+    let items;
 
-    beforeEach(() => {
-      getHasLoanDetails.mockReset();
-      getHasLoanDetails.mockReturnValueOnce(true);
-    });
+    // beforeEach(() => {
+    //   getHasLoanDetails.mockReset();
+    //   // getHasLoanDetails.mockReturnValueOnce(true);
+    // });
 
     it('Than it should display action when it is available', () => {
       stripes.hasPerm.mockReturnValue(true);
+      items = [{ loanId: 1 }];
 
-      const { getByText, queryByText } = renderCirculationLogEventActions({ item, referenceIds });
+      const { getByText, queryByText } = renderCirculationLogEventActions({ items, referenceIds });
 
       expect(queryByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeDefined();
-      expect(getByText(`/users/${referenceIds.userId}/loans/view/${item.loanId}`)).toBeDefined();
+      expect(getByText(`/users/${referenceIds.userId}/loans/view/${items[0].loanId}`)).toBeDefined();
+    });
+
+    it('Than it should not display action when get multiple items', () => {
+      stripes.hasPerm.mockReturnValue(true);
+      items = [{ loanId: 1 }, { loanId: 2 }];
+
+      const { queryByText } = renderCirculationLogEventActions({ items, referenceIds });
+
+      expect(queryByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeNull();
     });
 
     it('Than it should not display action when no permission', () => {
       stripes.hasPerm.mockReturnValue(false);
 
-      const { queryByText } = renderCirculationLogEventActions({ item, referenceIds });
+      const { queryByText } = renderCirculationLogEventActions({ items, referenceIds });
 
       expect(queryByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeNull();
     });
