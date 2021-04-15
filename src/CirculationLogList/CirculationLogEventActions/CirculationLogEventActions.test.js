@@ -77,7 +77,7 @@ describe('Given Circulation Log Event Actions', () => {
     stripes.hasPerm.mockReset();
   });
 
-  it('Than it should not render Dropdown actions when no actions available', () => {
+  it('Then it should not render Dropdown actions when no actions available', () => {
     renderCirculationLogEventActions();
 
     expect(Dropdown).not.toHaveBeenCalled();
@@ -92,7 +92,7 @@ describe('Given Circulation Log Event Actions', () => {
     //   // getHasLoanDetails.mockReturnValueOnce(true);
     // });
 
-    it('Than it should display action when it is available', () => {
+    it('Then it should display action when it is available', () => {
       stripes.hasPerm.mockReturnValue(true);
       items = [{ loanId: 1 }];
 
@@ -102,7 +102,7 @@ describe('Given Circulation Log Event Actions', () => {
       expect(getByText(`/users/${referenceIds.userId}/loans/view/${items[0].loanId}`)).toBeDefined();
     });
 
-    it('Than it should not display action when get multiple items', () => {
+    it('Then it should not display action when get multiple items', () => {
       stripes.hasPerm.mockReturnValue(true);
       items = [{ loanId: 1 }, { loanId: 2 }];
 
@@ -111,7 +111,7 @@ describe('Given Circulation Log Event Actions', () => {
       expect(queryByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeNull();
     });
 
-    it('Than it should not display action when no permission', () => {
+    it('Then it should not display action when no permission', () => {
       stripes.hasPerm.mockReturnValue(false);
 
       const { queryByText } = renderCirculationLogEventActions({ items, referenceIds });
@@ -128,7 +128,7 @@ describe('Given Circulation Log Event Actions', () => {
       getHasFeeDetails.mockReturnValueOnce(true);
     });
 
-    it('Than it should display when it is available', () => {
+    it('Then it should display when it is available', () => {
       stripes.hasPerm.mockReturnValue(true);
 
       const { getByText } = renderCirculationLogEventActions({ referenceIds });
@@ -137,7 +137,7 @@ describe('Given Circulation Log Event Actions', () => {
       expect(getByText(`/users/${referenceIds.userId}/accounts/view/${referenceIds.feeFineId}`)).toBeDefined();
     });
 
-    it('Than it should not display action when no parmission', () => {
+    it('Then it should not display action when no parmission', () => {
       stripes.hasPerm.mockReturnValue(false);
 
       const { queryByText } = renderCirculationLogEventActions({ referenceIds });
@@ -154,7 +154,7 @@ describe('Given Circulation Log Event Actions', () => {
       getHasUserDetails.mockReturnValueOnce(true);
     });
 
-    it('Than it should display when it is available', () => {
+    it('Then it should display when it is available', () => {
       stripes.hasPerm.mockReturnValue(true);
 
       const { getByText } = renderCirculationLogEventActions({ referenceIds });
@@ -163,7 +163,7 @@ describe('Given Circulation Log Event Actions', () => {
       expect(getByText(`/users/view/${referenceIds.userId}`)).toBeDefined();
     });
 
-    it('Than it should not display action when no parmission', () => {
+    it('Then it should not display action when no parmission', () => {
       stripes.hasPerm.mockReturnValue(false);
 
       const { queryByText } = renderCirculationLogEventActions({ referenceIds });
@@ -180,7 +180,7 @@ describe('Given Circulation Log Event Actions', () => {
       getHasRequestDetails.mockReturnValueOnce(true);
     });
 
-    it('Than it should display when it is available', () => {
+    it('Then it should display when it is available', () => {
       stripes.hasPerm.mockReturnValue(true);
 
       const { getByText } = renderCirculationLogEventActions({ referenceIds });
@@ -189,7 +189,7 @@ describe('Given Circulation Log Event Actions', () => {
       expect(getByText(`/requests/view/${referenceIds.requestId}`)).toBeDefined();
     });
 
-    it('Than it should not display action when no parmission', () => {
+    it('Then it should not display action when no parmission', () => {
       stripes.hasPerm.mockReturnValue(false);
 
       const { queryByText } = renderCirculationLogEventActions({ referenceIds });
@@ -206,7 +206,7 @@ describe('Given Circulation Log Event Actions', () => {
       getHasNoticePolicyDetails.mockReturnValueOnce(true);
     });
 
-    it('Than it should display when it is available', () => {
+    it('Then it should display when it is available', () => {
       stripes.hasPerm.mockReturnValue(true);
 
       const { getByText } = renderCirculationLogEventActions({ referenceIds });
@@ -215,7 +215,7 @@ describe('Given Circulation Log Event Actions', () => {
       expect(getByText(`/settings/circulation/notice-policies/${referenceIds.noticePolicyId}`)).toBeDefined();
     });
 
-    it('Than it should not display action when no parmission', () => {
+    it('Then it should not display action when no parmission', () => {
       stripes.hasPerm.mockReturnValue(false);
 
       const { queryByText } = renderCirculationLogEventActions({ referenceIds });
@@ -232,7 +232,7 @@ describe('Given Circulation Log Event Actions', () => {
       getHasTemplateDetails.mockReturnValueOnce(true);
     });
 
-    it('Than it should display when it is available', () => {
+    it('Then it should display when it is available', () => {
       stripes.hasPerm.mockReturnValue(true);
 
       const { getByText } = renderCirculationLogEventActions({ referenceIds });
@@ -241,7 +241,7 @@ describe('Given Circulation Log Event Actions', () => {
       expect(getByText(`/settings/circulation/patron-notices/${referenceIds.templateId}`)).toBeDefined();
     });
 
-    it('Than it should not display action when no parmission', () => {
+    it('Then it should not display action when no parmission', () => {
       stripes.hasPerm.mockReturnValue(false);
 
       const { queryByText } = renderCirculationLogEventActions({ referenceIds });
