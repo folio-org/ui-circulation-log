@@ -37,7 +37,7 @@ describe('Given Circulation Log Event Item', () => {
     stripes.hasPerm.mockReset();
   });
 
-  it('Than it should display link when it item has ids and there is permission', () => {
+  it('Then it should display link when it item has ids and there is permission', () => {
     stripes.hasPerm.mockReturnValue(true);
 
     const { getByText } = renderCirculationLogEventItem({ item });
@@ -46,7 +46,7 @@ describe('Given Circulation Log Event Item', () => {
     expect(getByText(item.itemBarcode)).toBeDefined();
   });
 
-  it('Than it should not display link when it item has ids and no permission', () => {
+  it('Then it should not display link when it item has ids and no permission', () => {
     stripes.hasPerm.mockReturnValue(false);
 
     const { getByText, queryByText } = renderCirculationLogEventItem({ item });
@@ -55,7 +55,7 @@ describe('Given Circulation Log Event Item', () => {
     expect(getByText(item.itemBarcode)).toBeDefined();
   });
 
-  it('Than it should not display link when it item has no ids and there is permission', () => {
+  it('Then it should not display link when it item has no ids and there is permission', () => {
     stripes.hasPerm.mockReturnValue(true);
 
     const { getByText, queryByText } =

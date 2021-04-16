@@ -9,20 +9,24 @@ import * as logEventActions from './utils';
 describe('CirculationLogEventActions utils', () => {
   describe('getHasLoanDetails', () => {
     it('should return false when load id is not defined', () => {
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.LOAN, undefined)).toBeFalsy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.LOAN, undefined, [{}])).toBeFalsy();
     });
 
     it('should return true when object supports loans passed with loan id', () => {
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.LOAN, 'loanId')).toBeTruthy();
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.FEE, 'loanId')).toBeTruthy();
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.REQUEST, 'loanId')).toBeTruthy();
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.NOTICE, 'loanId')).toBeTruthy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.LOAN, 'loanId', [{}])).toBeTruthy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.FEE, 'loanId', [{}])).toBeTruthy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.REQUEST, 'loanId', [{}])).toBeTruthy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.NOTICE, 'loanId', [{}])).toBeTruthy();
+    });
+
+    it('should return false when object have multiple items', () => {
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.LOAN, 'loanId', [{}, {}])).toBeFalsy();
     });
 
     it('should return false when object does not support loans passed with loan id', () => {
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.ITEM_BLOCK, 'loanId')).toBeFalsy();
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.MANUAL_BLOCK, 'loanId')).toBeFalsy();
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.PATRON_BLOCK, 'loanId')).toBeFalsy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.ITEM_BLOCK, 'loanId', [{}])).toBeFalsy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.MANUAL_BLOCK, 'loanId', [{}])).toBeFalsy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.PATRON_BLOCK, 'loanId', [{}])).toBeFalsy();
     });
   });
 

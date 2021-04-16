@@ -49,7 +49,7 @@ describe('Given Circulation Log List Container', () => {
     };
   });
 
-  it('Than it should fetch log events', async () => {
+  it('Then it should fetch log events', async () => {
     await act(async () => {
       await renderCirculationLogListContainer({ mutator });
     });
@@ -57,7 +57,7 @@ describe('Given Circulation Log List Container', () => {
     expect(mutator.logEventsListEvents.GET).toHaveBeenCalled();
   });
 
-  it('Than it should fetch service points', async () => {
+  it('Then it should fetch service points', async () => {
     await act(async () => {
       await renderCirculationLogListContainer({ mutator });
     });
@@ -65,7 +65,7 @@ describe('Given Circulation Log List Container', () => {
     expect(mutator.logEventsServicePoints.GET).toHaveBeenCalled();
   });
 
-  it('Than it should display Circulation Log List', async () => {
+  it('Then it should display Circulation Log List', async () => {
     let getByText;
 
     await act(async () => {

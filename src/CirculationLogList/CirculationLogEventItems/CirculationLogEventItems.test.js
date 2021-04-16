@@ -15,13 +15,13 @@ const renderCirculationLogEventItems = (items) => (render(
 ));
 
 describe('Given Circulation Log Event Items', () => {
-  it('Than it should not display anything if items are not defined', () => {
+  it('Then it should not display anything if items are not defined', () => {
     const { queryByText } = renderCirculationLogEventItems();
 
     expect(queryByText(getItemBarcode())).toBeNull();
   });
 
-  it('Than it should display item barcode without fold toogle when only 1 item is passed', () => {
+  it('Then it should display item barcode without fold toogle when only 1 item is passed', () => {
     const items = [{ itemBarcode: getItemBarcode() }];
     const { queryByText, getByText } = renderCirculationLogEventItems(items);
 
@@ -29,7 +29,7 @@ describe('Given Circulation Log Event Items', () => {
     expect(queryByText('ui-circulation-log.logEvent.item.showMore')).toBeNull();
   });
 
-  it('Than it should display item barcode with fold toogle when several items are passed', () => {
+  it('Then it should display item barcode with fold toogle when several items are passed', () => {
     const items = [{ itemBarcode: getItemBarcode() }, { itemBarcode: getItemBarcode() }];
     const { queryByText, getByText } = renderCirculationLogEventItems(items);
 
@@ -38,7 +38,7 @@ describe('Given Circulation Log Event Items', () => {
     expect(queryByText('ui-circulation-log.logEvent.item.showMore')).not.toBeNull();
   });
 
-  it('Than it should display all item barcodes when several items are passed and toggle is pressed', () => {
+  it('Then it should display all item barcodes when several items are passed and toggle is pressed', () => {
     const items = [{ itemBarcode: getItemBarcode() }, { itemBarcode: getItemBarcode() }];
     const { queryByText, getByText } = renderCirculationLogEventItems(items);
 
