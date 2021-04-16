@@ -2,8 +2,8 @@ import {
   LOG_EVENT_OBJECTS,
 } from '../constants';
 
-export const getHasLoanDetails = (object, loanId) => (
-  loanId
+export const getHasLoanDetails = (object, loanId, items) => (
+  loanId && items.length === 1
   && (
     object === LOG_EVENT_OBJECTS.LOAN
     || object === LOG_EVENT_OBJECTS.FEE

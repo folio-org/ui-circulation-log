@@ -63,13 +63,13 @@ const renderCirculationLogList = ({ logEvents = [] }) => (render(
 ));
 
 describe('Given Circulation Log List', () => {
-  it('Than it should display log events filter pane', async () => {
+  it('Then it should display log events filter pane', async () => {
     const { getByText } = renderCirculationLogList({});
 
     expect(getByText('CirculationLogListFilter')).toBeDefined();
   });
 
-  it('Than it should display log events table header', async () => {
+  it('Then it should display log events table header', async () => {
     const logEvent = getLogEvent();
     const { getByText } = renderCirculationLogList({ logEvents: [logEvent] });
 
@@ -83,7 +83,7 @@ describe('Given Circulation Log List', () => {
     expect(getByText('ui-circulation-log.logEvent.description')).toBeDefined();
   });
 
-  it('Than it should display log events table row', async () => {
+  it('Then it should display log events table row', async () => {
     const logEvent = getLogEvent();
     const { getByText } = renderCirculationLogList({ logEvents: [logEvent] });
 

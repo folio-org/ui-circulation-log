@@ -23,7 +23,7 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled, onFocus, fo
   });
 
   const handleFocus = name => event => {
-    focusRef.current = refs[name].current;
+    if (typeof focusRef === 'object') focusRef.current = refs[name].current;
 
     return onFocus?.(event);
   };
