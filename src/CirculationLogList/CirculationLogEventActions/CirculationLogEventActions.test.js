@@ -53,11 +53,11 @@ jest.mock('./utils', () => ({
   getHasNoticePolicyDetails: jest.fn(),
 }));
 
-const renderCirculationLogEventActions = ({ object, items, referenceIds } = {}) => (render(
+const renderCirculationLogEventActions = ({ objectType, items, referenceIds } = {}) => (render(
   <CirculationLogEventActions
     items={items}
     referenceIds={referenceIds}
-    object={object}
+    objectType={objectType}
   />,
 ));
 
@@ -93,7 +93,7 @@ describe('Given Circulation Log Event Actions', () => {
       items = [{ loanId: 1 }];
 
       const { getByText, queryByText } = renderCirculationLogEventActions({
-        object: LOG_EVENT_OBJECTS.LOAN,
+        objectType: LOG_EVENT_OBJECTS.LOAN,
         items,
         referenceIds,
       });

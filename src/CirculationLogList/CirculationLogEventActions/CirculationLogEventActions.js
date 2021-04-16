@@ -21,25 +21,25 @@ import {
   getHasTemplateDetails,
 } from './utils';
 
-export const CirculationLogEventActions = ({ object, items, referenceIds }) => {
+export const CirculationLogEventActions = ({ objectType, items, referenceIds }) => {
   const intl = useIntl();
   const stripes = useStripes();
   const { feeFineId, userId, requestId, noticePolicyId, templateId } = referenceIds;
-  const { loanId } = items[0];
+  const { loanId } = items[0] || {};
 
   const hasLoanDetails =
-    getHasLoanDetails(object, loanId, items) && stripes.hasPerm('ui-users.loans.view');
+    getHasLoanDetails(objectType, loanId, items) && stripes.hasPerm('ui-users.loans.view');
   const hasUserDetails =
-    getHasUserDetails(object, userId) && stripes.hasPerm('ui-users.view');
+    getHasUserDetails(objectType, userId) && stripes.hasPerm('ui-users.view');
   const hasFeeDetails =
-    getHasFeeDetails(object, feeFineId) && stripes.hasPerm('ui-users.feesfines.actions.all');
+    getHasFeeDetails(objectType, feeFineId) && stripes.hasPerm('ui-users.feesfines.actions.all');
   const hasRequestDetails =
-    getHasRequestDetails(object, requestId) && stripes.hasPerm('ui-users.requests.all');
+    getHasRequestDetails(objectType, requestId) && stripes.hasPerm('ui-users.requests.all');
   const hasNoticePolicyDetails =
-    getHasNoticePolicyDetails(object, noticePolicyId)
+    getHasNoticePolicyDetails(objectType, noticePolicyId)
     && stripes.hasPerm('ui-circulation.settings.notice-policies');
   const hasTemplateDetails =
-    getHasTemplateDetails(object, templateId)
+    getHasTemplateDetails(objectType, templateId)
     && stripes.hasPerm('ui-circulation.settings.notice-templates');
 
   const renderTrigger = useCallback(({ triggerRef, onToggle, ariaProps, keyHandler }) => (
@@ -162,12 +162,12 @@ export const CirculationLogEventActions = ({ object, items, referenceIds }) => {
 };
 
 CirculationLogEventActions.propTypes = {
-  object: PropTypes.string,
+  objectType: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.object),
   referenceIds: PropTypes.object,
 };
 
 CirculationLogEventActions.defaultProps = {
-  items: [{}],
+  items: [],
   referenceIds: {},
 };

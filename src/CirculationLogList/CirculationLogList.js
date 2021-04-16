@@ -56,7 +56,7 @@ const getResultsFormatter = (servicePointsMap) => ({
   servicePoint: logEvent => servicePointsMap[logEvent.servicePointId],
   actions: logEvent => (
     <CirculationLogEventActions
-      object={logEvent.object}
+      objectType={logEvent.object}
       items={logEvent.items}
       referenceIds={logEvent.linkToIds}
     />
