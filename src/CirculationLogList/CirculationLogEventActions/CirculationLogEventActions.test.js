@@ -10,12 +10,10 @@ import { CirculationLogEventActions } from './CirculationLogEventActions';
 
 const mockHasPerm = jest.fn();
 
-jest.mock('@folio/stripes/core', () => {
-  return {
-    ...jest.requireActual('@folio/stripes/core'),
-    useStripes: () => ({ hasPerm: mockHasPerm }),
-  };
-});
+jest.mock('@folio/stripes/core', () => ({
+  ...jest.requireActual('@folio/stripes/core'),
+  useStripes: () => ({ hasPerm: mockHasPerm }),
+}));
 
 const renderCirculationLogEventActions = ({ objectType, items, referenceIds } = {}) => {
   render(
