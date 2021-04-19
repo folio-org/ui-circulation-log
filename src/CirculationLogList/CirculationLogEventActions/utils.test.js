@@ -8,34 +8,38 @@ import * as logEventActions from './utils';
 
 describe('CirculationLogEventActions utils', () => {
   describe('getHasLoanDetails', () => {
-    it('should return false when load id is not defined', () => {
+    it('should return false when user id is not defined', () => {
       expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.LOAN, undefined, [{}])).toBeFalsy();
     });
 
+    it('should return false when loan id is not defined', () => {
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.LOAN, 'userId', [{}])).toBeFalsy();
+    });
+
     it('should return true when object supports loans passed with loan id', () => {
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.LOAN, 'loanId', [{}])).toBeTruthy();
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.FEE, 'loanId', [{}])).toBeTruthy();
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.REQUEST, 'loanId', [{}])).toBeTruthy();
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.NOTICE, 'loanId', [{}])).toBeTruthy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.LOAN, 'userId', [{ loanId: 0 }])).toBeTruthy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.FEE, 'userId', [{ loanId: 0 }])).toBeTruthy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.REQUEST, 'userId', [{ loanId: 0 }])).toBeTruthy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.NOTICE, 'userId', [{ loanId: 0 }])).toBeTruthy();
     });
 
     it('should return false when object have multiple items', () => {
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.LOAN, 'loanId', [{}, {}])).toBeFalsy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.LOAN, 'userId', [{ loanId: 1 }, { loanId: 2 }])).toBeFalsy();
     });
 
     it('should return false when object does not support loans passed with loan id', () => {
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.ITEM_BLOCK, 'loanId', [{}])).toBeFalsy();
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.MANUAL_BLOCK, 'loanId', [{}])).toBeFalsy();
-      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.PATRON_BLOCK, 'loanId', [{}])).toBeFalsy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.ITEM_BLOCK, 'userId', [{ loanId: 1 }])).toBeFalsy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.MANUAL_BLOCK, 'userId', [{ loanId: 1 }])).toBeFalsy();
+      expect(logEventActions.getHasLoanDetails(LOG_EVENT_OBJECTS.PATRON_BLOCK, 'userId', [{ loanId: 1 }])).toBeFalsy();
     });
   });
 
   describe('getHasUserDetails', () => {
-    it('should return false when load id is not defined', () => {
+    it('should return false when user id is not defined', () => {
       expect(logEventActions.getHasUserDetails(LOG_EVENT_OBJECTS.LOAN, undefined)).toBeFalsy();
     });
 
-    it('should return true when object supports loans passed with loan id', () => {
+    it('should return true when object supports user details', () => {
       expect(logEventActions.getHasUserDetails(LOG_EVENT_OBJECTS.LOAN, 'userId')).toBeTruthy();
       expect(logEventActions.getHasUserDetails(LOG_EVENT_OBJECTS.FEE, 'userId')).toBeTruthy();
       expect(logEventActions.getHasUserDetails(LOG_EVENT_OBJECTS.REQUEST, 'userId')).toBeTruthy();
@@ -43,7 +47,7 @@ describe('CirculationLogEventActions utils', () => {
       expect(logEventActions.getHasUserDetails(LOG_EVENT_OBJECTS.MANUAL_BLOCK, 'userId')).toBeTruthy();
     });
 
-    it('should return false when object does not support loans passed with loan id', () => {
+    it('should return false when object does not support user details', () => {
       expect(logEventActions.getHasUserDetails(LOG_EVENT_OBJECTS.ITEM_BLOCK, 'userId')).toBeFalsy();
       expect(logEventActions.getHasUserDetails(LOG_EVENT_OBJECTS.PATRON_BLOCK, 'userId')).toBeFalsy();
     });
