@@ -4,6 +4,7 @@
 
 * [UICIRCLOG-51](https://issues.folio.org/browse/UICIRCLOG-51) Add support for circ action "Created through override".
 * [UICIRCLOG-57](https://issues.folio.org/browse/UICIRCLOG-57) Removing "loan details" option for log entries containing multiple barcodes.
+* [UICIRCLOG-59](https://issues.folio.org/browse/UICIRCLOG-59) Not showing the links to Loan details if user ID is undefined.
 
 ## [1.1.0](https://github.com/folio-org/ui-circulation-log/tree/v1.1.0) (2021-03-18)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.0.1...v1.1.0)
