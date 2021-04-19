@@ -1,8 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
-
-import '@folio/stripes-acq-components/test/jest/__mock__';
+import { byRole } from 'testing-library-selector';
 
 import {
   LOG_EVENT_OBJECTS,
@@ -50,24 +49,24 @@ describe('Event Actions', () => {
       items: [{ loanId: 'loanId' }],
       referenceIds: { userId: 'userId' },
     };
+
+    const menuItem = byRole('menuitem', { name: /loanDetails/ });
     const url = `/users/${props.referenceIds.userId}/loans/view/${props.items[0].loanId}`;
 
     it('is shown when available', () => {
       renderCirculationLogEventActions(props);
 
-      const menuItem = screen.getByRole('menuitem', { name: /loanDetails/ });
-
-      expect(menuItem).toBeVisible();
-      expect(menuItem).toHaveAttribute('href', url);
+      expect(menuItem.get()).toBeVisible();
+      expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
     it('is not shown for log entry with multiple items', () => {
       renderCirculationLogEventActions({
         ...props,
-        items: [{ loanId: 0 }, { loanId: 1 }],
+        items: [{ loanId: 0 }, { loanId: 0 }],
       });
 
-      expect(screen.queryByRole('menuitem', { name: /loanDetails/ })).not.toBeInTheDocument();
+      expect(menuItem.query()).not.toBeInTheDocument();
     });
 
     it('is not shown without permission', () => {
@@ -75,7 +74,7 @@ describe('Event Actions', () => {
 
       renderCirculationLogEventActions(props);
 
-      expect(screen.queryByRole('menuitem', { name: /loanDetails/ })).not.toBeInTheDocument();
+      expect(menuItem.query()).not.toBeInTheDocument();
     });
 
     it('is not shown without user ID', () => {
@@ -86,7 +85,7 @@ describe('Event Actions', () => {
         referenceIds: { userId: undefined },
       });
 
-      expect(screen.queryByRole('menuitem', { name: /loanDetails/ })).not.toBeInTheDocument();
+      expect(menuItem.query()).not.toBeInTheDocument();
     });
 
     it('is not shown without loan ID', () => {
@@ -97,7 +96,7 @@ describe('Event Actions', () => {
         items: [{ loanId: undefined }],
       });
 
-      expect(screen.queryByRole('menuitem', { name: /loanDetails/ })).not.toBeInTheDocument();
+      expect(menuItem.query()).not.toBeInTheDocument();
     });
   });
 
@@ -106,15 +105,15 @@ describe('Event Actions', () => {
       objectType: LOG_EVENT_OBJECTS.FEE,
       referenceIds: { userId: 'userId', feeFineId: 'feeFineId' },
     };
+
+    const menuItem = byRole('menuitem', { name: /feeDetails/ });
     const url = `/users/${props.referenceIds.userId}/accounts/view/${props.referenceIds.feeFineId}`;
 
     it('is shown when available', () => {
       renderCirculationLogEventActions(props);
 
-      const menuItem = screen.getByRole('menuitem', { name: /feeDetails/ });
-
-      expect(menuItem).toBeVisible();
-      expect(menuItem).toHaveAttribute('href', url);
+      expect(menuItem.get()).toBeVisible();
+      expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
     it('is not shown without permission', () => {
@@ -122,7 +121,7 @@ describe('Event Actions', () => {
 
       renderCirculationLogEventActions(props);
 
-      expect(screen.queryByRole('menuitem', { name: /feeDetails/ })).not.toBeInTheDocument();
+      expect(menuItem.query()).not.toBeInTheDocument();
     });
   });
 
@@ -131,15 +130,15 @@ describe('Event Actions', () => {
       objectType: LOG_EVENT_OBJECTS.LOAN,
       referenceIds: { userId: 'userId' },
     };
+
+    const menuItem = byRole('menuitem', { name: /userDetails/ });
     const url = `/users/view/${props.referenceIds.userId}`;
 
     it('is shown when available', () => {
       renderCirculationLogEventActions(props);
 
-      const menuItem = screen.getByRole('menuitem', { name: /userDetails/ });
-
-      expect(menuItem).toBeVisible();
-      expect(menuItem).toHaveAttribute('href', url);
+      expect(menuItem.get()).toBeVisible();
+      expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
     it('is not shown without permission', () => {
@@ -147,7 +146,7 @@ describe('Event Actions', () => {
 
       renderCirculationLogEventActions(props);
 
-      expect(screen.queryByRole('menuitem', { name: /userDetails/ })).not.toBeInTheDocument();
+      expect(menuItem.query()).not.toBeInTheDocument();
     });
   });
 
@@ -156,15 +155,15 @@ describe('Event Actions', () => {
       objectType: LOG_EVENT_OBJECTS.REQUEST,
       referenceIds: { requestId: 'requestId' },
     };
+
+    const menuItem = byRole('menuitem', { name: /requestDetails/ });
     const url = `/requests/view/${props.referenceIds.requestId}`;
 
     it('is shown when available', () => {
       renderCirculationLogEventActions(props);
 
-      const menuItem = screen.getByRole('menuitem', { name: /requestDetails/ });
-
-      expect(menuItem).toBeVisible();
-      expect(menuItem).toHaveAttribute('href', url);
+      expect(menuItem.get()).toBeVisible();
+      expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
     it('is not shown without permission', () => {
@@ -172,7 +171,7 @@ describe('Event Actions', () => {
 
       renderCirculationLogEventActions(props);
 
-      expect(screen.queryByRole('menuitem', { name: /requestDetails/ })).not.toBeInTheDocument();
+      expect(menuItem.query()).not.toBeInTheDocument();
     });
   });
 
@@ -181,15 +180,15 @@ describe('Event Actions', () => {
       objectType: LOG_EVENT_OBJECTS.NOTICE,
       referenceIds: { noticePolicyId: 'noticePolicyId' },
     };
+
+    const menuItem = byRole('menuitem', { name: /noticePolicyDetails/ });
     const url = `/settings/circulation/notice-policies/${props.referenceIds.noticePolicyId}`;
 
     it('is shown when available', () => {
       renderCirculationLogEventActions(props);
 
-      const menuItem = screen.getByRole('menuitem', { name: /noticePolicyDetails/ });
-
-      expect(menuItem).toBeVisible();
-      expect(menuItem).toHaveAttribute('href', url);
+      expect(menuItem.get()).toBeVisible();
+      expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
     it('is not shown without permission', () => {
@@ -197,7 +196,7 @@ describe('Event Actions', () => {
 
       renderCirculationLogEventActions(props);
 
-      expect(screen.queryByRole('menuitem', { name: /noticePolicyDetails/ })).not.toBeInTheDocument();
+      expect(menuItem.query()).not.toBeInTheDocument();
     });
   });
 
@@ -206,15 +205,15 @@ describe('Event Actions', () => {
       objectType: LOG_EVENT_OBJECTS.NOTICE,
       referenceIds: { templateId: 'templateId' },
     };
+
+    const menuItem = byRole('menuitem', { name: /templateDetails/ });
     const url = `/settings/circulation/patron-notices/${props.referenceIds.templateId}`;
 
     it('is shown when available', () => {
       renderCirculationLogEventActions(props);
 
-      const menuItem = screen.getByRole('menuitem', { name: /templateDetails/ });
-
-      expect(menuItem).toBeVisible();
-      expect(menuItem).toHaveAttribute('href', url);
+      expect(menuItem.get()).toBeVisible();
+      expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
     it('is not shown without permission', () => {
@@ -222,7 +221,7 @@ describe('Event Actions', () => {
 
       renderCirculationLogEventActions(props);
 
-      expect(screen.queryByRole('menuitem', { name: /templateDetails/ })).not.toBeInTheDocument();
+      expect(menuItem.query()).not.toBeInTheDocument();
     });
   });
 });
