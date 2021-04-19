@@ -1,252 +1,228 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import { render, screen } from '@testing-library/react';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
-
-import {
-  useStripes,
-} from '@folio/stripes/core';
-import {
-  Dropdown,
-} from '@folio/stripes/components';
 
 import {
   LOG_EVENT_OBJECTS,
 } from '../constants';
 import { CirculationLogEventActions } from './CirculationLogEventActions';
-import {
-  getHasUserDetails,
-  getHasFeeDetails,
-  getHasRequestDetails,
-  getHasNoticePolicyDetails,
-  getHasTemplateDetails,
-} from './utils';
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  Link: jest.fn(({ children, to }) => (
-    <>
-      <span>{children}</span>
-      <span>{to}</span>
-    </>
-  )),
-}));
+const mockHasPerm = jest.fn();
 
-jest.mock('@folio/stripes/components', () => {
+jest.mock('@folio/stripes/core', () => {
   return {
-    ...jest.requireActual('@folio/stripes/components'),
-    Dropdown: jest.fn(({ renderTrigger, renderMenu }) => (
-      <>
-        {renderTrigger({ ariaProps: {} })}
-        {renderMenu({ open: true })}
-      </>
-    )),
+    ...jest.requireActual('@folio/stripes/core'),
+    useStripes: () => ({ hasPerm: mockHasPerm }),
   };
 });
 
-jest.mock('./utils', () => ({
-  ...jest.requireActual('./utils'),
-  getHasFeeDetails: jest.fn(),
-  getHasUserDetails: jest.fn(),
-  getHasRequestDetails: jest.fn(),
-  getHasTemplateDetails: jest.fn(),
-  getHasNoticePolicyDetails: jest.fn(),
-}));
+const renderCirculationLogEventActions = ({ objectType, items, referenceIds } = {}) => {
+  render(
+    <CirculationLogEventActions
+      items={items}
+      referenceIds={referenceIds}
+      objectType={objectType}
+    />,
+    { wrapper: MemoryRouter },
+  );
 
-const renderCirculationLogEventActions = ({ objectType, items, referenceIds } = {}) => (render(
-  <CirculationLogEventActions
-    items={items}
-    referenceIds={referenceIds}
-    objectType={objectType}
-  />,
-));
+  const button = screen.queryByRole('button', { name: /actions/ });
 
-describe('Given Circulation Log Event Actions', () => {
-  let stripes;
+  if (button) button.click();
+};
 
+describe('Event Actions', () => {
   beforeEach(() => {
-    Dropdown.mockClear();
-
-    getHasFeeDetails.mockReturnValueOnce(false);
-    getHasUserDetails.mockReturnValueOnce(false);
-    getHasRequestDetails.mockReturnValueOnce(false);
-    getHasTemplateDetails.mockReturnValueOnce(false);
-    getHasNoticePolicyDetails.mockReturnValueOnce(false);
-
-    stripes = useStripes();
-
-    stripes.hasPerm.mockReset();
+    mockHasPerm.mockReset().mockReturnValue(true);
   });
 
-  it('Then it should not render Dropdown actions when no actions available', () => {
+  it('does not render the menu when no actions available', () => {
     renderCirculationLogEventActions();
 
-    expect(Dropdown).not.toHaveBeenCalled();
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
   });
 
-  describe('And Loan details action', () => {
-    const referenceIds = { userId: 1 };
-    let items;
+  describe('Loan', () => {
+    const props = {
+      objectType: LOG_EVENT_OBJECTS.LOAN,
+      items: [{ loanId: 'loanId' }],
+      referenceIds: { userId: 'userId' },
+    };
+    const url = `/users/${props.referenceIds.userId}/loans/view/${props.items[0].loanId}`;
 
-    it('Then it should display action when it is available', () => {
-      stripes.hasPerm.mockReturnValue(true);
-      items = [{ loanId: 1 }];
+    it('is shown when available', () => {
+      renderCirculationLogEventActions(props);
 
-      const { getByText, queryByText } = renderCirculationLogEventActions({
-        objectType: LOG_EVENT_OBJECTS.LOAN,
-        items,
-        referenceIds,
+      const menuItem = screen.getByRole('menuitem', { name: /loanDetails/ });
+
+      expect(menuItem).toBeVisible();
+      expect(menuItem).toHaveAttribute('href', url);
+    });
+
+    it('is not shown for log entry with multiple items', () => {
+      renderCirculationLogEventActions({
+        ...props,
+        items: [{ loanId: 0 }, { loanId: 1 }],
       });
 
-      expect(queryByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeDefined();
-      expect(getByText(`/users/${referenceIds.userId}/loans/view/${items[0].loanId}`)).toBeDefined();
+      expect(screen.queryByRole('menuitem', { name: /loanDetails/ })).not.toBeInTheDocument();
     });
 
-    it('Then it should not display action when get multiple items', () => {
-      stripes.hasPerm.mockReturnValue(true);
-      items = [{ loanId: 1 }, { loanId: 2 }];
+    it('is not shown without permission', () => {
+      mockHasPerm.mockReturnValue(false);
 
-      const { queryByText } = renderCirculationLogEventActions({ items, referenceIds });
+      renderCirculationLogEventActions(props);
 
-      expect(queryByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeNull();
+      expect(screen.queryByRole('menuitem', { name: /loanDetails/ })).not.toBeInTheDocument();
     });
 
-    it('Then it should not display action when no permission', () => {
-      stripes.hasPerm.mockReturnValue(false);
+    it('is not shown without user ID', () => {
+      mockHasPerm.mockReturnValue(false);
 
-      const { queryByText } = renderCirculationLogEventActions({ items, referenceIds });
+      renderCirculationLogEventActions({
+        ...props,
+        referenceIds: { userId: undefined },
+      });
 
-      expect(queryByText('ui-circulation-log.logEvent.actions.loanDetails')).toBeNull();
-    });
-  });
-
-  describe('And Fee details action', () => {
-    const referenceIds = { userId: 1, feeFineId: 1 };
-
-    beforeEach(() => {
-      getHasFeeDetails.mockReset();
-      getHasFeeDetails.mockReturnValueOnce(true);
+      expect(screen.queryByRole('menuitem', { name: /loanDetails/ })).not.toBeInTheDocument();
     });
 
-    it('Then it should display when it is available', () => {
-      stripes.hasPerm.mockReturnValue(true);
+    it('is not shown without loan ID', () => {
+      mockHasPerm.mockReturnValue(false);
 
-      const { getByText } = renderCirculationLogEventActions({ referenceIds });
+      renderCirculationLogEventActions({
+        ...props,
+        items: [{ loanId: undefined }],
+      });
 
-      expect(getByText('ui-circulation-log.logEvent.actions.feeDetails')).toBeDefined();
-      expect(getByText(`/users/${referenceIds.userId}/accounts/view/${referenceIds.feeFineId}`)).toBeDefined();
-    });
-
-    it('Then it should not display action when no parmission', () => {
-      stripes.hasPerm.mockReturnValue(false);
-
-      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
-
-      expect(queryByText('ui-circulation-log.logEvent.actions.feeDetails')).toBeNull();
+      expect(screen.queryByRole('menuitem', { name: /loanDetails/ })).not.toBeInTheDocument();
     });
   });
 
-  describe('And User details action', () => {
-    const referenceIds = { userId: 1 };
+  describe('Fee', () => {
+    const props = {
+      objectType: LOG_EVENT_OBJECTS.FEE,
+      referenceIds: { userId: 'userId', feeFineId: 'feeFineId' },
+    };
+    const url = `/users/${props.referenceIds.userId}/accounts/view/${props.referenceIds.feeFineId}`;
 
-    beforeEach(() => {
-      getHasUserDetails.mockReset();
-      getHasUserDetails.mockReturnValueOnce(true);
+    it('is shown when available', () => {
+      renderCirculationLogEventActions(props);
+
+      const menuItem = screen.getByRole('menuitem', { name: /feeDetails/ });
+
+      expect(menuItem).toBeVisible();
+      expect(menuItem).toHaveAttribute('href', url);
     });
 
-    it('Then it should display when it is available', () => {
-      stripes.hasPerm.mockReturnValue(true);
+    it('is not shown without permission', () => {
+      mockHasPerm.mockReturnValue(false);
 
-      const { getByText } = renderCirculationLogEventActions({ referenceIds });
+      renderCirculationLogEventActions(props);
 
-      expect(getByText('ui-circulation-log.logEvent.actions.userDetails')).toBeDefined();
-      expect(getByText(`/users/view/${referenceIds.userId}`)).toBeDefined();
-    });
-
-    it('Then it should not display action when no parmission', () => {
-      stripes.hasPerm.mockReturnValue(false);
-
-      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
-
-      expect(queryByText('ui-circulation-log.logEvent.actions.userDetails')).toBeNull();
-    });
-  });
-
-  describe('And Request details action', () => {
-    const referenceIds = { requestId: 1 };
-
-    beforeEach(() => {
-      getHasRequestDetails.mockReset();
-      getHasRequestDetails.mockReturnValueOnce(true);
-    });
-
-    it('Then it should display when it is available', () => {
-      stripes.hasPerm.mockReturnValue(true);
-
-      const { getByText } = renderCirculationLogEventActions({ referenceIds });
-
-      expect(getByText('ui-circulation-log.logEvent.actions.requestDetails')).toBeDefined();
-      expect(getByText(`/requests/view/${referenceIds.requestId}`)).toBeDefined();
-    });
-
-    it('Then it should not display action when no parmission', () => {
-      stripes.hasPerm.mockReturnValue(false);
-
-      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
-
-      expect(queryByText('ui-circulation-log.logEvent.actions.requestDetails')).toBeNull();
+      expect(screen.queryByRole('menuitem', { name: /feeDetails/ })).not.toBeInTheDocument();
     });
   });
 
-  describe('And Notice policy details action', () => {
-    const referenceIds = { noticePolicyId: 1 };
+  describe('User', () => {
+    const props = {
+      objectType: LOG_EVENT_OBJECTS.LOAN,
+      referenceIds: { userId: 'userId' },
+    };
+    const url = `/users/view/${props.referenceIds.userId}`;
 
-    beforeEach(() => {
-      getHasNoticePolicyDetails.mockReset();
-      getHasNoticePolicyDetails.mockReturnValueOnce(true);
+    it('is shown when available', () => {
+      renderCirculationLogEventActions(props);
+
+      const menuItem = screen.getByRole('menuitem', { name: /userDetails/ });
+
+      expect(menuItem).toBeVisible();
+      expect(menuItem).toHaveAttribute('href', url);
     });
 
-    it('Then it should display when it is available', () => {
-      stripes.hasPerm.mockReturnValue(true);
+    it('is not shown without permission', () => {
+      mockHasPerm.mockReturnValue(false);
 
-      const { getByText } = renderCirculationLogEventActions({ referenceIds });
+      renderCirculationLogEventActions(props);
 
-      expect(getByText('ui-circulation-log.logEvent.actions.noticePolicyDetails')).toBeDefined();
-      expect(getByText(`/settings/circulation/notice-policies/${referenceIds.noticePolicyId}`)).toBeDefined();
-    });
-
-    it('Then it should not display action when no parmission', () => {
-      stripes.hasPerm.mockReturnValue(false);
-
-      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
-
-      expect(queryByText('ui-circulation-log.logEvent.actions.noticePolicyDetails')).toBeNull();
+      expect(screen.queryByRole('menuitem', { name: /userDetails/ })).not.toBeInTheDocument();
     });
   });
 
-  describe('And Template details action', () => {
-    const referenceIds = { templateId: 1 };
+  describe('Request', () => {
+    const props = {
+      objectType: LOG_EVENT_OBJECTS.REQUEST,
+      referenceIds: { requestId: 'requestId' },
+    };
+    const url = `/requests/view/${props.referenceIds.requestId}`;
 
-    beforeEach(() => {
-      getHasTemplateDetails.mockReset();
-      getHasTemplateDetails.mockReturnValueOnce(true);
+    it('is shown when available', () => {
+      renderCirculationLogEventActions(props);
+
+      const menuItem = screen.getByRole('menuitem', { name: /requestDetails/ });
+
+      expect(menuItem).toBeVisible();
+      expect(menuItem).toHaveAttribute('href', url);
     });
 
-    it('Then it should display when it is available', () => {
-      stripes.hasPerm.mockReturnValue(true);
+    it('is not shown without permission', () => {
+      mockHasPerm.mockReturnValue(false);
 
-      const { getByText } = renderCirculationLogEventActions({ referenceIds });
+      renderCirculationLogEventActions(props);
 
-      expect(getByText('ui-circulation-log.logEvent.actions.templateDetails')).toBeDefined();
-      expect(getByText(`/settings/circulation/patron-notices/${referenceIds.templateId}`)).toBeDefined();
+      expect(screen.queryByRole('menuitem', { name: /requestDetails/ })).not.toBeInTheDocument();
+    });
+  });
+
+  describe('Notice policy', () => {
+    const props = {
+      objectType: LOG_EVENT_OBJECTS.NOTICE,
+      referenceIds: { noticePolicyId: 'noticePolicyId' },
+    };
+    const url = `/settings/circulation/notice-policies/${props.referenceIds.noticePolicyId}`;
+
+    it('is shown when available', () => {
+      renderCirculationLogEventActions(props);
+
+      const menuItem = screen.getByRole('menuitem', { name: /noticePolicyDetails/ });
+
+      expect(menuItem).toBeVisible();
+      expect(menuItem).toHaveAttribute('href', url);
     });
 
-    it('Then it should not display action when no parmission', () => {
-      stripes.hasPerm.mockReturnValue(false);
+    it('is not shown without permission', () => {
+      mockHasPerm.mockReturnValue(false);
 
-      const { queryByText } = renderCirculationLogEventActions({ referenceIds });
+      renderCirculationLogEventActions(props);
 
-      expect(queryByText('ui-circulation-log.logEvent.actions.templateDetails')).toBeNull();
+      expect(screen.queryByRole('menuitem', { name: /noticePolicyDetails/ })).not.toBeInTheDocument();
+    });
+  });
+
+  describe('Template', () => {
+    const props = {
+      objectType: LOG_EVENT_OBJECTS.NOTICE,
+      referenceIds: { templateId: 'templateId' },
+    };
+    const url = `/settings/circulation/patron-notices/${props.referenceIds.templateId}`;
+
+    it('is shown when available', () => {
+      renderCirculationLogEventActions(props);
+
+      const menuItem = screen.getByRole('menuitem', { name: /templateDetails/ });
+
+      expect(menuItem).toBeVisible();
+      expect(menuItem).toHaveAttribute('href', url);
+    });
+
+    it('is not shown without permission', () => {
+      mockHasPerm.mockReturnValue(false);
+
+      renderCirculationLogEventActions(props);
+
+      expect(screen.queryByRole('menuitem', { name: /templateDetails/ })).not.toBeInTheDocument();
     });
   });
 });
