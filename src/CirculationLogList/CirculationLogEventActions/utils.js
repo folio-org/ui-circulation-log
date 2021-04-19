@@ -2,15 +2,24 @@ import {
   LOG_EVENT_OBJECTS,
 } from '../constants';
 
-export const getHasLoanDetails = (object, loanId, items) => (
-  loanId && items.length === 1
-  && (
-    object === LOG_EVENT_OBJECTS.LOAN
-    || object === LOG_EVENT_OBJECTS.FEE
-    || object === LOG_EVENT_OBJECTS.REQUEST
-    || object === LOG_EVENT_OBJECTS.NOTICE
-  )
-);
+const objectsWithLoanDetails = new Set([
+  LOG_EVENT_OBJECTS.LOAN,
+  LOG_EVENT_OBJECTS.FEE,
+  LOG_EVENT_OBJECTS.REQUEST,
+  LOG_EVENT_OBJECTS.NOTICE,
+]);
+
+export const getHasLoanDetails = (object, userId, items) => {
+  if (userId === undefined || userId === null) return false;
+
+  if (items?.length !== 1) return false;
+
+  const { loanId } = items[0];
+
+  if (loanId === undefined || loanId === null) return false;
+
+  return objectsWithLoanDetails.has(object);
+};
 
 export const getHasUserDetails = (object, userId) => (
   userId

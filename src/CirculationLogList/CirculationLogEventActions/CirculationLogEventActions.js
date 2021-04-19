@@ -28,7 +28,7 @@ export const CirculationLogEventActions = ({ objectType, items, referenceIds }) 
   const { loanId } = items[0] || {};
 
   const hasLoanDetails =
-    getHasLoanDetails(objectType, loanId, items) && stripes.hasPerm('ui-users.loans.view');
+    getHasLoanDetails(objectType, userId, items) && stripes.hasPerm('ui-users.loans.view');
   const hasUserDetails =
     getHasUserDetails(objectType, userId) && stripes.hasPerm('ui-users.view');
   const hasFeeDetails =
