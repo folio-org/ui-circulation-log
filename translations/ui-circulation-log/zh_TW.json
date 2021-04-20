@@ -71,5 +71,6 @@
     "logEvents.actions.export.success": "已接受匯出流通記錄，請稍候待下載檔案備妥。",
     "logEvents.actions.export.error": "匯出檔案出了點問題，請重試。",
     "logEvents.actions.export.failed": "匯出作業已失敗。",
-    "logEvents.actions.export.successful": "匯出作業已完成。"
+    "logEvents.actions.export.successful": "匯出作業已完成。",
+    "logEvent.action.Created through override": "Created through override"
 }
