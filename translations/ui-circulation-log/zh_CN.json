@@ -71,5 +71,6 @@
     "logEvents.actions.export.success": "已请求导出流通日志，请在等待文件下载。",
     "logEvents.actions.export.error": "导出文件请求出了点问题，请重试。",
     "logEvents.actions.export.failed": "导出任务失败。",
-    "logEvents.actions.export.successful": "导出任务已完成。"
+    "logEvents.actions.export.successful": "导出任务已完成。",
+    "logEvent.action.Created through override": "Created through override"
 }
