@@ -15,7 +15,7 @@ jest.mock('@folio/stripes/core', () => ({
   useStripes: () => ({ hasPerm: mockHasPerm }),
 }));
 
-const renderCirculationLogEventActions = ({ objectType, items, referenceIds } = {}) => {
+const renderAndOpenTheActionsMenu = ({ objectType, items, referenceIds } = {}) => {
   render(
     <CirculationLogEventActions
       items={items}
@@ -36,7 +36,7 @@ describe('Event Actions', () => {
   });
 
   it('does not render the menu when no actions available', () => {
-    renderCirculationLogEventActions();
+    renderAndOpenTheActionsMenu();
 
     expect(screen.queryByRole('menu')).not.toBeInTheDocument();
   });
@@ -52,16 +52,16 @@ describe('Event Actions', () => {
     const url = `/users/${props.referenceIds.userId}/loans/view/${props.items[0].loanId}`;
 
     it('is shown when available', () => {
-      renderCirculationLogEventActions(props);
+      renderAndOpenTheActionsMenu(props);
 
       expect(menuItem.get()).toBeVisible();
       expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
     it('is not shown for log entry with multiple items', () => {
-      renderCirculationLogEventActions({
+      renderAndOpenTheActionsMenu({
         ...props,
-        items: [{ loanId: 0 }, { loanId: 0 }],
+        items: [{ loanId: 0 }, { loanId: 1 }],
       });
 
       expect(menuItem.query()).not.toBeInTheDocument();
@@ -70,7 +70,7 @@ describe('Event Actions', () => {
     it('is not shown without permission', () => {
       mockHasPerm.mockReturnValue(false);
 
-      renderCirculationLogEventActions(props);
+      renderAndOpenTheActionsMenu(props);
 
       expect(menuItem.query()).not.toBeInTheDocument();
     });
@@ -78,7 +78,7 @@ describe('Event Actions', () => {
     it('is not shown without user ID', () => {
       mockHasPerm.mockReturnValue(false);
 
-      renderCirculationLogEventActions({
+      renderAndOpenTheActionsMenu({
         ...props,
         referenceIds: { userId: undefined },
       });
@@ -89,7 +89,7 @@ describe('Event Actions', () => {
     it('is not shown without loan ID', () => {
       mockHasPerm.mockReturnValue(false);
 
-      renderCirculationLogEventActions({
+      renderAndOpenTheActionsMenu({
         ...props,
         items: [{ loanId: undefined }],
       });
@@ -108,7 +108,7 @@ describe('Event Actions', () => {
     const url = `/users/${props.referenceIds.userId}/accounts/view/${props.referenceIds.feeFineId}`;
 
     it('is shown when available', () => {
-      renderCirculationLogEventActions(props);
+      renderAndOpenTheActionsMenu(props);
 
       expect(menuItem.get()).toBeVisible();
       expect(menuItem.get()).toHaveAttribute('href', url);
@@ -117,7 +117,7 @@ describe('Event Actions', () => {
     it('is not shown without permission', () => {
       mockHasPerm.mockReturnValue(false);
 
-      renderCirculationLogEventActions(props);
+      renderAndOpenTheActionsMenu(props);
 
       expect(menuItem.query()).not.toBeInTheDocument();
     });
@@ -133,7 +133,7 @@ describe('Event Actions', () => {
     const url = `/users/view/${props.referenceIds.userId}`;
 
     it('is shown when available', () => {
-      renderCirculationLogEventActions(props);
+      renderAndOpenTheActionsMenu(props);
 
       expect(menuItem.get()).toBeVisible();
       expect(menuItem.get()).toHaveAttribute('href', url);
@@ -142,7 +142,7 @@ describe('Event Actions', () => {
     it('is not shown without permission', () => {
       mockHasPerm.mockReturnValue(false);
 
-      renderCirculationLogEventActions(props);
+      renderAndOpenTheActionsMenu(props);
 
       expect(menuItem.query()).not.toBeInTheDocument();
     });
@@ -158,7 +158,7 @@ describe('Event Actions', () => {
     const url = `/requests/view/${props.referenceIds.requestId}`;
 
     it('is shown when available', () => {
-      renderCirculationLogEventActions(props);
+      renderAndOpenTheActionsMenu(props);
 
       expect(menuItem.get()).toBeVisible();
       expect(menuItem.get()).toHaveAttribute('href', url);
@@ -167,7 +167,7 @@ describe('Event Actions', () => {
     it('is not shown without permission', () => {
       mockHasPerm.mockReturnValue(false);
 
-      renderCirculationLogEventActions(props);
+      renderAndOpenTheActionsMenu(props);
 
       expect(menuItem.query()).not.toBeInTheDocument();
     });
@@ -183,7 +183,7 @@ describe('Event Actions', () => {
     const url = `/settings/circulation/notice-policies/${props.referenceIds.noticePolicyId}`;
 
     it('is shown when available', () => {
-      renderCirculationLogEventActions(props);
+      renderAndOpenTheActionsMenu(props);
 
       expect(menuItem.get()).toBeVisible();
       expect(menuItem.get()).toHaveAttribute('href', url);
@@ -192,7 +192,7 @@ describe('Event Actions', () => {
     it('is not shown without permission', () => {
       mockHasPerm.mockReturnValue(false);
 
-      renderCirculationLogEventActions(props);
+      renderAndOpenTheActionsMenu(props);
 
       expect(menuItem.query()).not.toBeInTheDocument();
     });
@@ -208,7 +208,7 @@ describe('Event Actions', () => {
     const url = `/settings/circulation/patron-notices/${props.referenceIds.templateId}`;
 
     it('is shown when available', () => {
-      renderCirculationLogEventActions(props);
+      renderAndOpenTheActionsMenu(props);
 
       expect(menuItem.get()).toBeVisible();
       expect(menuItem.get()).toHaveAttribute('href', url);
@@ -217,7 +217,7 @@ describe('Event Actions', () => {
     it('is not shown without permission', () => {
       mockHasPerm.mockReturnValue(false);
 
-      renderCirculationLogEventActions(props);
+      renderAndOpenTheActionsMenu(props);
 
       expect(menuItem.query()).not.toBeInTheDocument();
     });
