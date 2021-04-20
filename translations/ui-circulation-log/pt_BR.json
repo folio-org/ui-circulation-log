@@ -71,5 +71,6 @@
     "logEvents.actions.export.success": "A exportação do log de circulação foi solicitada, aguarde quando o arquivo for baixado.",
     "logEvents.actions.export.error": "Algo deu errado com a solicitação de exportação do arquivo, tente novamente.",
     "logEvents.actions.export.failed": "O job de exportação falhou.",
-    "logEvents.actions.export.successful": "O job de exportação foi concluído."
+    "logEvents.actions.export.successful": "O job de exportação foi concluído.",
+    "logEvent.action.Created through override": "Criado por meio de substituição"
 }

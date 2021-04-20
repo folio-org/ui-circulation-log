@@ -9,7 +9,7 @@
     "logEvent.source": "Source",
     "logEvent.description": "Description",
     "permission.log-event.all": "Journal de circulation: Tout",
-    "logEvent.object.Fee/Fine": "Frais / Amende",
+    "logEvent.object.Fee/Fine": "Frais / Amendes",
     "logEvent.object.Item Block": "Blocage de l'article",
     "logEvent.object.Loan": "Prêt",
     "logEvent.object.Manual Block": "Blocage manuel",
@@ -20,7 +20,7 @@
     "logEvent.action.Anonymize": "Anonymiser",
     "logEvent.action.Billed": "Facturé",
     "logEvent.action.Cancelled": "Annulé",
-    "logEvent.action.Cancelled as error": "Annulé comme erreur",
+    "logEvent.action.Cancelled as error": "Annulé en tant qu'erreur",
     "logEvent.action.Changed due date": "Changed due date",
     "logEvent.action.Check in": "Check in",
     "logEvent.action.Check out": "Check out",
@@ -56,9 +56,9 @@
     "logEvent.action.Waived fully": "Renonciation totale",
     "logEvent.action.Waived partially": "Renoncé partiellement",
     "logEvent.actions": "Action",
-    "logEvent.actions.itemDetails": "Détails de l'élément/l'article",
+    "logEvent.actions.itemDetails": "Détails de l'exemplaire",
     "logEvent.actions.userDetails": "Détails de l'utilisateur",
-    "logEvent.actions.feeDetails": "Détails des frais / amende",
+    "logEvent.actions.feeDetails": "Détails des frais / amendes",
     "logEvent.actions.loanDetails": "Détails du prêt",
     "logEvent.actions.requestDetails": "Détails de la demande",
     "logEvent.actions.noticePolicyDetails": "Notice policy",
@@ -71,5 +71,6 @@
     "logEvents.actions.export.success": "L'exportation du journal de circulation a été demandée, veuillez patienter pendant le téléchargement du fichier.",
     "logEvents.actions.export.error": "Une erreur s'est produite lors de la demande de fichier d'exportation, veuillez réessayer.",
     "logEvents.actions.export.failed": "La tâche d'exportation a échoué.",
-    "logEvents.actions.export.successful": "La tâche d'exportation est terminée."
+    "logEvents.actions.export.successful": "La tâche d'exportation est terminée.",
+    "logEvent.action.Created through override": "Created through override"
 }

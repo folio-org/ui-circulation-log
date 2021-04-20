@@ -8,7 +8,7 @@
     "logEvent.servicePoint": "Servicestelle",
     "logEvent.source": "Quelle",
     "logEvent.description": "Beschreibung",
-    "permission.log-event.all": "Ausleihprotokoll: Alle",
+    "permission.log-event.all": "Ausleihprotokoll: Alle Berechtigungen",
     "logEvent.object.Fee/Fine": "Forderungen",
     "logEvent.object.Item Block": "Exemplarsperre",
     "logEvent.object.Loan": "Ausleihe",
@@ -61,7 +61,7 @@
     "logEvent.actions.feeDetails": "Gebührendetails",
     "logEvent.actions.loanDetails": "Ausleihdetails",
     "logEvent.actions.requestDetails": "Bestandsanfragedetails",
-    "logEvent.actions.noticePolicyDetails": "Benachrichtigungsregeln",
+    "logEvent.actions.noticePolicyDetails": "Benachrichtigungsrichtlinie",
     "logEvent.actions.templateDetails": "Aktuelle Version der Benachrichtigungsvorlage",
     "logEvent.item.showMore": "Mehr anzeigen",
     "logEvent.item.showLess": "Weniger anzeigen",
@@ -71,5 +71,6 @@
     "logEvents.actions.export.success": "Ausleih-Protokoll-Export wurde angefordert. Bitte warten, bis die Datei heruntergeladen wurde.",
     "logEvents.actions.export.error": "Fehler bei Anforderung der Exportdatei, bitte erneut versuchen.",
     "logEvents.actions.export.failed": "Exportauftrag ist fehlgeschlagen.",
-    "logEvents.actions.export.successful": "Exportauftrag ist abgeschlossen."
+    "logEvents.actions.export.successful": "Exportauftrag ist abgeschlossen.",
+    "logEvent.action.Created through override": "Created through override"
 }
