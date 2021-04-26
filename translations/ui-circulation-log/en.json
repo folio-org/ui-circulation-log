@@ -26,7 +26,7 @@
   "logEvent.object.N/A": "-",
 
   "logEvent.action.Age to lost": "Age to lost",
-  "logEvent.action.Anonymize": "Anonymize",
+  "logEvent.action.Anonymize": "Anonymized",
   "logEvent.action.Billed": "Billed",
   "logEvent.action.Cancelled": "Cancelled",
   "logEvent.action.Cancelled as error": "Cancelled as error",
