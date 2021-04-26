@@ -1,6 +1,8 @@
 {
   "meta.title": "Circulation log",
 
+  "patronLookup": "Patron look-up",
+
   "filter.apply": "Apply",
 
   "logEvent.user": "User barcode",

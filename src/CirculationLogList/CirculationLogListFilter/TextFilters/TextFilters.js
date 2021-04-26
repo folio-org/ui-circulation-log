@@ -2,12 +2,13 @@ import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 
+import { Pluggable } from '@folio/stripes/core';
 import { Button } from '@folio/stripes/components';
 
 import { useT } from '../../../hooks';
 import { Field } from './Field';
 
-export const TextFilters = ({ activeFilters, applyFilters, disabled, onFocus, focusRef }) => {
+export const TextFilters = ({ activeFilters, applyFilters, disabled = false, onFocus, focusRef }) => {
   const t = useT();
 
   // On `disable` we're disabling only the Submit button, and the possibility to submit the form.
@@ -39,7 +40,7 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled, onFocus, fo
       onSubmit={handleFormSubmit}
       initialValues={initialValues}
     >
-      {({ handleSubmit }) => (
+      {({ handleSubmit, form }) => (
         <form onSubmit={handleSubmit}>
           <Field
             name="userBarcode"
@@ -47,6 +48,15 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled, onFocus, fo
             inputRef={refs.userBarcode}
             onFocus={handleFocus('userBarcode')}
             autoFocus
+            marginBottom0
+          />
+          <Pluggable
+            type="find-user"
+            aria-haspopup="true"
+            searchLabel={t`patronLookup`}
+            searchButtonStyle="link"
+            selectUser={user => form.change('userBarcode', user.barcode)}
+            marginTop0
           />
 
           <Field
@@ -82,8 +92,4 @@ TextFilters.propTypes = {
   disabled: PropTypes.bool,
   focusRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   onFocus: PropTypes.func,
-};
-
-TextFilters.defaultProps = {
-  disabled: false,
 };
