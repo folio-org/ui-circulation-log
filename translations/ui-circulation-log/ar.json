@@ -72,5 +72,6 @@
     "logEvents.actions.export.error": "لقد حدث خطأ ما بخصوص طلب تصدير الملف، يرجى إعادة المحاولة.",
     "logEvents.actions.export.failed": "فشلت مهمة التصدير.",
     "logEvents.actions.export.successful": "تمت مهمة التصدير.",
-    "logEvent.action.Created through override": "تم الإنشاء عبر التخطي"
+    "logEvent.action.Created through override": "تم الإنشاء عبر التخطي",
+    "patronLookup": "بحث المستفيد"
 }

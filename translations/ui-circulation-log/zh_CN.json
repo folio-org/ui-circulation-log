@@ -17,7 +17,7 @@
     "logEvent.object.Patron Block": "读者冻结",
     "logEvent.object.Request": "请求",
     "logEvent.action.Age to lost": "超期太久视为遗失",
-    "logEvent.action.Anonymize": "匿名处理",
+    "logEvent.action.Anonymize": "匿名化",
     "logEvent.action.Billed": "已开单",
     "logEvent.action.Cancelled": "已取消",
     "logEvent.action.Cancelled as error": "因错误而取消",
@@ -72,5 +72,6 @@
     "logEvents.actions.export.error": "导出文件请求出了点问题，请重试。",
     "logEvents.actions.export.failed": "导出任务失败。",
     "logEvents.actions.export.successful": "导出任务已完成。",
-    "logEvent.action.Created through override": "Created through override"
+    "logEvent.action.Created through override": "已通过越权创建",
+    "patronLookup": "查找读者"
 }
