@@ -72,5 +72,6 @@
     "logEvents.actions.export.error": "Une erreur s'est produite lors de la demande de fichier d'exportation, veuillez réessayer.",
     "logEvents.actions.export.failed": "La tâche d'exportation a échoué.",
     "logEvents.actions.export.successful": "La tâche d'exportation est terminée.",
-    "logEvent.action.Created through override": "Created through override"
+    "logEvent.action.Created through override": "Created through override",
+    "patronLookup": "Rechercher l'utilisateur"
 }

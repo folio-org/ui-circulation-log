@@ -72,5 +72,6 @@
     "logEvents.actions.export.error": "Fehler bei Anforderung der Exportdatei, bitte erneut versuchen.",
     "logEvents.actions.export.failed": "Exportauftrag ist fehlgeschlagen.",
     "logEvents.actions.export.successful": "Exportauftrag ist abgeschlossen.",
-    "logEvent.action.Created through override": "Created through override"
+    "logEvent.action.Created through override": "Created through override",
+    "patronLookup": "Patron look-up"
 }

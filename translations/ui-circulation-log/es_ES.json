@@ -17,7 +17,7 @@
     "logEvent.object.Patron Block": "Patron block",
     "logEvent.object.Request": "Request",
     "logEvent.action.Age to lost": "Age to lost",
-    "logEvent.action.Anonymize": "Anonymize",
+    "logEvent.action.Anonymize": "Anonymized",
     "logEvent.action.Billed": "Billed",
     "logEvent.action.Cancelled": "Cancelled",
     "logEvent.action.Cancelled as error": "Cancelled as error",
@@ -72,5 +72,6 @@
     "logEvents.actions.export.error": "Something went wrong with export file request, please try again.",
     "logEvents.actions.export.failed": "Export job has been failed.",
     "logEvents.actions.export.successful": "Export job has been completed.",
-    "logEvent.action.Created through override": "Created through override"
+    "logEvent.action.Created through override": "Created through override",
+    "patronLookup": "Patron look-up"
 }
