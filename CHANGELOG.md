@@ -5,6 +5,7 @@
 * [UICIRCLOG-39](https://issues.folio.org/browse/UICIRCLOG-39) Update anonymize filter in Circulation log.
 * [UICIRCLOG-42](https://issues.folio.org/browse/UICIRCLOG-42) Add patron look-up in filters.
 * [UICIRCLOG-64](https://issues.folio.org/browse/UICIRCLOG-64) Compile Translation Files into AST Format.
+* [UICIRCLOG-65](https://issues.folio.org/browse/UICIRCLOG-65) Focus the "User barcode" field after "Patron lookup" is used.
 
 ## [1.1.1](https://github.com/folio-org/ui-circulation-log/tree/v1.1.1) (2021-04-20)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.1.0...v1.1.1)

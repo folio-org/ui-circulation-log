@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 
@@ -23,11 +23,22 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled = false, onF
     description: useRef(),
   });
 
+  const [focusedFieldName, setFocusedFieldName] = useState('');
+
+  // We update the `focusRef` not here, but after the render - in the effect (below)
+  // for the fields refs to be ready, pointing to the <input> elements
   const handleFocus = name => event => {
-    if (typeof focusRef === 'object') focusRef.current = refs[name].current;
+    setFocusedFieldName(name);
 
     return onFocus?.(event);
   };
+
+  useEffect(
+    () => {
+      if (focusedFieldName && typeof focusRef === 'object') focusRef.current = refs[focusedFieldName].current;
+    },
+    [focusedFieldName, focusRef, refs],
+  );
 
   const initialValues = {
     userBarcode: activeFilters?.userBarcode?.[0] ?? '',
@@ -56,6 +67,7 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled = false, onF
             searchLabel={t`patronLookup`}
             searchButtonStyle="link"
             selectUser={user => form.change('userBarcode', user.barcode)}
+            afterClose={() => refs.userBarcode.current.focus()}
             marginTop0
           />
 
