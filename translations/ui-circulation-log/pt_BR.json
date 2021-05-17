@@ -17,7 +17,7 @@
     "logEvent.object.Patron Block": "Bloquear usuário",
     "logEvent.object.Request": "Requisição",
     "logEvent.action.Age to lost": "Tempo para ser considerado perdido",
-    "logEvent.action.Anonymize": "Anonimizar",
+    "logEvent.action.Anonymize": "Anonimizado",
     "logEvent.action.Billed": "Faturado",
     "logEvent.action.Cancelled": "Cancelado",
     "logEvent.action.Cancelled as error": "Cancelado como erro",
@@ -73,5 +73,5 @@
     "logEvents.actions.export.failed": "O job de exportação falhou.",
     "logEvents.actions.export.successful": "O job de exportação foi concluído.",
     "logEvent.action.Created through override": "Criado por meio de substituição",
-    "patronLookup": "Patron look-up"
+    "patronLookup": "Buscar usuário"
 }
