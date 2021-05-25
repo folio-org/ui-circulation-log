@@ -21,7 +21,7 @@
     "logEvent.action.Billed": "Facturé",
     "logEvent.action.Cancelled": "Annulé",
     "logEvent.action.Cancelled as error": "Annulé en tant qu'erreur",
-    "logEvent.action.Changed due date": "Changed due date",
+    "logEvent.action.Changed due date": "Date d'échéance modifiée",
     "logEvent.action.Check in": "Check in",
     "logEvent.action.Check out": "Check out",
     "logEvent.action.Checked in": "Checked in",
