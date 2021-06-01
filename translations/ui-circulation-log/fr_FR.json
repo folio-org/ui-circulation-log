@@ -16,7 +16,7 @@
     "logEvent.object.Notice": "Notice",
     "logEvent.object.Patron Block": "Suspension utilisateur",
     "logEvent.object.Request": "Réservation",
-    "logEvent.action.Age to lost": "Age to lost",
+    "logEvent.action.Age to lost": "Considérer comme perdu",
     "logEvent.action.Anonymize": "Anonymisé",
     "logEvent.action.Billed": "Facturé",
     "logEvent.action.Cancelled": "Annulé",
