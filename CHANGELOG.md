@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [1.2.0](https://github.com/folio-org/ui-circulation-log/tree/v1.2.0) (2021-06-16)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.1.1...v1.2.0)
+
 * [UICIRCLOG-39](https://issues.folio.org/browse/UICIRCLOG-39) Update anonymize filter in Circulation log.
 * [UICIRCLOG-42](https://issues.folio.org/browse/UICIRCLOG-42) Add patron look-up in filters.
 * [UICIRCLOG-64](https://issues.folio.org/browse/UICIRCLOG-64) Compile Translation Files into AST Format.
