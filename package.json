@@ -1,6 +1,6 @@
 {
   "name": "@folio/circulation-log",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Description for circulation logs",
   "main": "index.js",
   "repository": "",
@@ -17,7 +17,7 @@
     "home": "/circulation-log",
     "okapiInterfaces": {
       "service-points": "3.0",
-      "circulation-logs": "1.0"
+      "circulation-logs": "1.2"
     },
     "optionalOkapiInterfaces": {
       "data-export-spring": "1.0"
