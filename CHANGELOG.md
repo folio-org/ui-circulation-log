@@ -2,7 +2,7 @@
 
 ## (IN PROGRESS)
 
-## [1.2.0](https://github.com/folio-org/ui-circulation-log/tree/v1.2.0) (2021-06-16)
+## [1.2.0](https://github.com/folio-org/ui-circulation-log/tree/v1.2.0) (2021-06-17)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.1.1...v1.2.0)
 
 * [UICIRCLOG-39](https://issues.folio.org/browse/UICIRCLOG-39) Update anonymize filter in Circulation log.

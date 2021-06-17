@@ -99,7 +99,7 @@
     "testing-library-selector": "^0.1.3"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "^2.4.0",
+    "@folio/stripes-acq-components": "2.4.0",
     "lodash": "^4.17.5",
     "moment": "^2.29.1",
     "prop-types": "^15.5.10",
