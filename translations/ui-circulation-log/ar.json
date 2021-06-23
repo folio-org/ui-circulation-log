@@ -43,7 +43,7 @@
     "logEvent.action.Patron blocked from requesting": "تم حظرالمستفيد من الطلب",
     "logEvent.action.Pickup expired": "انتهت صلاحية الالتقاط",
     "logEvent.action.Queue position reordered": "تمت إعادة ترتيب الموضع في الصف",
-    "logEvent.action.Recall requested": "تم طلب استرجاع مادة",
+    "logEvent.action.Recall requested": "تم طلب استعادة مادة",
     "logEvent.action.Refunded fully": "تم استرداد مبلغها بالكامل",
     "logEvent.action.Refunded partially": "تم رد المبلغ جزئياً",
     "logEvent.action.Renewed": "تم تجديده",
