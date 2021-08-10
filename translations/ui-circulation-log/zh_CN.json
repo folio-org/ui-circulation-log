@@ -73,5 +73,6 @@
     "logEvents.actions.export.failed": "导出任务失败。",
     "logEvents.actions.export.successful": "导出任务已完成。",
     "logEvent.action.Created through override": "已通过越权创建",
-    "patronLookup": "查找读者"
+    "patronLookup": "查找读者",
+    "logEvent.action.Send error": "Send error"
 }
