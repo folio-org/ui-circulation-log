@@ -73,5 +73,6 @@
     "logEvents.actions.export.failed": "O job de exportação falhou.",
     "logEvents.actions.export.successful": "O job de exportação foi concluído.",
     "logEvent.action.Created through override": "Criado por meio de substituição",
-    "patronLookup": "Buscar usuário"
+    "patronLookup": "Buscar usuário",
+    "logEvent.action.Send error": "Send error"
 }

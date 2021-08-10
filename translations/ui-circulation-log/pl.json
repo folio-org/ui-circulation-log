@@ -73,5 +73,6 @@
     "logEvents.actions.export.failed": "Eksport zadań nie powiódł się.",
     "logEvents.actions.export.successful": "Eksport zadań został zakończony.",
     "logEvent.action.Created through override": "Created through override",
-    "patronLookup": "Patron look-up"
+    "patronLookup": "Patron look-up",
+    "logEvent.action.Send error": "Send error"
 }
