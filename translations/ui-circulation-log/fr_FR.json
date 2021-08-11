@@ -73,5 +73,6 @@
     "logEvents.actions.export.failed": "La tâche d'exportation a échoué.",
     "logEvents.actions.export.successful": "La tâche d'exportation est terminée.",
     "logEvent.action.Created through override": "Created through override",
-    "patronLookup": "Rechercher l'utilisateur"
+    "patronLookup": "Rechercher l'utilisateur",
+    "logEvent.action.Send error": "Send error"
 }

@@ -73,5 +73,6 @@
     "logEvents.actions.export.failed": "匯出作業已失敗。",
     "logEvents.actions.export.successful": "匯出作業已完成。",
     "logEvent.action.Created through override": "Created through override",
-    "patronLookup": "Patron look-up"
+    "patronLookup": "Patron look-up",
+    "logEvent.action.Send error": "Send error"
 }

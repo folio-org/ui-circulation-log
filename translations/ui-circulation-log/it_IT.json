@@ -73,5 +73,6 @@
     "logEvents.actions.export.failed": "Export job has been failed.",
     "logEvents.actions.export.successful": "Export job has been completed.",
     "logEvent.action.Created through override": "Created through override",
-    "patronLookup": "Patron look-up"
+    "patronLookup": "Patron look-up",
+    "logEvent.action.Send error": "Send error"
 }
