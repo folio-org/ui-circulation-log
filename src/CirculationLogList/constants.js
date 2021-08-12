@@ -38,6 +38,7 @@ export const LOAN_ACTIONS = {
 
 export const NOTICE_ACTIONS = {
   SEND: 'Send',
+  SEND_ERROR: 'Send error',
 };
 
 export const FEE_ACTIONS = {
