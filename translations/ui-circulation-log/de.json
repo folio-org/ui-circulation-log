@@ -74,5 +74,5 @@
     "logEvents.actions.export.successful": "Exportauftrag ist abgeschlossen.",
     "logEvent.action.Created through override": "Erstellt durch spezielle Zustimmung",
     "patronLookup": "Personensuche",
-    "logEvent.action.Send error": "Send error"
+    "logEvent.action.Send error": "Fehler Sendevorgang"
 }
