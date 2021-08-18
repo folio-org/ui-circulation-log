@@ -1,7 +1,7 @@
 {
     "meta.title": "流通紀錄",
-    "logEvent.user": "用户条码",
-    "logEvent.item": "单件条码",
+    "logEvent.user": "使用者條碼",
+    "logEvent.item": "單件條碼",
     "logEvent.object": "对象",
     "logEvent.action": "流通操作",
     "logEvent.date": "日期",
