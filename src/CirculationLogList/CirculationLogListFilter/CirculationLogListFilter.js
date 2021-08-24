@@ -1,9 +1,4 @@
-import React, {
-  useCallback,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { noop } from 'lodash';
@@ -47,7 +42,6 @@ export const CirculationLogListFilter = ({
   applyFilters,
   disabled,
   servicePoints,
-  onFocus,
   focusRef,
   letLoseFocus = noop,
 }) => {
@@ -70,25 +64,27 @@ export const CirculationLogListFilter = ({
 
   const [refs] = useState({
     textFilters: useRef(),
+    dates: useRef(),
   });
 
   const handleFocus = name => event => {
-    if (typeof focusRef === 'object') focusRef.current = refs[name]?.current;
     letLoseFocus(FIELDS_READY_TO_LOOSE_FOCUS.has(name));
 
-    return onFocus?.(event);
+    if (typeof focusRef === 'object') focusRef.current = event.target;
+    if (typeof focusRef === 'function') focusRef(event.target);
   };
 
   return (
     <AccordionSet>
       <Accordion header={() => <EmptyMessage />} label="">
-        <TextFilters
-          activeFilters={activeFilters}
-          applyFilters={applyFilters}
-          disabled={disabled}
-          focusRef={refs.textFilters}
-          onFocus={handleFocus('textFilters')}
-        />
+        <div onFocus={handleFocus('textFilters')}>
+          <TextFilters
+            activeFilters={activeFilters}
+            applyFilters={applyFilters}
+            disabled={disabled}
+            focusRef={refs.textFilters}
+          />
+        </div>
       </Accordion>
 
       <div onFocus={handleFocus('dates')}>
@@ -100,6 +96,7 @@ export const CirculationLogListFilter = ({
           disabled={disabled}
           closedByDefault={false}
           dateFormat={localeDateFormat}
+          focusRef={refs.dates}
         />
       </div>
 
@@ -168,7 +165,6 @@ CirculationLogListFilter.propTypes = {
   disabled: PropTypes.bool,
   servicePoints: PropTypes.arrayOf(PropTypes.object),
   focusRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-  onFocus: PropTypes.func,
   letLoseFocus: PropTypes.func,
 };
 
