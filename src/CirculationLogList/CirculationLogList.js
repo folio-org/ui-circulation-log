@@ -118,14 +118,14 @@ export const CirculationLogList = ({
 
   const [isFiltersReadyToLooseFocus, setIsFiltersReadyToLooseFocus] = React.useState(false);
 
-  const setFocusRef = ref => {
-    if (typeof focusRef === 'object') focusRef.current = ref.current;
-    if (typeof focusRef === 'function') focusRef(ref.current);
-  };
-
   useLayoutEffect(
-    () => setFocusRef(isFiltersReadyToLooseFocus && logEventsCount ? resultsRef : filtersRef),
-    [isFiltersReadyToLooseFocus, logEventsCount, setFocusRef],
+    () => {
+      const ref = isFiltersReadyToLooseFocus && logEventsCount ? resultsRef : filtersRef;
+
+      if (typeof focusRef === 'object') focusRef.current = ref.current;
+      if (typeof focusRef === 'function') focusRef(ref.current);
+    },
+    [focusRef, isFiltersReadyToLooseFocus, logEventsCount],
   );
 
   return (
