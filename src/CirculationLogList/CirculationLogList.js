@@ -2,7 +2,7 @@ import React, {
   useCallback,
   useMemo,
   useRef,
-  useState,
+  useLayoutEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -113,16 +113,20 @@ export const CirculationLogList = ({
     />
   );
 
-  const [refs] = useState({
-    filters: useRef(),
-    results: useRef(),
-  });
+  const filtersRef = useRef();
+  const resultsRef = useRef();
 
   const [isFiltersReadyToLooseFocus, setIsFiltersReadyToLooseFocus] = React.useState(false);
 
-  const whoGetsTheFocus = isFiltersReadyToLooseFocus && logEventsCount ? 'results' : 'filters';
+  const setFocusRef = ref => {
+    if (typeof focusRef === 'object') focusRef.current = ref.current;
+    if (typeof focusRef === 'function') focusRef(ref.current);
+  };
 
-  if (typeof focusRef === 'object') focusRef.current = refs[whoGetsTheFocus].current;
+  useLayoutEffect(
+    () => setFocusRef(isFiltersReadyToLooseFocus && logEventsCount ? resultsRef : filtersRef),
+    [isFiltersReadyToLooseFocus, logEventsCount, setFocusRef],
+  );
 
   return (
     <Paneset data-test-log-events-list>
@@ -138,7 +142,7 @@ export const CirculationLogList = ({
             activeFilters={filters}
             applyFilters={applyFilters}
             letLoseFocus={setIsFiltersReadyToLooseFocus}
-            focusRef={refs.filters}
+            focusRef={filtersRef}
             disabled={isLoading}
             servicePoints={servicePoints}
           />
@@ -147,7 +151,7 @@ export const CirculationLogList = ({
 
       <ResultsPane
         title={resultsPaneTitle}
-        resultsPaneTitleRef={refs.results}
+        resultsPaneTitleRef={resultsRef}
         count={logEventsCount}
         toggleFiltersPane={toggleFilters}
         filters={filters}

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { noop } from 'lodash';
@@ -10,6 +10,7 @@ import {
   EmptyMessage,
 } from '@folio/stripes/components';
 import {
+  useSetRefOnFocus,
   MultiSelectionFilter,
 } from '@folio/stripes/smart-components';
 
@@ -29,8 +30,6 @@ import {
 import { TextFilters } from './TextFilters';
 
 import { buildCheckboxFilterOptions } from './utils';
-
-const FIELDS_READY_TO_LOOSE_FOCUS = new Set(['textFilters', 'dates']);
 
 const loanFilterOptions = buildCheckboxFilterOptions(LOAN_ACTIONS);
 const noticeFilterOptions = buildCheckboxFilterOptions(NOTICE_ACTIONS);
@@ -62,32 +61,22 @@ export const CirculationLogListFilter = ({
     }));
   }, [servicePoints]);
 
-  const [refs] = useState({
-    textFilters: useRef(),
-    dates: useRef(),
-  });
-
-  const handleFocus = name => event => {
-    letLoseFocus(FIELDS_READY_TO_LOOSE_FOCUS.has(name));
-
-    if (typeof focusRef === 'object') focusRef.current = event.target;
-    if (typeof focusRef === 'function') focusRef(event.target);
-  };
+  const setFocusRef = useSetRefOnFocus(focusRef);
 
   return (
     <AccordionSet>
       <Accordion header={() => <EmptyMessage />} label="">
-        <div onFocus={handleFocus('textFilters')}>
+        <div onFocus={() => letLoseFocus(true)}>
           <TextFilters
             activeFilters={activeFilters}
             applyFilters={applyFilters}
             disabled={disabled}
-            focusRef={refs.textFilters}
+            focusRef={setFocusRef}
           />
         </div>
       </Accordion>
 
-      <div onFocus={handleFocus('dates')}>
+      <div onFocus={() => letLoseFocus(true)}>
         <AcqDateRangeFilter
           activeFilters={activeFilters?.date}
           labelId="ui-circulation-log.logEvent.date"
@@ -96,11 +85,11 @@ export const CirculationLogListFilter = ({
           disabled={disabled}
           closedByDefault={false}
           dateFormat={localeDateFormat}
-          focusRef={refs.dates}
+          focusRef={setFocusRef}
         />
       </div>
 
-      <div onFocus={handleFocus('other')}>
+      <div onFocus={() => letLoseFocus(false)}>
         <FilterAccordion
           activeFilters={activeFilters?.servicePointId}
           closedByDefault={false}
