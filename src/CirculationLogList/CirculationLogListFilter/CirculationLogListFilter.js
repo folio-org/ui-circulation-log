@@ -71,7 +71,7 @@ export const CirculationLogListFilter = ({
             activeFilters={activeFilters}
             applyFilters={applyFilters}
             disabled={disabled}
-            focusRef={setFocusRef}
+            focusRef={setFocusRef.default}
           />
         </div>
       </Accordion>

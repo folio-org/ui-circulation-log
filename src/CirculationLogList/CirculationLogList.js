@@ -2,7 +2,7 @@ import React, {
   useCallback,
   useMemo,
   useRef,
-  useLayoutEffect,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -18,6 +18,7 @@ import {
   Paneset,
   MultiColumnList,
 } from '@folio/stripes/components';
+import { useSetRefOnFocus } from '@folio/stripes/smart-components';
 import {
   FiltersPane,
   FolioFormattedTime,
@@ -70,7 +71,6 @@ export const CirculationLogList = ({
   logEvents,
   logEventsCount,
   servicePoints,
-  focusRef,
 }) => {
   const stripes = useStripes();
   const history = useHistory();
@@ -116,17 +116,27 @@ export const CirculationLogList = ({
   const filtersRef = useRef();
   const resultsRef = useRef();
 
-  const [isFiltersReadyToLooseFocus, setIsFiltersReadyToLooseFocus] = React.useState(false);
+  const setRefOnFocus = useSetRefOnFocus(filtersRef);
 
-  useLayoutEffect(
-    () => {
-      const ref = isFiltersReadyToLooseFocus && logEventsCount ? resultsRef : filtersRef;
+  // default state is true, so if there are any results on page load - they are immediately focused
+  const [isFiltersReadyToLooseFocus, setIsFiltersReadyToLooseFocus] = React.useState(true);
 
-      if (typeof focusRef === 'object') focusRef.current = ref.current;
-      if (typeof focusRef === 'function') focusRef(ref.current);
-    },
-    [focusRef, isFiltersReadyToLooseFocus, logEventsCount],
-  );
+  const focus = useCallback(() => {
+    const whoIsGettingFocus = isFiltersReadyToLooseFocus && logEventsCount ? resultsRef : filtersRef;
+
+    if (whoIsGettingFocus.current) whoIsGettingFocus.current.focus();
+  }, [isFiltersReadyToLooseFocus, logEventsCount]);
+
+  useEffect(() => {
+    if (!isLoading) focus();
+  }, [isLoading, focus]);
+
+  // If a user is applying the same filters - there will be no server request
+  // but we still want the appropriate element to be focused - results or the last visited filter field
+  const applyFiltersAndFocus = (...args) => {
+    applyFilters(...args);
+    focus();
+  };
 
   return (
     <Paneset data-test-log-events-list>
@@ -140,9 +150,9 @@ export const CirculationLogList = ({
 
           <CirculationLogListFilter
             activeFilters={filters}
-            applyFilters={applyFilters}
+            applyFilters={applyFiltersAndFocus}
             letLoseFocus={setIsFiltersReadyToLooseFocus}
-            focusRef={filtersRef}
+            focusRef={setRefOnFocus.default}
             disabled={isLoading}
             servicePoints={servicePoints}
           />
@@ -188,7 +198,6 @@ CirculationLogList.propTypes = {
   isLoading: PropTypes.bool,
   logEvents: PropTypes.arrayOf(PropTypes.object),
   servicePoints: PropTypes.arrayOf(PropTypes.object),
-  focusRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 CirculationLogList.defaultProps = {

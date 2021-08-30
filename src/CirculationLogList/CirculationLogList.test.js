@@ -1,7 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-
-import '@folio/stripes-acq-components/test/jest/__mock__';
+import { render, screen, within } from '@testing-library/react';
 
 import { CirculationLogList } from './CirculationLogList';
 
@@ -24,10 +22,6 @@ jest.mock('@folio/stripes-acq-components', () => {
     NoResultsMessage: () => 'NoResultsMessage',
   };
 });
-
-jest.mock('./CirculationLogListFilter', () => ({
-  CirculationLogListFilter: () => <span>CirculationLogListFilter</span>,
-}));
 
 jest.mock('./CirculationLogEventActions', () => ({
   CirculationLogEventActions: () => <span>CirculationLogEventActions</span>,
@@ -62,39 +56,64 @@ const renderCirculationLogList = ({ logEvents = [] }) => (render(
   />,
 ));
 
-describe('Given Circulation Log List', () => {
-  it('Then it should display log events filter pane', async () => {
-    const { getByText } = renderCirculationLogList({});
+describe('Circulation Log List', () => {
+  it('displays log events filter pane', () => {
+    renderCirculationLogList({});
 
-    expect(getByText('CirculationLogListFilter')).toBeDefined();
+    expect(screen.getByRole('heading', { name: /searchAndFilter/ })).toBeVisible();
   });
 
-  it('Then it should display log events table header', async () => {
+  it('Then it should display log events table header', () => {
     const logEvent = getLogEvent();
-    const { getByText } = renderCirculationLogList({ logEvents: [logEvent] });
 
-    expect(getByText('ui-circulation-log.logEvent.user')).toBeDefined();
-    expect(getByText('ui-circulation-log.logEvent.item')).toBeDefined();
-    expect(getByText('ui-circulation-log.logEvent.object')).toBeDefined();
-    expect(getByText('ui-circulation-log.logEvent.action')).toBeDefined();
-    expect(getByText('ui-circulation-log.logEvent.date')).toBeDefined();
-    expect(getByText('ui-circulation-log.logEvent.servicePoint')).toBeDefined();
-    expect(getByText('ui-circulation-log.logEvent.source')).toBeDefined();
-    expect(getByText('ui-circulation-log.logEvent.description')).toBeDefined();
+    renderCirculationLogList({ logEvents: [logEvent] });
+
+    const grid = screen.getByRole('grid');
+    const columns = [
+      /user/,
+      /item/,
+      /object/,
+      /action$/, // not to mix with /actions/
+      /date/,
+      /servicePoint/,
+      /source/,
+      /description/,
+      /actions/,
+    ];
+
+    columns.forEach(
+      name => expect(within(grid).getByRole('columnheader', { name })).toBeVisible(),
+    );
   });
 
   it('Then it should display log events table row', async () => {
     const logEvent = getLogEvent();
-    const { getByText } = renderCirculationLogList({ logEvents: [logEvent] });
+    renderCirculationLogList({ logEvents: [logEvent] });
 
-    expect(getByText(`${logEvent.userBarcode}`)).toBeDefined();
-    expect(getByText(`${logEvent.items[0].itemBarcode}`)).toBeDefined();
-    expect(getByText(`ui-circulation-log.logEvent.object.${logEvent.object}`)).toBeDefined();
-    expect(getByText(`ui-circulation-log.logEvent.action.${logEvent.action}`)).toBeDefined();
-    expect(getByText(logEvent.date)).toBeDefined();
-    expect(getByText(logEvent.source)).toBeDefined();
-    expect(getByText(logEvent.description)).toBeDefined();
-    expect(getByText(servicePoint.name)).toBeDefined();
-    expect(getByText('CirculationLogEventActions')).toBeDefined();
+    const row = screen.getByRole('row', { name: new RegExp(logEvent.userBarcode) });
+    const cells = [
+      logEvent.userBarcode,
+      logEvent.items[0].itemBarcode,
+      new RegExp(`logEvent.object.${logEvent.object}`),
+      new RegExp(`logEvent.action.${logEvent.action}`),
+      logEvent.date,
+      logEvent.source,
+      logEvent.description,
+      servicePoint.name,
+      'CirculationLogEventActions',
+    ];
+
+    cells.forEach(
+      name => expect(within(row).getByRole('gridcell', { name })).toBeVisible(),
+    );
+  });
+
+  it('auto-focuses first text field when there is no results', () => {
+    renderCirculationLogList({});
+
+    const [first, ...rest] = screen.getAllByRole('textbox');
+
+    expect(first).toHaveFocus();
+    rest.forEach(field => expect(field).not.toHaveFocus());
   });
 });

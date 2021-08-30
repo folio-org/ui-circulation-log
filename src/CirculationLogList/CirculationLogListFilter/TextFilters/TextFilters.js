@@ -38,10 +38,9 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled = false, foc
             name="userBarcode"
             label={t`logEvent.user`}
             inputRef={element => {
-              setRefOnFocus(element);
+              setRefOnFocus.default(element);
               userBarcodeRef.current = element;
             }}
-            autoFocus
             marginBottom0
           />
           <Pluggable
