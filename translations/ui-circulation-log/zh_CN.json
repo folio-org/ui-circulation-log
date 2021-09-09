@@ -40,7 +40,7 @@
     "logEvent.action.Moved": "已移动",
     "logEvent.action.Paid fully": "全额支付",
     "logEvent.action.Paid partially": "部分付款",
-    "logEvent.action.Patron blocked from requesting": "读者被禁止请求",
+    "logEvent.action.Patron blocked from requesting": "读者被冻结请求",
     "logEvent.action.Pickup expired": "取件已过期",
     "logEvent.action.Queue position reordered": "队列位置重新排序",
     "logEvent.action.Recall requested": "已请求召回",
@@ -68,11 +68,11 @@
     "logEvent.object.N/A": "-",
     "filter.apply": "应用",
     "logEvents.actions.export": "导出结果（CSV）",
-    "logEvents.actions.export.success": "已请求导出流通日志，请在等待文件下载。",
+    "logEvents.actions.export.success": "已请求导出流通日志，请等待文件下载。",
     "logEvents.actions.export.error": "导出文件请求出了点问题，请重试。",
     "logEvents.actions.export.failed": "导出任务失败。",
     "logEvents.actions.export.successful": "导出任务已完成。",
     "logEvent.action.Created through override": "已通过越权创建",
     "patronLookup": "查找读者",
-    "logEvent.action.Send error": "Send error"
+    "logEvent.action.Send error": "发送错误"
 }
