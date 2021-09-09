@@ -10,6 +10,7 @@ import {
   EmptyMessage,
 } from '@folio/stripes/components';
 import {
+  useSetRef,
   useSetRefOnFocus,
   MultiSelectionFilter,
 } from '@folio/stripes/smart-components';
@@ -61,7 +62,8 @@ export const CirculationLogListFilter = ({
     }));
   }, [servicePoints]);
 
-  const setFocusRef = useSetRefOnFocus(focusRef);
+  const setFocusRef = useSetRef(focusRef);
+  const setFocusRefOnFocus = useSetRefOnFocus(focusRef);
 
   return (
     <AccordionSet>
@@ -71,7 +73,10 @@ export const CirculationLogListFilter = ({
             activeFilters={activeFilters}
             applyFilters={applyFilters}
             disabled={disabled}
-            focusRef={setFocusRef.default}
+            focusRef={node => {
+              setFocusRef(node);
+              setFocusRefOnFocus(node);
+            }}
           />
         </div>
       </Accordion>
@@ -85,7 +90,7 @@ export const CirculationLogListFilter = ({
           disabled={disabled}
           closedByDefault={false}
           dateFormat={localeDateFormat}
-          focusRef={setFocusRef}
+          focusRef={setFocusRefOnFocus}
         />
       </div>
 

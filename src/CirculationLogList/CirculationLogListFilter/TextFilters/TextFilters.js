@@ -4,7 +4,7 @@ import { Form } from 'react-final-form';
 
 import { Pluggable } from '@folio/stripes/core';
 import { Button } from '@folio/stripes/components';
-import { useSetRefOnFocus } from '@folio/stripes/smart-components';
+import { useSetRef, useSetRefOnFocus } from '@folio/stripes/smart-components';
 
 import { useT } from '../../../hooks';
 import { Field } from './Field';
@@ -18,7 +18,8 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled = false, foc
   // This is not handled by TextField properly - its internal state remains "focused" after the focus is gone
   const handleFormSubmit = (...args) => (disabled ? undefined : applyFilters(...args));
 
-  const setRefOnFocus = useSetRefOnFocus(focusRef);
+  const setFocusRef = useSetRef(focusRef);
+  const setFocusRefOnFocus = useSetRefOnFocus(focusRef);
   const userBarcodeRef = useRef();
 
   const initialValues = {
@@ -38,7 +39,8 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled = false, foc
             name="userBarcode"
             label={t`logEvent.user`}
             inputRef={element => {
-              setRefOnFocus.default(element);
+              setFocusRef(element);
+              setFocusRefOnFocus(element);
               userBarcodeRef.current = element;
             }}
             marginBottom0
@@ -56,13 +58,13 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled = false, foc
           <Field
             name="itemBarcode"
             label={t`logEvent.item`}
-            inputRef={setRefOnFocus}
+            inputRef={setFocusRefOnFocus}
           />
 
           <Field
             name="description"
             label={t`logEvent.description`}
-            inputRef={setRefOnFocus}
+            inputRef={setFocusRefOnFocus}
           />
 
           <Button
