@@ -18,7 +18,6 @@ import {
   Paneset,
   MultiColumnList,
 } from '@folio/stripes/components';
-import { useSetRefOnFocus } from '@folio/stripes/smart-components';
 import {
   FiltersPane,
   FolioFormattedTime,
@@ -116,8 +115,6 @@ export const CirculationLogList = ({
   const filtersRef = useRef();
   const resultsRef = useRef();
 
-  const setRefOnFocus = useSetRefOnFocus(filtersRef);
-
   // default state is true, so if there are any results on page load - they are immediately focused
   const [isFiltersReadyToLooseFocus, setIsFiltersReadyToLooseFocus] = React.useState(true);
 
@@ -152,7 +149,7 @@ export const CirculationLogList = ({
             activeFilters={filters}
             applyFilters={applyFiltersAndFocus}
             letLoseFocus={setIsFiltersReadyToLooseFocus}
-            focusRef={setRefOnFocus.default}
+            focusRef={filtersRef}
             disabled={isLoading}
             servicePoints={servicePoints}
           />
