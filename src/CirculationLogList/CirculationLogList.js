@@ -176,7 +176,7 @@ export const CirculationLogList = ({
           autosize
           onNeedMoreData={onNeedMoreData}
           sortOrder={sortingField}
-          sortDirection={sortingDirection}
+          sortDirection={sortingDirection || undefined} // sortingDirection is sometimes an empty string, which is not suitable for MCL propTypes
           onHeaderClick={changeSorting}
           isEmptyMessage={resultsStatusMessage}
           hasMargin

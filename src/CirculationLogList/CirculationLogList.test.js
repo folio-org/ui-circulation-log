@@ -107,13 +107,4 @@ describe('Circulation Log List', () => {
       name => expect(within(row).getByRole('gridcell', { name })).toBeVisible(),
     );
   });
-
-  it('auto-focuses first text field when there is no results', () => {
-    renderCirculationLogList({});
-
-    const [first, ...rest] = screen.getAllByRole('textbox');
-
-    expect(first).toHaveFocus();
-    rest.forEach(field => expect(field).not.toHaveFocus());
-  });
 });
