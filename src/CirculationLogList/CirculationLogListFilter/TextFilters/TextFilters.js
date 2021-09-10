@@ -1,14 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
 
 import { Pluggable } from '@folio/stripes/core';
 import { Button } from '@folio/stripes/components';
+import { useSetRef, useSetRefOnFocus } from '@folio/stripes/smart-components';
 
 import { useT } from '../../../hooks';
 import { Field } from './Field';
 
-export const TextFilters = ({ activeFilters, applyFilters, disabled = false, onFocus, focusRef }) => {
+export const TextFilters = ({ activeFilters, applyFilters, disabled = false, focusRef }) => {
   const t = useT();
 
   // On `disable` we're disabling only the Submit button, and the possibility to submit the form.
@@ -17,28 +18,9 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled = false, onF
   // This is not handled by TextField properly - its internal state remains "focused" after the focus is gone
   const handleFormSubmit = (...args) => (disabled ? undefined : applyFilters(...args));
 
-  const [refs] = useState({
-    userBarcode: useRef(),
-    itemBarcode: useRef(),
-    description: useRef(),
-  });
-
-  const [focusedFieldName, setFocusedFieldName] = useState('');
-
-  // We update the `focusRef` not here, but after the render - in the effect (below)
-  // for the fields refs to be ready, pointing to the <input> elements
-  const handleFocus = name => event => {
-    setFocusedFieldName(name);
-
-    return onFocus?.(event);
-  };
-
-  useEffect(
-    () => {
-      if (focusedFieldName && typeof focusRef === 'object') focusRef.current = refs[focusedFieldName].current;
-    },
-    [focusedFieldName, focusRef, refs],
-  );
+  const setFocusRef = useSetRef(focusRef);
+  const setFocusRefOnFocus = useSetRefOnFocus(focusRef);
+  const userBarcodeRef = useRef();
 
   const initialValues = {
     userBarcode: activeFilters?.userBarcode?.[0] ?? '',
@@ -56,9 +38,11 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled = false, onF
           <Field
             name="userBarcode"
             label={t`logEvent.user`}
-            inputRef={refs.userBarcode}
-            onFocus={handleFocus('userBarcode')}
-            autoFocus
+            inputRef={element => {
+              setFocusRef(element);
+              setFocusRefOnFocus(element);
+              userBarcodeRef.current = element;
+            }}
             marginBottom0
           />
           <Pluggable
@@ -67,22 +51,20 @@ export const TextFilters = ({ activeFilters, applyFilters, disabled = false, onF
             searchLabel={t`patronLookup`}
             searchButtonStyle="link"
             selectUser={user => form.change('userBarcode', user.barcode)}
-            afterClose={() => refs.userBarcode.current.focus()}
+            afterClose={() => userBarcodeRef.current?.focus()}
             marginTop0
           />
 
           <Field
             name="itemBarcode"
             label={t`logEvent.item`}
-            inputRef={refs.itemBarcode}
-            onFocus={handleFocus('itemBarcode')}
+            inputRef={setFocusRefOnFocus}
           />
 
           <Field
             name="description"
             label={t`logEvent.description`}
-            inputRef={refs.description}
-            onFocus={handleFocus('description')}
+            inputRef={setFocusRefOnFocus}
           />
 
           <Button
@@ -103,5 +85,4 @@ TextFilters.propTypes = {
   applyFilters: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
   focusRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-  onFocus: PropTypes.func,
 };

@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 * [UICIRCLOG-70](https://issues.folio.org/browse/UICIRCLOG-70) Add support for log records with new Circ action: "Send error".
+* [UICIRCLOG-54](https://issues.folio.org/browse/UICIRCLOG-54) Date range filter on Enter or clicking Apply moves focus to Results list pane (if there are results).
 
 ## [1.2.0](https://github.com/folio-org/ui-circulation-log/tree/v1.2.0) (2021-06-17)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.1.1...v1.2.0)
