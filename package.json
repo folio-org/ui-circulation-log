@@ -1,6 +1,6 @@
 {
   "name": "@folio/circulation-log",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Description for circulation logs",
   "main": "index.js",
   "repository": "",
@@ -71,7 +71,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.7.4",
     "@folio/eslint-config-stripes": "^5.0.0",
-    "@folio/stripes": "^6.2.0",
+    "@folio/stripes": "^7.0.0",
     "@folio/stripes-cli": "^2.0.0",
     "@formatjs/cli": "^4.2.10",
     "@testing-library/jest-dom": "^5.11.1",
@@ -89,8 +89,8 @@
     "jest": "^26.4.2",
     "jest-css-modules": "^2.1.0",
     "jest-junit": "^11.1.0",
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-intl": "^5.7.0",
     "react-query": "^3.6.0",
     "react-router": "^5.2.0",
@@ -99,7 +99,7 @@
     "testing-library-selector": "^0.2.1"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "^2.3.0",
+    "@folio/stripes-acq-components": "^3.0.0",
     "lodash": "^4.17.5",
     "moment": "^2.29.1",
     "prop-types": "^15.5.10",
@@ -109,8 +109,9 @@
     "react-router-prop-types": "^1.0.4"
   },
   "peerDependencies": {
-    "@folio/stripes": "^6.2.0",
-    "react": "*",
+    "@folio/stripes": "^7.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-intl": "^5.7.0 ",
     "react-query": "^3.6.0",
     "react-router": "^5.2.0",
