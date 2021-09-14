@@ -27,8 +27,6 @@ const CirculationLogListContainerComponent = ({ mutator }) => {
 
   const [servicePoints, setServicePoints] = useState();
 
-  const focusRef = React.useRef(null);
-
   useEffect(() => {
     mutator.logEventsServicePoints.GET()
       .then(setServicePoints);
@@ -51,8 +49,6 @@ const CirculationLogListContainerComponent = ({ mutator }) => {
       ...prevLogEvens,
       ...logEventsResponse.logRecords,
     ]));
-
-    return focusRef.current?.focus?.();
   }, []);
 
   const {
@@ -70,7 +66,6 @@ const CirculationLogListContainerComponent = ({ mutator }) => {
       isLoading={isLoading}
       logEvents={logEvents}
       servicePoints={servicePoints}
-      focusRef={focusRef}
     />
   );
 };

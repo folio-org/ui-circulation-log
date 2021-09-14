@@ -2,7 +2,7 @@ import React, {
   useCallback,
   useMemo,
   useRef,
-  useState,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -70,7 +70,6 @@ export const CirculationLogList = ({
   logEvents,
   logEventsCount,
   servicePoints,
-  focusRef,
 }) => {
   const stripes = useStripes();
   const history = useHistory();
@@ -113,16 +112,28 @@ export const CirculationLogList = ({
     />
   );
 
-  const [refs] = useState({
-    filters: useRef(),
-    results: useRef(),
-  });
+  const filtersRef = useRef();
+  const resultsRef = useRef();
 
-  const [isFiltersReadyToLooseFocus, setIsFiltersReadyToLooseFocus] = React.useState(false);
+  // default state is true, so if there are any results on page load - they are immediately focused
+  const [isFiltersReadyToLooseFocus, setIsFiltersReadyToLooseFocus] = React.useState(true);
 
-  const whoGetsTheFocus = isFiltersReadyToLooseFocus && logEventsCount ? 'results' : 'filters';
+  const focus = useCallback(() => {
+    const whoIsGettingFocus = isFiltersReadyToLooseFocus && logEventsCount ? resultsRef : filtersRef;
 
-  if (typeof focusRef === 'object') focusRef.current = refs[whoGetsTheFocus].current;
+    if (whoIsGettingFocus.current) whoIsGettingFocus.current.focus();
+  }, [isFiltersReadyToLooseFocus, logEventsCount]);
+
+  useEffect(() => {
+    if (!isLoading) focus();
+  }, [isLoading, focus]);
+
+  // If a user is applying the same filters - there will be no server request
+  // but we still want the appropriate element to be focused - results or the last visited filter field
+  const applyFiltersAndFocus = (...args) => {
+    applyFilters(...args);
+    focus();
+  };
 
   return (
     <Paneset data-test-log-events-list>
@@ -136,9 +147,9 @@ export const CirculationLogList = ({
 
           <CirculationLogListFilter
             activeFilters={filters}
-            applyFilters={applyFilters}
+            applyFilters={applyFiltersAndFocus}
             letLoseFocus={setIsFiltersReadyToLooseFocus}
-            focusRef={refs.filters}
+            focusRef={filtersRef}
             disabled={isLoading}
             servicePoints={servicePoints}
           />
@@ -147,7 +158,7 @@ export const CirculationLogList = ({
 
       <ResultsPane
         title={resultsPaneTitle}
-        resultsPaneTitleRef={refs.results}
+        resultsPaneTitleRef={resultsRef}
         count={logEventsCount}
         toggleFiltersPane={toggleFilters}
         filters={filters}
@@ -165,7 +176,7 @@ export const CirculationLogList = ({
           autosize
           onNeedMoreData={onNeedMoreData}
           sortOrder={sortingField}
-          sortDirection={sortingDirection}
+          sortDirection={sortingDirection || undefined} // sortingDirection is sometimes an empty string, which is not suitable for MCL propTypes
           onHeaderClick={changeSorting}
           isEmptyMessage={resultsStatusMessage}
           hasMargin
@@ -184,7 +195,6 @@ CirculationLogList.propTypes = {
   isLoading: PropTypes.bool,
   logEvents: PropTypes.arrayOf(PropTypes.object),
   servicePoints: PropTypes.arrayOf(PropTypes.object),
-  focusRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 CirculationLogList.defaultProps = {
