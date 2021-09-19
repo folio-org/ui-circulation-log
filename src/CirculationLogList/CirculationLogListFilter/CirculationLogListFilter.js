@@ -94,7 +94,7 @@ export const CirculationLogListFilter = ({
         />
       </div>
 
-      <div onFocus={() => letLoseFocus(false)}>
+      <div onFocus={() => letLoseFocus(true)}>
         <FilterAccordion
           activeFilters={activeFilters?.servicePointId}
           closedByDefault={false}
