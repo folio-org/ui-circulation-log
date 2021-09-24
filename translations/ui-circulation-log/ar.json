@@ -68,7 +68,7 @@
     "logEvent.object.N/A": "-",
     "filter.apply": "تطبيق",
     "logEvents.actions.export": "تصدير النتائج (CSV)",
-    "logEvents.actions.export.success": "تم طلب تصدير سجل الإعارة، يرجى الانتظار حتى يتم تنزيل الملف.",
+    "logEvents.actions.export.success": "تم طلب تصدير سجل الإعارة الخاص بك. يرجى الانتظار حتى يتم تنزيل الملف.",
     "logEvents.actions.export.error": "لقد حدث خطأ ما بخصوص طلب تصدير الملف، يرجى إعادة المحاولة.",
     "logEvents.actions.export.failed": "فشلت مهمة التصدير.",
     "logEvents.actions.export.successful": "تمت مهمة التصدير.",
