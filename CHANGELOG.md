@@ -1,10 +1,14 @@
 # Change history for ui-circulation-log
 
 ## (IN PROGRESS)
+
+## [2.0.0](https://github.com/folio-org/ui-circulation-log/tree/v2.0.0) (2021-10-06)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.2.0...v2.0.0)
 * [UICIRCLOG-70](https://issues.folio.org/browse/UICIRCLOG-70) Add support for log records with new Circ action: "Send error".
-*[UICIRCLOG-71](https://issues.folio.org/browse/UICIRCLOG-71) increment stripes to v7.
+* [UICIRCLOG-71](https://issues.folio.org/browse/UICIRCLOG-71) increment stripes to v7.
 * [UICIRCLOG-54](https://issues.folio.org/browse/UICIRCLOG-54) Date range filter on Enter or clicking Apply moves focus to Results list pane (if there are results).
 * [UICIRCLOG-73](https://issues.folio.org/browse/UICIRCLOG-73) DateRange filter focus blocks opening of Accordion components.
+* [UICIRCLOG-72](https://issues.folio.org/browse/UICIRCLOG-72) Edit success toast language in Circulation log export
 
 ## [1.2.0](https://github.com/folio-org/ui-circulation-log/tree/v1.2.0) (2021-06-17)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.1.1...v1.2.0)
