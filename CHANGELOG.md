@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* [UICIRCLOG-77](https://issues.folio.org/browse/UICIRCLOG-77) `plugin-find-user` is now compatible with `stripes` `v7`.
+
 ## [2.0.0](https://github.com/folio-org/ui-circulation-log/tree/v2.0.0) (2021-10-06)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.2.0...v2.0.0)
 * [UICIRCLOG-70](https://issues.folio.org/browse/UICIRCLOG-70) Add support for log records with new Circ action: "Send error".
