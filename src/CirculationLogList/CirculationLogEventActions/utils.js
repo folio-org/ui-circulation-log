@@ -32,8 +32,8 @@ export const getHasUserDetails = (object, userId) => (
   )
 );
 
-export const getHasFeeDetails = (object, feeId) => (
-  feeId && (
+export const getHasFeeDetails = (object, feeId, userId) => (
+  userId && feeId && (
     object === LOG_EVENT_OBJECTS.FEE
     || object === LOG_EVENT_OBJECTS.NOTICE
   )
