@@ -63,7 +63,7 @@ export const CirculationLogEventActions = ({ objectType, items, referenceIds }) 
       onToggle={onToggle}
     >
       {
-        hasFeeDetails && (
+        hasFeeDetails && userId && (
           <Button
             buttonStyle="dropdownItem"
             role="menuitem"
@@ -75,7 +75,7 @@ export const CirculationLogEventActions = ({ objectType, items, referenceIds }) 
       }
 
       {
-        hasLoanDetails && (
+        hasLoanDetails && userId && (
           <Button
             buttonStyle="dropdownItem"
             role="menuitem"
@@ -87,7 +87,7 @@ export const CirculationLogEventActions = ({ objectType, items, referenceIds }) 
       }
 
       {
-        hasUserDetails && (
+        hasUserDetails && userId && (
           <Button
             buttonStyle="dropdownItem"
             role="menuitem"
@@ -99,7 +99,7 @@ export const CirculationLogEventActions = ({ objectType, items, referenceIds }) 
       }
 
       {
-        hasRequestDetails && (
+        hasRequestDetails && requestId && (
           <Button
             buttonStyle="dropdownItem"
             role="menuitem"
@@ -111,7 +111,7 @@ export const CirculationLogEventActions = ({ objectType, items, referenceIds }) 
       }
 
       {
-        hasNoticePolicyDetails && (
+        hasNoticePolicyDetails && noticePolicyId && (
           <Button
             buttonStyle="dropdownItem"
             role="menuitem"
@@ -123,7 +123,7 @@ export const CirculationLogEventActions = ({ objectType, items, referenceIds }) 
       }
 
       {
-        hasTemplateDetails && (
+        hasTemplateDetails && templateId && (
           <Button
             buttonStyle="dropdownItem"
             role="menuitem"
