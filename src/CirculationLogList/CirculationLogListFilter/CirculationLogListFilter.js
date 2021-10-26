@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { noop } from 'lodash';
 
-import { useStripes } from '@folio/stripes/core';
 import {
   AccordionSet,
   Accordion,
