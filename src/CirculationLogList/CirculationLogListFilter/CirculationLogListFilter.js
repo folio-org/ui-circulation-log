@@ -54,7 +54,6 @@ export const CirculationLogListFilter = ({
 
   const localeDateFormat = useMemo(() => (
     getLocaleDateFormat({ intl })
-    // moment.localeData(stripes.locale).longDateFormat('L')
   ), [intl]);
 
   const servicePointFilterOptions = useMemo(() => {
