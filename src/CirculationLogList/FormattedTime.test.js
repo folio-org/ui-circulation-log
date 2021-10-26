@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import FormattedTime from './FormattedTime';
+import { FormattedTime } from './FormattedTime';
 
 const renderComponent = (props = {}) => (render(
   <FormattedTime
