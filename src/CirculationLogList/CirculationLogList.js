@@ -20,7 +20,6 @@ import {
 } from '@folio/stripes/components';
 import {
   FiltersPane,
-  FolioFormattedTime,
   ResetButton,
   ResultsPane,
   NoResultsMessage,
@@ -33,6 +32,7 @@ import { CirculationLogEventItems } from './CirculationLogEventItems';
 import { CirculationLogListFilter } from './CirculationLogListFilter';
 import { CirculationLogListActions } from './CirculationLogListActions';
 import { CirculationLogEventActions } from './CirculationLogEventActions';
+import { FormattedTime } from './FormattedTime';
 
 const resultsPaneTitle = <FormattedMessage id="ui-circulation-log.meta.title" />;
 const visibleColumns = ['userBarcode', 'itemBarcode', 'object', 'action', 'date', 'servicePoint', 'source', 'description', 'actions'];
@@ -52,7 +52,7 @@ const getResultsFormatter = (servicePointsMap) => ({
   itemBarcode: logEvent => <CirculationLogEventItems items={logEvent.items} />,
   object: logEvent => <FormattedMessage id={`ui-circulation-log.logEvent.object.${logEvent.object}`} />,
   action: logEvent => <FormattedMessage id={`ui-circulation-log.logEvent.action.${logEvent.action}`} />,
-  date: logEvent => <FolioFormattedTime dateString={logEvent.date} />,
+  date: logEvent => <FormattedTime dateString={logEvent.date} />,
   servicePoint: logEvent => servicePointsMap[logEvent.servicePointId],
   actions: logEvent => (
     <CirculationLogEventActions
@@ -67,10 +67,36 @@ export const CirculationLogList = ({
   isLoading,
   onNeedMoreData,
   resetData,
-  logEvents,
+  logEvents: templogevent,
   logEventsCount,
   servicePoints,
 }) => {
+  const logEvents = [
+    {
+      'id': '352fa2cd-0968-4918-92b0-303bb6256945',
+      'userBarcode': '0000027370',
+      'items': [{
+        'itemBarcode': '68979533',
+        'itemId': '11afb2bb-1954-481d-a966-1e902d2bd03a',
+        'instanceId': 'ef6132a4-22ee-4095-a3ed-7aec612a194e',
+        'holdingId': 'b83f0348-ad82-471d-ba6b-b03bc4aa2f43',
+        'loanId': '1b57cdd9-0f12-4608-88f0-cfb66b835940',
+      }],
+      'object': 'Notice',
+      'action': 'Send',
+      'date': '2021-10-19T23:37:14.599+00:00',
+      'servicePointId': '3a7de149-f17d-4602-adfe-0b09bf8e884a',
+      'source': 'System',
+      'description': 'Template: Aged to lost  . Triggering event: Aged to lost.',
+      'linkToIds': {
+        'userId': 'e19423c0-486e-4e94-bf80-f5d69ad6c630',
+        'templateId': 'a5b64a0d-1c5e-4231-89fc-00623fd8a1ea',
+        'noticePolicyId': 'c083c844-56d6-4326-a2fd-4acf81ca088a',
+      },
+    },
+    ...templogevent,
+  ];
+
   const stripes = useStripes();
   const history = useHistory();
   const location = useLocation();

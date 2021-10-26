@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import { useIntl } from 'react-intl';
 import { noop } from 'lodash';
 
 import { useStripes } from '@folio/stripes/core';
@@ -8,6 +8,7 @@ import {
   AccordionSet,
   Accordion,
   EmptyMessage,
+  getLocaleDateFormat,
 } from '@folio/stripes/components';
 import {
   useSetRef,
@@ -45,15 +46,17 @@ export const CirculationLogListFilter = ({
   focusRef,
   letLoseFocus = noop,
 }) => {
-  const stripes = useStripes();
+  const intl = useIntl();
+
   const adaptedApplyFilters = useCallback(
     ({ name, values }) => applyFilters({ [name]: values }),
     [applyFilters],
   );
 
   const localeDateFormat = useMemo(() => (
-    moment.localeData(stripes.locale).longDateFormat('L')
-  ), [stripes.locale]);
+    getLocaleDateFormat({ intl })
+    // moment.localeData(stripes.locale).longDateFormat('L')
+  ), [intl]);
 
   const servicePointFilterOptions = useMemo(() => {
     return servicePoints.map(servicePoint => ({
