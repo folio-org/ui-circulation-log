@@ -59,8 +59,8 @@ describe('CirculationLogEventActions utils', () => {
     });
 
     it('should return true when object supports loans passed with loan id', () => {
-      expect(logEventActions.getHasFeeDetails(LOG_EVENT_OBJECTS.FEE, 'feeId')).toBeTruthy();
-      expect(logEventActions.getHasFeeDetails(LOG_EVENT_OBJECTS.NOTICE, 'feeId')).toBeTruthy();
+      expect(logEventActions.getHasFeeDetails(LOG_EVENT_OBJECTS.FEE, 'feeId', 'userId')).toBeTruthy();
+      expect(logEventActions.getHasFeeDetails(LOG_EVENT_OBJECTS.NOTICE, 'feeId', 'userId')).toBeTruthy();
     });
 
     it('should return false when object does not support loans passed with loan id', () => {

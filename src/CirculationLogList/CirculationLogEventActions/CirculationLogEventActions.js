@@ -32,7 +32,7 @@ export const CirculationLogEventActions = ({ objectType, items, referenceIds }) 
   const hasUserDetails =
     getHasUserDetails(objectType, userId) && stripes.hasPerm('ui-users.view');
   const hasFeeDetails =
-    getHasFeeDetails(objectType, feeFineId) && stripes.hasPerm('ui-users.feesfines.actions.all');
+    getHasFeeDetails(objectType, feeFineId, userId) && stripes.hasPerm('ui-users.feesfines.actions.all');
   const hasRequestDetails =
     getHasRequestDetails(objectType, requestId) && stripes.hasPerm('ui-users.requests.all');
   const hasNoticePolicyDetails =
