@@ -20,7 +20,6 @@ import {
 } from '@folio/stripes/components';
 import {
   FiltersPane,
-  FolioFormattedTime,
   ResetButton,
   ResultsPane,
   NoResultsMessage,
@@ -33,6 +32,7 @@ import { CirculationLogEventItems } from './CirculationLogEventItems';
 import { CirculationLogListFilter } from './CirculationLogListFilter';
 import { CirculationLogListActions } from './CirculationLogListActions';
 import { CirculationLogEventActions } from './CirculationLogEventActions';
+import { FormattedTime } from './FormattedTime';
 
 const resultsPaneTitle = <FormattedMessage id="ui-circulation-log.meta.title" />;
 const visibleColumns = ['userBarcode', 'itemBarcode', 'object', 'action', 'date', 'servicePoint', 'source', 'description', 'actions'];
@@ -52,7 +52,7 @@ const getResultsFormatter = (servicePointsMap) => ({
   itemBarcode: logEvent => <CirculationLogEventItems items={logEvent.items} />,
   object: logEvent => <FormattedMessage id={`ui-circulation-log.logEvent.object.${logEvent.object}`} />,
   action: logEvent => <FormattedMessage id={`ui-circulation-log.logEvent.action.${logEvent.action}`} />,
-  date: logEvent => <FolioFormattedTime dateString={logEvent.date} />,
+  date: logEvent => <FormattedTime dateString={logEvent.date} />,
   servicePoint: logEvent => servicePointsMap[logEvent.servicePointId],
   actions: logEvent => (
     <CirculationLogEventActions
