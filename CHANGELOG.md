@@ -2,12 +2,16 @@
 
 ## (IN PROGRESS)
 
+## [2.0.1](https://github.com/folio-org/ui-circulation-log/tree/v2.0.0) (2021-11-03)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v2.0.0...v2.0.1)
+
 * [UICIRCLOG-77](https://issues.folio.org/browse/UICIRCLOG-77) `plugin-find-user` is now compatible with `stripes` `v7`.
 * [UICIRCLOG-76](https://issues.folio.org/browse/UICIRCLOG-76) Date range filters in Circulation log do not honor tenant locale.
 * [UICIRCLOG-75](https://issues.folio.org/browse/UICIRCLOG-75) Fee/fine Details action menu has unfriendly errors for missing/undefined userId
 
 ## [2.0.0](https://github.com/folio-org/ui-circulation-log/tree/v2.0.0) (2021-10-06)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v1.2.0...v2.0.0)
+
 * [UICIRCLOG-70](https://issues.folio.org/browse/UICIRCLOG-70) Add support for log records with new Circ action: "Send error".
 * [UICIRCLOG-71](https://issues.folio.org/browse/UICIRCLOG-71) increment stripes to v7.
 * [UICIRCLOG-54](https://issues.folio.org/browse/UICIRCLOG-54) Date range filter on Enter or clicking Apply moves focus to Results list pane (if there are results).
