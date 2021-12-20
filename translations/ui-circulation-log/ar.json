@@ -16,7 +16,7 @@
     "logEvent.object.Notice": "إخطار",
     "logEvent.object.Patron Block": "حظر المستفيدين",
     "logEvent.object.Request": "طلب",
-    "logEvent.action.Age to lost": "تقادمت وتم اعتبارها ضائعة",
+    "logEvent.action.Age to lost": "تقادمت إلى ضائعة",
     "logEvent.action.Anonymize": "تجاهل",
     "logEvent.action.Billed": "مبلغ الفاتورة",
     "logEvent.action.Cancelled": "ملغي",
