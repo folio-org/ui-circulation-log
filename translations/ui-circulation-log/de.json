@@ -24,7 +24,7 @@
     "logEvent.action.Changed due date": "Geändertes Fälligkeitsdatum",
     "logEvent.action.Check in": "Rückgabe",
     "logEvent.action.Check out": "Ausleihe",
-    "logEvent.action.Checked in": "Zurückgegeben",
+    "logEvent.action.Checked in": "Rückgabe App Check-in",
     "logEvent.action.Checked out": "Ausgeliehen",
     "logEvent.action.Checked out through override": "Ausgeliehen durch spezielle Zustimmung",
     "logEvent.action.Claimed returned": "Angeblich zurückgegeben",
