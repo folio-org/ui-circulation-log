@@ -16,7 +16,7 @@
     "logEvent.object.Notice": "Aviso",
     "logEvent.object.Patron Block": "Bloquear usuário",
     "logEvent.object.Request": "Requisição",
-    "logEvent.action.Age to lost": "Tempo para ser considerado perdido",
+    "logEvent.action.Age to lost": "Atrasado há muito tempo para perdido",
     "logEvent.action.Anonymize": "Anonimizado",
     "logEvent.action.Billed": "Faturado",
     "logEvent.action.Cancelled": "Cancelado",
