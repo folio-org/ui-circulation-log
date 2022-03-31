@@ -13,7 +13,6 @@ export const FormattedTime = ({ dateString }) => {
       day: 'numeric',
       hour: 'numeric',
       minute: 'numeric',
-      timeZone: 'UTC',
     })
     : <NoValue />;
 };
