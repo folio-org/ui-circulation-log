@@ -2,9 +2,12 @@
 
 ## (IN PROGRESS)
 
+## [2.1.1](https://github.com/folio-org/ui-circulation-log/tree/v2.1.1) (2022-04-04)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v2.1.0...v2.1.1)
+
 * [UICIRCLOG-92](https://issues.folio.org/browse/UICIRCLOG-92) Circulation log showing UTC time instead of local time for loans/requests/fee-fines
 
-## [2.1.0](https://github.com/folio-org/ui-circulation-log/tree/v2.0.0) (2022-03-03)
+## [2.1.0](https://github.com/folio-org/ui-circulation-log/tree/v2.1.0) (2022-03-03)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v2.0.1...v2.1.0)
 
 * [UICIRCLOG-85](https://issues.folio.org/browse/UICIRCLOG-85) Change "Age" to lost to "Aged" to lost
