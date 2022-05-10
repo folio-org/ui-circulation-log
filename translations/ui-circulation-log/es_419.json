@@ -3,7 +3,7 @@
     "logEvent.user": "User barcode",
     "logEvent.item": "Item barcode",
     "logEvent.object": "Object",
-    "logEvent.action": "Circ action",
+    "logEvent.action": "Acción Circ",
     "logEvent.date": "Date",
     "logEvent.servicePoint": "Service point",
     "logEvent.source": "Source",
