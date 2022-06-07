@@ -14,7 +14,7 @@
     "logEvent.object.Loan": "Loan",
     "logEvent.object.Manual Block": "Manual block",
     "logEvent.object.Notice": "Notice",
-    "logEvent.object.Patron Block": "Patron block",
+    "logEvent.object.Patron Block": "Blok čtenáře",
     "logEvent.object.Request": "Request",
     "logEvent.action.Age to lost": "Stáří až ztráta",
     "logEvent.action.Anonymize": "Anonymizováno",
@@ -40,7 +40,7 @@
     "logEvent.action.Moved": "Moved",
     "logEvent.action.Paid fully": "Paid fully",
     "logEvent.action.Paid partially": "Paid partially",
-    "logEvent.action.Patron blocked from requesting": "Patron blocked from requesting",
+    "logEvent.action.Patron blocked from requesting": "Čtenáři je blokováno zadávání požadavků",
     "logEvent.action.Pickup expired": "Pickup expired",
     "logEvent.action.Queue position reordered": "Queue position reordered",
     "logEvent.action.Recall requested": "Recall requested",
@@ -73,6 +73,6 @@
     "logEvents.actions.export.failed": "Export job has been failed.",
     "logEvents.actions.export.successful": "Export job has been completed.",
     "logEvent.action.Created through override": "Vytvořeno pomocí přepsání",
-    "patronLookup": "Patron look-up",
+    "patronLookup": "Vyhledání čtenáře",
     "logEvent.action.Send error": "Odeslat chybu"
 }
