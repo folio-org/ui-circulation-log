@@ -73,6 +73,6 @@
     "logEvents.actions.export.failed": "El trabajo de exportación ha fallado",
     "logEvents.actions.export.successful": "El trabajo de exportación ha sido completado",
     "logEvent.action.Created through override": "Creado anulando norma",
-    "patronLookup": "Patron look-up",
+    "patronLookup": "Búsqueda de usuario",
     "logEvent.action.Send error": "Error de envío"
 }
