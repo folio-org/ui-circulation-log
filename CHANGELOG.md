@@ -2,6 +2,11 @@
 
 ## (IN PROGRESS)
 
+## [2.2.0](https://github.com/folio-org/ui-circulation-log/tree/v2.2.0) (2022-07-08)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v2.1.1...v2.2.0)
+
+* Translations update
+
 ## [2.1.1](https://github.com/folio-org/ui-circulation-log/tree/v2.1.1) (2022-04-04)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v2.1.0...v2.1.1)
 
