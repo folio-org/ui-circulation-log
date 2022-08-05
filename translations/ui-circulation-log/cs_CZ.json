@@ -69,7 +69,7 @@
     "filter.apply": "Apply",
     "logEvents.actions.export": "Export results (CSV)",
     "logEvents.actions.export.success": "Byl vyžádán export Výpůjčkového logu. Počkejte prosím, než se soubor stáhne.",
-    "logEvents.actions.export.error": "Při požadavku na export souboru se něco pokazilo, zkuste to prosím znovu.",
+    "logEvents.actions.export.error": "Při žádosti na export souboru se něco pokazilo, zkuste to prosím znovu.",
     "logEvents.actions.export.failed": "Export job has been failed.",
     "logEvents.actions.export.successful": "Export job has been completed.",
     "logEvent.action.Created through override": "Vytvořeno pomocí přepsání",
