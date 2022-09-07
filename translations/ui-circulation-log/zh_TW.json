@@ -66,7 +66,7 @@
     "logEvent.item.showMore": "显示更多",
     "logEvent.item.showLess": "显示更少",
     "logEvent.object.N/A": "-",
-    "filter.apply": "应用",
+    "filter.apply": "套用",
     "logEvents.actions.export": "匯出結果 (CSV)",
     "logEvents.actions.export.success": "已接受匯出流通記錄，請稍候待下載檔案備妥。",
     "logEvents.actions.export.error": "匯出檔案出了點問題，請重試。",
