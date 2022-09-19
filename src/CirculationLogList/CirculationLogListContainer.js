@@ -16,7 +16,7 @@ import { buildLogEventsQuery } from './utils';
 import { CirculationLogList } from './CirculationLogList';
 import { useCirculationLog } from '../hooks/useCirculationLog';
 
-const RESULT_COUNT_INCREMENT = 50;
+const RESULT_COUNT_INCREMENT = 100;
 
 const resetData = () => {};
 

@@ -24,7 +24,8 @@ import {
   ResultsPane,
   NoResultsMessage,
   useLocationSorting,
-  useToggle, PrevNextPagination,
+  useToggle,
+  PrevNextPagination,
 } from '@folio/stripes-acq-components';
 
 import { useLocationFilters } from '../hooks';
