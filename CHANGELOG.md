@@ -7,6 +7,7 @@
 
 * [ICIRCLOG-96](https://issues.folio.org/browse/ICIRCLOG-96) Remove react-hot-loader from package.json
 * [UICIRCLOG-98](https://issues.folio.org/browse/UICIRCLOG-98) Replace babel-eslint with @babel/eslint-parser
+* [UICIRCLOG-104](https://issues.folio.org/browse/UICIRCLOG-104) Circ Log - Implement MCL Next/Previous pagination
 
 ## [2.2.0](https://github.com/folio-org/ui-circulation-log/tree/v2.2.0) (2022-07-08)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v2.1.1...v2.2.0)
