@@ -8,7 +8,7 @@ jest.mock('react-router-dom', () => ({
   useLocation: jest.fn().mockReturnValue({}),
 }));
 
-describe('useList', () => {
+describe('useCirculationLog', () => {
   it('should not call API right away, but after location is changed', async () => {
     const { result, rerender, waitForNextUpdate } = renderHook(
       () => useCirculationLog(false,
