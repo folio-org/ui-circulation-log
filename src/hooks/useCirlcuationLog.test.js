@@ -33,8 +33,11 @@ describe('useCirculationLog', () => {
   it('should call API right away and return records', async () => {
     const queryLoadRecords = jest.fn().mockResolvedValue({
       totalRecords: 100,
+      logRecords: {
+        id: 1,
+      },
     });
-    const loadRecordsCB = jest.fn();
+    const loadRecordsCB = (setValue, value) => setValue(value);
     const { result, waitForNextUpdate } = renderHook(() => useCirculationLog(true,
       queryLoadRecords,
       loadRecordsCB,
@@ -47,5 +50,9 @@ describe('useCirculationLog', () => {
     await waitForNextUpdate();
     expect(result.current.isLoading).toBe(false);
     expect(result.current.recordsCount).toBe(100);
+    expect(result.current.records).toEqual({
+      totalRecords: 100,
+      logRecords: { id: 1 },
+    });
   });
 });
