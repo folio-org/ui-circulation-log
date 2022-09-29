@@ -10,15 +10,13 @@ import {
 import queryString from 'query-string';
 
 import { stripesConnect } from '@folio/stripes/core';
-import {
-  useList,
-  baseManifest,
-} from '@folio/stripes-acq-components';
+import { baseManifest, usePagination } from '@folio/stripes-acq-components';
 
 import { buildLogEventsQuery } from './utils';
 import { CirculationLogList } from './CirculationLogList';
+import { useCirculationLog } from '../hooks/useCirculationLog';
 
-const RESULT_COUNT_INCREMENT = 30;
+const RESULT_COUNT_INCREMENT = 100;
 
 const resetData = () => {};
 
@@ -51,21 +49,23 @@ const CirculationLogListContainerComponent = ({ mutator }) => {
     ]));
   }, []);
 
+  const { pagination, changePage } = usePagination({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
+
   const {
     records: logEvents,
     recordsCount: logEventsCount,
     isLoading,
-    onNeedMoreData,
-  } = useList(false, loadLogEvents, postLoadLogEvents, RESULT_COUNT_INCREMENT);
+  } = useCirculationLog(false, loadLogEvents, postLoadLogEvents, pagination);
 
   return (
     <CirculationLogList
-      onNeedMoreData={onNeedMoreData}
+      onNeedMoreData={changePage}
       resetData={resetData}
       logEventsCount={logEventsCount}
       isLoading={isLoading}
       logEvents={logEvents}
       servicePoints={servicePoints}
+      pagination={pagination}
     />
   );
 };

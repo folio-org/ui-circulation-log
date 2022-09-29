@@ -25,6 +25,7 @@ import {
   NoResultsMessage,
   useLocationSorting,
   useToggle,
+  PrevNextPagination,
 } from '@folio/stripes-acq-components';
 
 import { useLocationFilters } from '../hooks';
@@ -70,6 +71,7 @@ export const CirculationLogList = ({
   logEvents,
   logEventsCount,
   servicePoints,
+  pagination,
 }) => {
   const stripes = useStripes();
   const history = useHistory();
@@ -128,7 +130,7 @@ export const CirculationLogList = ({
     if (!isLoading) focus();
   }, [isLoading, focus]);
 
-  // If a user is applying the same filters - there will be no server request
+  // If a user is applying the same filters - there will be no server request,
   // but we still want the appropriate element to be focused - results or the last visited filter field
   const applyFiltersAndFocus = (...args) => {
     applyFilters(...args);
@@ -160,29 +162,43 @@ export const CirculationLogList = ({
         title={resultsPaneTitle}
         resultsPaneTitleRef={resultsRef}
         count={logEventsCount}
+        autosize
         toggleFiltersPane={toggleFilters}
         filters={filters}
         isFiltersOpened={isFiltersOpened}
         renderActionMenu={stripes.hasInterface('data-export-spring') && renderActionMenu}
       >
-        <MultiColumnList
-          id="circulation-log-list"
-          totalCount={logEventsCount}
-          contentData={logEvents}
-          visibleColumns={visibleColumns}
-          columnMapping={columnMapping}
-          formatter={resultsFormatter}
-          loading={isLoading}
-          autosize
-          onNeedMoreData={onNeedMoreData}
-          sortOrder={sortingField}
-          sortDirection={sortingDirection || undefined} // sortingDirection is sometimes an empty string, which is not suitable for MCL propTypes
-          onHeaderClick={changeSorting}
-          isEmptyMessage={resultsStatusMessage}
-          hasMargin
-          pagingType="click"
-          interactive={false}
-        />
+        {(({ height, width }) => (
+          <>
+            <MultiColumnList
+              id="circulation-log-list"
+              totalCount={logEventsCount}
+              contentData={logEvents}
+              visibleColumns={visibleColumns}
+              columnMapping={columnMapping}
+              formatter={resultsFormatter}
+              loading={isLoading}
+              onNeedMoreData={onNeedMoreData}
+              sortOrder={sortingField}
+              sortDirection={sortingDirection || undefined} // sortingDirection is sometimes an empty string, which is not suitable for MCL propTypes
+              onHeaderClick={changeSorting}
+              isEmptyMessage={resultsStatusMessage}
+              hasMargin
+              pagingType={null}
+              interactive={false}
+              height={height - PrevNextPagination.HEIGHT}
+              width={width}
+            />
+            {logEvents.length > 0 && (
+            <PrevNextPagination
+              {...pagination}
+              totalCount={logEventsCount}
+              disabled={isLoading}
+              onChange={onNeedMoreData}
+            />
+            )}
+          </>
+        ))}
       </ResultsPane>
     </Paneset>
   );
@@ -195,6 +211,7 @@ CirculationLogList.propTypes = {
   isLoading: PropTypes.bool,
   logEvents: PropTypes.arrayOf(PropTypes.object),
   servicePoints: PropTypes.arrayOf(PropTypes.object),
+  pagination: PropTypes.object,
 };
 
 CirculationLogList.defaultProps = {
