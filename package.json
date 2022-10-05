@@ -39,15 +39,24 @@
         "visible": false
       },
       {
-        "permissionName": "ui-circulation-log.log-event.all",
-        "displayName": "Circulation log: All",
+        "permissionName": "ui-circulation-log.log-event.view",
+        "displayName": "Circulation log: View",
         "description": "",
         "visible": true,
         "subPermissions": [
           "module.circulation-log.enabled",
           "inventory-storage.service-points.collection.get",
           "circulation-logs.collection.get",
-          "data-export.job.item.get",
+          "data-export.job.item.get"
+        ]
+      },
+      {
+        "permissionName": "ui-circulation-log.log-event.all",
+        "displayName": "Circulation log: All",
+        "description": "",
+        "visible": true,
+        "subPermissions": [
+          "ui-circulation-log.log-event.view",
           "data-export.job.item.post"
         ]
       }

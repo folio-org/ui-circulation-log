@@ -9,11 +9,13 @@ import {
 } from '@folio/stripes/components';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
+import { useStripes } from '@folio/stripes/core';
 import { useCirculationLogExport } from './useCirculationLogExport';
 
 export const CirculationLogListActions = ({ logEventsCount, onToggle }) => {
   const { formatMessage } = useIntl();
   const showCallout = useShowCallout();
+  const stripes = useStripes();
 
   const { isLoading, requestExport } = useCirculationLogExport({
     onSuccess: () => {
@@ -29,6 +31,8 @@ export const CirculationLogListActions = ({ logEventsCount, onToggle }) => {
     },
   });
 
+  const isExportDisabled = !logEventsCount || isLoading || !stripes.hasPerm('ui-circulation-log.log-event.all');
+
   return (
     <MenuSection id="circulation-log-list-actions">
       <Button
@@ -39,7 +43,7 @@ export const CirculationLogListActions = ({ logEventsCount, onToggle }) => {
           onToggle();
           requestExport();
         }}
-        disabled={!logEventsCount || isLoading}
+        disabled={isExportDisabled}
       >
         <Icon size="small" icon="download">
           {formatMessage({ id: 'ui-circulation-log.logEvents.actions.export' })}
