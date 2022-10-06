@@ -36,7 +36,6 @@ import { CirculationLogEventActions } from './CirculationLogEventActions';
 import { FormattedTime } from './FormattedTime';
 
 const resultsPaneTitle = <FormattedMessage id="ui-circulation-log.meta.title" />;
-const visibleColumns = ['userBarcode', 'itemBarcode', 'object', 'action', 'date', 'servicePoint', 'source', 'description', 'actions'];
 const sortableFields = ['userBarcode', 'itemBarcode', 'object', 'action', 'date', 'source', 'description'];
 const columnMapping = {
   userBarcode: <FormattedMessage id="ui-circulation-log.logEvent.user" />,
@@ -76,6 +75,10 @@ export const CirculationLogList = ({
   const stripes = useStripes();
   const history = useHistory();
   const location = useLocation();
+
+  const isActionColumnVisible = stripes.hasPerm('ui-circulation-log.log-event.all');
+  const actionColumn = ['actions'];
+  const visibleColumns = ['userBarcode', 'itemBarcode', 'object', 'action', 'date', 'servicePoint', 'source', 'description', ...(isActionColumnVisible ? actionColumn : [])];
 
   const { filters, applyFilters, resetFilters } = useLocationFilters({ history, location });
 
