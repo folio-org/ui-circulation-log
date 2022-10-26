@@ -43,7 +43,7 @@
     "logEvent.action.Patron blocked from requesting": "Usuário bloqueado para requisições",
     "logEvent.action.Pickup expired": "Retirada expirada",
     "logEvent.action.Queue position reordered": "Posição da fila reordenada",
-    "logEvent.action.Recall requested": "Recall solicitado",
+    "logEvent.action.Recall requested": "Devolução antecipada solicitada",
     "logEvent.action.Refunded fully": "Reembolsado completamente",
     "logEvent.action.Refunded partially": "Reembolsado parcialmente",
     "logEvent.action.Renewed": "Renovado",

@@ -1,5 +1,5 @@
 {
-    "meta.title": "Log oběhu",
+    "meta.title": "Výpůjčkový log",
     "logEvent.user": "Čárový kód uživatele",
     "logEvent.item": "Čárový kód jednotky",
     "logEvent.object": "Objekt",
@@ -8,7 +8,7 @@
     "logEvent.servicePoint": "Servisní místo",
     "logEvent.source": "Zdroj",
     "logEvent.description": "Popis",
-    "permission.log-event.all": "Log oběhu: Vše",
+    "permission.log-event.all": "Výpůjčkový log: Vše",
     "logEvent.object.Fee/Fine": "Poplatek/pokuta",
     "logEvent.object.Item Block": "Blok jednotky",
     "logEvent.object.Loan": "Výpůjčka",
