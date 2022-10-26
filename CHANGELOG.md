@@ -1,6 +1,10 @@
 # Change history for ui-circulation-log
 
 ## (IN PROGRESS)
+
+## [2.3.0](https://github.com/folio-org/ui-circulation-log/tree/v2.3.0) (2022-10-26)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v2.2.1...v2.3.0)
+
 * [UICIRCLOG-107](https://issues.folio.org/browse/UICIRCLOG-107) Add view permission to Circulation log
 
 
