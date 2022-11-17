@@ -18,7 +18,7 @@
     "logEvent.object.Request": "Vyžádat",
     "logEvent.action.Age to lost": "Stáří až ztráta",
     "logEvent.action.Anonymize": "Anonymizováno",
-    "logEvent.action.Billed": "Účtováno",
+    "logEvent.action.Billed": "Fakturováno",
     "logEvent.action.Cancelled": "Zrušeno",
     "logEvent.action.Cancelled as error": "Zrušeno jako chyba",
     "logEvent.action.Changed due date": "Změněn termín splatnosti",
