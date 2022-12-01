@@ -9,7 +9,7 @@ import {
   Button,
   Dropdown,
   DropdownMenu,
-  Icon,
+  IconButton,
 } from '@folio/stripes/components';
 
 import {
@@ -43,16 +43,16 @@ export const CirculationLogEventActions = ({ objectType, items, referenceIds }) 
     && stripes.hasPerm('ui-circulation.settings.notice-templates');
 
   const renderTrigger = useCallback(({ triggerRef, onToggle, ariaProps, keyHandler }) => (
-    <Button
+    <IconButton
+      icon="ellipsis"
+      size="medium"
       ref={triggerRef}
       onClick={onToggle}
       onKeyDown={keyHandler}
       marginBottom0
       {...ariaProps}
       aria-label={intl.formatMessage({ id: 'ui-circulation-log.logEvent.actions' })}
-    >
-      <Icon icon="ellipsis" />
-    </Button>
+    />
   // eslint-disable-next-line react-hooks/exhaustive-deps
   ), []);
 
