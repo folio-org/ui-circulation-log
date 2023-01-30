@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 * [UICIRCLOG-109](https://issues.folio.org/browse/UICIRCLOG-109) Update circ log Actions ellipses UX
+* [UICIRCLOG-111](https://issues.folio.org/browse/UICIRCLOG-111) bump stripes to 8.0.0 for Orchid/2023-R1
 
 ## [2.3.0](https://github.com/folio-org/ui-circulation-log/tree/v2.3.0) (2022-10-26)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v2.2.1...v2.3.0)
