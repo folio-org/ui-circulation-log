@@ -1,6 +1,6 @@
 {
   "name": "@folio/circulation-log",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "Description for circulation logs",
   "main": "index.js",
   "repository": "",
@@ -82,7 +82,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.7.4",
     "@folio/eslint-config-stripes": "^5.0.0",
-    "@folio/stripes": "^7.0.0",
+    "@folio/stripes": "^8.0.0",
     "@folio/stripes-cli": "^2.0.0",
     "@formatjs/cli": "^4.2.10",
     "@testing-library/jest-dom": "^5.11.1",
@@ -118,7 +118,7 @@
     "react-router-prop-types": "^1.0.4"
   },
   "peerDependencies": {
-    "@folio/stripes": "^7.0.0",
+    "@folio/stripes": "^8.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-intl": "^5.7.0 ",
