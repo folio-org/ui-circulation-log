@@ -16,7 +16,7 @@ import {
 } from '../constants';
 
 const downloadJobExports = async (jobId, ky, showCallout) => {
-  await ky.get(`${EXPORT_JOBS_API}/${id}/download`, {
+  await ky.get(`${EXPORT_JOBS_API}/${jobId}/download`, {
     headers: { accept: 'application/octet-stream' },
   })
     .blob()
