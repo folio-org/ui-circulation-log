@@ -2,7 +2,7 @@ import { buildDateRangeQuery, DESC_DIRECTION } from '@folio/stripes-acq-componen
 
 export const DATE_DEFAULT_SORTING_DIRECTION = DESC_DIRECTION;
 
-export const EXPORT_JOBS_API = "data-export-spring/jobs";
+export const EXPORT_JOBS_API = 'data-export-spring/jobs';
 
 export const CUSTOM_FILTERS = {
   userBarcode: (value) => `userBarcode=="*${value}*"`,

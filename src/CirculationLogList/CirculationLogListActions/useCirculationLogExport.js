@@ -15,13 +15,13 @@ import {
   EXPORT_JOBS_API,
 } from '../constants';
 
-const downloadJobExports = async (jobId, ky, showCallout) => {
-  await ky.get(`${EXPORT_JOBS_API}/${jobId}/download`, {
+const downloadJobExports = async (job, ky, showCallout) => {
+  await ky.get(`${EXPORT_JOBS_API}/${job.id}/download`, {
     headers: { accept: 'application/octet-stream' },
   })
     .blob()
     .then(data => {
-      downloadBase64(fileName, URL.createObjectURL(data));
+      downloadBase64(job.fileNames[0], URL.createObjectURL(data));
     })
     .catch(() => {
       showCallout({
@@ -49,7 +49,7 @@ export const useCirculationLogExportPolling = () => {
         showCallout({
           message: formatMessage({ id: 'ui-circulation-log.logEvents.actions.export.successful' }),
         });
-        downloadJobExports(job.id, ky, showCallout);
+        downloadJobExports(job, ky, showCallout);
       } else {
         poll(job.id);
       }

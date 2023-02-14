@@ -10,7 +10,9 @@ import {
   useCirculationLogExport,
 } from './useCirculationLogExport';
 
-jest.useFakeTimers();
+beforeEach(() => {
+  jest.useFakeTimers()
+})
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
