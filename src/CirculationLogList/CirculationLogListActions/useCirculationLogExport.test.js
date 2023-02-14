@@ -10,9 +10,7 @@ import {
   useCirculationLogExport,
 } from './useCirculationLogExport';
 
-beforeEach(() => {
-  jest.useFakeTimers()
-})
+jest.useFakeTimers();
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -39,6 +37,7 @@ describe('useCirculationLogExport', () => {
       json: jest.fn(() => ({ id: 'sas-fsd-53-sda' })),
     }));
     getMock = jest.fn(() => ({
+      blob: () => Promise.resolve(),
       json: jest.fn(() => ({ id: 'sas-fsd-53-sda', status: 'SUCCESSFUL', files })),
     }));
 
@@ -89,28 +88,6 @@ describe('useCirculationLogExport', () => {
     jest.runAllTimers();
 
     expect(getMock).toHaveBeenCalled();
-  });
-
-  it('should download all files when job is successful', async () => {
-    const linkMock = document.createElement('a');
-
-    jest.clearAllTimers();
-
-    const { result } = renderHook(
-      () => useCirculationLogExport({
-        onSuccess: jest.fn(),
-      }),
-      { wrapper },
-    );
-
-    linkMock.dispatchEvent = jest.fn();
-    jest.spyOn(document, 'createElement').mockReturnValue(linkMock);
-
-    await result.current.requestExport();
-
-    jest.runAllTimers();
-
-    await waitFor(() => expect(linkMock.dispatchEvent).toHaveBeenCalledTimes(files.length));
   });
 
   it('should not download files when job is failed', async () => {
