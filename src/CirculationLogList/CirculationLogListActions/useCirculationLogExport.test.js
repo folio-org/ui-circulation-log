@@ -31,13 +31,15 @@ const files = ['bursar1.dat', 'bursar2'];
 describe('useCirculationLogExport', () => {
   let postMock;
   let getMock;
+  let blobMock;
 
   beforeEach(() => {
+    blobMock = jest.fn().mockImplementation(() => Promise.resolve());
     postMock = jest.fn(() => ({
       json: jest.fn(() => ({ id: 'sas-fsd-53-sda' })),
     }));
     getMock = jest.fn(() => ({
-      blob: () => Promise.resolve(),
+      blob: blobMock,
       json: jest.fn(() => ({ id: 'sas-fsd-53-sda', status: 'SUCCESSFUL', files })),
     }));
 
@@ -90,9 +92,24 @@ describe('useCirculationLogExport', () => {
     expect(getMock).toHaveBeenCalled();
   });
 
-  it('should not download files when job is failed', async () => {
-    const linkMock = document.createElement('a');
+  it('should download all files when job is successful', async () => {
+    jest.clearAllTimers();
 
+    const { result } = renderHook(
+      () => useCirculationLogExport({
+        onSuccess: jest.fn(),
+      }),
+      { wrapper },
+    );
+
+    await result.current.requestExport();
+
+    jest.runAllTimers();
+
+    await waitFor(() => expect(blobMock).toHaveBeenCalled());
+  });
+
+  it('should not download files when job is failed', async () => {
     jest.clearAllTimers();
 
     useOkapiKy.mockClear().mockReturnValue({
@@ -109,13 +126,10 @@ describe('useCirculationLogExport', () => {
       { wrapper },
     );
 
-    linkMock.dispatchEvent = jest.fn();
-    jest.spyOn(document, 'createElement').mockReturnValue(linkMock);
-
     await result.current.requestExport();
 
     jest.runAllTimers();
 
-    expect(linkMock.dispatchEvent).not.toHaveBeenCalled();
+    expect(blobMock).not.toHaveBeenCalled();
   });
 });
