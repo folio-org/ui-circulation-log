@@ -8,30 +8,27 @@ import queryString from 'query-string';
 import { useIntl } from 'react-intl';
 
 import { useOkapiKy } from '@folio/stripes/core';
-import { useShowCallout } from '@folio/stripes-acq-components';
+import { useShowCallout, downloadBase64 } from '@folio/stripes-acq-components';
 
 import { buildLogEventsQuery } from '../utils';
+import {
+  EXPORT_JOBS_API,
+} from '../constants';
 
-const downloadJobExports = ({ files, type, name, endTime }) => {
-  files.forEach((file) => {
-    const link = document.createElement('a');
-
-    link.href = file;
-    link.download = `${type}_${name}_${endTime}`;
-    link.target = '_blank';
-
-    document.body.appendChild(link);
-
-    link.dispatchEvent(
-      new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-      }),
-    );
-
-    document.body.removeChild(link);
-  });
+const downloadJobExports = async (job, ky, showCallout) => {
+  await ky.get(`${EXPORT_JOBS_API}/${job.id}/download`, {
+    headers: { accept: 'application/octet-stream' },
+  })
+    .blob()
+    .then(data => {
+      downloadBase64(job.fileNames[0], URL.createObjectURL(data));
+    })
+    .catch(() => {
+      showCallout({
+        messageId: 'ui-export-manager.exportJob.details.action.download.error',
+        type: 'error',
+      });
+    });
 };
 
 export const useCirculationLogExportPolling = () => {
@@ -52,7 +49,7 @@ export const useCirculationLogExportPolling = () => {
         showCallout({
           message: formatMessage({ id: 'ui-circulation-log.logEvents.actions.export.successful' }),
         });
-        downloadJobExports(job);
+        downloadJobExports(job, ky, showCallout);
       } else {
         poll(job.id);
       }
