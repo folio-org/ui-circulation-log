@@ -70,8 +70,8 @@
     "logEvents.actions.export": "Exportar resultados (CSV)",
     "logEvents.actions.export.success": "A exportação do seu log de circulação foi solicitada. Aguarde enquanto o arquivo é baixado.",
     "logEvents.actions.export.error": "Algo deu errado com a solicitação de exportação do arquivo, tente novamente.",
-    "logEvents.actions.export.failed": "O job de exportação falhou.",
-    "logEvents.actions.export.successful": "O job de exportação foi concluído.",
+    "logEvents.actions.export.failed": "O trabalho de exportação falhou.",
+    "logEvents.actions.export.successful": "O trabalho de exportação foi concluído.",
     "logEvent.action.Created through override": "Criado via Sobrepor",
     "patronLookup": "Buscar usuário",
     "logEvent.action.Send error": "Erro de envio"
