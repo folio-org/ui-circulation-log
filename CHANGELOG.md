@@ -1,6 +1,11 @@
 # Change history for ui-circulation-log
 
 ## (IN PROGRESS)
+
+
+## [3.0.0](https://github.com/folio-org/ui-circulation-log/tree/v3.0.0) (2022-02-24)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v2.3.0...v3.0.0)
+
 * [UICIRCLOG-109](https://issues.folio.org/browse/UICIRCLOG-109) Update circ log Actions ellipses UX
 * [UICIRCLOG-111](https://issues.folio.org/browse/UICIRCLOG-111) bump stripes to 8.0.0 for Orchid/2023-R1
 * [UIEXPMGR-65](https://issues.folio.org/browse/UIEXPMGR-65) Download refactoring to support /download endpoint (Circulation log)
