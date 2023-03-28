@@ -17,7 +17,7 @@
     "logEvent.object.Patron Block": "Patron block",
     "logEvent.object.Request": "Request",
     "logEvent.action.Age to lost": "Aged to lost",
-    "logEvent.action.Anonymize": "Anonymized",
+    "logEvent.action.Anonymize": "匿名化",
     "logEvent.action.Billed": "Billed",
     "logEvent.action.Cancelled": "キャンセル済",
     "logEvent.action.Cancelled as error": "エラーとしてキャンセルされました",
