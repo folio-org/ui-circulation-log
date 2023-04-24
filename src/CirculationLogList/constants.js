@@ -6,7 +6,7 @@ export const EXPORT_JOBS_API = 'data-export-spring/jobs';
 
 export const CUSTOM_FILTERS = {
   userBarcode: (value) => `userBarcode=="*${value}*"`,
-  itemBarcode: (value) => `items=="*${value}*"`,
+  itemBarcode: (value) => `items="${value}"`,
   description: (value) => `description=="*${value}*"`,
   date: buildDateRangeQuery.bind(null, ['date']),
 };
