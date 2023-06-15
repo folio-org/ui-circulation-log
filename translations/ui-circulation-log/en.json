@@ -68,6 +68,8 @@
   "logEvent.action.Waived partially": "Waived partially",
   "logEvent.action.Created through override": "Created through override",
   "logEvent.action.Send error": "Send error",
+  "logEvent.action.Patron info added": "Patron info added",
+  "logEvent.action.Staff info added": "Staff info added",
 
   "logEvent.actions.itemDetails": "Item details",
   "logEvent.actions.userDetails": "User details",
