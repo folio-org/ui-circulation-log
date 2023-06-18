@@ -74,5 +74,7 @@
     "logEvents.actions.export.successful": "تمت مهمة التصدير.",
     "logEvent.action.Created through override": "تم الإنشاء عبر التخطي",
     "patronLookup": "بحث المستفيد",
-    "logEvent.action.Send error": "خطأ في الإرسال"
+    "logEvent.action.Send error": "خطأ في الإرسال",
+    "logEvent.action.Patron info added": "Patron info added",
+    "logEvent.action.Staff info added": "Staff info added"
 }

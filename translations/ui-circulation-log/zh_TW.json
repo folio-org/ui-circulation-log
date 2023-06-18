@@ -74,5 +74,7 @@
     "logEvents.actions.export.successful": "匯出作業已完成。",
     "logEvent.action.Created through override": "Created through override",
     "patronLookup": "查詢讀者",
-    "logEvent.action.Send error": "寄送錯誤"
+    "logEvent.action.Send error": "寄送錯誤",
+    "logEvent.action.Patron info added": "Patron info added",
+    "logEvent.action.Staff info added": "Staff info added"
 }
