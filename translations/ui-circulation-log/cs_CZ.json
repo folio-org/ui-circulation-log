@@ -74,5 +74,7 @@
     "logEvents.actions.export.successful": "Úloha exportu byla dokončena.",
     "logEvent.action.Created through override": "Vytvořeno pomocí přepsání",
     "patronLookup": "Vyhledání čtenáře",
-    "logEvent.action.Send error": "Odeslat chybu"
+    "logEvent.action.Send error": "Odeslat chybu",
+    "logEvent.action.Patron info added": "Patron info added",
+    "logEvent.action.Staff info added": "Staff info added"
 }

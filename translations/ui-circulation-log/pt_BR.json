@@ -74,5 +74,7 @@
     "logEvents.actions.export.successful": "O trabalho de exportação foi concluído.",
     "logEvent.action.Created through override": "Criado via Sobrepor",
     "patronLookup": "Buscar usuário",
-    "logEvent.action.Send error": "Erro de envio"
+    "logEvent.action.Send error": "Erro de envio",
+    "logEvent.action.Patron info added": "Informações do usuário adicionadas",
+    "logEvent.action.Staff info added": "Informações da equipe adicionadas"
 }
