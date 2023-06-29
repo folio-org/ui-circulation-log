@@ -75,6 +75,6 @@
     "logEvent.action.Created through override": "Erstellt durch spezielle Zustimmung",
     "patronLookup": "Personensuche",
     "logEvent.action.Send error": "Fehler bei Erstellung",
-    "logEvent.action.Patron info added": "Patron info added",
-    "logEvent.action.Staff info added": "Staff info added"
+    "logEvent.action.Patron info added": "Info für Benutzenden hinzugefügt",
+    "logEvent.action.Staff info added": "Info für Personal hinzugefügt"
 }
