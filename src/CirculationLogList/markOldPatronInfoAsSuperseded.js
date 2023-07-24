@@ -75,4 +75,4 @@ function markOldPatronInfoAsSuperseded(list) {
   });
 }
 
-export { markOldPatronInfoAsSuperseded };
+export { registerMostRecentPatronNotes, markOldPatronInfoAsSuperseded };
