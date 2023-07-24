@@ -32,13 +32,8 @@ function registerMostRecentPatronNotes(list) {
     if (rec.action === LOAN_ACTIONS.PATRON_INFO) {
       const itemId = record2itemId(rec);
 
-      if (!itemId) {
-        // console.log('no itemId in', rec);
-      } else if (!itemBarcode2mostRecentPatronNote[itemId]) {
-        // console.log('first patron-info for item', itemId, 'is', rec.id);
+      if (itemId && !itemBarcode2mostRecentPatronNote[itemId]) {
         itemBarcode2mostRecentPatronNote[itemId] = rec.id;
-      } else {
-        // console.log(' ignoring spare patron-info for item', itemId, '-', rec.id);
       }
     }
   });
@@ -48,8 +43,6 @@ function registerMostRecentPatronNotes(list) {
 
 
 function markOldPatronInfoAsSuperseded(list) {
-  // console.log(list);
-
   const chronologicalList = [...list];
 
   chronologicalList.sort((a, b) => (
@@ -59,8 +52,6 @@ function markOldPatronInfoAsSuperseded(list) {
   ));
 
   const itemBarcode2mostRecentPatronNote = registerMostRecentPatronNotes(chronologicalList);
-
-  // console.log(itemBarcode2mostRecentPatronNote);
 
   return list.map(rec => {
     const itemId = record2itemId(rec);
