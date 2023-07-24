@@ -1,7 +1,3 @@
-// This looks like human-readable text, but is really an opaque ID
-// XXX can it be included from elsewhere in the source?
-const PATRON_INFO_ADDED = 'Patron info added';
-
 /*
    In the markOldPatronInfoAsSuperseded function, we want to mark
    superseded patron-info events (i.e. all such events but the last
@@ -19,6 +15,8 @@ const PATRON_INFO_ADDED = 'Patron info added';
    and changing the relevant entries.
 */
 
+import { LOAN_ACTIONS } from './constants';
+
 // PRIVATE
 function record2itemId(rec) {
   // Not every record has an item; potentially some have more than one
@@ -31,7 +29,7 @@ function registerMostRecentPatronNotes(list) {
   const itemBarcode2mostRecentPatronNote = {};
 
   list.forEach(rec => {
-    if (rec.action === PATRON_INFO_ADDED) {
+    if (rec.action === LOAN_ACTIONS.PATRON_INFO) {
       const itemId = record2itemId(rec);
 
       if (!itemId) {
@@ -68,7 +66,7 @@ function markOldPatronInfoAsSuperseded(list) {
     const itemId = record2itemId(rec);
     const newRec = { ...rec };
 
-    if (rec.action === PATRON_INFO_ADDED && itemBarcode2mostRecentPatronNote[itemId] !== rec.id) {
+    if (rec.action === LOAN_ACTIONS.PATRON_INFO && itemBarcode2mostRecentPatronNote[itemId] !== rec.id) {
       newRec.action = 'Patron info superseded';
     }
 
