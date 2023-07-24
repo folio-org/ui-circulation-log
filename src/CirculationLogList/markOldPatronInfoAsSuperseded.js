@@ -20,12 +20,19 @@ const PATRON_INFO_ADDED = 'Patron info added';
 */
 
 // PRIVATE
+function record2itemId(rec) {
+  // Not every record has an item; potentially some have more than one
+  return rec.items?.[0]?.itemBarcode;
+}
+
+
+// PRIVATE
 function registerMostRecentPatronNotes(list) {
   const itemBarcode2mostRecentPatronNote = {};
 
   list.forEach(rec => {
     if (rec.action === PATRON_INFO_ADDED) {
-      const itemId = rec.items[0]?.itemBarcode;
+      const itemId = record2itemId(rec);
 
       if (!itemId) {
         // console.log('no itemId in', rec);
@@ -56,7 +63,7 @@ function markOldPatronInfoAsSuperseded(list) {
   // console.log(itemBarcode2mostRecentPatronNote);
 
   return list.map(rec => {
-    const itemId = rec.items[0]?.itemBarcode;
+    const itemId = record2itemId(rec);
     const newRec = { ...rec };
 
     if (rec.action === PATRON_INFO_ADDED && itemBarcode2mostRecentPatronNote[itemId] !== rec.id) {
