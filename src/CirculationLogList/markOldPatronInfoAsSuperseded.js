@@ -53,6 +53,7 @@ function markOldPatronInfoAsSuperseded(list) {
   // console.log(list);
 
   const chronologicalList = [...list];
+
   chronologicalList.sort((a, b) => (
     a.date < b.date ? 1 :
       a.date > b.date ? -1 :
