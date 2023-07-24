@@ -74,4 +74,4 @@ function markOldPatronInfoAsSuperseded(list) {
   });
 }
 
-export default markOldPatronInfoAsSuperseded;
+export { markOldPatronInfoAsSuperseded };
