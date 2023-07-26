@@ -74,5 +74,7 @@
     "logEvents.actions.export.successful": "导出任务已完成。",
     "logEvent.action.Created through override": "已通过越权创建",
     "patronLookup": "查找读者",
-    "logEvent.action.Send error": "发送错误"
+    "logEvent.action.Send error": "发送错误",
+    "logEvent.action.Patron info added": "已添加读者信息",
+    "logEvent.action.Staff info added": "已添加员工信息"
 }
