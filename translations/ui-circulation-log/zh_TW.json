@@ -76,5 +76,6 @@
     "patronLookup": "查詢讀者",
     "logEvent.action.Send error": "寄送錯誤",
     "logEvent.action.Patron info added": "Patron info added",
-    "logEvent.action.Staff info added": "Staff info added"
+    "logEvent.action.Staff info added": "Staff info added",
+    "logEvent.action.Patron info superseded": "Patron info (SUPERSEDED)"
 }

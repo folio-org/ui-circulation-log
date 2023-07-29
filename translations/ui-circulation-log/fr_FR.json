@@ -76,5 +76,6 @@
     "patronLookup": "Rechercher l'utilisateur",
     "logEvent.action.Send error": "Send error",
     "logEvent.action.Patron info added": "Patron info added",
-    "logEvent.action.Staff info added": "Staff info added"
+    "logEvent.action.Staff info added": "Staff info added",
+    "logEvent.action.Patron info superseded": "Patron info (SUPERSEDED)"
 }
