@@ -76,5 +76,6 @@
     "patronLookup": "Vyhledání čtenáře",
     "logEvent.action.Send error": "Odeslat chybu",
     "logEvent.action.Patron info added": "Přidány informace pro čtenáře",
-    "logEvent.action.Staff info added": "Přidány informace pro zaměstnance"
+    "logEvent.action.Staff info added": "Přidány informace pro zaměstnance",
+    "logEvent.action.Patron info superseded": "Patron info (SUPERSEDED)"
 }

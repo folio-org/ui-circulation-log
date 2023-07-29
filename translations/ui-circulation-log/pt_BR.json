@@ -76,5 +76,6 @@
     "patronLookup": "Buscar usuário",
     "logEvent.action.Send error": "Erro de envio",
     "logEvent.action.Patron info added": "Informações do usuário adicionadas",
-    "logEvent.action.Staff info added": "Informações da equipe adicionadas"
+    "logEvent.action.Staff info added": "Informações da equipe adicionadas",
+    "logEvent.action.Patron info superseded": "Informações do usuário (VENCIDO)"
 }

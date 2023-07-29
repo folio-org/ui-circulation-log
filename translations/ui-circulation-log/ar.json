@@ -76,5 +76,6 @@
     "patronLookup": "بحث المستفيد",
     "logEvent.action.Send error": "خطأ في الإرسال",
     "logEvent.action.Patron info added": "Patron info added",
-    "logEvent.action.Staff info added": "Staff info added"
+    "logEvent.action.Staff info added": "Staff info added",
+    "logEvent.action.Patron info superseded": "Patron info (SUPERSEDED)"
 }
