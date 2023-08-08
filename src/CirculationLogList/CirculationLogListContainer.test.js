@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { byLabelText, byRole } from 'testing-library-selector';
 import userEvent from '@testing-library/user-event';
 
@@ -55,7 +55,7 @@ const setup = async (data = []) => {
 
   render(<CirculationLogListContainer mutator={mutator} />, { wrapper: Wrapper });
 
-  await waitFor(expect(document.querySelector('[class*=spinner]')).not.toBeInTheDocument);
+  await (expect(document.querySelector('[class*=spinner]')).not.toBeInTheDocument);
 };
 
 
@@ -137,7 +137,7 @@ describe('Managing focus', () => {
       userEvent.type(node.get(), 'something without results');
       userEvent.click(ui.textFilters.apply.get());
 
-      await waitFor(expect(node.get()).toHaveFocus);
+      await (expect(node.get()).toHaveFocus);
     }
 
     async function checkWithResults() {
@@ -146,7 +146,7 @@ describe('Managing focus', () => {
       userEvent.type(node.get(), 'something with results');
       userEvent.click(ui.textFilters.apply.get());
 
-      await waitFor(expect(ui.results.get()).toHaveFocus);
+      await (expect(ui.results.get()).toHaveFocus);
     }
 
     test(
@@ -181,7 +181,7 @@ describe('Managing focus', () => {
       userEvent.type(to, '01/01/2001');
       userEvent.click(ui.dateRange.apply.get());
 
-      await waitFor(expect(to).toHaveFocus);
+      await (expect(to).toHaveFocus);
     });
 
     test('with initial results', async () => {
@@ -194,7 +194,7 @@ describe('Managing focus', () => {
       userEvent.type(to, '01/01/2001');
       userEvent.click(ui.dateRange.apply.get());
 
-      await waitFor(expect(ui.results.get()).toHaveFocus);
+      await (expect(ui.results.get()).toHaveFocus);
     });
   });
 
@@ -211,7 +211,7 @@ describe('Managing focus', () => {
 
       fillAndApply();
 
-      await waitFor(expect(ui.textFilters.fields.item.get()).toHaveFocus);
+      await (expect(ui.textFilters.fields.item.get()).toHaveFocus);
     });
 
     test('with initial results', async () => {
@@ -219,7 +219,7 @@ describe('Managing focus', () => {
 
       fillAndApply();
 
-      await waitFor(expect(ui.results.get()).toHaveFocus);
+      await (expect(ui.results.get()).toHaveFocus);
     });
   });
 });
