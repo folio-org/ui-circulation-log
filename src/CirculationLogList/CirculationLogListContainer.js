@@ -15,8 +15,7 @@ import { baseManifest, usePagination } from '@folio/stripes-acq-components';
 import { buildLogEventsQuery } from './utils';
 import { CirculationLogList } from './CirculationLogList';
 import { useCirculationLog } from '../hooks/useCirculationLog';
-import { LOAN_ACTIONS } from './constants';
-import { markOldPatronInfoAsSuperseded } from './markOldPatronInfoAsSuperseded';
+import { markOldPatronInfoAsSuperseded, captureMostRecentPatronInfoLogs } from './markOldPatronInfoAsSuperseded';
 
 const RESULT_COUNT_INCREMENT = 100;
 
@@ -44,54 +43,9 @@ const CirculationLogListContainerComponent = ({ mutator }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search]);
 
-  // For given log records fetch log records by item barcode
-  // and return a map of most recent PATRON_INFO logs
-  const captureMostRecentPatronInfoLogs = async (logRecords) => {
-    const barcodeSet = new Set();
-    const logsByIdMap = new Map();
-
-    logRecords.forEach(log => {
-      if (log.action === LOAN_ACTIONS.PATRON_INFO && log?.items?.[0]?.itemBarcode) {
-        barcodeSet.add(`items=${log?.items?.[0]?.itemBarcode}`);
-      }
-    });
-
-    const query = Array.from(barcodeSet).join(' or ');
-
-    if (!query) {
-      return logsByIdMap;
-    }
-
-    mutator.logEventsListEventsByBarcode.reset();
-    const results = await mutator.logEventsListEventsByBarcode.GET({
-      params: {
-        query: `(${query}) and action=="${LOAN_ACTIONS.PATRON_INFO}" sortby date/sort.descending`,
-        limit: 1000,
-      },
-    });
-
-    if (results?.logRecords) {
-      const { logRecords: logs } = results;
-      // key represents item barcode, value represents log id
-      const itemBarcodeMap = new Map();
-
-      // capture the most recent log based on gven item barcode
-      logs.forEach(log => {
-        const itemBarcode = log?.items?.[0]?.itemBarcode;
-
-        if (!itemBarcodeMap.has(itemBarcode)) {
-          itemBarcodeMap.set(itemBarcode, log.id);
-          logsByIdMap.set(log.id, log);
-        }
-      });
-    }
-
-    return logsByIdMap;
-  };
-
   const postLoadLogEvents = useCallback(async (setLogEvents, logEventsResponse) => {
     const { logRecords } = logEventsResponse;
-    const logsByIdMap = await captureMostRecentPatronInfoLogs(logRecords);
+    const logsByIdMap = await captureMostRecentPatronInfoLogs(mutator, logRecords);
     const markedLogRecords = markOldPatronInfoAsSuperseded(logRecords, logsByIdMap);
 
     setLogEvents((prevLogEvens) => ([
