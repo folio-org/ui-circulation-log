@@ -5,59 +5,15 @@
 
    We effect this change visually by changing the their `action` field
    from "Patron info added" to "Patron info superseded".
-
-   Identifying the relevant records is tricky in the general case,
-   though, as the list may not be sorted chronologically. (It starts
-   out that way, but the user can re-sort the list by clicking on a
-   column header). So we have to go the long way around, generating
-   chronologically sorted list, using this to generate a register of
-   entries that need changing, then running through the original list
-   and changing the relevant entries.
 */
 
 import { LOAN_ACTIONS } from './constants';
 
-// PRIVATE
-function record2itemId(rec) {
-  // Not every record has an item; potentially some have more than one
-  return rec.items?.[0]?.itemBarcode;
-}
-
-
-// PRIVATE
-function registerMostRecentPatronNotes(list) {
-  const itemBarcode2mostRecentPatronNote = {};
-
-  list.forEach(rec => {
-    if (rec.action === LOAN_ACTIONS.PATRON_INFO) {
-      const itemId = record2itemId(rec);
-
-      if (itemId && !itemBarcode2mostRecentPatronNote[itemId]) {
-        itemBarcode2mostRecentPatronNote[itemId] = rec.id;
-      }
-    }
-  });
-
-  return itemBarcode2mostRecentPatronNote;
-}
-
-
-function markOldPatronInfoAsSuperseded(list) {
-  const chronologicalList = [...list];
-
-  chronologicalList.sort((a, b) => (
-    a.date < b.date ? 1 :
-      a.date > b.date ? -1 :
-        0
-  ));
-
-  const itemBarcode2mostRecentPatronNote = registerMostRecentPatronNotes(chronologicalList);
-
+function markOldPatronInfoAsSuperseded(list, logsByIdMap) {
   return list.map(rec => {
-    const itemId = record2itemId(rec);
     const newRec = { ...rec };
 
-    if (rec.action === LOAN_ACTIONS.PATRON_INFO && itemBarcode2mostRecentPatronNote[itemId] !== rec.id) {
+    if (rec.action === LOAN_ACTIONS.PATRON_INFO && !logsByIdMap.has(rec.id)) {
       newRec.action = 'Patron info superseded';
     }
 
@@ -65,4 +21,4 @@ function markOldPatronInfoAsSuperseded(list) {
   });
 }
 
-export { registerMostRecentPatronNotes, markOldPatronInfoAsSuperseded };
+export { markOldPatronInfoAsSuperseded };

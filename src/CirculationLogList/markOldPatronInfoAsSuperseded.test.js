@@ -1,5 +1,5 @@
 import '@folio/stripes-acq-components/test/jest/__mock__';
-import { registerMostRecentPatronNotes, markOldPatronInfoAsSuperseded } from './markOldPatronInfoAsSuperseded';
+import { markOldPatronInfoAsSuperseded } from './markOldPatronInfoAsSuperseded';
 import { LOAN_ACTIONS } from './constants';
 
 const data = [
@@ -11,17 +11,14 @@ const data = [
   { id: 6, items: [{ itemBarcode: 345 }], action: 'Whatever' },
 ];
 
-describe('markOldPatronInfoAsSuperseded', () => {
-  it('creates the mostRecentPatronNotes register', () => {
-    const register = registerMostRecentPatronNotes(data);
-    expect(Object.keys(register).length).toBe(2);
-    expect(register[123]).toBe(1);
-    expect(register[234]).toBe(3);
-    expect(register[345]).toBe(undefined);
-  });
+const logsByIdsMap = new Map([
+  [1, data[0]],
+  [3, data[2]],
+]);
 
+describe('markOldPatronInfoAsSuperseded', () => {
   it('calculates modified data', () => {
-    const newData = markOldPatronInfoAsSuperseded(data);
+    const newData = markOldPatronInfoAsSuperseded(data, logsByIdsMap);
     expect(newData.length).toBe(data.length);
     [0, 2].forEach(i => {
       expect(newData[i].action).toBe(LOAN_ACTIONS.PATRON_INFO);
