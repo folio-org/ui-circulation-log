@@ -66,6 +66,7 @@ const CirculationLogListContainerComponent = ({ mutator }) => {
     const results = await mutator.logEventsListEventsByBarcode.GET({
       params: {
         query: `(${query}) and action=="${LOAN_ACTIONS.PATRON_INFO}" sortby date/sort.descending`,
+        limit: 1000,
       },
     });
 
