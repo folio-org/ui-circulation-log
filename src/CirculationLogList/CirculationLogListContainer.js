@@ -15,6 +15,7 @@ import { baseManifest, usePagination } from '@folio/stripes-acq-components';
 import { buildLogEventsQuery } from './utils';
 import { CirculationLogList } from './CirculationLogList';
 import { useCirculationLog } from '../hooks/useCirculationLog';
+import { markOldPatronInfoAsSuperseded, captureMostRecentPatronInfoLogs } from './markOldPatronInfoAsSuperseded';
 
 const RESULT_COUNT_INCREMENT = 100;
 
@@ -42,10 +43,14 @@ const CirculationLogListContainerComponent = ({ mutator }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search]);
 
-  const postLoadLogEvents = useCallback((setLogEvents, logEventsResponse) => {
+  const postLoadLogEvents = useCallback(async (setLogEvents, logEventsResponse) => {
+    const { logRecords } = logEventsResponse;
+    const logsByIdMap = await captureMostRecentPatronInfoLogs(mutator, logRecords);
+    const markedLogRecords = markOldPatronInfoAsSuperseded(logRecords, logsByIdMap);
+
     setLogEvents((prevLogEvens) => ([
       ...prevLogEvens,
-      ...logEventsResponse.logRecords,
+      ...markedLogRecords,
     ]));
   }, []);
 
@@ -72,6 +77,11 @@ const CirculationLogListContainerComponent = ({ mutator }) => {
 
 CirculationLogListContainerComponent.manifest = Object.freeze({
   logEventsListEvents: {
+    ...baseManifest,
+    path: 'audit-data/circulation/logs',
+    accumulate: true,
+  },
+  logEventsListEventsByBarcode: {
     ...baseManifest,
     path: 'audit-data/circulation/logs',
     accumulate: true,
