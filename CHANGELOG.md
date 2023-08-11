@@ -1,11 +1,12 @@
 # Change history for ui-circulation-log
 
-## (IN PROGRESS)
+## 4.0.0 (IN PROGRESS)
 * [UICIRCLOG-115](https://issues.folio.org/browse/UICIRCLOG-115) Implement EXACT search for item barcode in circulation log
 * [UICIRCLOG-122](https://issues.folio.org/browse/UICIRCLOG-122) Make patron and staff information visible and searchable in Circulation log
 * [UICIRCLOG-123](https://issues.folio.org/browse/UICIRCLOG-123) Add loan patron and staff info filter to circulation log.
 * [UICIRCLOG-128](https://issues.folio.org/browse/UICIRCLOG-128) Distinct between patron info and patron info (SUPERSEDED) in the Circ action column
 * [UICIRCLOG-130](https://issues.folio.org/browse/UICIRCLOG-130) Adjust patron info (SUPERSEDED) items in the Circ action column
+* [UICIRCLOG-128](https://issues.folio.org/browse/UICIRCLOG-128) Upgrade React to v18.
 
 ## [3.0.0](https://github.com/folio-org/ui-circulation-log/tree/v3.0.0) (2022-02-24)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v2.3.0...v3.0.0)
