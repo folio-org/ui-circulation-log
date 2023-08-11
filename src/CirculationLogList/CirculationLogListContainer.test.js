@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { byLabelText, byRole } from 'testing-library-selector';
 import userEvent from '@testing-library/user-event';
 
@@ -55,7 +55,7 @@ const setup = async (data = []) => {
 
   render(<CirculationLogListContainer mutator={mutator} />, { wrapper: Wrapper });
 
-  await (expect(document.querySelector('[class*=spinner]')).not.toBeInTheDocument);
+  await waitFor (expect(document.querySelector('[class*=spinner]')).not.toBeInTheDocument);
 };
 
 
@@ -111,7 +111,7 @@ describe('Managing focus', () => {
   });
 
   describe('on page load', () => {
-    test.skip('first text field is auto-focused when there is no results', async () => {
+    test('first text field is auto-focused when there is no results', async () => {
       await setup([]);
 
       const [first, ...rest] = screen.getAllByRole('textbox');
@@ -123,7 +123,7 @@ describe('Managing focus', () => {
       expect(first).toHaveFocus();
     });
 
-    test.skip('results pane is auto-focused when there are some results', async () => {
+    test('results pane is auto-focused when there are some results', async () => {
       await setup([{ id: 1 }, { id: 2 }]);
 
       expect(ui.results.get()).toHaveFocus();
