@@ -17,47 +17,56 @@
 
 import { LOAN_ACTIONS } from './constants';
 
-// PRIVATE
-function record2itemId(rec) {
-  // Not every record has an item; potentially some have more than one
-  return rec.items?.[0]?.itemBarcode;
-}
+// For given log records fetch log records by item barcode
+// and return a map of most recent PATRON_INFO logs
+async function captureMostRecentPatronInfoLogs(mutator, logRecords) {
+  const barcodeSet = new Set();
+  const logsByIdMap = new Map();
 
-
-// PRIVATE
-function registerMostRecentPatronNotes(list) {
-  const itemBarcode2mostRecentPatronNote = {};
-
-  list.forEach(rec => {
-    if (rec.action === LOAN_ACTIONS.PATRON_INFO) {
-      const itemId = record2itemId(rec);
-
-      if (itemId && !itemBarcode2mostRecentPatronNote[itemId]) {
-        itemBarcode2mostRecentPatronNote[itemId] = rec.id;
-      }
+  logRecords.forEach(log => {
+    if (log.action === LOAN_ACTIONS.PATRON_INFO && log?.items?.[0]?.itemBarcode) {
+      barcodeSet.add(`items=${log?.items?.[0]?.itemBarcode}`);
     }
   });
 
-  return itemBarcode2mostRecentPatronNote;
+  const query = Array.from(barcodeSet).join(' or ');
+
+  if (!query) {
+    return logsByIdMap;
+  }
+
+  mutator.logEventsListEventsByBarcode.reset();
+  const results = await mutator.logEventsListEventsByBarcode.GET({
+    params: {
+      query: `(${query}) and action=="${LOAN_ACTIONS.PATRON_INFO}" sortby date/sort.descending`,
+      limit: 1000,
+    },
+  });
+
+  if (results?.logRecords) {
+    const { logRecords: logs } = results;
+    // key represents item barcode, value represents log id
+    const itemBarcodeMap = new Map();
+
+    // capture the most recent log based on given item barcode
+    logs.forEach(log => {
+      const itemBarcode = log?.items?.[0]?.itemBarcode;
+
+      if (!itemBarcodeMap.has(itemBarcode)) {
+        itemBarcodeMap.set(itemBarcode, log.id);
+        logsByIdMap.set(log.id, log);
+      }
+    });
+  }
+
+  return logsByIdMap;
 }
 
-
-function markOldPatronInfoAsSuperseded(list) {
-  const chronologicalList = [...list];
-
-  chronologicalList.sort((a, b) => (
-    a.date < b.date ? 1 :
-      a.date > b.date ? -1 :
-        0
-  ));
-
-  const itemBarcode2mostRecentPatronNote = registerMostRecentPatronNotes(chronologicalList);
-
+function markOldPatronInfoAsSuperseded(list, logsByIdMap) {
   return list.map(rec => {
-    const itemId = record2itemId(rec);
     const newRec = { ...rec };
 
-    if (rec.action === LOAN_ACTIONS.PATRON_INFO && itemBarcode2mostRecentPatronNote[itemId] !== rec.id) {
+    if (rec.action === LOAN_ACTIONS.PATRON_INFO && !logsByIdMap.has(rec.id)) {
       newRec.action = 'Patron info superseded';
     }
 
@@ -65,4 +74,4 @@ function markOldPatronInfoAsSuperseded(list) {
   });
 }
 
-export { registerMostRecentPatronNotes, markOldPatronInfoAsSuperseded };
+export { markOldPatronInfoAsSuperseded, captureMostRecentPatronInfoLogs };

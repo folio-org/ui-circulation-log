@@ -34,7 +34,6 @@ import { CirculationLogListFilter } from './CirculationLogListFilter';
 import { CirculationLogListActions } from './CirculationLogListActions';
 import { CirculationLogEventActions } from './CirculationLogEventActions';
 import { FormattedTime } from './FormattedTime';
-import { markOldPatronInfoAsSuperseded } from './markOldPatronInfoAsSuperseded';
 
 const resultsPaneTitle = <FormattedMessage id="ui-circulation-log.meta.title" />;
 const sortableFields = ['userBarcode', 'itemBarcode', 'object', 'action', 'date', 'source', 'description'];
@@ -177,7 +176,7 @@ export const CirculationLogList = ({
             <MultiColumnList
               id="circulation-log-list"
               totalCount={logEventsCount}
-              contentData={markOldPatronInfoAsSuperseded(logEvents)}
+              contentData={logEvents}
               visibleColumns={visibleColumns}
               columnMapping={columnMapping}
               formatter={resultsFormatter}

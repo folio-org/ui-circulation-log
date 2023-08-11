@@ -26,7 +26,7 @@ export const useCirculationLog = (isLoadingRightAway, queryLoadRecords, loadReco
     const filtersCount = getFiltersCount(queryParams);
     const hasToCallAPI = isLoadingRightAway || filtersCount > 0;
 
-    if (!hasToCallAPI) {
+    if (!hasToCallAPI || isLoading) {
       return Promise.resolve();
     }
 
@@ -44,7 +44,7 @@ export const useCirculationLog = (isLoadingRightAway, queryLoadRecords, loadReco
 
       return recordsResponse && loadRecordsCB(setRecords, recordsResponse);
     }).finally(() => setIsLoading(false));
-  }, [isLoadingRightAway, loadRecordsCB, location.search, queryLoadRecords]);
+  }, [isLoadingRightAway, isLoading, loadRecordsCB, location.search, queryLoadRecords]);
 
   const refreshList = useCallback(() => {
     setRecords([]);
