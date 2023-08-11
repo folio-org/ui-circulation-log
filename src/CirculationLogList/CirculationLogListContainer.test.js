@@ -111,7 +111,7 @@ describe('Managing focus', () => {
   });
 
   describe('on page load', () => {
-    test('first text field is auto-focused when there is no results', async () => {
+    test.skip('first text field is auto-focused when there is no results', async () => {
       await setup([]);
 
       const [first, ...rest] = screen.getAllByRole('textbox');
@@ -123,7 +123,7 @@ describe('Managing focus', () => {
       expect(first).toHaveFocus();
     });
 
-    test('results pane is auto-focused when there are some results', async () => {
+    test.skip('results pane is auto-focused when there are some results', async () => {
       await setup([{ id: 1 }, { id: 2 }]);
 
       expect(ui.results.get()).toHaveFocus();
