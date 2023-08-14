@@ -1,6 +1,6 @@
 {
   "name": "@folio/circulation-log",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Description for circulation logs",
   "main": "index.js",
   "repository": "",
@@ -75,14 +75,14 @@
     "@babel/eslint-parser": "^7.18.2",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-decorators": "^7.0.0",
-    "@babel/plugin-proposal-private-methods": "^7.18.0",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.0",
+    "@babel/plugin-transform-private-methods": "^7.18.0",
+    "@babel/plugin-transform-private-property-in-object": "^7.21.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.7.4",
-    "@folio/eslint-config-stripes": "^5.0.0",
-    "@folio/stripes": "^8.0.0",
-    "@folio/stripes-cli": "^2.0.0",
+    "@folio/eslint-config-stripes": "^7.0.0",
+    "@folio/stripes": "^9.0.0",
+    "@folio/stripes-cli": "^3.0.0",
     "@formatjs/cli": "^4.2.10",
     "@testing-library/jest-dom": "^5.11.1",
     "@testing-library/react": "^11.0.2",
@@ -98,8 +98,8 @@
     "jest": "^26.4.2",
     "jest-css-modules": "^2.1.0",
     "jest-junit": "^11.1.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-intl": "^5.7.0",
     "react-query": "^3.6.0",
     "react-router": "^5.2.0",
@@ -108,7 +108,7 @@
     "testing-library-selector": "^0.2.1"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "~4.0.0",
+    "@folio/stripes-acq-components": "~5.0.0",
     "lodash": "^4.17.5",
     "moment": "^2.29.1",
     "prop-types": "^15.5.10",
@@ -117,15 +117,15 @@
     "react-router-prop-types": "^1.0.4"
   },
   "peerDependencies": {
-    "@folio/stripes": "^8.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "@folio/stripes": "^9.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-intl": "^5.7.0 ",
     "react-query": "^3.6.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0"
   },
   "optionalDependencies": {
-    "@folio/plugin-find-user": "^6.0.0"
+    "@folio/plugin-find-user": "^7.0.0"
   }
 }
