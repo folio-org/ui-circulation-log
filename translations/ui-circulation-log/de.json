@@ -77,5 +77,5 @@
     "logEvent.action.Send error": "Fehler bei Erstellung",
     "logEvent.action.Patron info added": "Info für Benutzenden hinzugefügt",
     "logEvent.action.Staff info added": "Info für Personal hinzugefügt",
-    "logEvent.action.Patron info superseded": "Patron info (SUPERSEDED)"
+    "logEvent.action.Patron info superseded": "Benutzer/-in Info (ersetzt)"
 }
