@@ -8,6 +8,7 @@
 * [UICIRCLOG-130](https://issues.folio.org/browse/UICIRCLOG-130) Adjust patron info (SUPERSEDED) items in the Circ action column
 * [UICIRCLOG-131](https://issues.folio.org/browse/UICIRCLOG-130) Update Node.js to v18 in GitHub Actions
 * [UICIRCLOG-128](https://issues.folio.org/browse/UICIRCLOG-128) *BREAKING* Upgrade React to v18.
+* [UICIRCLOG-136](https://issues.folio.org/browse/UICIRCLOG-136) *BREAKING* bump `react-intl` to `v6.4.4`.
 
 ## [3.0.0](https://github.com/folio-org/ui-circulation-log/tree/v3.0.0) (2022-02-24)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v2.3.0...v3.0.0)
