@@ -21,7 +21,7 @@ const RESULT_COUNT_INCREMENT = 100;
 
 const resetData = () => {};
 
-const CirculationLogListContainerComponent = ({ mutator }) => {
+const CirculationLogListContainerComponent = ({ mutator, stripes }) => {
   const location = useLocation();
 
   const [servicePoints, setServicePoints] = useState();
@@ -37,7 +37,7 @@ const CirculationLogListContainerComponent = ({ mutator }) => {
       params: {
         limit: RESULT_COUNT_INCREMENT,
         offset,
-        query: buildLogEventsQuery(queryString.parse(location.search)),
+        query: buildLogEventsQuery(queryString.parse(location.search), stripes.timezone),
       },
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -99,6 +99,7 @@ CirculationLogListContainerComponent.manifest = Object.freeze({
 
 CirculationLogListContainerComponent.propTypes = {
   mutator: PropTypes.object.isRequired,
+  stripes: PropTypes.object.isRequired,
 };
 
 export const CirculationLogListContainer = stripesConnect(CirculationLogListContainerComponent);
