@@ -1,4 +1,5 @@
 import { flatten } from 'lodash';
+import moment from 'moment';
 
 import {
   makeQueryBuilder,
@@ -16,7 +17,7 @@ const queryBuilder = makeQueryBuilder(
   CUSTOM_FILTERS,
 );
 
-export const buildLogEventsQuery = queryParams => {
+export const buildLogEventsQuery = (queryParams, timezone) => {
   const objectFilters = ['loan', 'fee', 'notice', 'request'];
   const formattedQueryParams = {
     ...queryParams,
@@ -32,6 +33,10 @@ export const buildLogEventsQuery = queryParams => {
   }, []);
 
   if (actionFilterValues.length) formattedQueryParams.action = actionFilterValues;
+  if(queryParams.date) {
+    const datesLocalized = buildDatesWithTimeZoneOffsets(queryParams.date, timezone);
+    formattedQueryParams.date = datesLocalized;
+  }
 
   let query = queryBuilder(formattedQueryParams);
 
@@ -41,4 +46,12 @@ export const buildLogEventsQuery = queryParams => {
   if (formattedQueryParams[SORTING_PARAMETER]) query += ` ${DATE_SORT_CLAUSE}`;
 
   return query;
+};
+
+export const buildDatesWithTimeZoneOffsets = (dates, timezone) => {
+  const [from, to] = dates.split(':');
+  const start = moment.tz(`${from}`, `${timezone}`).startOf('day').format();
+  const end = moment.tz(`${to}`, `${timezone}`).endOf('day').format();
+
+  return `(date>="${start}" and date<="${end}")`;
 };

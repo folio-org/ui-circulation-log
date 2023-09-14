@@ -1,4 +1,4 @@
-import { buildDateRangeQuery, DESC_DIRECTION } from '@folio/stripes-acq-components';
+import { DESC_DIRECTION } from '@folio/stripes-acq-components';
 
 export const DATE_DEFAULT_SORTING_DIRECTION = DESC_DIRECTION;
 
@@ -8,7 +8,7 @@ export const CUSTOM_FILTERS = {
   userBarcode: (value) => `userBarcode=="*${value}*"`,
   itemBarcode: (value) => `items="${value}"`,
   description: (value) => `description=="*${value}*"`,
-  date: buildDateRangeQuery.bind(null, ['date']),
+  date: (value) => value,
 };
 
 export const LOG_EVENT_OBJECTS = {
