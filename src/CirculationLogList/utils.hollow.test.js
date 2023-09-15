@@ -6,6 +6,7 @@ import {
 
 import {
   buildLogEventsQuery,
+  buildDatesWithTimeZoneOffsets,
 } from './utils';
 
 jest.mock('@folio/stripes-acq-components', () => {
@@ -46,6 +47,14 @@ describe('CirculationLogList utils', () => {
       });
 
       expect(filterQuery.includes('"action":["Check out","Sent","Edited"]')).toBeTruthy();
+    });
+  });
+
+  describe('buildDatesWithTimeZoneOffsets', () => {
+    it('should return date range with offsets as per supplied timezone', () => {
+      const dateRange = buildDatesWithTimeZoneOffsets('2023-09-15:2023-09-15', 'Asia/Calcutta');
+
+      expect(dateRange).toContain('date>="2023-09-15T00:00:00+05:30" and date<="2023-09-15T23:59:59+05:30"');
     });
   });
 });
