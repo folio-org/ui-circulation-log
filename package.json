@@ -108,6 +108,7 @@
   },
   "dependencies": {
     "@folio/stripes-acq-components": "~5.0.0",
+    "dayjs": "^1.11.9",
     "lodash": "^4.17.5",
     "moment": "^2.29.1",
     "prop-types": "^15.5.10",
