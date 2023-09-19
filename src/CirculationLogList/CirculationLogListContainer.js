@@ -52,6 +52,7 @@ const CirculationLogListContainerComponent = ({ mutator, stripes }) => {
       ...prevLogEvens,
       ...markedLogRecords,
     ]));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { pagination, changePage } = usePagination({ limit: RESULT_COUNT_INCREMENT, offset: 0 });

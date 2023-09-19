@@ -79,7 +79,6 @@
     "@babel/plugin-transform-private-property-in-object": "^7.21.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.7.4",
     "@folio/eslint-config-stripes": "^7.0.0",
     "@folio/stripes": "^9.0.0",
     "@folio/stripes-cli": "^3.0.0",
@@ -109,6 +108,7 @@
   },
   "dependencies": {
     "@folio/stripes-acq-components": "~5.0.0",
+    "dayjs": "^1.11.9",
     "lodash": "^4.17.5",
     "moment": "^2.29.1",
     "prop-types": "^15.5.10",

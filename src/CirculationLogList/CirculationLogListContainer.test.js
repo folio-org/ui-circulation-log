@@ -55,7 +55,7 @@ const setup = async (data = []) => {
 
   render(<CirculationLogListContainer mutator={mutator} />, { wrapper: Wrapper });
 
-  await waitFor (expect(document.querySelector('[class*=spinner]')).not.toBeInTheDocument);
+  await waitFor(expect(document.querySelector('[class*=spinner]')).not.toBeInTheDocument);
 };
 
 

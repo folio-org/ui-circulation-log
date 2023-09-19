@@ -1,5 +1,7 @@
 import { flatten } from 'lodash';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 
 import {
   makeQueryBuilder,
@@ -7,6 +9,9 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { CUSTOM_FILTERS, DATE_DEFAULT_SORTING_DIRECTION } from './constants';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 const DATE_SORT_CLAUSE = `date/sort.${DATE_DEFAULT_SORTING_DIRECTION}`;
 
@@ -17,7 +22,15 @@ const queryBuilder = makeQueryBuilder(
   CUSTOM_FILTERS,
 );
 
-export const buildLogEventsQuery = (queryParams, timezone) => {
+export const buildDatesWithTimeZoneOffsets = (dates, localTimeZone) => {
+  const [from, to] = dates.split(':');
+  const start = dayjs.tz(from, localTimeZone).startOf('day').format();
+  const end = dayjs.tz(to, localTimeZone).endOf('day').format();
+
+  return `(date>="${start}" and date<="${end}")`;
+};
+
+export const buildLogEventsQuery = (queryParams, localTimeZone) => {
   const objectFilters = ['loan', 'fee', 'notice', 'request'];
   const formattedQueryParams = {
     ...queryParams,
@@ -33,8 +46,9 @@ export const buildLogEventsQuery = (queryParams, timezone) => {
   }, []);
 
   if (actionFilterValues.length) formattedQueryParams.action = actionFilterValues;
-  if(queryParams.date) {
-    const datesLocalized = buildDatesWithTimeZoneOffsets(queryParams.date, timezone);
+  if (queryParams.date) {
+    const datesLocalized = buildDatesWithTimeZoneOffsets(queryParams.date, localTimeZone);
+
     formattedQueryParams.date = datesLocalized;
   }
 
@@ -46,12 +60,4 @@ export const buildLogEventsQuery = (queryParams, timezone) => {
   if (formattedQueryParams[SORTING_PARAMETER]) query += ` ${DATE_SORT_CLAUSE}`;
 
   return query;
-};
-
-export const buildDatesWithTimeZoneOffsets = (dates, timezone) => {
-  const [from, to] = dates.split(':');
-  const start = moment.tz(`${from}`, `${timezone}`).startOf('day').format();
-  const end = moment.tz(`${to}`, `${timezone}`).endOf('day').format();
-
-  return `(date>="${start}" and date<="${end}")`;
 };
