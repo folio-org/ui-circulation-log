@@ -13,7 +13,7 @@
     "route": "/circulation-log",
     "home": "/circulation-log",
     "okapiInterfaces": {
-      "service-points": "3.0",
+      "service-points": "3.3",
       "circulation-logs": "1.2"
     },
     "optionalOkapiInterfaces": {
