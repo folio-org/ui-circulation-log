@@ -27,7 +27,7 @@ export const buildDatesWithTimeZoneOffsets = (dates, localTimeZone) => {
   const start = dayjs.tz(from, localTimeZone).startOf('day').toISOString();
   const end = dayjs.tz(to, localTimeZone).endOf('day').toISOString();
 
-  return `(date>="${start}" and date<="${end}")`;
+  return `date>="${start}" and date<="${end}"`;
 };
 
 export const buildLogEventsQuery = (queryParams, localTimeZone) => {
