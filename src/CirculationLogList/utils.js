@@ -24,8 +24,8 @@ const queryBuilder = makeQueryBuilder(
 
 export const buildDatesWithTimeZoneOffsets = (dates, localTimeZone) => {
   const [from, to] = dates.split(':');
-  const start = dayjs.tz(from, localTimeZone).startOf('day').format();
-  const end = dayjs.tz(to, localTimeZone).endOf('day').format();
+  const start = dayjs.tz(from, localTimeZone).startOf('day').toISOString();
+  const end = dayjs.tz(to, localTimeZone).endOf('day').toISOString();
 
   return `(date>="${start}" and date<="${end}")`;
 };
