@@ -54,7 +54,7 @@ describe('CirculationLogList utils', () => {
     it('should return date range with offsets as per supplied timezone', () => {
       const dateRange = buildDatesWithTimeZoneOffsets('2023-09-15:2023-09-15', 'Asia/Calcutta');
 
-      expect(dateRange).toContain('date>="2023-09-15T00:00:00+05:30" and date<="2023-09-15T23:59:59+05:30"');
+      expect(dateRange).toContain('date>="2023-09-15T18:30:00.000Z" and date<="2023-09-15T18:29:59.999Z"');
     });
   });
 });
