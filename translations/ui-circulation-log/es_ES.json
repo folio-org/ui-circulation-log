@@ -34,7 +34,7 @@
     "logEvent.action.Declared lost": "Declarado perdido",
     "logEvent.action.Deleted": "Borrado",
     "logEvent.action.Edited": "Editado",
-    "logEvent.action.Expired": "Expired",
+    "logEvent.action.Expired": "Caducado",
     "logEvent.action.Marked as missing": "Marcado como perdido",
     "logEvent.action.Modified": "Modificado",
     "logEvent.action.Moved": "Moved",
