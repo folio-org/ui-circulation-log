@@ -1,6 +1,7 @@
 # Change history for ui-circulation-log
 
-## 5.0.0 (IN PROGRESS)
+## [4.0.1](https://github.com/folio-org/ui-circulation-log/tree/v4.0.1) (2023-11-07)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v4.0.0...v4.0.1)
 
 * [UICIRCLOG-125](https://issues.folio.org/browse/UICIRCLOG-125) Update date range query to include timezone and send as ISOString.
 
