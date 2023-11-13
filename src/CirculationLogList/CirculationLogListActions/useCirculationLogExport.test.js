@@ -1,5 +1,6 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
@@ -105,7 +106,7 @@ describe('useCirculationLogExport', () => {
 
     jest.runAllTimers();
 
-    await (() => expect(blobMock).toHaveBeenCalled());
+    await waitFor(() => expect(blobMock).toHaveBeenCalled());
   });
 
   it('should not download files when job is failed', async () => {
