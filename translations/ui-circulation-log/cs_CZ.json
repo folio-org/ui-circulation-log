@@ -73,7 +73,7 @@
     "logEvents.actions.export.failed": "Úloha exportu se nezdařila.",
     "logEvents.actions.export.successful": "Úloha exportu byla dokončena.",
     "logEvent.action.Created through override": "Vytvořeno pomocí přepsání",
-    "patronLookup": "Vyhledání čtenáře",
+    "patronLookup": "Vyhledat čtenáře",
     "logEvent.action.Send error": "Odeslat chybu",
     "logEvent.action.Patron info added": "Přidány informace pro čtenáře",
     "logEvent.action.Staff info added": "Přidány informace pro zaměstnance",
