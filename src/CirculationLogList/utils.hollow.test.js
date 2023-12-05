@@ -7,7 +7,13 @@ import {
 import {
   buildLogEventsQuery,
   buildDatesWithTimeZoneOffsets,
+  isDCBItem,
 } from './utils';
+
+import {
+  DCB_INSTANCE_ID,
+  DCB_HOLDINGS_RECORD_ID,
+} from '../CirculationLogList/constants';
 
 jest.mock('@folio/stripes-acq-components', () => {
   return {
@@ -55,6 +61,40 @@ describe('CirculationLogList utils', () => {
       const dateRange = buildDatesWithTimeZoneOffsets('2023-09-15:2023-09-15', 'Asia/Calcutta');
 
       expect(dateRange).toContain('date>="2023-09-14T18:30:00.000Z" and date<="2023-09-15T18:29:59.999Z"');
+    });
+  });
+
+  describe('isDCBItem ', () => {
+    it('should return true when both item instance id and item holdings record id are DCB_INSTANCE_ID and DCB_HOLDINGS_RECORD_ID respectively', () => {
+      const item = {
+        instanceId: DCB_INSTANCE_ID,
+        holdingId: DCB_HOLDINGS_RECORD_ID,
+      };
+      expect(isDCBItem(item)).toBeTruthy();
+    });
+
+    it('should return false when item instance id is DCB_INSTANCE_ID and item holdings record id is not DCB_HOLDINGS_RECORD_ID', () => {
+      const item = {
+        instanceId: DCB_INSTANCE_ID,
+        holdingId: 'test',
+      };
+      expect(isDCBItem(item)).toBeFalsy();
+    });
+
+    it('should return false when item instance id is not DCB_INSTANCE_ID and item holdings record id is DCB_HOLDINGS_RECORD_ID', () => {
+      const item = {
+        instanceId: 'test',
+        holdingId: DCB_HOLDINGS_RECORD_ID,
+      };
+      expect(isDCBItem(item)).toBeFalsy();
+    });
+
+    it('should return false when item instance id is not DCB_INSTANCE_ID and item holdings record id is not DCB_HOLDINGS_RECORD_ID', () => {
+      const item = {
+        instanceId: 'test',
+        holdingId: 'test',
+      };
+      expect(isDCBItem(item)).toBeFalsy();
     });
   });
 });
