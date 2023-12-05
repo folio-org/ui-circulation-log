@@ -8,7 +8,12 @@ import {
   SORTING_PARAMETER,
 } from '@folio/stripes-acq-components';
 
-import { CUSTOM_FILTERS, DATE_DEFAULT_SORTING_DIRECTION } from './constants';
+import {
+  CUSTOM_FILTERS,
+  DATE_DEFAULT_SORTING_DIRECTION,
+  DCB_INSTANCE_ID,
+  DCB_HOLDINGS_RECORD_ID,
+} from './constants';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -61,3 +66,5 @@ export const buildLogEventsQuery = (queryParams, localTimeZone) => {
 
   return query;
 };
+
+export const isDCBItem = (item) => item.instanceId === DCB_INSTANCE_ID && item.holdingId === DCB_HOLDINGS_RECORD_ID;
