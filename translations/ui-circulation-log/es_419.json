@@ -1,7 +1,7 @@
 {
     "meta.title": "Registro de Circulación",
-    "logEvent.user": "Código de Barras Usuario",
-    "logEvent.item": "Código de barras del artículo",
+    "logEvent.user": "Código de barras usuario",
+    "logEvent.item": "Código de barras ítem",
     "logEvent.object": "Objeto",
     "logEvent.action": "Acción Circ",
     "logEvent.date": "Fecha",
