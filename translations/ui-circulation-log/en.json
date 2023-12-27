@@ -86,5 +86,6 @@
   "logEvents.actions.export.failed": "Export job has been failed.",
   "logEvents.actions.export.successful": "Export job has been completed.",
 
-  "permission.log-event.all": "Circulation log: All"
+  "permission.log-event.all": "Circulation log: All",
+  "permission.log-event.view": "Circulation log: View"
 }
