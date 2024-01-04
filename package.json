@@ -54,7 +54,8 @@
         "visible": true,
         "subPermissions": [
           "ui-circulation-log.log-event.view",
-          "data-export.job.item.post"
+          "data-export.job.item.post",
+          "data-export.job.item.download"
         ]
       }
     ]
