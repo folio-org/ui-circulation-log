@@ -3,6 +3,7 @@
 ## 4.1.0 (IN PROGRESS)
 
 * [UICIRCLOG-140](https://issues.folio.org/browse/UICIRCLOG-140) Disable item barcode link for virtual items, in circulation log list.
+* [UICIRCLOG-150](https://issues.folio.org/browse/UICIRCLOG-150) Define translation for ui-circulation-log permission "Circulation log: View".
 * [UICIRCLOG-148](https://issues.folio.org/browse/UICIRCLOG-148) Update "Circulation Log: All" permission with permission to download the file.
 
 ## [4.0.1](https://github.com/folio-org/ui-circulation-log/tree/v4.0.1) (2023-11-07)
