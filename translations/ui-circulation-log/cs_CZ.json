@@ -77,5 +77,6 @@
     "logEvent.action.Send error": "Odeslat chybu",
     "logEvent.action.Patron info added": "Přidány informace pro čtenáře",
     "logEvent.action.Staff info added": "Přidány informace pro zaměstnance",
-    "logEvent.action.Patron info superseded": "Informace o čtenáři (NAHRAZENO)"
+    "logEvent.action.Patron info superseded": "Informace o čtenáři (NAHRAZENO)",
+    "permission.log-event.view": "Circulation log: View"
 }
