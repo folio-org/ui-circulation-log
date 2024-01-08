@@ -77,5 +77,6 @@
     "logEvent.action.Send error": "Enviar error",
     "logEvent.action.Patron info added": "Información añadida",
     "logEvent.action.Staff info added": "Información del personal añadida",
-    "logEvent.action.Patron info superseded": "Patron info (SUPERSED)"
+    "logEvent.action.Patron info superseded": "Patron info (SUPERSED)",
+    "permission.log-event.view": "Circulation log: View"
 }
