@@ -17,7 +17,7 @@
       "circulation-logs": "1.2"
     },
     "optionalOkapiInterfaces": {
-      "data-export-spring": "1.0"
+      "data-export-spring": "1.0 2.0"
     },
     "icons": [
       {
