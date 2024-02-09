@@ -61,7 +61,7 @@
     "logEvent.actions.feeDetails": "Szczegóły opłaty/kary",
     "logEvent.actions.loanDetails": "Szczegóły wypożyczenia",
     "logEvent.actions.requestDetails": "Szczegóły zamówienia",
-    "logEvent.actions.noticePolicyDetails": "Zasady uwag",
+    "logEvent.actions.noticePolicyDetails": "Reguła powiadomień",
     "logEvent.actions.templateDetails": "Wersja szablonu na żywo",
     "logEvent.item.showMore": "Pokaż więcej",
     "logEvent.item.showLess": "Pokaż mniej",
