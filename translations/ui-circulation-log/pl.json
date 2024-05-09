@@ -48,7 +48,7 @@
     "logEvent.action.Refunded partially": "Zwrot częściowy",
     "logEvent.action.Renewed": "Prolongowany",
     "logEvent.action.Renewed through override": "Prolongata w drodze wyjątku",
-    "logEvent.action.Request status changed": "Zmieniony status zamówienia",
+    "logEvent.action.Request status changed": "Zmieniony status rezerwacji",
     "logEvent.action.Send": "Wyślij",
     "logEvent.action.Staff information only added": "Dodano tylko informacje dotyczące personelu",
     "logEvent.action.Transferred fully": "Przeniesione w całości",
