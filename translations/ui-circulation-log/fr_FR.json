@@ -14,7 +14,7 @@
     "logEvent.object.Loan": "Prêt",
     "logEvent.object.Manual Block": "Blocage manuel",
     "logEvent.object.Notice": "Notice",
-    "logEvent.object.Patron Block": "Suspension utilisateur",
+    "logEvent.object.Patron Block": "Blocage usager",
     "logEvent.object.Request": "Réservation",
     "logEvent.action.Age to lost": "Considérer comme perdu",
     "logEvent.action.Anonymize": "Anonymisé",
@@ -27,7 +27,7 @@
     "logEvent.action.Checked in": "Checked in",
     "logEvent.action.Checked out": "Checked out",
     "logEvent.action.Checked out through override": "Checked out through override",
-    "logEvent.action.Claimed returned": "Claimed returned",
+    "logEvent.action.Claimed returned": "Déclaré rendu",
     "logEvent.action.Closed loan": "Prêt fermé",
     "logEvent.action.Created": "Créé",
     "logEvent.action.Credited fully": "Crédité entièrement",
@@ -75,8 +75,8 @@
     "logEvent.action.Created through override": "Created through override",
     "patronLookup": "Rechercher l'utilisateur",
     "logEvent.action.Send error": "Send error",
-    "logEvent.action.Patron info added": "Patron info added",
+    "logEvent.action.Patron info added": "Informations usager ajoutées",
     "logEvent.action.Staff info added": "Staff info added",
-    "logEvent.action.Patron info superseded": "Patron info (SUPERSEDED)",
+    "logEvent.action.Patron info superseded": "Information usager (OBSOLÈTE)",
     "permission.log-event.view": "Circulation log: View"
 }
