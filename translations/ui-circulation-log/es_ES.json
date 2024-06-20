@@ -11,7 +11,7 @@
     "permission.log-event.all": "Registro de circulación: Todo",
     "logEvent.object.Fee/Fine": "Tasa/multa",
     "logEvent.object.Item Block": "Bloqueo de item",
-    "logEvent.object.Loan": "Préstamo",
+    "logEvent.object.Loan": "Préstado",
     "logEvent.object.Manual Block": "Bloqueo manual",
     "logEvent.object.Notice": "Notice",
     "logEvent.object.Patron Block": "Bloqueo de usuario",
