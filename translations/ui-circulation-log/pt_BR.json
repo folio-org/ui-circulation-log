@@ -1,5 +1,5 @@
 {
-    "meta.title": "Log de circulação",
+    "meta.title": "Log de Circulação",
     "logEvent.user": "Código de barras do usuário",
     "logEvent.item": "Código de barras do item",
     "logEvent.object": "Objeto",
@@ -78,5 +78,5 @@
     "logEvent.action.Patron info added": "Informações do usuário adicionadas",
     "logEvent.action.Staff info added": "Informações da equipe adicionadas",
     "logEvent.action.Patron info superseded": "Informações do usuário (VENCIDO)",
-    "permission.log-event.view": "Log de circulação: Visualizar"
+    "permission.log-event.view": "Log de Circulação: Visualizar"
 }
