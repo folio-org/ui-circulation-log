@@ -28,7 +28,7 @@
     "logEvent.action.Checked out": "Emprunté",
     "logEvent.action.Checked out through override": "Checked out through override",
     "logEvent.action.Claimed returned": "Déclaré rendu",
-    "logEvent.action.Closed loan": "Prêt clos",
+    "logEvent.action.Closed loan": "Prêt clôturé",
     "logEvent.action.Created": "Créé",
     "logEvent.action.Credited fully": "Crédité entièrement",
     "logEvent.action.Declared lost": "Déclaré perdu",
