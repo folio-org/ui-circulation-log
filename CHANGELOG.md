@@ -2,6 +2,8 @@
 
 ## 4.2.0 (IN PROGRESS)
 
+* [UICIRCLOG-159](https://folio-org.atlassian.net/browse/UICIRCLOG-159) Upgrade version for `actions/upload-artifact` to v4.
+
 ## [4.1.0](https://github.com/folio-org/ui-circulation-log/tree/v4.1.0) (2024-03-19)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v4.0.1...v4.1.0)
 
