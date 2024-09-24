@@ -30,7 +30,7 @@
     "logEvent.action.Claimed returned": "Angeblich zurückgegeben",
     "logEvent.action.Closed loan": "Ausleihhistorie",
     "logEvent.action.Created": "Erstellt",
-    "logEvent.action.Credited fully": "Gutgeschrieben - vollständig",
+    "logEvent.action.Credited fully": "komplett gutgeschrieben",
     "logEvent.action.Declared lost": "Für verloren erklärt",
     "logEvent.action.Deleted": "Gelöscht",
     "logEvent.action.Edited": "Bearbeitet",
