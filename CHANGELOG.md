@@ -1,8 +1,10 @@
 # Change history for ui-circulation-log
 
-## 4.2.0 (IN PROGRESS)
+## 4.2.0 (https://github.com/folio-org/ui-circulation-log/tree/v4.2.0) (2024-10-29)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v4.1.0...v4.2.0)
 
 * [UICIRCLOG-159](https://folio-org.atlassian.net/browse/UICIRCLOG-159) Upgrade version for `actions/upload-artifact` to v4.
+* Several translations have been updated.
 
 ## [4.1.0](https://github.com/folio-org/ui-circulation-log/tree/v4.1.0) (2024-03-19)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v4.0.1...v4.1.0)
