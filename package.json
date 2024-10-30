@@ -1,6 +1,6 @@
 {
   "name": "@folio/circulation-log",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "description": "Description for circulation logs",
   "main": "index.js",
   "repository": "",
@@ -80,6 +80,11 @@
     "@babel/plugin-transform-private-property-in-object": "^7.21.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "@folio/eslint-config-stripes": "^7.0.0",
     "@folio/stripes": "^9.0.0",
     "@folio/stripes-cli": "^3.0.0",
@@ -108,7 +113,7 @@
     "testing-library-selector": "^0.2.1"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "~5.1.0",
+    "@folio/stripes-acq-components": "~6.0.0",
     "dayjs": "^1.11.9",
     "lodash": "^4.17.5",
     "moment": "^2.29.1",

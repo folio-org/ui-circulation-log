@@ -13,7 +13,7 @@ import {
 import {
   DCB_INSTANCE_ID,
   DCB_HOLDINGS_RECORD_ID,
-} from '../CirculationLogList/constants';
+} from './constants';
 
 jest.mock('@folio/stripes-acq-components', () => {
   return {
@@ -72,7 +72,7 @@ describe('CirculationLogList utils', () => {
       };
       expect(isDCBItem(item)).toBeTruthy();
     });
-  
+
     it('should return false when item instance id is DCB_INSTANCE_ID and item holdings record id is not DCB_HOLDINGS_RECORD_ID', () => {
       const item = {
         instanceId: DCB_INSTANCE_ID,
@@ -80,7 +80,7 @@ describe('CirculationLogList utils', () => {
       };
       expect(isDCBItem(item)).toBeFalsy();
     });
-  
+
     it('should return false when item instance id is not DCB_INSTANCE_ID and item holdings record id is DCB_HOLDINGS_RECORD_ID', () => {
       const item = {
         instanceId: 'test',
@@ -88,7 +88,7 @@ describe('CirculationLogList utils', () => {
       };
       expect(isDCBItem(item)).toBeFalsy();
     });
-  
+
     it('should return false when item instance id is not DCB_INSTANCE_ID and item holdings record id is not DCB_HOLDINGS_RECORD_ID', () => {
       const item = {
         instanceId: 'test',
