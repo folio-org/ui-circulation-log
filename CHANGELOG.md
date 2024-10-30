@@ -1,10 +1,10 @@
 # Change history for ui-circulation-log
 
-## 4.2.0 (https://github.com/folio-org/ui-circulation-log/tree/v4.2.0) (2024-10-29)
-[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v4.1.0...v4.2.0)
+## 5.0.0 (https://github.com/folio-org/ui-circulation-log/tree/v5.0.0) (2024-10-30)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v4.1.0...v5.0.0)
 
 * [UICIRCLOG-159](https://folio-org.atlassian.net/browse/UICIRCLOG-159) Upgrade version for `actions/upload-artifact` to v4.
-* [UICIRCLOG-165](https://folio-org.atlassian.net/browse/UICIRCLOG-165) Bump "@folio/stripes-acq-components" version to v6.0.0.
+* [UICIRCLOG-165](https://folio-org.atlassian.net/browse/UICIRCLOG-165) *BREAKING* Bump "@folio/stripes-acq-components" version to v6.0.0.
 * [UICIRCLOG-141](https://folio-org.atlassian.net/browse/UICIRCLOG-141) Fix lint config.
 
 ## [4.1.0](https://github.com/folio-org/ui-circulation-log/tree/v4.1.0) (2024-03-19)
