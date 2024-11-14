@@ -1,5 +1,5 @@
 {
-    "meta.title": "Circulation log",
+    "meta.title": "Cirkulationslogg",
     "logEvent.user": "User barcode",
     "logEvent.item": "Item barcode",
     "logEvent.object": "Object",
@@ -8,7 +8,7 @@
     "logEvent.servicePoint": "Service point",
     "logEvent.source": "Source",
     "logEvent.description": "Description",
-    "permission.log-event.all": "Circulation log: All",
+    "permission.log-event.all": "Cirkulationslogg: Allt",
     "logEvent.object.Fee/Fine": "Fee/fine",
     "logEvent.object.Item Block": "Item block",
     "logEvent.object.Loan": "Loan",
@@ -78,5 +78,5 @@
     "logEvent.action.Patron info added": "Patron info added",
     "logEvent.action.Staff info added": "Staff info added",
     "logEvent.action.Patron info superseded": "Patron info (SUPERSEDED)",
-    "permission.log-event.view": "Circulation log: View"
+    "permission.log-event.view": "Cirkulationslogg: Visa"
 }

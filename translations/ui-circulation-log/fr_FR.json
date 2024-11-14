@@ -46,8 +46,8 @@
     "logEvent.action.Recall requested": "Rappel demandé (réservation)",
     "logEvent.action.Refunded fully": "Remboursé intégralement",
     "logEvent.action.Refunded partially": "Remboursé partiellement",
-    "logEvent.action.Renewed": "Renouvelé",
-    "logEvent.action.Renewed through override": "Renouvelé en outrepassant",
+    "logEvent.action.Renewed": "Prolongé",
+    "logEvent.action.Renewed through override": "Prolongé en outrepassant",
     "logEvent.action.Request status changed": "Statut de la réservation modifié",
     "logEvent.action.Send": "Envoyée",
     "logEvent.action.Staff information only added": "Staff information only added",
@@ -73,10 +73,10 @@
     "logEvents.actions.export.failed": "La tâche d'exportation a échoué.",
     "logEvents.actions.export.successful": "La tâche d'exportation est terminée.",
     "logEvent.action.Created through override": "Créé en outrepassant",
-    "patronLookup": "Rechercher l'usager",
+    "patronLookup": "Rechercher un usager",
     "logEvent.action.Send error": "Erreur à l'envoi",
     "logEvent.action.Patron info added": "Informations usager ajoutées",
-    "logEvent.action.Staff info added": "Informations personnel ajoutées",
+    "logEvent.action.Staff info added": "Informations du personnel ajoutées",
     "logEvent.action.Patron info superseded": "Information usager (OBSOLÈTE)",
     "permission.log-event.view": "Circulation log: View"
 }
