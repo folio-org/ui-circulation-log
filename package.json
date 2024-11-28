@@ -55,7 +55,9 @@
         "subPermissions": [
           "ui-circulation-log.log-event.view",
           "data-export.job.item.post",
-          "data-export.job.item.download"
+          "data-export.job.item.download",
+          "usergroups.collection.get",
+          "users.collection.get"
         ]
       }
     ]
