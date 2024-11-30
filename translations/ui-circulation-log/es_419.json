@@ -18,7 +18,7 @@
     "logEvent.object.Request": "Solicitud",
     "logEvent.action.Age to lost": "Préstamo vencido a perdido",
     "logEvent.action.Anonymize": "Anonimizado",
-    "logEvent.action.Billed": "Facturado",
+    "logEvent.action.Billed": "Pendiente por pagar",
     "logEvent.action.Cancelled": "Cancelado",
     "logEvent.action.Cancelled as error": "Cancelado por error",
     "logEvent.action.Changed due date": "Fecha de vencimiento modificada",

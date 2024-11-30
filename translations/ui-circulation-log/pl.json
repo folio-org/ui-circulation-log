@@ -8,7 +8,7 @@
     "logEvent.servicePoint": "Punkt obsługi",
     "logEvent.source": "Źródło",
     "logEvent.description": "Opis",
-    "permission.log-event.all": "Dziennik udostępniania: wszystkie",
+    "permission.log-event.all": "Dziennik udostępniania: wszystko",
     "logEvent.object.Fee/Fine": "Opłata/kara",
     "logEvent.object.Item Block": "Blokada egzemplarza",
     "logEvent.object.Loan": "Wypożyczenie",
@@ -73,10 +73,10 @@
     "logEvents.actions.export.failed": "Eksport zadań nie powiódł się.",
     "logEvents.actions.export.successful": "Eksport zadań został zakończony.",
     "logEvent.action.Created through override": "Created through override",
-    "patronLookup": "Wyszukiwanie czytelnika",
+    "patronLookup": "Znajdź czytelnika",
     "logEvent.action.Send error": "Send error",
-    "logEvent.action.Patron info added": "Patron info added",
-    "logEvent.action.Staff info added": "Staff info added",
+    "logEvent.action.Patron info added": "Dodano informacje o czytelniku",
+    "logEvent.action.Staff info added": "Dodano informacje o personelu",
     "logEvent.action.Patron info superseded": "Patron info (SUPERSEDED)",
-    "permission.log-event.view": "Dziennik udostępniania: Wyświetl"
+    "permission.log-event.view": "Dziennik udostępniania: wyświetlanie"
 }
