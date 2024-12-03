@@ -1,6 +1,6 @@
 {
   "name": "@folio/circulation-log",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Description for circulation logs",
   "main": "index.js",
   "repository": "",
@@ -55,7 +55,9 @@
         "subPermissions": [
           "ui-circulation-log.log-event.view",
           "data-export.job.item.post",
-          "data-export.job.item.download"
+          "data-export.job.item.download",
+          "usergroups.collection.get",
+          "users.collection.get"
         ]
       }
     ]
