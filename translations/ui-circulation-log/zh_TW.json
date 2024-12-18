@@ -77,6 +77,6 @@
     "logEvent.action.Send error": "寄送錯誤",
     "logEvent.action.Patron info added": "讀者資訊已新增",
     "logEvent.action.Staff info added": "館員資訊已新增",
-    "logEvent.action.Patron info superseded": "讀者資訊（已取代）",
+    "logEvent.action.Patron info superseded": "讀者資訊 ( 已取代 )",
     "permission.log-event.view": "流通紀錄：檢視"
 }
