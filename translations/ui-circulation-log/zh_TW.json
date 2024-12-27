@@ -68,7 +68,7 @@
     "logEvent.object.N/A": "-",
     "filter.apply": "套用",
     "logEvents.actions.export": "匯出結果 (CSV)",
-    "logEvents.actions.export.success": "已接受匯出流通記錄，請稍候待下載檔案備妥。",
+    "logEvents.actions.export.success": "已接受匯出流通紀錄，請稍候待下載檔案備妥。",
     "logEvents.actions.export.error": "匯出檔案出了點問題，請重試。",
     "logEvents.actions.export.failed": "匯出作業已失敗。",
     "logEvents.actions.export.successful": "匯出作業已完成。",
@@ -77,6 +77,6 @@
     "logEvent.action.Send error": "寄送錯誤",
     "logEvent.action.Patron info added": "讀者資訊已新增",
     "logEvent.action.Staff info added": "館員資訊已新增",
-    "logEvent.action.Patron info superseded": "讀者資訊（已取代）",
+    "logEvent.action.Patron info superseded": "讀者資訊 ( 已取代 )",
     "permission.log-event.view": "流通紀錄：檢視"
 }
