@@ -1,5 +1,12 @@
 # Change history for ui-circulation-log
 
+## In progress
+
+## 5.0.1 (https://github.com/folio-org/ui-circulation-log/tree/v5.0.1) (2024-12-03)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v5.0.0...v5.0.1)
+
+* [UICIRCLOG-167](https://folio-org.atlassian.net/browse/UICIRCLOG-167) "Circulation log: All" permission to include sub permissions needed for patron look up.
+
 ## 5.0.0 (https://github.com/folio-org/ui-circulation-log/tree/v5.0.0) (2024-10-30)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v4.1.0...v5.0.0)
 
