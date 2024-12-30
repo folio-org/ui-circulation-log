@@ -21,7 +21,11 @@ import {
   getHasTemplateDetails,
 } from './utils';
 
-export const CirculationLogEventActions = ({ objectType, items, referenceIds }) => {
+export const CirculationLogEventActions = ({
+  objectType,
+  items = [],
+  referenceIds: {}
+}) => {
   const intl = useIntl();
   const stripes = useStripes();
   const { feeFineId, userId, requestId, noticePolicyId, templateId } = referenceIds;
@@ -167,7 +171,3 @@ CirculationLogEventActions.propTypes = {
   referenceIds: PropTypes.object,
 };
 
-CirculationLogEventActions.defaultProps = {
-  items: [],
-  referenceIds: {},
-};

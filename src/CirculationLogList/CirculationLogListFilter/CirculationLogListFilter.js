@@ -40,8 +40,8 @@ const requestFilterOptions = buildCheckboxFilterOptions(REQUEST_ACTIONS);
 export const CirculationLogListFilter = ({
   activeFilters,
   applyFilters,
-  disabled,
-  servicePoints,
+  disabled = false,
+  servicePoints = [],
   focusRef,
   letLoseFocus = noop,
 }) => {
@@ -161,9 +161,4 @@ CirculationLogListFilter.propTypes = {
   servicePoints: PropTypes.arrayOf(PropTypes.object),
   focusRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   letLoseFocus: PropTypes.func,
-};
-
-CirculationLogListFilter.defaultProps = {
-  servicePoints: [],
-  disabled: false,
 };
