@@ -24,11 +24,16 @@ import {
 export const CirculationLogEventActions = ({
   objectType,
   items = [],
-  referenceIds: {}
+  referenceIds: {
+    feeFineId,
+    userId,
+    requestId,
+    noticePolicyId,
+    templateId,
+  } = {},
 }) => {
   const intl = useIntl();
   const stripes = useStripes();
-  const { feeFineId, userId, requestId, noticePolicyId, templateId } = referenceIds;
   const { loanId } = items[0] || {};
 
   const hasLoanDetails =
