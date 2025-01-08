@@ -2,6 +2,10 @@
 
 ## In progress
 
+## In progress
+
+* [UICIRCLOG-155](https://folio-org.atlassian.net/browse/UICIRCLOG-155) React v19: refactor away from default props for functional components.
+
 ## 5.0.1 (https://github.com/folio-org/ui-circulation-log/tree/v5.0.1) (2024-12-03)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v5.0.0...v5.0.1)
 

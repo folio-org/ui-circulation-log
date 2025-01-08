@@ -64,12 +64,12 @@ const getResultsFormatter = (servicePointsMap) => ({
 });
 
 export const CirculationLogList = ({
-  isLoading,
+  isLoading = false,
   onNeedMoreData,
   resetData,
-  logEvents,
-  logEventsCount,
-  servicePoints,
+  logEvents = [],
+  logEventsCount = 0,
+  servicePoints = [],
   pagination,
 }) => {
   const stripes = useStripes();
@@ -215,11 +215,4 @@ CirculationLogList.propTypes = {
   logEvents: PropTypes.arrayOf(PropTypes.object),
   servicePoints: PropTypes.arrayOf(PropTypes.object),
   pagination: PropTypes.object,
-};
-
-CirculationLogList.defaultProps = {
-  logEventsCount: 0,
-  isLoading: false,
-  logEvents: [],
-  servicePoints: [],
 };
