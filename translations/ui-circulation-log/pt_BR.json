@@ -14,7 +14,7 @@
     "logEvent.object.Loan": "Empréstimo",
     "logEvent.object.Manual Block": "Bloqueio manual",
     "logEvent.object.Notice": "Aviso",
-    "logEvent.object.Patron Block": "Bloquear usuário",
+    "logEvent.object.Patron Block": "Suspender usuário",
     "logEvent.object.Request": "Requisição",
     "logEvent.action.Age to lost": "Considerado perdido",
     "logEvent.action.Anonymize": "Anonimizado",
