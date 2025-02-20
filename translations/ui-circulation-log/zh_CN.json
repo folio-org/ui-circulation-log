@@ -27,7 +27,7 @@
     "logEvent.action.Checked in": "已归还",
     "logEvent.action.Checked out": "已借出",
     "logEvent.action.Checked out through override": "通过越权借出",
-    "logEvent.action.Claimed returned": "声称已还",
+    "logEvent.action.Claimed returned": "声称已归还",
     "logEvent.action.Closed loan": "已关闭借阅",
     "logEvent.action.Created": "已创建",
     "logEvent.action.Credited fully": "全部记账",
