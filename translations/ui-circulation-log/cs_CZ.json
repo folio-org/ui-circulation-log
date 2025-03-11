@@ -27,7 +27,7 @@
     "logEvent.action.Checked in": "Vráceno",
     "logEvent.action.Checked out": "Vypůjčeno",
     "logEvent.action.Checked out through override": "Vypůjčeno prostřednictvím přepsání",
-    "logEvent.action.Claimed returned": "Údajně vráceno",
+    "logEvent.action.Claimed returned": "Prohlášeno za vrácené",
     "logEvent.action.Closed loan": "Uzavřená výpůjčka",
     "logEvent.action.Created": "Vytvořeno",
     "logEvent.action.Credited fully": "Plně připsáno",
