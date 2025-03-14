@@ -1,10 +1,12 @@
 # Change history for ui-circulation-log
 
-## In progress
+## 6.0.0 (https://github.com/folio-org/ui-circulation-log/tree/v6.0.0) (2025-03-14)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v5.0.1...v6.0.0)
 
 * [UICIRCLOG-155](https://folio-org.atlassian.net/browse/UICIRCLOG-155) React v19: refactor away from default props for functional components.
 * [UICIRCLOG-170](https://folio-org.atlassian.net/browse/UICIRCLOG-170) *BREAKING* Migrate stripes dependencies to their Sunflower versions.
 * [UICIRCLOG-171](https://folio-org.atlassian.net/browse/UICIRCLOG-171) *BREAKING* Migrate react-intl to v7.
+* [UICIRCLOG-173](https://folio-org.atlassian.net/browse/UICIRCLOG-173)*BREAKING* Upgrade plugin-find-user to v8.
 
 ## 5.0.1 (https://github.com/folio-org/ui-circulation-log/tree/v5.0.1) (2024-12-03)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v5.0.0...v5.0.1)
