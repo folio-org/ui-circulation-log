@@ -1,6 +1,7 @@
 # Change history for ui-circulation-log
 
-## [6.0.1] In progress
+## 6.0.1 (https://github.com/folio-org/ui-circulation-log/tree/v6.0.1) (2025-03-20)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v6.0.0...v6.0.1)
 
 * Bump `@folio/stripes-acq-components` to 7.0.0. Refs UICIRCLOG-175.
 
