@@ -8,7 +8,7 @@
     "logEvent.servicePoint": "服務據點",
     "logEvent.source": "來源",
     "logEvent.description": "描述",
-    "permission.log-event.all": "流通紀錄：全部",
+    "permission.log-event.all": "流通紀錄 : 全部",
     "logEvent.object.Fee/Fine": "費用 / 罰款",
     "logEvent.object.Item Block": "單件凍結",
     "logEvent.object.Loan": "借閱",
@@ -78,5 +78,5 @@
     "logEvent.action.Patron info added": "讀者資訊已新增",
     "logEvent.action.Staff info added": "館員資訊已新增",
     "logEvent.action.Patron info superseded": "讀者資訊 ( 已取代 )",
-    "permission.log-event.view": "流通紀錄：檢視"
+    "permission.log-event.view": "流通紀錄 : 檢視"
 }
