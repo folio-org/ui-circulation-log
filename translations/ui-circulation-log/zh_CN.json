@@ -8,7 +8,7 @@
     "logEvent.servicePoint": "服务点",
     "logEvent.source": "来源",
     "logEvent.description": "描述",
-    "permission.log-event.all": "流通日志：全部",
+    "permission.log-event.all": "流通日志 : 全部",
     "logEvent.object.Fee/Fine": "费用/罚款",
     "logEvent.object.Item Block": "单件冻结",
     "logEvent.object.Loan": "借阅",
@@ -67,7 +67,7 @@
     "logEvent.item.showLess": "显示更少",
     "logEvent.object.N/A": "-",
     "filter.apply": "应用",
-    "logEvents.actions.export": "导出结果（CSV）",
+    "logEvents.actions.export": "导出结果 : CSV ) ",
     "logEvents.actions.export.success": "已请求导出流通日志，请等待文件下载。",
     "logEvents.actions.export.error": "导出文件请求出了点问题，请重试。",
     "logEvents.actions.export.failed": "导出任务失败。",
@@ -77,6 +77,6 @@
     "logEvent.action.Send error": "发送错误",
     "logEvent.action.Patron info added": "已添加读者信息",
     "logEvent.action.Staff info added": "已添加员工信息",
-    "logEvent.action.Patron info superseded": "读者信息（已取代）",
-    "permission.log-event.view": "流通日志：查看"
+    "logEvent.action.Patron info superseded": "读者信息 : 已取代 ) ",
+    "permission.log-event.view": "流通日志 : 查看"
 }

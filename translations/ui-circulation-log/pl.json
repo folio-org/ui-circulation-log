@@ -72,7 +72,7 @@
     "logEvents.actions.export.error": "Coś poszło nie tak z żądaniem eksportu pliku, spróbuj ponownie.",
     "logEvents.actions.export.failed": "Eksport zadań nie powiódł się.",
     "logEvents.actions.export.successful": "Eksport zadań został zakończony.",
-    "logEvent.action.Created through override": "Created through override",
+    "logEvent.action.Created through override": "Utworzono poprzez nadpisanie",
     "patronLookup": "Znajdź czytelnika",
     "logEvent.action.Send error": "Send error",
     "logEvent.action.Patron info added": "Dodano informacje o czytelniku",
