@@ -32,10 +32,13 @@ export const useCirculationLog = (isLoadingRightAway, queryLoadRecords, loadReco
 
     setIsLoading(true);
 
-    return queryLoadRecords(defaultSearchParams.offset, hasToCallAPI).then(recordsResponse => {
-      if (!offset) {
-        setRecordsCount(recordsResponse?.totalRecords);
+    // to get the actual totalRecords count, the limit should be set to 0
+    queryLoadRecords(defaultSearchParams.offset, 0).then(totalRecordsResponse => {
+      setRecordsCount(totalRecordsResponse?.totalRecords);
+    });
 
+    return queryLoadRecords(defaultSearchParams.offset).then(recordsResponse => {
+      if (!offset) {
         if (recordsResponse?.totalRecords != null) {
           // eslint-disable-next-line no-unused-expressions
           resultsPaneTitleRef?.current?.focus();
@@ -44,7 +47,7 @@ export const useCirculationLog = (isLoadingRightAway, queryLoadRecords, loadReco
 
       return recordsResponse && loadRecordsCB(setRecords, recordsResponse);
     }).finally(() => setIsLoading(false));
-  }, [isLoadingRightAway, isLoading, loadRecordsCB, location.search, queryLoadRecords]);
+  }, [queryParams, isLoadingRightAway, isLoading, queryLoadRecords, defaultSearchParams.offset, loadRecordsCB]);
 
   const refreshList = useCallback(() => {
     setRecords([]);
