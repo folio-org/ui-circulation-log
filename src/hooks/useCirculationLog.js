@@ -16,6 +16,8 @@ export const useCirculationLog = (isLoadingRightAway, queryLoadRecords, loadReco
   const queryParams = queryString.parse(location.search);
   const resultsPaneTitleRef = useRef();
 
+  console.log('queryParams', queryParams)
+
   const defaultSearchParams = {
     queryParams,
     limit: pagination.limit,
@@ -47,7 +49,7 @@ export const useCirculationLog = (isLoadingRightAway, queryLoadRecords, loadReco
 
       return recordsResponse && loadRecordsCB(setRecords, recordsResponse);
     }).finally(() => setIsLoading(false));
-  }, [queryParams, isLoadingRightAway, isLoading, queryLoadRecords, defaultSearchParams.offset, loadRecordsCB]);
+  }, [isLoadingRightAway, isLoading, loadRecordsCB, location.search, queryLoadRecords]);
 
   const refreshList = useCallback(() => {
     setRecords([]);
