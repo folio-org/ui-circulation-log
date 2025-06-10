@@ -68,7 +68,16 @@ describe('Circulation Log List Container', () => {
   it('fetches log events', async () => {
     await setup([]);
 
-    expect(mockAPI.logs.GET).toHaveBeenCalled();
+    const params = {
+      limit: 100,
+      offset: 0,
+      query: '(userBarcode=="***") sortby date/sort.descending',
+    };
+
+    expect(mockAPI.logs.GET).toHaveBeenNthCalledWith(1, {
+      params: { ...params, limit: 0 },
+    });
+    expect(mockAPI.logs.GET).toHaveBeenNthCalledWith(2, { params });
   });
 
   it('fetches service points', async () => {
