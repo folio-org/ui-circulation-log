@@ -38,6 +38,8 @@ export const LOAN_ACTIONS = {
   RENEWED: 'Renewed',
   RENEW_OVERRIDE: 'Renewed through override',
   AGE_OF_LOST: 'Age to lost',
+  PICKED_UP_FOR_USE_AT_LOCATION: 'Picked up for use at location',
+  HELD_FOR_USE_AT_LOCATION: 'Held for use at location',
 };
 
 export const NOTICE_ACTIONS = {
