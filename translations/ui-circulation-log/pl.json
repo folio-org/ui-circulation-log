@@ -78,5 +78,7 @@
     "logEvent.action.Patron info added": "Dodano informacje o czytelniku",
     "logEvent.action.Staff info added": "Dodano informacje o personelu",
     "logEvent.action.Patron info superseded": "Patron info (SUPERSEDED)",
-    "permission.log-event.view": "Dziennik udostępniania: wyświetlanie"
+    "permission.log-event.view": "Dziennik udostępniania: wyświetlanie",
+    "logEvent.action.Picked up for use at location": "W użyciu",
+    "logEvent.action.Held for use at location": "Przechowywany"
 }

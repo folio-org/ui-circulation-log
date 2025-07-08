@@ -78,5 +78,7 @@
     "logEvent.action.Patron info added": "讀者資訊已新增",
     "logEvent.action.Staff info added": "館員資訊已新增",
     "logEvent.action.Patron info superseded": "讀者資訊 ( 已取代 )",
-    "permission.log-event.view": "流通紀錄 : 檢視"
+    "permission.log-event.view": "流通紀錄 : 檢視",
+    "logEvent.action.Picked up for use at location": "In use",
+    "logEvent.action.Held for use at location": "Held"
 }
