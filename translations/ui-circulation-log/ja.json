@@ -78,5 +78,7 @@
     "logEvent.action.Patron info added": "Patron info added",
     "logEvent.action.Staff info added": "Staff info added",
     "logEvent.action.Patron info superseded": "Patron info (SUPERSEDED)",
-    "permission.log-event.view": "貸出/返却 ログ: 表示"
+    "permission.log-event.view": "貸出/返却 ログ: 表示",
+    "logEvent.action.Picked up for use at location": "In use",
+    "logEvent.action.Held for use at location": "Held"
 }

@@ -78,5 +78,7 @@
     "logEvent.action.Patron info added": "تمت إضافة معلومات المستفيد",
     "logEvent.action.Staff info added": "تمت إضافة معلومات الموظفين",
     "logEvent.action.Patron info superseded": "Patron info (SUPERSEDED)",
-    "permission.log-event.view": "Circulation log: View"
+    "permission.log-event.view": "Circulation log: View",
+    "logEvent.action.Picked up for use at location": "In use",
+    "logEvent.action.Held for use at location": "Held"
 }
