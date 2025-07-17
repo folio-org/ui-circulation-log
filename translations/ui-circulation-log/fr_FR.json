@@ -16,7 +16,7 @@
     "logEvent.object.Notice": "Notification",
     "logEvent.object.Patron Block": "Blocage usager",
     "logEvent.object.Request": "Réservation",
-    "logEvent.action.Age to lost": "Considéré comme perdu",
+    "logEvent.action.Age to lost": "Perdu",
     "logEvent.action.Anonymize": "Anonymisé",
     "logEvent.action.Billed": "Facturé",
     "logEvent.action.Cancelled": "Annulé",
