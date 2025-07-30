@@ -32,10 +32,10 @@ const CirculationLogListContainerComponent = ({ mutator, stripes }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const loadLogEvents = useCallback((offset) => {
+  const loadLogEvents = useCallback((offset, limit) => {
     return mutator.logEventsListEvents.GET({
       params: {
-        limit: RESULT_COUNT_INCREMENT,
+        limit: limit ?? RESULT_COUNT_INCREMENT,
         offset,
         query: buildLogEventsQuery(queryString.parse(location.search), stripes.timezone),
       },
