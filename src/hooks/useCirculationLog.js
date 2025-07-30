@@ -33,6 +33,7 @@ export const useCirculationLog = (isLoadingRightAway, queryLoadRecords, loadReco
     setIsLoading(true);
 
     // to get the actual totalRecords count, the limit should be set to 0
+    // Don't wait for it, because sometimes it takes twice as long as requesting the records below without a zero limit
     queryLoadRecords(defaultSearchParams.offset, 0).then(totalRecordsResponse => {
       setRecordsCount(totalRecordsResponse?.totalRecords);
     });
