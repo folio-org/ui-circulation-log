@@ -7,7 +7,10 @@ import {
 import queryString from 'query-string';
 import { useIntl } from 'react-intl';
 
-import { useOkapiKy } from '@folio/stripes/core';
+import {
+  useOkapiKy,
+  useStripes,
+} from '@folio/stripes/core';
 import { useShowCallout, downloadBase64 } from '@folio/stripes-acq-components';
 
 import { buildLogEventsQuery } from '../utils';
@@ -62,6 +65,7 @@ export const useCirculationLogExportPolling = () => {
 export const useCirculationLogExport = (options) => {
   const location = useLocation();
   const ky = useOkapiKy();
+  const stripes = useStripes();
 
   const poll = useCirculationLogExportPolling();
 
@@ -70,7 +74,7 @@ export const useCirculationLogExport = (options) => {
       const json = {
         type: 'CIRCULATION_LOG',
         exportTypeSpecificParameters: {
-          query: buildLogEventsQuery(queryString.parse(location.search)),
+          query: buildLogEventsQuery(queryString.parse(location.search), stripes.timezone),
         },
       };
 
