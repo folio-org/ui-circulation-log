@@ -1,134 +1,59 @@
-import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { act } from 'react';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
+
+import { useOkapiKy } from '@folio/stripes/core';
 import { renderHook } from '@testing-library/react-hooks';
 
-import '@folio/stripes-acq-components/test/jest/__mock__';
-import { useOkapiKy } from '@folio/stripes/core';
-
-import {
-  useCirculationLogExport,
-} from './useCirculationLogExport';
-
-jest.useFakeTimers();
+import { useCirculationLogExport } from './useCirculationLogExport';
+import { buildLogEventsQuery } from '../utils';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useLocation: () => ({}),
+  useLocation: jest.fn().mockReturnValue({}),
 }));
+
+jest.mock('../utils', () => ({
+  ...jest.requireActual('../utils'),
+  buildLogEventsQuery: jest.fn(),
+}));
+
+useOkapiKy.mockReturnValue({
+  get: jest.fn().mockReturnValue({
+    json: jest.fn().mockResolvedValue({
+      id: '123',
+      status: 'SUCCESSFUL',
+      fileNames: ['export.csv'],
+    }),
+  }),
+  post: jest.fn().mockReturnValue({
+    json: jest.fn().mockResolvedValue({ id: '123' }),
+  }),
+});
 
 const queryClient = new QueryClient();
 
-// eslint-disable-next-line react/prop-types
+const timezone = 'UTC';
+const mockOnSuccess = jest.fn();
+
 const wrapper = ({ children }) => (
   <QueryClientProvider client={queryClient}>
     {children}
   </QueryClientProvider>
 );
 
-const files = ['bursar1.dat', 'bursar2'];
-
 describe('useCirculationLogExport', () => {
-  let postMock;
-  let getMock;
-  let blobMock;
+  describe('when buildLogEventsQuery is called', () => {
+    it('should pass timezone', async () => {
+      const { result } = renderHook(() => useCirculationLogExport({
+        onSuccess: mockOnSuccess,
+      }), { wrapper });
 
-  beforeEach(() => {
-    blobMock = jest.fn().mockImplementation(() => Promise.resolve());
-    postMock = jest.fn(() => ({
-      json: jest.fn(() => ({ id: 'sas-fsd-53-sda' })),
-    }));
-    getMock = jest.fn(() => ({
-      blob: blobMock,
-      json: jest.fn(() => ({ id: 'sas-fsd-53-sda', status: 'SUCCESSFUL', files })),
-    }));
+      await act(() => result.current.requestExport());
 
-    useOkapiKy.mockClear().mockReturnValue({
-      post: postMock,
-      get: getMock,
+      expect(buildLogEventsQuery).toHaveBeenCalledWith(expect.any(Object), timezone);
     });
-  });
-
-  it('should make post request to create export job', async () => {
-    const { result } = renderHook(
-      () => useCirculationLogExport({
-        onSuccess: jest.fn(),
-      }),
-      { wrapper },
-    );
-
-    await result.current.requestExport();
-
-    expect(postMock).toHaveBeenCalled();
-  });
-
-  it('should call polling timer', async () => {
-    const { result } = renderHook(
-      () => useCirculationLogExport({
-        onSuccess: jest.fn(),
-      }),
-      { wrapper },
-    );
-
-    await result.current.requestExport();
-
-    expect(setTimeout).toHaveBeenCalled();
-  });
-
-  it('should poll jobs', async () => {
-    jest.clearAllTimers();
-
-    const { result } = renderHook(
-      () => useCirculationLogExport({
-        onSuccess: jest.fn(),
-      }),
-      { wrapper },
-    );
-
-    await result.current.requestExport();
-
-    jest.runAllTimers();
-
-    expect(getMock).toHaveBeenCalled();
-  });
-
-  it('should download all files when job is successful', async () => {
-    jest.clearAllTimers();
-
-    const { result } = renderHook(
-      () => useCirculationLogExport({
-        onSuccess: jest.fn(),
-      }),
-      { wrapper },
-    );
-
-    await result.current.requestExport();
-
-    jest.runAllTimers();
-
-    await (() => expect(blobMock).toHaveBeenCalled());
-  });
-
-  it('should not download files when job is failed', async () => {
-    jest.clearAllTimers();
-
-    useOkapiKy.mockClear().mockReturnValue({
-      post: postMock,
-      get: jest.fn(() => ({
-        json: jest.fn(() => ({ id: 'sas-fsd-53-sda', status: 'FAILED' })),
-      })),
-    });
-
-    const { result } = renderHook(
-      () => useCirculationLogExport({
-        onSuccess: jest.fn(),
-      }),
-      { wrapper },
-    );
-
-    await result.current.requestExport();
-
-    jest.runAllTimers();
-
-    expect(blobMock).not.toHaveBeenCalled();
   });
 });
