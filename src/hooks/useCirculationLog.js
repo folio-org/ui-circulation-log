@@ -56,7 +56,7 @@ export const useCirculationLog = (isLoadingRightAway, queryLoadRecords, loadReco
     }
     setRecords([]);
     loadRecords(0);
-  }, [loadRecords]);
+  }, [loadRecords, location.search]);
 
   useEffect(
     () => {
