@@ -4,7 +4,7 @@
     "logEvent.item": "資料バーコード",
     "logEvent.object": "Object",
     "logEvent.action": "Circ action",
-    "logEvent.date": "Date",
+    "logEvent.date": "日付",
     "logEvent.servicePoint": "サービスポイント",
     "logEvent.source": "ソース",
     "logEvent.description": "説明",
