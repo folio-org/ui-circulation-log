@@ -66,7 +66,7 @@
     "logEvent.item.showMore": "Показати більше",
     "logEvent.item.showLess": "Показувати менше",
     "logEvent.object.N/A": "-",
-    "filter.apply": "Apply",
+    "filter.apply": "Застосувати",
     "logEvents.actions.export": "Експорт результатів (CSV)",
     "logEvents.actions.export.success": "Надіслано запит на експорт журналу видачі. Будь ласка, зачекайте, поки файл завантажиться.",
     "logEvents.actions.export.error": "Щось пішло не так із запитом на експорт файлу. Спробуйте ще раз.",
