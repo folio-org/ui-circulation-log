@@ -1,5 +1,10 @@
 # Change history for ui-circulation-log
 
+## 6.0.2 (https://github.com/folio-org/ui-circulation-log/tree/v6.0.2) (2025-11-04)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v6.0.1...v6.0.2)
+
+* Make a separate call with a zero limit to get actual totalRecords. Reset recordsCount when `location.search` is empty in `useCirculationLog`. Include timezone in query of `useCirculationLogExport` Fixes UICIRCLOG-179.
+
 ## 6.0.1 (https://github.com/folio-org/ui-circulation-log/tree/v6.0.1) (2025-03-20)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v6.0.0...v6.0.1)
 
