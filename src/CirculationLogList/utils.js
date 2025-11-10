@@ -1,7 +1,6 @@
 import { flatten } from 'lodash';
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
+
+import { dayjs } from '@folio/stripes/components';
 
 import {
   makeQueryBuilder,
@@ -14,9 +13,6 @@ import {
   DCB_INSTANCE_ID,
   DCB_HOLDINGS_RECORD_ID,
 } from './constants';
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
 
 const DATE_SORT_CLAUSE = `date/sort.${DATE_DEFAULT_SORTING_DIRECTION}`;
 
