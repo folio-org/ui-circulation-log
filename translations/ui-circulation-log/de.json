@@ -75,8 +75,10 @@
     "logEvent.action.Created through override": "Erstellt durch spezielle Zustimmung",
     "patronLookup": "Personensuche",
     "logEvent.action.Send error": "Fehler bei Erstellung",
-    "logEvent.action.Patron info added": "Hinzugefügte Benutzerinformation",
-    "logEvent.action.Staff info added": "Hinzugefügte Personalinformation",
+    "logEvent.action.Patron info added": "Hinzugefügte Information für Benutzer/-in",
+    "logEvent.action.Staff info added": "Hinzugefügte Information für Personal",
     "logEvent.action.Patron info superseded": "Benutzer/-in Info (ersetzt)",
-    "permission.log-event.view": "Ausleihprotokoll: Anzeigen"
+    "permission.log-event.view": "Ausleihprotokoll: Anzeigen",
+    "logEvent.action.Picked up for use at location": "In use",
+    "logEvent.action.Held for use at location": "Held"
 }

@@ -78,5 +78,7 @@
     "logEvent.action.Patron info added": "Gebruikersinformatie toegevoegd",
     "logEvent.action.Staff info added": "Medewerkersinformatie toegevoegd",
     "logEvent.action.Patron info superseded": "Gebruikersinformatie (VERVANGEN)",
-    "permission.log-event.view": "Circulatielog: Bekijken"
+    "permission.log-event.view": "Circulatielog: Bekijken",
+    "logEvent.action.Picked up for use at location": "In gebruik",
+    "logEvent.action.Held for use at location": "Holdings"
 }

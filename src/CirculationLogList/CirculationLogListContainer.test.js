@@ -73,10 +73,19 @@ describe('Circulation Log List Container', () => {
     mockAPI.servicePoints.GET.mockClear();
   });
 
-  it('fetches log events', async () => {
+  it('should fetch records by running two requests, one with a zero limit to get the total number of records, and one to get the records', async () => {
     await setup([]);
 
-    expect(mockAPI.logs.GET).toHaveBeenCalled();
+    const params = {
+      limit: 100,
+      offset: 0,
+      query: '(userBarcode=="***") sortby date/sort.descending',
+    };
+
+    expect(mockAPI.logs.GET).toHaveBeenNthCalledWith(1, {
+      params: { ...params, limit: 0 },
+    });
+    expect(mockAPI.logs.GET).toHaveBeenNthCalledWith(2, { params });
   });
 
   it('fetches service points', async () => {

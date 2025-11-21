@@ -16,7 +16,7 @@
     "logEvent.object.Notice": "Notification",
     "logEvent.object.Patron Block": "Blocage usager",
     "logEvent.object.Request": "Réservation",
-    "logEvent.action.Age to lost": "Considéré comme perdu",
+    "logEvent.action.Age to lost": "Perdu",
     "logEvent.action.Anonymize": "Anonymisé",
     "logEvent.action.Billed": "Facturé",
     "logEvent.action.Cancelled": "Annulé",
@@ -78,5 +78,7 @@
     "logEvent.action.Patron info added": "Informations usager ajoutées",
     "logEvent.action.Staff info added": "Informations du personnel ajoutées",
     "logEvent.action.Patron info superseded": "Information usager (OBSOLÈTE)",
-    "permission.log-event.view": "Circulation log: View"
+    "permission.log-event.view": "Circulation log: View",
+    "logEvent.action.Picked up for use at location": "In use",
+    "logEvent.action.Held for use at location": "Held"
 }

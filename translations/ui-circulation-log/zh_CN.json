@@ -78,5 +78,7 @@
     "logEvent.action.Patron info added": "已添加读者信息",
     "logEvent.action.Staff info added": "已添加员工信息",
     "logEvent.action.Patron info superseded": "读者信息 : 已取代 ) ",
-    "permission.log-event.view": "流通日志 : 查看"
+    "permission.log-event.view": "流通日志 : 查看",
+    "logEvent.action.Picked up for use at location": "使用中",
+    "logEvent.action.Held for use at location": "已预约"
 }

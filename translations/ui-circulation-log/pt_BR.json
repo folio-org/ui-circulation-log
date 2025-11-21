@@ -49,7 +49,7 @@
     "logEvent.action.Renewed": "Renovado",
     "logEvent.action.Renewed through override": "Renovado via Sobrepor",
     "logEvent.action.Request status changed": "Status da requisição alterado",
-    "logEvent.action.Send": "Enviar",
+    "logEvent.action.Send": "Enviado",
     "logEvent.action.Staff information only added": "Informações apenas para a equipe adicionadas",
     "logEvent.action.Transferred fully": "Transferido completamente",
     "logEvent.action.Transferred partially": "Transferido parcialmente",
@@ -73,10 +73,12 @@
     "logEvents.actions.export.failed": "O trabalho de exportação falhou.",
     "logEvents.actions.export.successful": "O trabalho de exportação foi concluído.",
     "logEvent.action.Created through override": "Criado via Sobrepor",
-    "patronLookup": "Procurar usuário",
+    "patronLookup": "Consultar usuário",
     "logEvent.action.Send error": "Erro de envio",
     "logEvent.action.Patron info added": "Informações do usuário adicionadas",
     "logEvent.action.Staff info added": "Informações da equipe adicionadas",
     "logEvent.action.Patron info superseded": "Informações do usuário (VENCIDO)",
-    "permission.log-event.view": "Log de Circulação: Visualizar"
+    "permission.log-event.view": "Log de Circulação: Visualizar",
+    "logEvent.action.Picked up for use at location": "Em uso",
+    "logEvent.action.Held for use at location": "Realizado"
 }

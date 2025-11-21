@@ -1,3 +1,4 @@
+import { act } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import {
@@ -55,6 +56,30 @@ describe('useCirculationLog', () => {
     expect(result.current.records).toEqual({
       totalRecords: 100,
       logRecords: { id: 1 },
+    });
+  });
+
+  describe('when location.search is empty', () => {
+    it('should reset recordsCount', async () => {
+      useLocation.mockReturnValue({ search: '?limit=100&offset=0&userBarcode=1' });
+
+      const { result, rerender } = renderHook(
+        () => useCirculationLog(false,
+          jest.fn().mockResolvedValue(),
+          null,
+          {
+            limit: 100,
+            offset: 0,
+          }),
+      );
+
+      await act(async () => !result.current.isLoading);
+
+      useLocation.mockReturnValue({ search: '' });
+      rerender();
+
+      await act(async () => !result.current.isLoading);
+      expect(result.current.recordsCount).toBe(0);
     });
   });
 });

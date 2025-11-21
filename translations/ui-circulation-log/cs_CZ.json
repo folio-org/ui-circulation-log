@@ -78,5 +78,7 @@
     "logEvent.action.Patron info added": "Přidány informace pro čtenáře",
     "logEvent.action.Staff info added": "Přidány informace pro zaměstnance",
     "logEvent.action.Patron info superseded": "Informace o čtenáři (NAHRAZENO)",
-    "permission.log-event.view": "Cirkulační log: Zobrazit"
+    "permission.log-event.view": "Cirkulační log: Zobrazit",
+    "logEvent.action.Picked up for use at location": "V provozu",
+    "logEvent.action.Held for use at location": "Držený"
 }

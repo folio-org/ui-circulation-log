@@ -43,7 +43,7 @@
     "logEvent.action.Patron blocked from requesting": "Czytelnika ma zablokowane zamówienia",
     "logEvent.action.Pickup expired": "Upłynął termin odbioru",
     "logEvent.action.Queue position reordered": "Zmieniono kolejność pozycji w kolejce",
-    "logEvent.action.Recall requested": "Zarządano zwrot od obecnego posiadacza",
+    "logEvent.action.Recall requested": "Zażądano zwrotu od obecnego posiadacza",
     "logEvent.action.Refunded fully": "Całkowity zwrot kosztów",
     "logEvent.action.Refunded partially": "Zwrot częściowy",
     "logEvent.action.Renewed": "Prolongowany",
@@ -78,5 +78,7 @@
     "logEvent.action.Patron info added": "Dodano informacje o czytelniku",
     "logEvent.action.Staff info added": "Dodano informacje o personelu",
     "logEvent.action.Patron info superseded": "Patron info (SUPERSEDED)",
-    "permission.log-event.view": "Dziennik udostępniania: wyświetlanie"
+    "permission.log-event.view": "Dziennik udostępniania: wyświetlanie",
+    "logEvent.action.Picked up for use at location": "W użyciu",
+    "logEvent.action.Held for use at location": "Przechowywany"
 }
