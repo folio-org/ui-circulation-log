@@ -43,7 +43,7 @@
     "logEvent.action.Patron blocked from requesting": "Czytelnika ma zablokowane zamówienia",
     "logEvent.action.Pickup expired": "Upłynął termin odbioru",
     "logEvent.action.Queue position reordered": "Zmieniono kolejność pozycji w kolejce",
-    "logEvent.action.Recall requested": "Zarządano zwrot od obecnego posiadacza",
+    "logEvent.action.Recall requested": "Zażądano zwrotu od obecnego posiadacza",
     "logEvent.action.Refunded fully": "Całkowity zwrot kosztów",
     "logEvent.action.Refunded partially": "Zwrot częściowy",
     "logEvent.action.Renewed": "Prolongowany",
