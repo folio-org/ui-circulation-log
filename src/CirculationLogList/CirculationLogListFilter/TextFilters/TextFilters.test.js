@@ -1,6 +1,10 @@
 import React from 'react';
-import { act, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+
+import {
+  act,
+  render,
+} from '@folio/jest-config-stripes/testing-library/react';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { byRole } from 'testing-library-selector';
 
 import { Pluggable } from '@folio/stripes/core';

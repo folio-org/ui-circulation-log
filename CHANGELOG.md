@@ -1,10 +1,11 @@
 # Change history for ui-circulation-log
 
-## [6.0.1] In progress
+## [6.1.0] In progress
 
 * Bump `@folio/stripes-acq-components` to 7.0.0. Refs UICIRCLOG-175.
 * Add translations for use-at-location actions. Refs UICIRCLOG-180.
 * Add loan-action filter options In Use and Held. Refs UICIRCLOG-181.
+* Migrate jest to use `@folio/jest-config-stripes`. Refs UICIRCLOG-182.
 
 ## 6.0.0 (https://github.com/folio-org/ui-circulation-log/tree/v6.0.0) (2025-03-14)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v5.0.1...v6.0.0)

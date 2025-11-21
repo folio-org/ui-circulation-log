@@ -1,6 +1,7 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
+
+import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
 import { useOkapiKy } from '@folio/stripes/core';
@@ -62,6 +63,9 @@ describe('useCirculationLogExport', () => {
   });
 
   it('should call polling timer', async () => {
+    jest.useFakeTimers();
+    jest.spyOn(global, 'setTimeout');
+
     const { result } = renderHook(
       () => useCirculationLogExport({
         onSuccess: jest.fn(),

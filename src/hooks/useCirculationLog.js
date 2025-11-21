@@ -44,7 +44,7 @@ export const useCirculationLog = (isLoadingRightAway, queryLoadRecords, loadReco
 
       return recordsResponse && loadRecordsCB(setRecords, recordsResponse);
     }).finally(() => setIsLoading(false));
-  }, [isLoadingRightAway, isLoading, loadRecordsCB, location.search, queryLoadRecords]);
+  }, [queryParams, isLoadingRightAway, isLoading, queryLoadRecords, defaultSearchParams.offset, loadRecordsCB]);
 
   const refreshList = useCallback(() => {
     setRecords([]);

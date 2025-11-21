@@ -1,6 +1,10 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitFor,
+} from '@folio/jest-config-stripes/testing-library/react';
 import { byRole } from 'testing-library-selector';
 
 import {
@@ -51,10 +55,10 @@ describe('Event Actions', () => {
     const menuItem = byRole('menuitem', { name: /loanDetails/ });
     const url = `/users/${props.referenceIds.userId}/loans/view/${props.items[0].loanId}`;
 
-    it('is shown when available', () => {
+    it('is shown when available', async () => {
       renderAndOpenTheActionsMenu(props);
 
-      expect(menuItem.get()).toBeVisible();
+      await waitFor(() => expect(menuItem.get()).toBeVisible());
       expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
@@ -107,10 +111,10 @@ describe('Event Actions', () => {
     const menuItem = byRole('menuitem', { name: /feeDetails/ });
     const url = `/users/${props.referenceIds.userId}/accounts/view/${props.referenceIds.feeFineId}`;
 
-    it('is shown when available', () => {
+    it('is shown when available', async () => {
       renderAndOpenTheActionsMenu(props);
 
-      expect(menuItem.get()).toBeVisible();
+      await waitFor(() => expect(menuItem.get()).toBeVisible());
       expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
@@ -132,10 +136,10 @@ describe('Event Actions', () => {
     const menuItem = byRole('menuitem', { name: /userDetails/ });
     const url = `/users/view/${props.referenceIds.userId}`;
 
-    it('is shown when available', () => {
+    it('is shown when available', async () => {
       renderAndOpenTheActionsMenu(props);
 
-      expect(menuItem.get()).toBeVisible();
+      await waitFor(() => expect(menuItem.get()).toBeVisible());
       expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
@@ -157,10 +161,10 @@ describe('Event Actions', () => {
     const menuItem = byRole('menuitem', { name: /requestDetails/ });
     const url = `/requests/view/${props.referenceIds.requestId}`;
 
-    it('is shown when available', () => {
+    it('is shown when available', async () => {
       renderAndOpenTheActionsMenu(props);
 
-      expect(menuItem.get()).toBeVisible();
+      await waitFor(() => expect(menuItem.get()).toBeVisible());
       expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
@@ -182,10 +186,10 @@ describe('Event Actions', () => {
     const menuItem = byRole('menuitem', { name: /noticePolicyDetails/ });
     const url = `/settings/circulation/notice-policies/${props.referenceIds.noticePolicyId}`;
 
-    it('is shown when available', () => {
+    it('is shown when available', async () => {
       renderAndOpenTheActionsMenu(props);
 
-      expect(menuItem.get()).toBeVisible();
+      await waitFor(() => expect(menuItem.get()).toBeVisible());
       expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
@@ -207,10 +211,10 @@ describe('Event Actions', () => {
     const menuItem = byRole('menuitem', { name: /templateDetails/ });
     const url = `/settings/circulation/patron-notices/${props.referenceIds.templateId}`;
 
-    it('is shown when available', () => {
+    it('is shown when available', async () => {
       renderAndOpenTheActionsMenu(props);
 
-      expect(menuItem.get()).toBeVisible();
+      await waitFor(() => expect(menuItem.get()).toBeVisible());
       expect(menuItem.get()).toHaveAttribute('href', url);
     });
 

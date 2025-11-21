@@ -1,9 +1,16 @@
-import { BrowserRouter } from 'react-router-dom';
+import { act } from 'react';
+import { Router } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { createMemoryHistory } from 'history';
 
-import { render, screen, waitFor } from '@testing-library/react';
 import { byLabelText, byRole } from 'testing-library-selector';
-import userEvent from '@testing-library/user-event';
+
+import {
+  render,
+  screen,
+  waitFor,
+} from '@folio/jest-config-stripes/testing-library/react';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 
 import { CirculationLogListContainer } from './CirculationLogListContainer';
 
@@ -17,11 +24,12 @@ const queryClient = new QueryClient({
   },
 });
 
-export const Wrapper = ({ children }) => (
+
+export const Wrapper = ({ history } = {}) => ({ children }) => (
   <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
+    <Router history={history || createMemoryHistory()}>
       {children}
-    </BrowserRouter>
+    </Router>
   </QueryClientProvider>
 );
 
@@ -46,14 +54,14 @@ const setup = async (data = []) => {
   mockData.logRecords = data;
 
   // To make `useList` load records we need to supply some filter params
-  window.history.pushState({}, '', '?userBarcode=%2A');
+  const history = createMemoryHistory({ initialEntries: ['/?userBarcode=%2A'] });
 
   const mutator = {
     logEventsListEvents: mockAPI.logs,
     logEventsServicePoints: mockAPI.servicePoints,
   };
 
-  render(<CirculationLogListContainer mutator={mutator} />, { wrapper: Wrapper });
+  render(<CirculationLogListContainer mutator={mutator} />, { wrapper: Wrapper({ history }) });
 
   await waitFor(expect(document.querySelector('[class*=spinner]')).not.toBeInTheDocument);
 };
@@ -112,7 +120,7 @@ describe('Managing focus', () => {
 
   describe('on page load', () => {
     test('first text field is auto-focused when there is no results', async () => {
-      await setup([]);
+      await act(() => setup([]));
 
       const [first, ...rest] = screen.getAllByRole('textbox');
 
@@ -134,19 +142,19 @@ describe('Managing focus', () => {
     async function checkNoResults() {
       mockData.logRecords = [];
 
-      userEvent.type(node.get(), 'something without results');
-      userEvent.click(ui.textFilters.apply.get());
+      await userEvent.type(node.get(), 'something without results');
+      await userEvent.click(ui.textFilters.apply.get());
 
-      await (expect(node.get()).toHaveFocus);
+      await waitFor(expect(node.get()).toHaveFocus);
     }
 
     async function checkWithResults() {
       mockData.logRecords = [{ id: 1 }, { id: 2 }];
 
-      userEvent.type(node.get(), 'something with results');
-      userEvent.click(ui.textFilters.apply.get());
+      await userEvent.type(node.get(), 'something with results');
+      await userEvent.click(ui.textFilters.apply.get());
 
-      await (expect(ui.results.get()).toHaveFocus);
+      await waitFor(expect(ui.results.get()).toHaveFocus);
     }
 
     test(
@@ -181,7 +189,7 @@ describe('Managing focus', () => {
       userEvent.type(to, '01/01/2001');
       userEvent.click(ui.dateRange.apply.get());
 
-      await (expect(to).toHaveFocus);
+      await waitFor(expect(to).toHaveFocus);
     });
 
     test('with initial results', async () => {
@@ -194,7 +202,7 @@ describe('Managing focus', () => {
       userEvent.type(to, '01/01/2001');
       userEvent.click(ui.dateRange.apply.get());
 
-      await (expect(ui.results.get()).toHaveFocus);
+      await waitFor(expect(ui.results.get()).toHaveFocus);
     });
   });
 
@@ -211,7 +219,7 @@ describe('Managing focus', () => {
 
       fillAndApply();
 
-      await (expect(ui.textFilters.fields.item.get()).toHaveFocus);
+      await waitFor(expect(ui.textFilters.fields.item.get()).toHaveFocus);
     });
 
     test('with initial results', async () => {
@@ -219,7 +227,7 @@ describe('Managing focus', () => {
 
       fillAndApply();
 
-      await (expect(ui.results.get()).toHaveFocus);
+      await waitFor(expect(ui.results.get()).toHaveFocus);
     });
   });
 });
