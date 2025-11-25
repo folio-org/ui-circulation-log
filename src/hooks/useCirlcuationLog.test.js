@@ -1,6 +1,10 @@
 import { act } from 'react';
-import { renderHook } from '@testing-library/react-hooks';
 import { useLocation } from 'react-router-dom';
+
+import {
+  renderHook,
+  waitFor,
+} from '@folio/jest-config-stripes/testing-library/react';
 
 import { useCirculationLog } from './useCirculationLog';
 
@@ -11,7 +15,7 @@ jest.mock('react-router-dom', () => ({
 
 describe('useCirculationLog', () => {
   it('should not call API right away, but after location is changed', async () => {
-    const { result, rerender, waitForNextUpdate } = renderHook(
+    const { result, rerender } = renderHook(
       () => useCirculationLog(false,
         jest.fn().mockResolvedValue(),
         null,
@@ -27,8 +31,7 @@ describe('useCirculationLog', () => {
     rerender();
 
     expect(result.current.isLoading).toBe(true);
-    await waitForNextUpdate();
-    expect(result.current.isLoading).toBe(false);
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
   });
 
   it('should call API right away and return records', async () => {
@@ -39,7 +42,7 @@ describe('useCirculationLog', () => {
       },
     });
     const loadRecordsCB = (setValue, value) => setValue(value);
-    const { result, waitForNextUpdate } = renderHook(() => useCirculationLog(true,
+    const { result } = renderHook(() => useCirculationLog(true,
       queryLoadRecords,
       loadRecordsCB,
       {
@@ -48,8 +51,7 @@ describe('useCirculationLog', () => {
       }));
 
     expect(result.current.isLoading).toBe(true);
-    await waitForNextUpdate();
-    expect(result.current.isLoading).toBe(false);
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(result.current.recordsCount).toBe(100);
     expect(result.current.records).toEqual({
       totalRecords: 100,
