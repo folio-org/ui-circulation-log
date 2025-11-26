@@ -4,8 +4,6 @@ import {
   fireEvent,
 } from '@folio/jest-config-stripes/testing-library/react';
 
-import '@folio/stripes-acq-components/test/jest/__mock__';
-
 import { CirculationLogEventItems } from './CirculationLogEventItems';
 
 const getItemBarcode = () => Math.random().toString();
