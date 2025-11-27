@@ -2,8 +2,6 @@ import React from 'react';
 
 import { render } from '@folio/jest-config-stripes/testing-library/react';
 
-import '@folio/stripes-acq-components/test/jest/__mock__';
-
 import { AcqDateRangeFilter } from '@folio/stripes-acq-components';
 
 import {

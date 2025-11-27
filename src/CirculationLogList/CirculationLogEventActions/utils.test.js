@@ -1,5 +1,3 @@
-import '@folio/stripes-acq-components/test/jest/__mock__';
-
 import {
   LOG_EVENT_OBJECTS,
 } from '../constants';

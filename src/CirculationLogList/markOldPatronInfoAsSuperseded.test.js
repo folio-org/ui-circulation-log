@@ -1,4 +1,3 @@
-import '@folio/stripes-acq-components/test/jest/__mock__';
 import { markOldPatronInfoAsSuperseded } from './markOldPatronInfoAsSuperseded';
 import { LOAN_ACTIONS } from './constants';
 

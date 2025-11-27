@@ -3,8 +3,6 @@ import React from 'react';
 import { render } from '@folio/jest-config-stripes/testing-library/react';
 import user from '@folio/jest-config-stripes/testing-library/user-event';
 
-import '@folio/stripes-acq-components/test/jest/__mock__';
-
 import {
   useCirculationLogExport,
 } from './useCirculationLogExport';
