@@ -79,6 +79,6 @@
     "logEvent.action.Staff info added": "Hinzugefügte Information für Personal",
     "logEvent.action.Patron info superseded": "Benutzer/-in Info (ersetzt)",
     "permission.log-event.view": "Ausleihprotokoll: Anzeigen",
-    "logEvent.action.Picked up for use at location": "In use",
-    "logEvent.action.Held for use at location": "Held"
+    "logEvent.action.Picked up for use at location": "Nutzung am Standort",
+    "logEvent.action.Held for use at location": "Bereitliegend am Standort"
 }
