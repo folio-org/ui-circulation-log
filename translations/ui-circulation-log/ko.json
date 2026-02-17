@@ -21,7 +21,7 @@
     "logEvent.action.Billed": "Billed",
     "logEvent.action.Cancelled": "Cancelled",
     "logEvent.action.Cancelled as error": "Cancelled as error",
-    "logEvent.action.Changed due date": "Changed due date",
+    "logEvent.action.Changed due date": "반납 예정일이 변경되었습니다.",
     "logEvent.action.Check in": "Check in",
     "logEvent.action.Check out": "대출",
     "logEvent.action.Checked in": "Checked in",
