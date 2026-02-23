@@ -33,7 +33,10 @@
       {
         "permissionName": "module.circulation-log.enabled",
         "displayName": "UI: Circulation logs module is enabled",
-        "visible": false
+        "visible": false,
+        "subPermissions": [
+          "stripes-core.settings.read"
+        ]
       },
       {
         "permissionName": "ui-circulation-log.log-event.view",
