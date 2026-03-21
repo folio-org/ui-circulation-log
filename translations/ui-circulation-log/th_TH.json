@@ -15,7 +15,7 @@
     "logEvent.object.Manual Block": "Manual block",
     "logEvent.object.Notice": "Notice",
     "logEvent.object.Patron Block": "Patron block",
-    "logEvent.object.Request": "Request",
+    "logEvent.object.Request": "คำขอ",
     "logEvent.action.Age to lost": "Aged to lost",
     "logEvent.action.Anonymize": "Anonymized",
     "logEvent.action.Billed": "Billed",

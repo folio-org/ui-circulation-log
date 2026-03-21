@@ -1,5 +1,5 @@
 {
-    "meta.title": "Circulation log",
+    "meta.title": "Cirkulācijas žurnāls",
     "logEvent.user": "User barcode",
     "logEvent.item": "Item barcode",
     "logEvent.object": "Object",
