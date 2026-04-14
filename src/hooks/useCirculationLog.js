@@ -24,7 +24,7 @@ export const useCirculationLog = (isLoadingRightAway, queryLoadRecords, loadReco
     // is not visible to other effects running in the same render cycle. Using queryParams
     // (derived synchronously from location.search) ensures we always see the current URL
     // value and avoid firing API calls with a stale offset when filters change.
-    offset: parseInt(queryParams.offset || '0', 10),
+    offset: Number.parseInt(queryParams.offset || '0', 10),
   };
 
   const loadRecords = useCallback(offset => {
