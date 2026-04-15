@@ -82,4 +82,38 @@ describe('useCirculationLog', () => {
       expect(result.current.recordsCount).toBe(0);
     });
   });
+
+  describe('when offset is not present in location.search', () => {
+    it('should call API with offset 0 regardless of pagination.offset prop', async () => {
+      useLocation.mockReturnValue({ search: '?userBarcode=test' });
+      const queryLoadRecords = jest.fn().mockResolvedValue(undefined);
+
+      renderHook(() => useCirculationLog(
+        true,
+        queryLoadRecords,
+        null,
+        { limit: 100, offset: 100 },
+      ));
+
+      await waitFor(() => expect(queryLoadRecords).toHaveBeenCalled());
+      expect(queryLoadRecords).toHaveBeenLastCalledWith(0);
+    });
+  });
+
+  describe('when offset is present in location.search', () => {
+    it('should call API with the offset from URL', async () => {
+      useLocation.mockReturnValue({ search: '?userBarcode=test&offset=100' });
+      const queryLoadRecords = jest.fn().mockResolvedValue(undefined);
+
+      renderHook(() => useCirculationLog(
+        true,
+        queryLoadRecords,
+        null,
+        { limit: 100, offset: 0 },
+      ));
+
+      await waitFor(() => expect(queryLoadRecords).toHaveBeenCalled());
+      expect(queryLoadRecords).toHaveBeenLastCalledWith(100);
+    });
+  });
 });

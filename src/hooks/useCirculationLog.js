@@ -19,7 +19,12 @@ export const useCirculationLog = (isLoadingRightAway, queryLoadRecords, loadReco
   const defaultSearchParams = {
     queryParams,
     limit: pagination.limit,
-    offset: pagination.offset,
+    // Read offset directly from the URL rather than from pagination.offset (React state).
+    // usePagination resets its offset state to 0 inside a useEffect, but that state update
+    // is not visible to other effects running in the same render cycle. Using queryParams
+    // (derived synchronously from location.search) ensures we always see the current URL
+    // value and avoid firing API calls with a stale offset when filters change.
+    offset: Number.parseInt(queryParams.offset || '0', 10),
   };
 
   const loadRecords = useCallback(offset => {

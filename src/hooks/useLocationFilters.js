@@ -16,7 +16,11 @@ export const useLocationFilters = ({ history, location }) => {
 
       history.push({
         pathname: '',
-        search: `${buildSearch(filtersToMerge, location.search)}`,
+        // Reset offset when applying new filters so usePagination never sees a stale
+        // offset in the URL. Without this, buildSearch would preserve the old offset
+        // (e.g. offset=100 from page 2), and useCirculationLog's effect would fire
+        // against that intermediate URL before usePagination resets it to 0.
+        search: buildSearch({ ...filtersToMerge, offset: undefined }, location.search),
       });
 
       return newFilters;
