@@ -1,6 +1,7 @@
 # Change history for ui-circulation-log
 
-## [6.1.0] In progress
+## [6.1.0] (https://github.com/folio-org/ui-circulation-log/tree/v6.1.0) (2026-04-17)
+[Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v6.0.2...v6.1.0)
 
 * Add translations for use-at-location actions. Refs UICIRCLOG-180.
 * Add loan-action filter options In Use and Held. Refs UICIRCLOG-181.
