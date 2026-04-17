@@ -175,6 +175,7 @@ export const CirculationLogList = ({
           <>
             <MultiColumnList
               id="circulation-log-list"
+              showSortIndicator
               totalCount={logEventsCount}
               contentData={logEvents}
               visibleColumns={visibleColumns}
@@ -185,6 +186,7 @@ export const CirculationLogList = ({
               sortOrder={sortingField}
               sortDirection={sortingDirection || undefined} // sortingDirection is sometimes an empty string, which is not suitable for MCL propTypes
               onHeaderClick={changeSorting}
+              nonInteractiveHeaders={['servicePoint', 'actions']}
               isEmptyMessage={resultsStatusMessage}
               hasMargin
               pagingType={null}

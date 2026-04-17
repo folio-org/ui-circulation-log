@@ -7,6 +7,7 @@
 * Migrate jest to use `@folio/jest-config-stripes`. Refs UICIRCLOG-182.
 * Add `stripes-core.settings.read` permission to app permissions. Refs UICIRCLOG-190.
 * Reset offset when applying new search filters. Refs UICIRCLOG-185.
+* Fix sorting by "Service point" column not working. Refs UICIRCLOG-195.
 
 ## 6.0.2 (https://github.com/folio-org/ui-circulation-log/tree/v6.0.2) (2025-11-04)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v6.0.1...v6.0.2)
