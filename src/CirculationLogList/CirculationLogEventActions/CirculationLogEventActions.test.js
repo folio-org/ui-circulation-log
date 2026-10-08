@@ -4,6 +4,7 @@ import {
   render,
   screen,
   waitFor,
+  fireEvent,
 } from '@folio/jest-config-stripes/testing-library/react';
 import { byRole } from 'testing-library-selector';
 
@@ -31,7 +32,7 @@ const renderAndOpenTheActionsMenu = ({ objectType, items, referenceIds } = {}) =
 
   const button = screen.queryByRole('button', { name: /actions/ });
 
-  if (button) button.click();
+  if (button) fireEvent.click(button);
 };
 
 describe('Event Actions', () => {
