@@ -169,6 +169,15 @@ describe('Event Actions', () => {
       expect(menuItem.get()).toHaveAttribute('href', url);
     });
 
+    it('is not shown when the request is anonymized', async () => {
+      renderAndOpenTheActionsMenu({
+        ...props,
+        referenceIds: { userId: undefined },
+      });
+
+      expect(menuItem.query()).not.toBeInTheDocument();
+    });
+
     it('is not shown without permission', () => {
       mockHasPerm.mockReturnValue(false);
 

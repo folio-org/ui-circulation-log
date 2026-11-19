@@ -59,6 +59,7 @@ const getResultsFormatter = (servicePointsMap) => ({
       objectType={logEvent.object}
       items={logEvent.items}
       referenceIds={logEvent.linkToIds}
+      actionType={logEvent.action}
     />
   ),
 });

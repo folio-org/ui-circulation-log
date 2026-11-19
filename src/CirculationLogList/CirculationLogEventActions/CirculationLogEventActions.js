@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { REQUEST_ACTIONS } from '../constants';
 
 import {
   useStripes,
@@ -31,6 +32,7 @@ export const CirculationLogEventActions = ({
     noticePolicyId,
     templateId,
   } = {},
+  actionType,
 }) => {
   const intl = useIntl();
   const stripes = useStripes();
@@ -38,8 +40,11 @@ export const CirculationLogEventActions = ({
 
   const hasLoanDetails =
     getHasLoanDetails(objectType, userId, items) && stripes.hasPerm('ui-users.loans.view');
+  // For the "Anonymized" action, do not show user details. If more than
+  // one such type of action needs this exception in the future, consider
+  // a more general solution.
   const hasUserDetails =
-    getHasUserDetails(objectType, userId) && stripes.hasPerm('ui-users.view');
+    getHasUserDetails(objectType, userId) && actionType !== REQUEST_ACTIONS.ANONYMIZED_REQUEST && stripes.hasPerm('ui-users.view');
   const hasFeeDetails =
     getHasFeeDetails(objectType, feeFineId, userId) && stripes.hasPerm('ui-users.feesfines.actions.all');
   const hasRequestDetails =
@@ -174,5 +179,6 @@ CirculationLogEventActions.propTypes = {
   objectType: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.object),
   referenceIds: PropTypes.object,
+  actionType: PropTypes.string,
 };
 

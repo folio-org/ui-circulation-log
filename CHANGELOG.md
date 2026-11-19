@@ -3,6 +3,7 @@
 ## [6.2.0] IN_PROGRESS
 
 * Update dependencies and improve test. Refs UICIRCLOG-197.
+* Hide option for seeing user info when viewing anonymized requests in circulation log. Refs UICIRCLOG-178.
 
 ## [6.1.0] (https://github.com/folio-org/ui-circulation-log/tree/v6.1.0) (2026-04-17)
 [Full Changelog](https://github.com/folio-org/ui-circulation-log/compare/v6.0.2...v6.1.0)
